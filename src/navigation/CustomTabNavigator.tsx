@@ -4,12 +4,12 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
-  Dimensions,
   Animated,
   Modal,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Home, MapPin, Star, Utensils, Bed, Calendar, Menu } from 'lucide-react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Home, MapPin, Star, Utensils, Bed, Menu } from 'lucide-react-native';
 
 // Import screens
 import HomeScreen from '../screens/HomeScreen';
@@ -17,34 +17,29 @@ import ThemeParksScreen from '../screens/ThemeParksScreen';
 import AttractionsScreen from '../screens/AttractionsScreen';
 import DiningScreen from '../screens/DiningScreen';
 import HotelsScreen from '../screens/HotelsScreen';
-import EventsScreen from '../screens/EventsScreen';
 import DrawerContent from './DrawerContent';
 
-const { width } = Dimensions.get('window');
+const Tab = createBottomTabNavigator();
 
-interface TabItem {
-  name: string;
-  label: string;
-  icon: React.ComponentType<any>;
-  component: React.ComponentType<any>;
-}
+// Placeholder component for More tab
+const MoreScreen: React.FC = () => <View style={{ flex: 1, backgroundColor: '#ffffff' }} />;
 
-const tabs: TabItem[] = [
-  { name: 'Home', label: 'Home', icon: Home, component: HomeScreen },
-  { name: 'Theme Parks', label: 'Parks', icon: MapPin, component: ThemeParksScreen },
-  { name: 'Attractions', label: 'Attractions', icon: Star, component: AttractionsScreen },
-  { name: 'Dining', label: 'Dining', icon: Utensils, component: DiningScreen },
-  { name: 'Hotels', label: 'Hotels', icon: Bed, component: HotelsScreen },
-  { name: 'More', label: 'More', icon: Menu, component: View }, // Placeholder component for More
-];
-
-const CustomTabNavigator: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('Home');
+// Custom Tab Bar Component
+const CustomTabBar: React.FC<any> = ({ state, navigation }) => {
   const [isDrawerVisible, setIsDrawerVisible] = useState(false);
   const slideAnim = useRef(new Animated.Value(-280)).current; // Start off-screen to the left
 
-  const handleTabPress = (tabName: string) => {
-    if (tabName === 'More') {
+  const tabConfig = [
+    { name: 'Home', label: 'Home', icon: Home },
+    { name: 'ThemeParks', label: 'Parks', icon: MapPin },
+    { name: 'Attractions', label: 'Attractions', icon: Star },
+    { name: 'Dining', label: 'Dining', icon: Utensils },
+    { name: 'Hotels', label: 'Hotels', icon: Bed },
+    { name: 'More', label: 'More', icon: Menu },
+  ];
+
+  const handleTabPress = (routeName: string, index: number) => {
+    if (routeName === 'More') {
       setIsDrawerVisible(true);
       // Reset animation value and animate drawer in from left
       slideAnim.setValue(-280);
@@ -54,7 +49,15 @@ const CustomTabNavigator: React.FC = () => {
         useNativeDriver: true,
       }).start();
     } else {
-      setActiveTab(tabName);
+      const event = navigation.emit({
+        type: 'tabPress',
+        target: state.routes[index].key,
+        canPreventDefault: true,
+      });
+
+      if (!event.defaultPrevented) {
+        navigation.navigate(routeName);
+      }
     }
   };
 
@@ -74,19 +77,19 @@ const CustomTabNavigator: React.FC = () => {
     // Handle navigation to different screens based on drawer selection
     switch (screenName) {
       case 'home':
-        setActiveTab('Home');
+        navigation.navigate('Home');
         break;
       case 'theme-parks':
-        setActiveTab('Theme Parks');
+        navigation.navigate('ThemeParks');
         break;
       case 'attractions':
-        setActiveTab('Attractions');
+        navigation.navigate('Attractions');
         break;
       case 'dining':
-        setActiveTab('Dining');
+        navigation.navigate('Dining');
         break;
       case 'hotels':
-        setActiveTab('Hotels');
+        navigation.navigate('Hotels');
         break;
       default:
         // For other screens that aren't in the main tabs, keep current tab
@@ -94,46 +97,32 @@ const CustomTabNavigator: React.FC = () => {
     }
   };
 
-  const renderActiveScreen = () => {
-    const activeTabData = tabs.find(tab => tab.name === activeTab);
-    if (activeTabData && activeTabData.component !== View) {
-      const Component = activeTabData.component;
-      return <Component />;
-    }
-    return <View style={{ flex: 1, backgroundColor: '#ffffff' }} />;
-  };
-
-  const renderTabIcon = (tab: TabItem, isActive: boolean) => {
-    const IconComponent = tab.icon;
-    const color = isActive ? '#f97316' : '#6b7280';
+  const renderTabIcon = (iconComponent: React.ComponentType<any>, isActive: boolean) => {
+    const IconComponent = iconComponent;
+    const color = isActive ? '#A47551' : '#6b7280';
     return <IconComponent size={24} color={color} />;
   };
 
   return (
-    <View style={styles.container}>
-      {/* Main Content */}
-      <View style={styles.content}>
-        {renderActiveScreen()}
-      </View>
-
+    <>
       {/* Custom Tab Bar */}
       <SafeAreaView edges={['bottom']} style={styles.tabBarContainer}>
         <View style={styles.tabBar}>
-          {tabs.map((tab) => {
-            const isActive = activeTab === tab.name;
+          {tabConfig.map((tab, index) => {
+            const isActive = state.index === index;
             return (
               <TouchableOpacity
                 key={tab.name}
                 style={styles.tabItem}
-                onPress={() => handleTabPress(tab.name)}
+                onPress={() => handleTabPress(tab.name, index)}
                 activeOpacity={0.7}
               >
                 <View style={styles.tabIconContainer}>
-                  {renderTabIcon(tab, isActive)}
+                  {renderTabIcon(tab.icon, isActive)}
                 </View>
                 <Text style={[
                   styles.tabLabel,
-                  { color: isActive ? '#f97316' : '#6b7280' }
+                  { color: isActive ? '#A47551' : '#6b7280' }
                 ]}>
                   {tab.label}
                 </Text>
@@ -174,18 +163,30 @@ const CustomTabNavigator: React.FC = () => {
           </Animated.View>
         </TouchableOpacity>
       </Modal>
-    </View>
+    </>
+  );
+};
+
+// Main Tab Navigator Component
+const CustomTabNavigator: React.FC = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      tabBar={(props: any) => <CustomTabBar {...props} />}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="ThemeParks" component={ThemeParksScreen} />
+      <Tab.Screen name="Attractions" component={AttractionsScreen} />
+      <Tab.Screen name="Dining" component={DiningScreen} />
+      <Tab.Screen name="Hotels" component={HotelsScreen} />
+      <Tab.Screen name="More" component={MoreScreen} />
+    </Tab.Navigator>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-  },
-  content: {
-    flex: 1,
-  },
   tabBarContainer: {
     backgroundColor: '#ffffff',
     borderTopWidth: 0.5,
