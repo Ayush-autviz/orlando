@@ -190,7 +190,7 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "neighborhood": "Downtown Orlando",
     "description": "The Grand Bohemian Hotel Orlando, Autograph Collection, is a landmark luxury hotel in downtown Orlando that celebrates creativity and inspires the soul. With 150 works of rare art, this hotel fosters a setting that is both sophisticated and inspiring. The hotel features 247 luxuriously appointed guestrooms and suites, 10,000 square feet of flexible meeting space, a full-service Poseidon Spa, and sophisticated cuisine at The Boheme restaurant and Bosendorfer Lounge. The rooftop terrace and pool offer stunning city skyline views. Guests can enjoy world-class cuisine with a creative twist in an art-inspired setting, savor prime steaks and fresh seafood, and experience live entertainment featuring the Imperial Grand Bösendorfer Piano. The hotel is centrally located with easy access to Universal Studios, SeaWorld, and Walt Disney World, making it an ideal choice for both business and leisure travelers.",
     "price": "$$$$",
-    "imageUrl": "/images/hotels/grand-bohemian-hotel-orlando-optimized.jpg",
+    "imageUrl": "/assets/images/grand-bohemian-hotel-orlando.jpg",
     "website": "https://www.marriott.com/en-us/hotels/mcoak-grand-bohemian-orlando-autograph-collection/",
     "amenities": [
       "Boheme Restaurant",
@@ -420,32 +420,8 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "imageUrl": "/images/hotels/hard-rock-hotel-2.jpg",
     "website": "https://www.universalorlando.com/web/en/us/places-to-stay/",
     "rating": 4.6
-  },{
-    "name": "Universal Stella Nova Resort",
-    "neighborhood": "Universal Area",
-    "address": "6735 Universal Blvd, opens 2025",
-    "description": "Inspired by the infinite vastness of the universe, Universal Stella Nova Resort is your gateway to Universal Orlando Resort. This new Prime Value hotel, co-owned and operated by Loews Hotels & Co, features 750 meticulously designed rooms that sleep up to four guests. The resort offers a 10,000-square-foot resort-style pool, an interactive splash pad, a large spa, a relaxing hot tub, and more recreational spaces. Guests can enjoy early park admission* to select attractions in Universal's theme parks, including Universal Epic Universe, up to an hour before park opening. The hotel also provides complimentary transportation to all Universal attractions via convenient shuttles or a dedicated walking trail. With multiple dining options and tons of recreational fun, Stella Nova Resort is where you'll take off for amazing adventures at the parks of Universal Orlando and touch down for relaxation and recharging between the fun.",
-    "price": "150",
-    "amenities": [
-      "Pool",
-      "Fitness Center",
-      "Free Wi-Fi",
-      "Universal Express Pass",
-      "Early Park Admission"
-    ],
-    "tags": [
-      "theme-park",
-      "Universal Area",
-      "Universal Studios",
-      "Epic Universe"
-    ],
-    "id": 5015,
-    "category": "Hotels",
-    "subcategory": "theme-park",
-    "imageUrl": "/images/hotels/universal-stella-nova-optimized.jpg",
-    "website": "https://www.loewshotels.com/stella-nova-resort",
-    "rating": 3.8
-  },{
+  },
+  {
     "name": "Loews Portofino Bay Hotel at Universal Orlando",
     "neighborhood": "Universal Area",
     "address": "5601 Universal Blvd",
@@ -471,60 +447,9 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "imageUrl": "/images/hotels/portofino-bay-hotel.jpg",
     "website": "https://www.universalorlando.com/web/en/us/places-to-stay/",
     "rating": 4.1
-  },{
-    "name": "Universal Terra Luna Resort",
-    "neighborhood": "Universal Area",
-    "address": "Universal Boulevard, opens 2025",
-    "description": "Universal Terra Luna Resort is a premier destination for those seeking an extraordinary experience in Orlando. Inspired by the thrill of exploration and discovery, this resort is designed to enhance your theme park adventures. With 750 guest rooms, each equipped with space station-styled windows, you'll enjoy a unique celestial ambiance that sets the tone for your stay. The resort features a range of amenities including a large swimming pool with a hot tub and fire pit, a modern fitness center, and a game room. Guests can indulge in various dining options such as the Omega Cafe and Market, Luna Bar, and Moonrise Grill and Bar. Exclusive theme park benefits include early park admission to Universal's theme parks, including the soon-to-open Universal Epic Universe. Complimentary shuttle service to the theme parks and Universal CityWalk ensures that you're always connected to the action. Whether you're looking to relax or recharge between adventures, Universal Terra Luna Resort is your perfect landing zone.",
-    "price": "$$$",
-    "amenities": [
-      "Multiple Pools",
-      "Themed Dining",
-      "Fitness Center",
-      "Early Park Admission",
-      "Universal Express Pass"
-    ],
-    "tags": [
-      "theme-park",
-      "Universal Area",
-      "Universal Studios",
-      "Epic Universe",
-      "Luxury"
-    ],
-    "id": 5018,
-    "category": "Hotels",
-    "subcategory": "theme-park",
-    "imageUrl": "/images/hotels/universal-terra-luna-hotel-2-optimized.webp",
-    "website": "https://www.universalorlando.com/web/en/us/places-to-stay/universal-terra-luna-resort",
-    "rating": 4.8
-  },{
-    "name": "Universal Helios Grand Hotel",
-    "neighborhood": "Universal Area",
-    "address": "Universal Boulevard, opens 2025",
-    "description": "Welcome to Universal Helios Grand Hotel, a Loews Hotel designed to transport guests to a world where the heavens and earth unite. This elegant, Mediterranean-inspired hotel is adorned with celestial patterns and constellations, providing an immersive experience for all who stay. With its dedicated and exclusive entrance into Universal Epic Universe, guests enjoy unparalleled views of the park and its attractions. The hotel features 500 luxurious rooms, including 35 suites, each inspired by a garden with many offering stunning views of Epic Universe. Guests can unwind in the resort-style pool, fitness center, or game room, and enjoy extraordinary dining options including a three-meal restaurant, rooftop bar, pool bar and grill, grab-and-go, and room service. The hotel also boasts unique How to Train Your Dragon themed kids' suites with dragon houses as headboards and dragons flying among you in the room. This hotel is truly a place in the sun, offering an exceptional stay with its exclusive theme park benefits and complimentary transportation throughout the destination.",
-    "price": "$$$$",
-    "amenities": [
-      "Rooftop Pool",
-      "Multiple Restaurants",
-      "Spa",
-      "Fitness Center",
-      "Early Park Admission",
-      "Universal Express Pass"
-    ],
-    "tags": [
-      "theme-park",
-      "Universal Area",
-      "Universal Studios",
-      "Epic Universe",
-      "Luxury"
-    ],
-    "id": 5019,
-    "category": "Hotels",
-    "subcategory": "theme-park",
-    "imageUrl": "/images/hotels/universal-grand-helios-optimized.jpg",
-    "website": "https://www.loewshotels.com/helios-grand-hotel",
-    "rating": 4.9
-  },{
+  },
+
+  {
     "name": "DoubleTree by Hilton Orlando at SeaWorld",
     "neighborhood": "SeaWorld Area",
     "address": "10100 International Dr, Orlando, FL 32821",
@@ -783,7 +708,10 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "imageUrl": "/images/hotels/hyatt-place-convention-center.jpg",
     "website": "https://www.hyatt.com/hyatt-place/en-US/orlzl-hyatt-place-orlando-i-drive-convention-center",
     "rating": 4.2
-  },{
+  },
+  
+  
+  {
     "name": "Rosen Plaza Hotel",
     "neighborhood": "International Drive",
     "address": "9700 International Dr, Orlando, FL 32819",
@@ -808,32 +736,8 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "subcategory": "business",
     "website": "https://www.rosenplaza.com",
     "rating": 4.3
-  },{
-    "name": "Castle Hotel, Autograph Collection",
-    "neighborhood": "International Drive",
-    "address": "8629 International Dr, Orlando, FL 32819",
-    "description": "Immerse yourself in an elegant boutique experience at Castle Hotel, Autograph Collection. Conveniently located on Universal Blvd in Orlando, Florida, our modern hotel is near the Orange County Convention Center, International Drive, Pointe Orlando, and Orlando's legendary theme parks. After an action-packed day, relax in your pet-friendly hotel room outfitted with luxurious bedding, ample workstations, free high-speed Wi-Fi, and room service fit for a king. After a day of meetings or exploring Orlando, sink into the plush armchairs with a masterfully crafted cocktail in hand at our hotel's stylish onsite lounge. If you are hosting a special occasion, our team of expert event coordinators will plan an enchanting affair in one of our unique venues featuring customizable catering menus and AV equipment. From boutique accommodations to charming amenities, Castle Hotel, Autograph Collection offers a relaxing stay for Orlando business and leisure travelers alike.",
-    "price": "$$$$",
-    "amenities": [
-      "Rooftop Pool",
-      "Spa",
-      "Restaurant",
-      "Fitness Center",
-      "Free WiFi",
-      "Business Center"
-    ],
-    "tags": [
-      "International Drive",
-      "Luxury",
-      "Boutique"
-    ],
-    "id": 5031,
-    "category": "Hotels",
-    "subcategory": "luxury",
-    "imageUrl": "/images/hotels/castle-hotel-autograph-collection.jpg",
-    "website": "https://www.marriott.com/en-us/hotels/mcoca-castle-hotel-autograph-collection/overview/",
-    "rating": 4.4
-  },{
+  },
+  {
     "name": "The Point Hotel & Suites",
     "neighborhood": "International Drive",
     "address": "7389 Universal Blvd, Orlando, FL 32819",
@@ -859,7 +763,37 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "subcategory": "value",
     "website": "https://www.thepointorlando.com",
     "rating": 4.3
-  },{
+  },
+  
+  {
+    "name": "Castle Hotel, Autograph Collection",
+    "neighborhood": "International Drive",
+    "address": "8629 International Dr, Orlando, FL 32819",
+    "description": "Immerse yourself in an elegant boutique experience at Castle Hotel, Autograph Collection. Conveniently located on Universal Blvd in Orlando, Florida, our modern hotel is near the Orange County Convention Center, International Drive, Pointe Orlando, and Orlando's legendary theme parks. After an action-packed day, relax in your pet-friendly hotel room outfitted with luxurious bedding, ample workstations, free high-speed Wi-Fi, and room service fit for a king. After a day of meetings or exploring Orlando, sink into the plush armchairs with a masterfully crafted cocktail in hand at our hotel's stylish onsite lounge. If you are hosting a special occasion, our team of expert event coordinators will plan an enchanting affair in one of our unique venues featuring customizable catering menus and AV equipment. From boutique accommodations to charming amenities, Castle Hotel, Autograph Collection offers a relaxing stay for Orlando business and leisure travelers alike.",
+    "price": "$$$$",
+    "amenities": [
+      "Rooftop Pool",
+      "Spa",
+      "Restaurant",
+      "Fitness Center",
+      "Free WiFi",
+      "Business Center"
+    ],
+    "tags": [
+      "International Drive",
+      "Luxury",
+      "Boutique"
+    ],
+    "id": 5031,
+    "category": "Hotels",
+    "subcategory": "luxury",
+    "imageUrl": "/images/hotels/castle-hotel-autograph-collection.jpg",
+    "website": "https://www.marriott.com/en-us/hotels/mcoca-castle-hotel-autograph-collection/overview/",
+    "rating": 4.4
+  },
+
+  
+  {
     "name": "Homewood Suites by Hilton Orlando International Drive",
     "neighborhood": "International Drive",
     "address": "8745 International Dr, Orlando, FL 32819",
@@ -885,7 +819,9 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "subcategory": "value",
     "website": "https://www.hilton.com/en/hotels/mcocvhw-homewood-suites-orlando-international-drive-convention-center/",
     "rating": 4.2
-  },{
+  },  
+
+  {
     "name": "CoCo Key Hotel and Water Resort",
     "neighborhood": "International Drive",
     "address": "7400 International Dr, Orlando, FL 32819",
@@ -910,7 +846,9 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "imageUrl": "/images/hotels/coco-key-resort.jpg",
     "website": "https://www.cocokeyorlando.com",
     "rating": 3.8
-  },{
+  },
+
+  {
     "name": "The Enclave Hotel & Suites",
     "neighborhood": "International Drive",
     "address": "6165 Carrier Dr, Orlando, FL 32819",
@@ -936,7 +874,10 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "imageUrl": "/images/hotels/enclave-hotel.jpg",
     "website": "https://www.enclavesuites.com",
     "rating": 3.6
-  },{
+  },
+
+  
+  {
     "name": "Crowne Plaza Orlando - Universal Blvd",
     "neighborhood": "International Drive",
     "address": "7800 Universal Blvd, Orlando, FL 32819",
@@ -1517,33 +1458,8 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "imageUrl": "/images/hotels/hilton-orlando-buena-vista-palace.jpg",
     "website": "https://www.hilton.com/en/hotels/mcobuhh-hilton-orlando-buena-vista-palace/",
     "rating": 4.3
-  },{
-    "name": "Disney's Art of Animation Resort",
-    "neighborhood": "Disney Area",
-    "address": "1850 Animation Way, Lake Buena Vista, FL 32830",
-    "description": "Disney's Art of Animation Resort is a vibrant and enchanting destination that brings your favorite animated movies to life. The resort is designed to accommodate families with spacious family suites that can accommodate up to six people. Each suite is inspired by beloved films like Finding Nemo, Cars, and The Lion King, providing an immersive experience for guests of all ages. The resort's recreational activities include the largest resort pool in Walt Disney World, which is themed around Finding Nemo, as well as two other pools inspired by Cars and The Little Mermaid. The Drop Off Pool Bar offers refreshing beverages and snacks to keep you cool while enjoying the sun. Additionally, the resort provides Disney Skyliner transportation, offering a bird's-eye view as you travel to EPCOT and Disney's Hollywood Studios. With its enchanting decor and exciting amenities, Disney's Art of Animation Resort is an ideal choice for families seeking a magical and memorable stay at Walt Disney World.",
-    "price": "$$",
-    "amenities": [
-      "Big Blue Pool",
-      "Family Suites",
-      "Kitchenettes",
-      "Food Court",
-      "Disney's Skyliner",
-      "Disney Transportation"
-    ],
-    "tags": [
-      "Disney Area",
-      "Family Friendly",
-      "Value",
-      "Themed Resort"
-    ],
-    "id": 5060,
-    "category": "Hotels",
-    "subcategory": "theme-park",
-    "imageUrl": "/images/hotels/disneys-art-of-animation-resort.jpg",
-    "website": "https://disneyworld.disney.go.com/resorts/art-of-animation-resort/",
-    "rating": 4.4
-  },{
+  },
+  {
     "name": "Disney's All-Star Sports Resort",
     "neighborhood": "Disney Area",
     "address": "1701 W Buena Vista Dr, Lake Buena Vista, FL 32830",
@@ -2033,7 +1949,10 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "imageUrl": "/images/hotels/homewood-suites-orlando-airport.jpg",
     "website": "https://www.hilton.com/en/hotels/mcogthw-homewood-suites-orlando-airport/",
     "rating": 4.3
-  },{
+  },
+  
+  
+  {
     "name": "Fairfield Inn & Suites Orlando Airport",
     "neighborhood": "Airport Area",
     "address": "7100 Augusta National Dr, Orlando, FL 32822",

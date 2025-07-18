@@ -88,7 +88,11 @@ const HotelCard: React.FC<HotelCardProps> = ({
       {/* Hotel Image */}
       <View style={styles.imageContainer}>
         <Image
-          source={hotel.imageUrl ? { uri: hotel.imageUrl } : defaultImage}
+          source={
+            hotel.imageUrl && typeof hotel.imageUrl === 'string' && hotel.imageUrl.startsWith('http')
+              ? { uri: hotel.imageUrl }
+              : hotel.imageUrl || defaultImage
+          }
           style={styles.image}
           resizeMode="cover"
         />

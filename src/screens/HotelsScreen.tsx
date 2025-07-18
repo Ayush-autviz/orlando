@@ -39,14 +39,31 @@ const hotelFilters: HotelFilter[] = [
   },
 ];
 
-// Location mapping for filtering hotels by location
+// Location mapping for filtering hotels by location - matches web version exactly
 const locationMap: { [key: string]: string[] } = {
-  'Disney Area': ['Disney', 'Lake Buena Vista', 'Bay Lake'],
-  'Universal Area': ['Universal', 'International Drive'],
-  'Downtown Orlando': ['Downtown Orlando', 'Orlando'],
-  'International Drive': ['International Drive', 'I-Drive'],
-  'Kissimmee': ['Kissimmee'],
-  'Airport Area': ['Airport', 'South Orlando'],
+  'Disney Area': ['Lake Buena Vista', 'Disney Springs', 'Buena Vista', 'Disney World', 'Walt Disney World', 'Disney', 'Kissimmee', 'Celebration', 'Old Town Kissimmee', 'Reunion Resort', 'Howey-in-the-Hills'],
+  'Universal Area': ['Universal Orlando Resort', 'Universal Boulevard', 'Universal Studios', 'Universal', 'Orlando Universal', 'Universal Orlando'],
+  'SeaWorld Area': ['SeaWorld Orlando', 'Sea World Drive', 'SeaWorld', 'Seaworld', 'Sea World'],
+  'International Drive': ['International Drive', 'I-Drive', 'I Drive', 'IDrive', 'ICON Park', 'Convention Center'],
+  'Downtown Orlando': ['Downtown Orlando', 'Downtown', 'Orlando Downtown', 'Downtown Area'],
+  'Winter Park': ['Winter Park', 'Alfond Inn'],
+  'Airport Area': ['Airport', 'South Orlando', 'MCO', 'Orlando International Airport'],
+};
+
+// Helper functions to match web version logic
+const isUniversalHotel = (hotel: Hotel): boolean => {
+  return hotel.name.includes("Universal") ||
+         hotel.name.includes("Loews") ||
+         hotel.name.includes("Hard Rock") ||
+         !!(hotel.website && hotel.website.includes("universal")) ||
+         !!(hotel.tags && hotel.tags.some(tag =>
+           tag.includes("Universal") || tag.includes("Epic Universe")));
+};
+
+const isDisneyHotel = (hotel: Hotel): boolean => {
+  return hotel.name.includes("Disney") ||
+         !!(hotel.website && hotel.website.includes("disney")) ||
+         !!(hotel.tags && hotel.tags.some(tag => tag.includes("Disney")));
 };
 
 const HotelsScreen: React.FC = () => {
@@ -78,13 +95,90 @@ const HotelsScreen: React.FC = () => {
         break;
       case 'by-location':
         if (selectedLocation) {
-          const locationNeighborhoods = locationMap[selectedLocation] || [];
-          filtered = hotels.filter(hotel =>
-            hotel.neighborhood &&
-            locationNeighborhoods.some(neighborhood =>
+          filtered = hotels.filter(hotel => {
+            if (!hotel.neighborhood) return false;
+
+            // If this is a Universal hotel and we're NOT filtering by Universal Area, exclude it
+            if (isUniversalHotel(hotel) && selectedLocation !== "Universal Area") {
+              return false;
+            }
+
+            // Special case for Universal Area - use helper function
+            if (selectedLocation === "Universal Area" && isUniversalHotel(hotel)) {
+              return true;
+            }
+
+            // Special case for Disney Area - use helper function and check neighborhoods
+            if (selectedLocation === "Disney Area" &&
+                (isDisneyHotel(hotel) ||
+                 hotel.neighborhood.includes("Lake Buena Vista") ||
+                 hotel.neighborhood.includes("Kissimmee") ||
+                 hotel.neighborhood.includes("Celebration") ||
+                 hotel.neighborhood.includes("Old Town Kissimmee") ||
+                 hotel.neighborhood.includes("Reunion Resort") ||
+                 hotel.neighborhood.includes("Howey-in-the-Hills"))) {
+              return true;
+            }
+
+            // Check neighborhood mapping
+            const locationNeighborhoods = locationMap[selectedLocation] || [];
+            const matchesByNeighborhood = locationNeighborhoods.some(neighborhood =>
               hotel.neighborhood!.toLowerCase().includes(neighborhood.toLowerCase())
-            )
-          );
+            );
+
+            // Prevent cross-contamination between similar areas
+            if (selectedLocation === "International Drive") {
+              // Exclude hotels that are specifically SeaWorld area
+              if (hotel.neighborhood === "SeaWorld Area" ||
+                  (hotel.tags && hotel.tags.some(tag =>
+                    tag.includes("SeaWorld") || tag.includes("Sea World")))) {
+                return false;
+              }
+            }
+
+            if (selectedLocation === "SeaWorld Area") {
+              // Exclude hotels that are specifically International Drive but not SeaWorld
+              if (hotel.neighborhood === "International Drive" &&
+                  !(hotel.tags && hotel.tags.some(tag =>
+                    tag.includes("SeaWorld") || tag.includes("Sea World")))) {
+                return false;
+              }
+            }
+
+            // Check tags for matches
+            const matchesByTag = hotel.tags && hotel.tags.some(tag => {
+              if (selectedLocation === "Disney Area" &&
+                  (tag.includes("Disney") ||
+                   tag.includes("Walt Disney World") ||
+                   tag.includes("Kissimmee") ||
+                   tag.includes("Celebration") ||
+                   tag.includes("Old Town Kissimmee") ||
+                   tag.includes("Reunion Resort"))) {
+                return true;
+              }
+              if (selectedLocation === "Universal Area" &&
+                  (tag.includes("Universal") ||
+                   tag.includes("Universal Orlando") ||
+                   tag.includes("Epic Universe"))) {
+                return true;
+              }
+              if (selectedLocation === "SeaWorld Area" &&
+                  (tag.includes("SeaWorld") ||
+                   tag.includes("Sea World") ||
+                   tag.includes("Seaworld") ||
+                   hotel.neighborhood === "SeaWorld Area")) {
+                return true;
+              }
+              if (selectedLocation === "Winter Park" &&
+                  (tag.includes("Winter Park") ||
+                   tag.includes("Alfond"))) {
+                return true;
+              }
+              return false;
+            });
+
+            return matchesByNeighborhood || matchesByTag;
+          });
         } else {
           // Show hotels from featured locations
           filtered = hotels.filter(hotel =>

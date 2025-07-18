@@ -23,7 +23,9 @@ import {
   Beer, 
   Flag, 
   Leaf, 
-  MapPin 
+  MapPin,
+  DoorOpen,
+  Ticket
 } from 'lucide-react-native';
 
 const { width, height } = Dimensions.get('window');
@@ -50,8 +52,8 @@ const orlandoImages = [
 
 // Enhanced categories with Lucide icons matching the screenshot
 const categories = [
-  { id: 'theme-parks', label: 'Theme Parks', icon: Building2, color: '#0D9488' },
-  { id: 'attractions', label: 'Attractions', icon: Mountain, color: '#0D9488' },
+  { id: 'theme-parks', label: 'Theme Parks', icon: DoorOpen, color: '#0D9488' },
+  { id: 'attractions', label: 'Attractions', icon: Ticket, color: '#0D9488' },
   { id: 'hotels', label: 'Hotels', icon: Hotel, color: '#0D9488' },
   { id: 'dining', label: 'Dining', icon: Utensils, color: '#0D9488' },
   { id: 'shopping', label: 'Shopping', icon: ShoppingCart, color: '#0D9488' },

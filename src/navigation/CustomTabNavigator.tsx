@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home, MapPin, Star, Utensils, Bed, Menu } from 'lucide-react-native';
+import { Home, MapPin, Star, Utensils, Bed, Menu, DoorOpen, Ticket } from 'lucide-react-native';
 
 // Import screens
 import HomeScreen from '../screens/HomeScreen';
@@ -31,8 +31,8 @@ const CustomTabBar: React.FC<any> = ({ state, navigation }) => {
 
   const tabConfig = [
     { name: 'Home', label: 'Home', icon: Home },
-    { name: 'ThemeParks', label: 'Parks', icon: MapPin },
-    { name: 'Attractions', label: 'Attractions', icon: Star },
+    { name: 'ThemeParks', label: 'Parks', icon: DoorOpen },
+    { name: 'Attractions', label: 'Attractions', icon: Ticket },
     { name: 'Dining', label: 'Dining', icon: Utensils },
     { name: 'Hotels', label: 'Hotels', icon: Bed },
     { name: 'More', label: 'More', icon: Menu },

@@ -190,7 +190,7 @@ const hotels: HardcodedHotel[] = [
     description: "Retro 1950s-60s themed value resort at Universal Orlando featuring family suites, two pool areas with a lazy river and waterslide, and a 10-lane bowling alley. Offers walking paths to Universal's Volcano Bay water park.",
     price: "$$",
     rating: 4.5,
-    image_url: "/images/hotels/universal-cabana-bay-beach-resort.jpg",
+    image_url: "../assets/images/universal-cabana-bay-beach-resort.jpg",
     link: "https://www.universalorlando.com/web/en/us/places-to-stay/universals-cabana-bay-beach-resort",
     tags: ["Retro Theme", "Value", "Family Friendly"],
     amenities: ["Lazy River", "Waterslide", "Bowling Alley", "Early Park Admission", "Family Suites"],

@@ -3,6 +3,7 @@ import { disneyHotelData } from '../data/disneyHotelData';
 import { universalHotelData } from '../data/universalHotelData';
 import { additionalHotels } from '../data/additionalHotels';
 import { additionalBudgetHotels } from '../data/budgetHotels';
+import { updateHotelWithLocalImage } from '../utils/updateHotelImages';
 
 // Interface for the consolidated hotel data
 export interface ConsolidatedHotel {
@@ -54,23 +55,25 @@ const processDisneyHotels = (): ConsolidatedHotel[] => {
       subcategory = "budget-friendly";
     }
     
-    return {
+    const hotelData = {
       id: id++,
       name: hotel.name,
       category: "Hotels",
       subcategory,
       neighborhood: hotel.parkArea || "Lake Buena Vista",
       description: hotel.description,
-      price: subcategory === "luxury" ? "$$$$$" : 
+      price: subcategory === "luxury" ? "$$$$$" :
              subcategory === "budget-friendly" ? "$$" : "$$$",
       imageUrl: hotel.imageUrl,
       website: hotel.websiteUrl,
       amenities: hotel.amenities?.slice(0, 6) || [],
       perks: "Early Theme Park Entry, Disney Dining Plan, and complimentary transportation throughout Walt Disney World Resort.",
       tags: ["Disney", hotel.category, "Theme Park"],
-      rating: subcategory === "luxury" ? 4.8 : 
+      rating: subcategory === "luxury" ? 4.8 :
               subcategory === "budget-friendly" ? 4.2 : 4.5
     };
+
+    return updateHotelWithLocalImage(hotelData);
   });
 };
 
@@ -90,14 +93,14 @@ const processUniversalHotels = (): ConsolidatedHotel[] => {
       subcategory = "resorts";
     }
     
-    return {
+    const hotelData = {
       id: id++,
       name: hotel.name,
       category: "Hotels",
       subcategory,
       neighborhood: "Universal Area", // Changed from hotel.location to ensure consistency
       description: hotel.description,
-      price: hotel.priceRange === "Premier" ? "$$$$" : 
+      price: hotel.priceRange === "Premier" ? "$$$$" :
              hotel.priceRange === "Preferred" ? "$$$" : "$$",
       imageUrl: hotel.imageUrl,
       website: hotel.websiteUrl,
@@ -106,6 +109,8 @@ const processUniversalHotels = (): ConsolidatedHotel[] => {
       rating: 4.5,
       tags: ["Universal", hotel.category, "Theme Park"]
     };
+
+    return updateHotelWithLocalImage(hotelData);
   });
 };
 
@@ -129,7 +134,7 @@ const processStandardHotels = (): ConsolidatedHotel[] => {
       subcategory = "villas";
     }
     
-    return {
+    const hotelData = {
       id: hotel.id,
       name: hotel.name,
       category: "Hotels",
@@ -142,13 +147,15 @@ const processStandardHotels = (): ConsolidatedHotel[] => {
       amenities: hotel.amenities || [],
       perks: "",
       rating: hotel.rating || (
-        subcategory === "luxury" ? 4.7 : 
-        subcategory === "theme-park" ? 4.5 : 
-        subcategory === "villas" ? 4.4 : 
+        subcategory === "luxury" ? 4.7 :
+        subcategory === "theme-park" ? 4.5 :
+        subcategory === "villas" ? 4.4 :
         subcategory === "resorts" ? 4.3 : 4.0
       ),
       tags: hotel.tags
     };
+
+    return updateHotelWithLocalImage(hotelData);
   });
 };
 
@@ -297,7 +304,7 @@ const processCardHotels = (): ConsolidatedHotel[] => {
         category: "Hotels",
         neighborhood: "Downtown Orlando",
         description: "Experience artistic luxury at Grand Bohemian Hotel Orlando in Downtown Orlando, at 325 S Orange Ave. Offers art-filled rooms, rooftop pool, fine dining at The Boheme, open 24/7, rooms ~$200–$400/night. A major Orlando hotel. Book your cultured stay!",
-        image: "/images/hotels/grand-bohemian-hotel-orlando.jpg",
+        image: "../assets/images/grand-bohemian-hotel-orlando.jpg",
         link: "https://www.kesslercollection.com/bohemian-orlando/",
         hours: "24/7",
         price: "~$200–$400/night",
@@ -308,7 +315,7 @@ const processCardHotels = (): ConsolidatedHotel[] => {
         category: "Hotels",
         neighborhood: "Winter Park",
         description: "Indulge in boutique elegance at The Alfond Inn in Winter Park, at 300 E New England Ave. Offers stylish rooms, art collection, proximity to Park Avenue, open 24/7, rooms ~$200–$400/night. A major Orlando hotel. Book your refined stay!",
-        image: "/images/hotels/alfond-inn.webp",
+        image: "../assets/images/alfond-inn.webp",
         link: "https://www.thealfondinn.com/",
         hours: "24/7",
         price: "~$200–$400/night",
@@ -327,7 +334,7 @@ const processCardHotels = (): ConsolidatedHotel[] => {
         rating: 4.6
       },
       {
-        name: "JW Marriott Orlando, Grande Lakes",
+        name: "JW Marriott Orlando Grande Lakes",
         category: "Hotels",
         neighborhood: "South Orlando",
         description: "Relax in style at JW Marriott Orlando, Grande Lakes in South Orlando, at 4040 Central Florida Pkwy. Offers elegant rooms, a lazy river, and dining, open 24/7, rooms ~$300–$600/night. A luxurious Orlando hotel. Book your sophisticated stay!",
@@ -377,7 +384,7 @@ const processCardHotels = (): ConsolidatedHotel[] => {
       const priceMatch = hotel.price.match(/\$(\d+)/);
       const priceValue = priceMatch ? priceMatch[1] : "179";
       
-      return {
+      const hotelData = {
         id: id++,
         name: hotel.name,
         category: "Hotels",
@@ -388,11 +395,13 @@ const processCardHotels = (): ConsolidatedHotel[] => {
         imageUrl: hotel.image,
         website: hotel.link,
         amenities: ["Pool", "Wi-Fi", "24-hour Front Desk"],
-        perks: hotel.name.includes("Disney") ? "Early Theme Park Entry" : 
+        perks: hotel.name.includes("Disney") ? "Early Theme Park Entry" :
                hotel.name.includes("Universal") ? "Early Park Admission" : "Complimentary breakfast",
         rating: hotel.rating,
         tags: [hotel.neighborhood, subcategory]
       };
+
+      return updateHotelWithLocalImage(hotelData);
     });
   } catch (error) {
     console.error("Error processing card hotels:", error);
@@ -425,15 +434,19 @@ export const getAllHotels = (): ConsolidatedHotel[] => {
     console.log("JW MARRIOTT BONNET CREEK NOT FOUND IN ADDITIONAL HOTELS");
   }
   
+  // Apply local image mapping to additional hotels
+  const processedAdditionalHotels = additionalHotels.map(hotel => updateHotelWithLocalImage(hotel));
+  const processedBudgetHotels = additionalBudgetHotels.map(hotel => updateHotelWithLocalImage(hotel));
+
   // Combine all hotel sources
   const combinedHotels = [
-    ...standardHotels, 
-    ...disneyHotels, 
-    ...universalHotels, 
-    ...epicUniverseHotels, 
-    ...cardHotels, 
-    ...additionalHotels, 
-    ...additionalBudgetHotels
+    ...standardHotels,
+    ...disneyHotels,
+    ...universalHotels,
+    ...epicUniverseHotels,
+    ...cardHotels,
+    ...processedAdditionalHotels,
+    ...processedBudgetHotels
   ];
   
   // Create a map to handle duplicate detection with name normalization
