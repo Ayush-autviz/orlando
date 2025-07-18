@@ -25,11 +25,11 @@ export type AttractionDetailsType = {
     "price": "The admission cost for the Kennedy Space Center is $75.00 for a 1-Day Adult Ticket, with prices ranging from $65.00 for a 1-Day Child Ticket to $70.00 for a 1-Day Military Adult Ticket[1][4].",
     "hours": "The Kennedy Space Center is open daily from 9 AM to 5 PM, with extended hours during peak seasons[1][2][3].",
     "tips": [
-      "**Arrive Early**: Get to the Kennedy Space Center as early as possible, ideally around opening time (9 AM), to avoid long lines at the entrance and beat the crowds [5].",
-      "**Use the App**: Download the Kennedy Space Center App to plan your day, save favorites, see a map, and check the schedule for live events and attractions [5].",
-      "**Prioritize the Bus Tour**: Once inside, head straight to the bus tour to get a comprehensive overview of the center and avoid missing out on key exhibits [5].",
-      "**Bring Essentials**: Bring water, bug spray, and sunscreen as you can spend most of the day outside, even though there are indoor attractions [4].",
-      "**Enhance Your Experience with Astronaut Encounters**: Consider upgrading your ticket to include a Chat With an Astronaut session for a more personal experience, but book it ahead of time as spots are limited [1][2]."
+      "Arrive Early: Get to the Kennedy Space Center as early as possible, ideally around opening time (9 AM), to avoid long lines at the entrance and beat the crowds [5].",
+      "Use the App: Download the Kennedy Space Center App to plan your day, save favorites, see a map, and check the schedule for live events and attractions [5].",
+      "Prioritize the Bus Tour: Once inside, head straight to the bus tour to get a comprehensive overview of the center and avoid missing out on key exhibits [5].",
+      "Bring Essentials: Bring water, bug spray, and sunscreen as you can spend most of the day outside, even though there are indoor attractions [4].",
+      "Enhance Your Experience with Astronaut Encounters: Consider upgrading your ticket to include a Chat With an Astronaut session for a more personal experience, but book it ahead of time as spots are limited [1][2]."
     ]
   },
   
@@ -40,13 +40,13 @@ export type AttractionDetailsType = {
     "imageUrl": "https://source.unsplash.com/random/800x600/?orlando,lake%20eola%20park,outdoor%20adventures",
     "address": "512 East Washington Street, Orlando, FL 32801",
     "price": "Free admission.",
-    "hours": "**Regular Hours:**\n- **Tuesday to Sunday:** 10 a.m. - 7 p.m.\n- **Monday:** Closed\n- **General Park Hours:** 6 a.m. - Midnight (though specific activities like swan boat rentals have limited hours) [1][3][4]",
+    "hours": "Regular Hours:\n- Tuesday to Sunday: 10 a.m. - 7 p.m.\n- Monday: Closed\n- General Park Hours: 6 a.m. - Midnight (though specific activities like swan boat rentals have limited hours) [1][3][4]",
     "tips": [
-      "**Best Times to Visit**: Visit Lake Eola Park during early mornings or late afternoons for cooler temperatures and softer lighting, ideal for walking, jogging, or enjoying scenic views. The park is open daily from 6:00 AM to midnight, making it accessible at any time of day[1][5].",
-      "**Hidden Features**: Explore the park's various sculptures and art installations, including the Chinese Pagoda and the striking \"Centered Eye\" sculpture, which add to the park's unique charm[1][5].",
-      "**Avoiding Crowds**: If you want to avoid crowds, consider visiting on weekdays instead of weekends. Weekdays offer a more peaceful experience, especially during the spring and fall seasons when the weather is mild[1][4].",
-      "**Money-Saving Strategies**: Rent swan paddleboats for $15 per half hour, which is a fun and affordable way to explore the lake. Additionally, feeding the swans with lettuce, spinach, or duck food pellets is a cost-effective alternative to buying popcorn or bread[1][4].",
-      "**Special Events**: Attend the weekly farmer’s market held on Sundays to experience local culture and enjoy a variety of food and shopping options. This event is a great way to immerse yourself in the community and make your visit more memorable[1][5]."
+      "Best Times to Visit: Visit Lake Eola Park during early mornings or late afternoons for cooler temperatures and softer lighting, ideal for walking, jogging, or enjoying scenic views. The park is open daily from 6:00 AM to midnight, making it accessible at any time of day[1][5].",
+      "Hidden Features: Explore the park's various sculptures and art installations, including the Chinese Pagoda and the striking \"Centered Eye\" sculpture, which add to the park's unique charm[1][5].",
+      "Avoiding Crowds: If you want to avoid crowds, consider visiting on weekdays instead of weekends. Weekdays offer a more peaceful experience, especially during the spring and fall seasons when the weather is mild[1][4].",
+      "Money-Saving Strategies: Rent swan paddleboats for $15 per half hour, which is a fun and affordable way to explore the lake. Additionally, feeding the swans with lettuce, spinach, or duck food pellets is a cost-effective alternative to buying popcorn or bread[1][4].",
+      "Special Events: Attend the weekly farmer’s market held on Sundays to experience local culture and enjoy a variety of food and shopping options. This event is a great way to immerse yourself in the community and make your visit more memorable[1][5]."
     ]
   },
   
@@ -57,13 +57,13 @@ export type AttractionDetailsType = {
     "imageUrl": "https://source.unsplash.com/random/800x600/?orlando,fun%20spot%20america,theme%20parks",
     "address": "5700 Fun Spot Way, Orlando, FL 32819",
     "price": "- Single Day Pass: $59.95 + tax[5]\n- Single Day Pass with SkyCoaster: $59.95 + $20 surcharge[1][4]\n- Season Pass: $109.95[2]\n- Pay-per-ride basis: $5-10 per ride[3]",
-    "hours": "- **Monday to Thursday:** 2:00 PM - 12:00 AM\n- **Friday:** 12:00 PM - 12:00 AM\n- **Saturday and Sunday:** 10:00 AM - 12:00 AM\n\nHours vary by day of the week[2][4].",
+    "hours": "- Monday to Thursday: 2:00 PM - 12:00 AM\n- Friday: 12:00 PM - 12:00 AM\n- Saturday and Sunday: 10:00 AM - 12:00 AM\n\nHours vary by day of the week[2][4].",
     "tips": [
-      "**Best Time to Visit**: Arrive early in the morning or later in the evening to avoid crowds and enjoy popular rides with shorter wait times. Weekdays are generally less crowded than weekends[4].",
-      "**Hidden Features**: Explore lesser-known attractions like the SkyCoaster and the wooden roller coaster, which offer unique experiences that are often overlooked by visitors[1][4].",
-      "**Money-Saving Strategies**: Take advantage of free parking and admission, and opt for an a-la-carte or day-pass basis to customize your experience and save money[1][4].",
-      "**Crowd Avoidance**: Plan your day strategically by visiting during off-peak hours, such as weekdays, to minimize wait times and enjoy a more relaxed experience[4].",
-      "**Insider Tip for Thrill Seekers**: If you're a thrill-seeker, start with the White Lightning wooden roller coaster, which is Orlando's only wooden coaster and offers an exhilarating experience[1]."
+      "Best Time to Visit: Arrive early in the morning or later in the evening to avoid crowds and enjoy popular rides with shorter wait times. Weekdays are generally less crowded than weekends[4].",
+      "Hidden Features: Explore lesser-known attractions like the SkyCoaster and the wooden roller coaster, which offer unique experiences that are often overlooked by visitors[1][4].",
+      "Money-Saving Strategies: Take advantage of free parking and admission, and opt for an a-la-carte or day-pass basis to customize your experience and save money[1][4].",
+      "Crowd Avoidance: Plan your day strategically by visiting during off-peak hours, such as weekdays, to minimize wait times and enjoy a more relaxed experience[4].",
+      "Insider Tip for Thrill Seekers: If you're a thrill-seeker, start with the White Lightning wooden roller coaster, which is Orlando's only wooden coaster and offers an exhilarating experience[1]."
     ]
   },
   
@@ -73,15 +73,15 @@ export type AttractionDetailsType = {
     "website": "https://omart.org",
     "imageUrl": "https://source.unsplash.com/random/800x600/?orlando,orlando%20museum%20of%20art,cultural%2Feducational",
     "address": "2416 N. Mills Ave., Orlando, FL 32803",
-    "price": "**Adults:** $20  \n**Seniors (60+):** $12  \n**Students:** $10 (with valid ID)  \n**Children Ages 6-17:** $8  \n**Ages 5 and Under:** Free  \n**Active-Duty Military, Veterans, and First Responders:** Free (with valid ID)  \n**Museums for All:** $3 (with valid SNAP EBT Card and ID)  \n**Family Bundle:** $45 (2 Adults and up to 3 children) [1][2][5]",
-    "hours": "**Tuesday – Friday: 10am – 4pm**\n**Saturday – Sunday: 12pm – 4pm**\n**Mondays & Major Holidays: Closed**",
+    "price": "Adults: $20  \nSeniors (60+): $12  \nStudents: $10 (with valid ID)  \nChildren Ages 6-17: $8  \nAges 5 and Under: Free  \nActive-Duty Military, Veterans, and First Responders: Free (with valid ID)  \nMuseums for All: $3 (with valid SNAP EBT Card and ID)  \nFamily Bundle: $45 (2 Adults and up to 3 children) [1][2][5]",
+    "hours": "Tuesday – Friday: 10am – 4pm\nSaturday – Sunday: 12pm – 4pm\nMondays & Major Holidays: Closed",
     "tips": [
-      "**Best Time to Visit**: Visit the Orlando Museum of Art on weekdays (Tuesday through Friday) when it is less crowded, and enjoy general admission for $",
+      "Best Time to Visit: Visit the Orlando Museum of Art on weekdays (Tuesday through Friday) when it is less crowded, and enjoy general admission for $",
       "The museum is closed on Mondays and holidays[3].",
-      "**Hidden Features**: Look out for special exhibitions like the Florida Prize in Contemporary Art, which highlights local artists, and the collection of art from ancient Americas, one of the best in the Southeast[3].",
-      "**Money-Saving Strategies**: Take advantage of free admission events like Sketching in the Museum, which provides supplies and inspiration, and consider becoming a museum member to save on classes like Art Night Out and Cocktails and Conversation[2].",
-      "**Avoiding Crowds**: If you can, plan your visit during the first Wednesday of the month for Cocktails and Conversation, which is less crowded compared to weekends. This event includes an all-levels class and a themed cocktail for $15[2].",
-      "**Additional Events**: Check the museum's events calendar for special events like 1st Thursdays, where you can explore the museum while enjoying live music and cocktails[5]."
+      "Hidden Features: Look out for special exhibitions like the Florida Prize in Contemporary Art, which highlights local artists, and the collection of art from ancient Americas, one of the best in the Southeast[3].",
+      "Money-Saving Strategies: Take advantage of free admission events like Sketching in the Museum, which provides supplies and inspiration, and consider becoming a museum member to save on classes like Art Night Out and Cocktails and Conversation[2].",
+      "Avoiding Crowds: If you can, plan your visit during the first Wednesday of the month for Cocktails and Conversation, which is less crowded compared to weekends. This event includes an all-levels class and a themed cocktail for $15[2].",
+      "Additional Events: Check the museum's events calendar for special events like 1st Thursdays, where you can explore the museum while enjoying live music and cocktails[5]."
     ]
   },
   
@@ -94,11 +94,11 @@ export type AttractionDetailsType = {
     "price": "- $6 per vehicle (limit of eight people)\n- $4 single-occupant vehicle\n- $2 pedestrians, bicyclists, extra passengers, passengers in vehicle with holder of Annual Individual Entrance Pass[1][5]",
     "hours": "The park is open 8 a.m. until sundown, 365 days a year[1][2][4].",
     "tips": [
-      "**Arrive Early**: To secure a good spot near the spring and avoid crowds, especially on weekends and holidays, arrive at the park early, ideally before 8 AM when it opens[1][2].",
-      "**Rent Equipment Wisely**: Take advantage of kayak, canoe, and paddleboard rentals, which start at $25 per hour, to explore the Wekiva River without additional costs[2][3].",
-      "**Plan Your Activities**: Consider visiting during weekdays if you can, as weekends tend to be busier. Also, plan your activities around the park's opening hours to make the most of your time[1][3].",
-      "**Explore Beyond the Spring**: Wekiwa Springs offers various multi-use trails for hiking, biking, and riding. Explore these trails to discover hidden features and enjoy the park's natural beauty[3].",
-      "**Pack Essentials**: Bring sunscreen, water, and snacks to ensure a comfortable visit, especially during warmer months. Additionally, check the park's website for any specific rules or regulations[1][3]."
+      "Arrive Early: To secure a good spot near the spring and avoid crowds, especially on weekends and holidays, arrive at the park early, ideally before 8 AM when it opens[1][2].",
+      "Rent Equipment Wisely: Take advantage of kayak, canoe, and paddleboard rentals, which start at $25 per hour, to explore the Wekiva River without additional costs[2][3].",
+      "Plan Your Activities: Consider visiting during weekdays if you can, as weekends tend to be busier. Also, plan your activities around the park's opening hours to make the most of your time[1][3].",
+      "Explore Beyond the Spring: Wekiwa Springs offers various multi-use trails for hiking, biking, and riding. Explore these trails to discover hidden features and enjoy the park's natural beauty[3].",
+      "Pack Essentials: Bring sunscreen, water, and snacks to ensure a comfortable visit, especially during warmer months. Additionally, check the park's website for any specific rules or regulations[1][3]."
     ]
   },
   
@@ -109,14 +109,14 @@ export type AttractionDetailsType = {
     "website": "https://www.gatorland.com",
     "imageUrl": "https://source.unsplash.com/random/800x600/?orlando,gatorland,theme%20park",
     "address": "14501 S. Orange Blossom Trail, Orlando, FL 32837",
-    "price": "**Adult (ages 13 and up):** $34.99 (online) or $39.99 (in-person)\n**Child (ages 3-12):** $24.99 (online) or $29.99 (in-person)\n**Senior (ages 60+):** $31.98 (online) or $36.98 (in-person)\n**Children aged 2 and under:** Free admission\n\n**Florida Resident Special:**\n- **Adults:** $17.50\n- **Children (3-12):** $12.50\n- **Seniors (60+):** $17.50\n\n**Gatorland Greater Gator Package:**\n- **Adult:** $41.99",
+    "price": "Adult (ages 13 and up): $34.99 (online) or $39.99 (in-person)\nChild (ages 3-12): $24.99 (online) or $29.99 (in-person)\nSenior (ages 60+): $31.98 (online) or $36.98 (in-person)\nChildren aged 2 and under: Free admission\n\nFlorida Resident Special:\n- Adults: $17.50\n- Children (3-12): $12.50\n- Seniors (60+): $17.50\n\nGatorland Greater Gator Package:\n- Adult: $41.99",
     "hours": "Gatorland is open daily from 10:00 AM to 5:00 PM, with the last admission at 4:00 PM. Hours remain consistent throughout the year, including weekends and holidays[1][2][3].",
     "tips": [
-      "**Arrive Early**: Visit Gatorland early in the morning when the park opens to avoid the crowds and make the most of your day [5].",
-      "**Bring Cash**: Cash is the only method of payment for feeding the alligators, so make sure to bring some with you [1][2].",
-      "**Avoid Bringing Food**: Gatorland does not allow outside food for animal safety reasons, but the concession stands offer affordable options [1][2].",
-      "**Explore Hidden Features**: Don't miss the Alligator Breeding Marsh and the Screamin' Gator Zip Line for unique and thrilling experiences [3][5].",
-      "**Stay Hydrated and Protected**: Pack a refillable water bottle and UV-protective gear to stay safe in the Florida sun [1]."
+      "Arrive Early: Visit Gatorland early in the morning when the park opens to avoid the crowds and make the most of your day [5].",
+      "Bring Cash: Cash is the only method of payment for feeding the alligators, so make sure to bring some with you [1][2].",
+      "Avoid Bringing Food: Gatorland does not allow outside food for animal safety reasons, but the concession stands offer affordable options [1][2].",
+      "Explore Hidden Features: Don't miss the Alligator Breeding Marsh and the Screamin' Gator Zip Line for unique and thrilling experiences [3][5].",
+      "Stay Hydrated and Protected: Pack a refillable water bottle and UV-protective gear to stay safe in the Florida sun [1]."
     ]
   },
   
@@ -126,14 +126,14 @@ export type AttractionDetailsType = {
     "website": "https://www.osc.org",
     "imageUrl": "https://source.unsplash.com/random/800x600/?orlando,orlando%20science%20center,cultural%2Feducational",
     "address": "777 East Princeton Street, Orlando, Florida 32803",
-    "price": "**General Admission:**\n- **Adult:** $29.99 onsite, $27.99 online\n- **Youth (2–11):** $22.99 onsite, $20.99 online\n- **Senior (55+):** $27.99 onsite, $25.99 online\n- **Student:** $27.99 onsite, $25.99 online\n- **Under 2:** Free admission\n\n**Special Events:**\n- **Kids Night at the Museum:** $90 for first child, $65 for additional siblings\n- **$15 Day:** $15 per person\n\n**Group Admission:**\n- **Group Adult Tickets:** $24.99\n- **Group Youth Tickets:** $21.99",
-    "hours": "The typical operating hours for the Orlando Science Center are:\n- Monday to Friday: 10:00 AM - 5:00 PM\n- Saturday: 10:00 AM - 5:00 PM\n- Sunday: 10:00 AM - 5:00 PM\n\n**The Coffee Spot** and **4Roots Cafe** hours are:\n- **The Coffee Spot**: 10:00 AM - 4:15 PM\n- **4Roots Cafe**: 11:00 AM - 3:00 PM\n\nHours may vary on special days or holidays; it is recommended to check the official website for current hours[1][3][5].",
+    "price": "General Admission:\n- Adult: $29.99 onsite, $27.99 online\n- Youth (2–11): $22.99 onsite, $20.99 online\n- Senior (55+): $27.99 onsite, $25.99 online\n- Student: $27.99 onsite, $25.99 online\n- Under 2: Free admission\n\nSpecial Events:\n- Kids Night at the Museum: $90 for first child, $65 for additional siblings\n- $15 Day: $15 per person\n\nGroup Admission:\n- Group Adult Tickets: $24.99\n- Group Youth Tickets: $21.99",
+    "hours": "The typical operating hours for the Orlando Science Center are:\n- Monday to Friday: 10:00 AM - 5:00 PM\n- Saturday: 10:00 AM - 5:00 PM\n- Sunday: 10:00 AM - 5:00 PM\n\nThe Coffee Spot and 4Roots Cafe hours are:\n- The Coffee Spot: 10:00 AM - 4:15 PM\n- 4Roots Cafe: 11:00 AM - 3:00 PM\n\nHours may vary on special days or holidays; it is recommended to check the official website for current hours[1][3][5].",
     "tips": [
-      "**Best Time to Visit**: Plan your visit during weekdays, especially in the morning or late afternoon to avoid weekend crowds. This allows for a more relaxed and enjoyable experience.",
-      "**Hidden Features**: Don't miss the hurricane and tornado simulators, which offer an immersive experience and are often a favorite among visitors. Additionally, explore the interactive news station and globe exhibits for hands-on learning.",
-      "**Crowd Avoidance**: Consider purchasing advanced time-entry tickets to skip the lines and make the most of your visit. This is especially useful during peak seasons or school breaks.",
-      "**Money-Saving Strategies**: Show your membership card at both 4Roots Cafe and The Coffee Spot to receive a 10% discount on food and beverages. This can help you save money on meals while still enjoying quality dining options within the Science Center.",
-      "**Additional Tips**: Bring your own food if you prefer, as guests are allowed to do so in Loch Haven Cultural Park. This can be a cost-effective option for families or groups looking to save on dining expenses[1][3]."
+      "Best Time to Visit: Plan your visit during weekdays, especially in the morning or late afternoon to avoid weekend crowds. This allows for a more relaxed and enjoyable experience.",
+      "Hidden Features: Don't miss the hurricane and tornado simulators, which offer an immersive experience and are often a favorite among visitors. Additionally, explore the interactive news station and globe exhibits for hands-on learning.",
+      "Crowd Avoidance: Consider purchasing advanced time-entry tickets to skip the lines and make the most of your visit. This is especially useful during peak seasons or school breaks.",
+      "Money-Saving Strategies: Show your membership card at both 4Roots Cafe and The Coffee Spot to receive a 10% discount on food and beverages. This can help you save money on meals while still enjoying quality dining options within the Science Center.",
+      "Additional Tips: Bring your own food if you prefer, as guests are allowed to do so in Loch Haven Cultural Park. This can be a cost-effective option for families or groups looking to save on dining expenses[1][3]."
     ]
   },
   
@@ -146,11 +146,11 @@ export type AttractionDetailsType = {
     "price": "Free admission.",
     "hours": "The Tibet-Butler Nature Preserve is open daily from 8:00 AM to 6:00 PM. There are no seasonal or day-specific variations mentioned in the sources provided.",
     "tips": [
-      "**Best Time to Visit**: Visit early in the morning or late in the afternoon to avoid the peak sun hours and potential flooding on the trails, especially after heavy rains[1][5].",
-      "**Hidden Features**: Explore the Palmetto Passage, the wildest trail in the preserve, but be aware that it often closes due to flooding. Also, check out the butterfly garden and wheelchair-accessible sandbox at the nature center[2][5].",
-      "**Avoiding Crowds**: Plan your visit during weekdays instead of weekends when possible, as it tends to be less crowded[2].",
-      "**Money-Saving Strategy**: Since admission is free, consider packing a picnic lunch to enjoy at the preserve's picnic area, which is a cost-effective way to enhance your visit[2][5].",
-      "**Preparation**: Before heading out, stop by the Vera Carter Environmental Center to get a quick lesson on habitats and wildlife, which can help you make the most of your hike[2][5]."
+      "Best Time to Visit: Visit early in the morning or late in the afternoon to avoid the peak sun hours and potential flooding on the trails, especially after heavy rains[1][5].",
+      "Hidden Features: Explore the Palmetto Passage, the wildest trail in the preserve, but be aware that it often closes due to flooding. Also, check out the butterfly garden and wheelchair-accessible sandbox at the nature center[2][5].",
+      "Avoiding Crowds: Plan your visit during weekdays instead of weekends when possible, as it tends to be less crowded[2].",
+      "Money-Saving Strategy: Since admission is free, consider packing a picnic lunch to enjoy at the preserve's picnic area, which is a cost-effective way to enhance your visit[2][5].",
+      "Preparation: Before heading out, stop by the Vera Carter Environmental Center to get a quick lesson on habitats and wildlife, which can help you make the most of your hike[2][5]."
     ]
   },
   
@@ -163,11 +163,11 @@ export type AttractionDetailsType = {
     "price": "General Admission: $29.99 plus tax per person, with a $3 discount for advance online purchase. Children 2 and under are free, and seniors 65+ are $26.99 plus tax. Annual Pass: $44.99 per person[1][4].",
     "hours": "The Crayola Experience in Orlando, Florida, is open daily at 10:00 AM. Hours are subject to change, so it's best to check the official website for the most current schedule[1][2].",
     "tips": [
-      "**Best Time to Visit**: Avoid weekends and school holidays when possible, as these times tend to be crowded. If you can, plan your visit during weekdays for a more relaxed experience.",
-      "**Money-Saving Strategies**: Look for special discounts and promotions on the Crayola Experience website. Additionally, children who visit within 7 days of their birthday get free admission, making it a great time to plan a visit if you have a birthday child in your group.",
-      "**Hidden Features**: The Silly Selfie Station is a fun and often overlooked feature where you can take silly photos with various digital accessories. This adds a unique and entertaining element to your visit.",
-      "**Crowd Avoidance**: If you're looking to avoid crowds, consider visiting during the morning or late afternoon. These times are generally less busy than peak hours in the middle of the day.",
-      "**Practical Tips**: Bring an additional bag or purse to carry all the art supplies and creations you'll make during your visit. This will help keep everything organized and make it easier to leave with your finished projects."
+      "Best Time to Visit: Avoid weekends and school holidays when possible, as these times tend to be crowded. If you can, plan your visit during weekdays for a more relaxed experience.",
+      "Money-Saving Strategies: Look for special discounts and promotions on the Crayola Experience website. Additionally, children who visit within 7 days of their birthday get free admission, making it a great time to plan a visit if you have a birthday child in your group.",
+      "Hidden Features: The Silly Selfie Station is a fun and often overlooked feature where you can take silly photos with various digital accessories. This adds a unique and entertaining element to your visit.",
+      "Crowd Avoidance: If you're looking to avoid crowds, consider visiting during the morning or late afternoon. These times are generally less busy than peak hours in the middle of the day.",
+      "Practical Tips: Bring an additional bag or purse to carry all the art supplies and creations you'll make during your visit. This will help keep everything organized and make it easier to leave with your finished projects."
     ]
   },
   
@@ -177,14 +177,14 @@ export type AttractionDetailsType = {
     "website": "https://iconparkorlando.com",
     "imageUrl": "https://source.unsplash.com/random/800x600/?orlando,icon%20park,unique%20attractions",
     "address": "8375 International Drive, Orlando, FL 32819",
-    "price": "**Adult Price: $43.99 - $53.99**  \n**Child Price: Not specified**  \n**Combo Tickets: Starting at $43.99 per adult**  \n**General Admission for The Orlando Eye: Starting at $33.99**  \n**Additional attraction tickets: $10**",
+    "price": "Adult Price: $43.99 - $53.99  \nChild Price: Not specified  \nCombo Tickets: Starting at $43.99 per adult  \nGeneral Admission for The Orlando Eye: Starting at $33.99  \nAdditional attraction tickets: $10",
     "hours": "ICON Park is open from 10 AM to 2 AM, Sunday through Saturday. Hours may vary by day, so it's best to check the official website for the most current schedule[2][3].",
     "tips": [
-      "**Best Time to Visit**: Visit ICON Park during the week or early in the morning to avoid crowds. The park is less busy on weekdays, and you can enjoy attractions like The Orlando Eye with shorter wait times.",
-      "**Hidden Features**: Explore the shops and restaurants along the ground level of ICON Park, which often have unique items and special deals that are not advertised as prominently as the main attractions.",
-      "**Crowd Avoidance**: Use the mobile app to reserve a time slot for The Orlando Eye, which can help you skip long lines and make the most of your visit.",
-      "**Money-Saving Strategies**: Consider purchasing a multi-attraction ticket that includes Madame Tussaud's, The Orlando Sea Life Aquarium, and The Wheel (formerly The Orlando Eye) for a discounted rate compared to buying individual tickets.",
-      "**Additional Tips**: Take advantage of the free parking available in the parking garage from floors four through seven, and enjoy the spectacular nightly light shows on The Orlando Eye for an added experience without extra cost[1][5]."
+      "Best Time to Visit: Visit ICON Park during the week or early in the morning to avoid crowds. The park is less busy on weekdays, and you can enjoy attractions like The Orlando Eye with shorter wait times.",
+      "Hidden Features: Explore the shops and restaurants along the ground level of ICON Park, which often have unique items and special deals that are not advertised as prominently as the main attractions.",
+      "Crowd Avoidance: Use the mobile app to reserve a time slot for The Orlando Eye, which can help you skip long lines and make the most of your visit.",
+      "Money-Saving Strategies: Consider purchasing a multi-attraction ticket that includes Madame Tussaud's, The Orlando Sea Life Aquarium, and The Wheel (formerly The Orlando Eye) for a discounted rate compared to buying individual tickets.",
+      "Additional Tips: Take advantage of the free parking available in the parking garage from floors four through seven, and enjoy the spectacular nightly light shows on The Orlando Eye for an added experience without extra cost[1][5]."
     ]
   },
   
@@ -195,13 +195,13 @@ export type AttractionDetailsType = {
     "imageUrl": "https://source.unsplash.com/random/800x600/?orlando,dr.%20phillips%20center%20for%20the%20performing%20arts,cultural%2Feducational",
     "address": "445 South Magnolia Avenue, Orlando, FL 32801",
     "price": "Prices vary, check official website for current rates. Annual Luminary Membership is $125 per year[1].",
-    "hours": "**Monday–Friday:** 10 a.m.–4 p.m., 10 a.m.–6 p.m. (phone hours)\n**Saturday:** 12–4 p.m.\n**Sunday:** 12–4 p.m.\n**Closed on holidays, including Christmas Eve and New Year's Eve**. Also open 2 hours before showtime[2][3][5].",
+    "hours": "Monday–Friday: 10 a.m.–4 p.m., 10 a.m.–6 p.m. (phone hours)\nSaturday: 12–4 p.m.\nSunday: 12–4 p.m.\nClosed on holidays, including Christmas Eve and New Year's Eve. Also open 2 hours before showtime[2][3][5].",
     "tips": [
-      "**Best Time to Visit**: Arrive at least 40 minutes before showtime to avoid the rush of general guest traffic, especially if you're part of a group [3].",
-      "**Hidden Features**: Explore the Seneff Arts Plaza for a panoramic view of the Orlando skyline and enjoy the magical atmosphere at dusk when city lights twinkle [5].",
-      "**Money-Saving Strategies**: Consider dining at a restaurant within walking distance of the arts center to save on transportation costs and enjoy a more relaxed experience [4].",
-      "**Avoiding Crowds**: If you have symptoms of COVID-19 or simply don't feel well, stay home to avoid contributing to potential crowds and ensure a smoother experience for others [3].",
-      "**Ticket Tips**: For groups, call ahead to purchase tickets and use the walk-up hours (10 a.m.–4 p.m., Monday–Friday, and 12–4 p.m., Saturday) to avoid long lines [3]."
+      "Best Time to Visit: Arrive at least 40 minutes before showtime to avoid the rush of general guest traffic, especially if you're part of a group [3].",
+      "Hidden Features: Explore the Seneff Arts Plaza for a panoramic view of the Orlando skyline and enjoy the magical atmosphere at dusk when city lights twinkle [5].",
+      "Money-Saving Strategies: Consider dining at a restaurant within walking distance of the arts center to save on transportation costs and enjoy a more relaxed experience [4].",
+      "Avoiding Crowds: If you have symptoms of COVID-19 or simply don't feel well, stay home to avoid contributing to potential crowds and ensure a smoother experience for others [3].",
+      "Ticket Tips: For groups, call ahead to purchase tickets and use the walk-up hours (10 a.m.–4 p.m., Monday–Friday, and 12–4 p.m., Saturday) to avoid long lines [3]."
     ]
   },
   
@@ -211,14 +211,14 @@ export type AttractionDetailsType = {
     "website": "https://www.nonaadventurepark.com",
     "imageUrl": "https://source.unsplash.com/random/800x600/?orlando,nona%20adventure%20park,unique%20attractions",
     "address": "14086 Centerline Drive, Orlando, FL 32827",
-    "price": "- **Adventure Park (1 day)**: $44.95\n- **Wake Nona (1 session)**: $34.00\n- **Wake Nona (2 sessions)**: $44.00\n- **Wake Nona (all-day)**: $59.00\n- **Gear Rental**: $20.00\n- **Everything Pass (Wake and Aqua Park)**: $99.00 (with rental equipment) or $119.00\n- **Aqua Cabana (2 hours)**: $75.00 (all-day) $300.00\n- **Learn to Ride Program**: $35.00\n- **Private Lesson**: $87.50\n- **Adventure Park 1 Session - ",
-    "hours": "**Monday - Sunday: 11:00 AM - 7:00 PM**  \n**Monday - Wednesday: CLOSED**  \n**Thursday - Friday: 3:00 PM - 6:00 PM**  \n**Saturday - Sunday: 11:00 AM - 6:00 PM**  \n**Wednesday - Sunday: 11:00 AM - 7:00 PM (for Splashes Bistro)**[1][5]",
+    "price": "- Adventure Park (1 day): $44.95\n- Wake Nona (1 session): $34.00\n- Wake Nona (2 sessions): $44.00\n- Wake Nona (all-day): $59.00\n- Gear Rental: $20.00\n- Everything Pass (Wake and Aqua Park): $99.00 (with rental equipment) or $119.00\n- Aqua Cabana (2 hours): $75.00 (all-day) $300.00\n- Learn to Ride Program: $35.00\n- Private Lesson: $87.50\n- Adventure Park 1 Session - ",
+    "hours": "Monday - Sunday: 11:00 AM - 7:00 PM  \nMonday - Wednesday: CLOSED  \nThursday - Friday: 3:00 PM - 6:00 PM  \nSaturday - Sunday: 11:00 AM - 6:00 PM  \nWednesday - Sunday: 11:00 AM - 7:00 PM (for Splashes Bistro)[1][5]",
     "tips": [
-      "**Best Time to Visit**: Avoid peak hours (usually between 11 AM and 3 PM) for a more relaxed experience. Opt for early mornings or late afternoons when the park is less crowded.",
-      "**Hidden Features**: Don't miss the Songs at Sunset event every Friday night, which offers a unique and enjoyable experience with live music and a beautiful sunset backdrop.",
-      "**Money-Saving Strategies**: Take advantage of the park's rotating Thursday events like Sip & Paint, Movie Night, Karaoke, and Trivia, which often come with special deals or discounts.",
-      "**Crowd Avoidance**: Plan your visit around the weekly lineup of events to avoid peak times. For example, if you're not interested in karaoke, you might want to skip Thursday nights.",
-      "**Essential Gear**: Remember to wear closed-toed shoes for the Tower and Ropes Course to ensure safety and comfort during activities[1][4]."
+      "Best Time to Visit: Avoid peak hours (usually between 11 AM and 3 PM) for a more relaxed experience. Opt for early mornings or late afternoons when the park is less crowded.",
+      "Hidden Features: Don't miss the Songs at Sunset event every Friday night, which offers a unique and enjoyable experience with live music and a beautiful sunset backdrop.",
+      "Money-Saving Strategies: Take advantage of the park's rotating Thursday events like Sip & Paint, Movie Night, Karaoke, and Trivia, which often come with special deals or discounts.",
+      "Crowd Avoidance: Plan your visit around the weekly lineup of events to avoid peak times. For example, if you're not interested in karaoke, you might want to skip Thursday nights.",
+      "Essential Gear: Remember to wear closed-toed shoes for the Tower and Ropes Course to ensure safety and comfort during activities[1][4]."
     ]
   },
   
@@ -228,14 +228,14 @@ export type AttractionDetailsType = {
     "website": "https://islandh2owaterpark.com",
     "imageUrl": "https://source.unsplash.com/random/800x600/?orlando,island%20h2o%20live!,water%20parks",
     "address": "3230 Inspiration Drive, Kissimmee, FL 34747",
-    "price": "**Admission Cost:**\n- **Pick A Day Ticket:** As low as $49.99\n- **Splash Pass:** $59.99\n- **2025 Season Pass:** $69.99 (save $40)\n- **Platinum Season Pass:** $79.99 (save $30)\n- **Island Nights Tickets:** As low as $29.99[1][2]",
+    "price": "Admission Cost:\n- Pick A Day Ticket: As low as $49.99\n- Splash Pass: $59.99\n- 2025 Season Pass: $69.99 (save $40)\n- Platinum Season Pass: $79.99 (save $30)\n- Island Nights Tickets: As low as $29.99[1][2]",
     "hours": "Hours vary by season, check official website for current schedule. The park is open from March through October[4].",
     "tips": [
-      "**Best Time to Visit**: Consider visiting during weekdays or early mornings to avoid crowds. The park is generally less busy during these times, allowing for a more relaxed experience.",
-      "**Download the App**: Download the Island H2O Live app and verify your profile before arriving. This helps you link your kids' bands for ride points and earning rewards, like a free ice cream at the end of the day.",
-      "**Rent a Cabana**: Rent a cabana for around $120, which includes locker rental, 4 bottles of water, and a food and drink server. This is especially useful on rainy days or for families with young children.",
-      "**Money-Saving Strategies**: Buy your ticket online in advance to save $5 per ticket and take advantage of season passes, which are only $25 more than a one-day ticket and include free parking.",
-      "**Pack Essentials**: Bring your own sunscreen, towels, and water shoes to avoid extra costs inside the park. This also helps you stay comfortable throughout your visit[1][4]."
+      "Best Time to Visit: Consider visiting during weekdays or early mornings to avoid crowds. The park is generally less busy during these times, allowing for a more relaxed experience.",
+      "Download the App: Download the Island H2O Live app and verify your profile before arriving. This helps you link your kids' bands for ride points and earning rewards, like a free ice cream at the end of the day.",
+      "Rent a Cabana: Rent a cabana for around $120, which includes locker rental, 4 bottles of water, and a food and drink server. This is especially useful on rainy days or for families with young children.",
+      "Money-Saving Strategies: Buy your ticket online in advance to save $5 per ticket and take advantage of season passes, which are only $25 more than a one-day ticket and include free parking.",
+      "Pack Essentials: Bring your own sunscreen, towels, and water shoes to avoid extra costs inside the park. This also helps you stay comfortable throughout your visit[1][4]."
     ]
   },
   
@@ -248,11 +248,11 @@ export type AttractionDetailsType = {
     "price": "$56.66/day for any combination of theme parks, including Adventure Island[3].",
     "hours": "Hours vary by season, check official website for current schedule.",
     "tips": [
-      "**Best Time to Visit**: Plan your visit during weekdays, especially during the off-season (usually mid-January to mid-March), to avoid crowds and long wait times[1].",
-      "**Hidden Features**: Explore the park's lesser-known attractions like the lazy river and water play areas, which often have shorter lines compared to the main slides[4].",
-      "**Crowd Avoidance**: Arrive early in the morning or later in the evening when the park is less crowded. This allows you to enjoy popular attractions with shorter wait times[5].",
-      "**Money-Saving Strategies**: Consider purchasing a season pass or annual membership if you plan to visit multiple times within a year, as it can be more cost-effective than buying individual tickets[4].",
-      "**Essential Items**: Bring a waterproof phone case and a change of clothes to ensure you're prepared for water rides and potential splashes[5]."
+      "Best Time to Visit: Plan your visit during weekdays, especially during the off-season (usually mid-January to mid-March), to avoid crowds and long wait times[1].",
+      "Hidden Features: Explore the park's lesser-known attractions like the lazy river and water play areas, which often have shorter lines compared to the main slides[4].",
+      "Crowd Avoidance: Arrive early in the morning or later in the evening when the park is less crowded. This allows you to enjoy popular attractions with shorter wait times[5].",
+      "Money-Saving Strategies: Consider purchasing a season pass or annual membership if you plan to visit multiple times within a year, as it can be more cost-effective than buying individual tickets[4].",
+      "Essential Items: Bring a waterproof phone case and a change of clothes to ensure you're prepared for water rides and potential splashes[5]."
     ]
   },
   
@@ -265,11 +265,11 @@ export type AttractionDetailsType = {
     "price": "The admission cost for Busch Gardens Tampa Bay is $70 per day. Annual passes and other ticket bundles are also available, with prices ranging from $143.99 to $199.99 for single-day tickets and $199.99 for a two-day, two-park ticket[1][3][5].",
     "hours": "Busch Gardens Tampa Bay typically operates from 10:00 AM to 8:00 PM, but hours may vary by season and day. For the most current and specific operating hours, please check the official website[4].",
     "tips": [
-      "**Best Time to Visit**: Plan your visit during weekdays or early in the morning to avoid crowds. The park is less busy during these times, allowing you to enjoy rides and attractions more smoothly[1][5].",
-      "**Hidden Features**: Catch the Skyride in the Jungala area and take it to the Edge of Africa for a panoramic view of the park. While up there, keep an eye out for elephants, wildebeest, and other animals[5].",
-      "**Money-Saving Strategies**: Consider purchasing a Quick Queue ticket for priority access to popular rides, especially if you're short on time or want to minimize wait times[1][5].",
-      "**Crowd Avoidance**: Visit the animal exhibits like the Serengeti Plain early in the day or later in the evening when the crowds are smaller. This allows for a more immersive experience with the animals[1][5].",
-      "**Pin Trading**: Participate in the Pin Trading Exchange program by purchasing collectible pins and trading them with park employees for unique, limited edition pins[5]."
+      "Best Time to Visit: Plan your visit during weekdays or early in the morning to avoid crowds. The park is less busy during these times, allowing you to enjoy rides and attractions more smoothly[1][5].",
+      "Hidden Features: Catch the Skyride in the Jungala area and take it to the Edge of Africa for a panoramic view of the park. While up there, keep an eye out for elephants, wildebeest, and other animals[5].",
+      "Money-Saving Strategies: Consider purchasing a Quick Queue ticket for priority access to popular rides, especially if you're short on time or want to minimize wait times[1][5].",
+      "Crowd Avoidance: Visit the animal exhibits like the Serengeti Plain early in the day or later in the evening when the crowds are smaller. This allows for a more immersive experience with the animals[1][5].",
+      "Pin Trading: Participate in the Pin Trading Exchange program by purchasing collectible pins and trading them with park employees for unique, limited edition pins[5]."
     ]
   },
   
@@ -282,11 +282,11 @@ export type AttractionDetailsType = {
     "price": "$13 for adults, $8 for children ages 6 to 12, free for children 5 and under[1][2][5].",
     "hours": "Weeki Wachee Springs State Park is open daily from 9:00 AM to 5:30 PM, 365 days a year[1][2][4].",
     "tips": [
-      "**Best Time to Visit:** Plan your visit early in the morning or late in the afternoon to avoid the peak sun hours and crowds. This allows you to enjoy the park's attractions without the heat and long lines[4].",
-      "**Hidden Features:** Explore the park's natural beauty by taking a boat tour or renting a paddleboard/kayak to discover hidden coves and wildlife habitats. These activities provide a tranquil experience amidst the park's lush surroundings[5].",
-      "**Avoiding Crowds:** If you're looking to minimize crowds, consider visiting during the week instead of weekends. This can help you enjoy the Buccaneer Bay water park and other attractions with less wait time[4].",
-      "**Money-Saving Strategies:** Pack your own snacks and water to save money on dining options within the park. There are also picnic areas available where you can enjoy your meals while taking in the scenic views[3].",
-      "**Safety Tips:** Wear water shoes when walking in shallow waters or on docks to avoid slipping on rocks or other slippery surfaces. This precaution ensures a safe and enjoyable experience for all visitors[3]."
+      "Best Time to Visit: Plan your visit early in the morning or late in the afternoon to avoid the peak sun hours and crowds. This allows you to enjoy the park's attractions without the heat and long lines[4].",
+      "Hidden Features: Explore the park's natural beauty by taking a boat tour or renting a paddleboard/kayak to discover hidden coves and wildlife habitats. These activities provide a tranquil experience amidst the park's lush surroundings[5].",
+      "Avoiding Crowds: If you're looking to minimize crowds, consider visiting during the week instead of weekends. This can help you enjoy the Buccaneer Bay water park and other attractions with less wait time[4].",
+      "Money-Saving Strategies: Pack your own snacks and water to save money on dining options within the park. There are also picnic areas available where you can enjoy your meals while taking in the scenic views[3].",
+      "Safety Tips: Wear water shoes when walking in shallow waters or on docks to avoid slipping on rocks or other slippery surfaces. This precaution ensures a safe and enjoyable experience for all visitors[3]."
     ]
   },
   
@@ -4540,11 +4540,7 @@ export type AttractionDetailsType = {
   
   };
   
-  /**
-   * Get attraction details by name
-   * @param name The name of the attraction
-   * @returns The attraction details or null if not found
-   */
+
   // Add missing attraction details manually
   // Cirque du Soleil
   attractionDetailsMap["Cirque du Soleil"] = {

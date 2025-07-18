@@ -208,22 +208,7 @@
     "lat": 28.4653,
     "lng": -81.4439
   },
-  {
-    "id": 55,
-    "name": "Dr. Phillips Center for the Performing Arts",
-    "category": "Cultural/Educational",
-    "neighborhood": "Downtown Orlando",
-    "description": "Immerse yourself in culture at Dr. Phillips Center for the Performing Arts in Downtown Orlando. Enjoy Broadway shows, live music, and performances like The Lion King (April 23–May 18, 2025) at 445 S Magnolia Ave.",
-    "image": "https://www.drphillipscenter.org/images/default-source/homepage/2020/2020_dpc-homepage_header_1920x1080-dark2.jpg",
-    "link": "https://www.drphillipscenter.org/",
-    "hours": "Hours vary",
-    "price": "~$20–$150/ticket",
-    "rating": 4.7,
-    "metaTitle": "Dr. Phillips Center | Orlando Arts 2025",
-    "metaDescription": "Experience Dr. Phillips Center in Downtown Orlando for Broadway shows. Visit 445 S Magnolia Ave, tickets ~$20–$150. Book now!",
-    "lat": 28.5365,
-    "lng": -81.3787
-  },
+
   {
     "id": 56,
     "name": "Nona Adventure Park",
@@ -274,6 +259,22 @@
     "lng": -82.5734
   },
   {
+    "id": 495,
+    "name": "Southern Hills Farms",
+    "category": "Outdoor Adventures",
+    "neighborhood": "Clermont",
+    "description": "A picturesque working farm offering seasonal u-pick berries, sunflower fields, farm-to-table experiences, and a kid zone with carnival rides, train rides, bouncing attractions, and family-friendly events throughout the year.",
+    "image": "../assets/images/southern-hills-farms.jpg",
+    "link": "https://southernhillfarms.com",
+    "hours": "Seasonal hours - Check website",
+    "price": "$$$",
+    "rating": 4.8,
+    "metaTitle": "Southern Hills Farms | U-Pick Berries & Family Farm Experience",
+    "metaDescription": "Visit Southern Hills Farms in Clermont for seasonal berry picking, sunflower fields, farm events, and farm-to-table experiences just a short drive from Orlando.",
+    "lat": 28.547,
+    "lng": -81.7718
+  },
+  {
     "id": 91,
     "name": "Epic Paddle Adventures",
     "category": "Outdoor Adventures",
@@ -289,22 +290,7 @@
     "lat": 28.5662,
     "lng": -81.3758
   },
-  {
-    "id": 92,
-    "name": "Wild Florida",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Kenansville",
-    "description": "Explore the Everglades with Wild Florida, 45 minutes from Orlando in Kenansville. Enjoy airboat rides and a drive-thru safari at 3301 Lake Cypress Rd. Open typically 9 AM–6 PM, tickets ~$35–$60. A thrilling Orlando outdoor experience for families. Book your wildlife adventure now!",
-    "image": "https://villasdirect.com/wp-content/uploads/2018/08/wild-florida-airboat-tours-orlando.jpg",
-    "link": "https://wildfloridairboats.com/",
-    "hours": "Typically 9 AM–6 PM",
-    "price": "~$35–$60",
-    "rating": 4.7,
-    "metaTitle": "Wild Florida | Kenansville Outdoor 2025",
-    "metaDescription": "Experience Wild Florida's airboat rides in Kenansville. Open 9 AM–6 PM at 3301 Lake Cypress Rd, ~$35–$60. Book your adventure!",
-    "lat": 28.0526,
-    "lng": -81.1087
-  },
+
   {
     "id": 93,
     "name": "Boggy Creek Airboat Adventures",
@@ -353,54 +339,9 @@
     "lat": 28.2045,
     "lng": -81.1958
   },
-  {
-    "id": 96,
-    "name": "Black Hammock Airboat Rides",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Oviedo",
-    "description": "Discover Black Hammock Airboat Rides in Oviedo, offering thrilling Everglades tours at 2356 Black Hammock Fish Camp Rd. See alligators and wildlife, typically 1-hour tours. Open 9 AM–5 PM, tickets ~$35–$65. A unique Orlando outdoor experience. Book your airboat adventure now!",
-    "image": "https://www.blackhammockrestaurant.com/userfiles/files/blackhammock%20airboat%20tours.jpg",
-    "link": "https://www.blackhammockairboatrides.com/",
-    "hours": "Typically 9 AM–5 PM",
-    "price": "~$35–$65",
-    "rating": 4.6,
-    "metaTitle": "Black Hammock Airboat Rides | Oviedo Outdoor 2025",
-    "metaDescription": "Experience Black Hammock Airboat Rides in Oviedo. Open 9 AM–5 PM at 2356 Black Hammock Fish Camp Rd, ~$35–$65. Book now!",
-    "lat": 28.7057,
-    "lng": -81.0853
-  },
-  {
-    "id": 97,
-    "name": "Crystal River Watersports",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Crystal River",
-    "description": "Swim with manatees at Crystal River Watersports, 1.5 hours from Orlando in Crystal River. Guided tours at 2380 N Suncoast Blvd offer unique wildlife encounters. Open typically 7 AM–5 PM, tours ~$50–$80. A memorable Orlando-area adventure for nature lovers. Book your manatee tour today!",
-    "image": "https://crystalriverwatersports.com/wp-content/uploads/2023/02/paddle-boarding.jpg",
-    "link": "https://crystalriverwatersports.com/",
-    "hours": "Typically 7 AM–5 PM",
-    "price": "~$50–$80/tour",
-    "rating": 4.8,
-    "metaTitle": "Crystal River Watersports | Crystal River Outdoor 2025",
-    "metaDescription": "Swim with manatees at Crystal River Watersports, 1.5 hours from Orlando. Tours ~$50–$80 at 2380 N Suncoast Blvd. Book now!",
-    "lat": 28.8992,
-    "lng": -82.5956
-  },
-  {
-    "id": 98,
-    "name": "Wekiva Island",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Longwood",
-    "description": "Relax at Wekiva Island, a riverside retreat in Longwood. Rent kayaks or paddleboards and enjoy the Wekiva River at 1014 Miami Springs Dr. Open typically 8 AM–8 PM, rentals ~$30–$50. A tranquil Orlando outdoor escape for families and adventurers. Plan your river day now!",
-    "image": "https://wekivaisland.com/wp-content/uploads/2021/10/2111-IMG_3240_pano-scaled.jpg",
-    "link": "https://wekivaisland.com/",
-    "hours": "Typically 8 AM–8 PM",
-    "price": "~$30–$50/rental",
-    "rating": 4.7,
-    "metaTitle": "Wekiva Island | Longwood Outdoor 2025",
-    "metaDescription": "Enjoy kayaking at Wekiva Island in Longwood. Open 8 AM–8 PM at 1014 Miami Springs Dr, rentals ~$30–$50. Book your river adventure!",
-    "lat": 28.7149,
-    "lng": -81.4536
-  },
+
+
+
   {
     "id": 100,
     "name": "Orange County Regional History Center",
@@ -570,22 +511,7 @@
     "lat": 28.7542,
     "lng": -81.5368
   },
-  {
-    "id": 128,
-    "name": "Silver Springs",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Ocala",
-    "description": "Explore Silver Springs State Park in Ocala, a 1-hour drive from Orlando, known for glass-bottom boat tours and kayaking at 5656 E Silver Springs Blvd. Open 8 AM–sunset, entry ~$20–$50. A scenic Orlando-area adventure for families. Book your nature tour today!",
-    "image": "/assets/silver-springs.jpg",
-    "link": "https://www.floridastateparks.org/SilverSprings",
-    "hours": "8 AM–sunset",
-    "price": "~$20–$50",
-    "rating": 4.8,
-    "metaTitle": "Silver Springs | Ocala Outdoor Adventures 2025",
-    "metaDescription": "Discover Silver Springs in Ocala, 1 hour from Orlando. Open 8 AM–sunset at 5656 E Silver Springs Blvd, ~$20–$50. Book now!",
-    "lat": 29.2161,
-    "lng": -82.0576
-  },
+
   {
     "id": 129,
     "name": "The Paddling Center at Shingle Creek",
@@ -602,38 +528,8 @@
     "lat": 28.3051,
     "lng": -81.4473
   },
-  {
-    "id": 130,
-    "name": "Marsh Landing Adventures",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Kissimmee",
-    "description": "Glide through Shingle Creek with Marsh Landing Adventures in Kissimmee, offering airboat tours at 2830 Neptune Rd. Open typically 9 AM–5 PM, tickets ~$35–$65. An exciting Orlando outdoor activity for wildlife enthusiasts. Book your airboat ride today!",
-    "image": "/assets/marsh-landing.jpg",
-    "link": "https://orlandoairboattours.com",
-    "hours": "Typically 9 AM–5 PM",
-    "price": "~$35–$65",
-    "rating": 4.7,
-    "metaTitle": "Marsh Landing Adventures | Kissimmee 2025",
-    "metaDescription": "Experience airboat tours at Marsh Landing in Kissimmee. Open 9 AM–5 PM at 2830 Neptune Rd, ~$35–$65. Book your adventure!",
-    "lat": 28.2045,
-    "lng": -81.1958
-  },
-  {
-    "id": 131,
-    "name": "Paddleboard Orlando",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Longwood",
-    "description": "Enjoy paddleboarding with Paddleboard Orlando at Wekiva Island in Longwood, located at 1014 Miami Springs Dr. Open typically 8 AM–8 PM, rentals ~$30–$50. A fun Orlando outdoor activity for water lovers. Book your paddleboard session for a refreshing day!",
-    "image": "/assets/paddleboard-orlando.jpg",
-    "link": "https://www.paddleboardorlando.com/",
-    "hours": "Typically 8 AM–8 PM",
-    "price": "~$30–$50/rental",
-    "rating": 4.6,
-    "metaTitle": "Paddleboard Orlando | Longwood 2025",
-    "metaDescription": "Paddleboard at Wekiva Island with Paddleboard Orlando. Open 8 AM–8 PM at 1014 Miami Springs Dr, ~$30–$50. Book now!",
-    "lat": 28.7149,
-    "lng": -81.4536
-  },
+
+
   {
     "id": 132,
     "name": "BK Adventure",
@@ -860,23 +756,7 @@
     "lat": 28.3178,
     "lng": -81.4167
   },
-  {
-    "id": 196,
-    "name": "Historic Leu House Museum",
-    "category": "Cultural/Educational",
-    "neighborhood": "Audubon Park",
-    "description": "The Historic Leu House Museum, built in 1888, sits within Harry P. Leu Gardens in Audubon Park at 1920 N Forest Ave. Open for guided tours from 10 AM–1 PM, this restored home on the National Historical Register offers glimpses into turn-of-the-century Florida living through period furnishings and decor from the four families who lived there.",
-    "image": "/assets/leu-house.jpg",
-    "link": "https://www.leugardens.org/leu-house-museum/",
-    "hours": "10 AM–1 PM",
-    "price": "~$10/adult",
-    "rating": 4.6,
-    "metaTitle": "Historic Leu House Museum | Audubon Park Cultural 2025",
-    "metaDescription": "Tour Historic Leu House Museum in Audubon Park. Open 10 AM–1 PM at 1920 N Forest Ave. See period furnishings and learn about this 1888 home's history. Book your visit now!",
-    "lat": 28.5667,
-    "lng": -81.3567,
-    "virtualTour": "https://www.leugardens.org/virtual-tour/"
-  },
+
   {
     "id": 197,
     "name": "Harry P. Leu Gardens",
@@ -941,22 +821,7 @@
     "lat": 28.3747,
     "lng": -81.5168
   },
-  {
-    "id": 202,
-    "name": "Orlando Balloon Rides",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Various",
-    "description": "Soar above Orlando with Orlando Balloon Rides, offering hot air balloon experiences at various locations. Flights typically at sunrise, tickets ~$200–$300/person, hours vary. A breathtaking Orlando outdoor adventure. Book your balloon ride for a sky-high view!",
-    "image": "/assets/orlando-balloon-rides.jpg",
-    "link": "https://www.orlandoballoonrides.com/",
-    "hours": "Hours vary",
-    "price": "~$200–$300/person",
-    "rating": 4.8,
-    "metaTitle": "Orlando Balloon Rides | Orlando Outdoor 2025",
-    "metaDescription": "Soar with Orlando Balloon Rides in Orlando. Flights ~$200–$300, various locations. Book your balloon adventure now!",
-    "lat": 28.5383,
-    "lng": -81.3792
-  },
+
 
   {
     "id": 238,
@@ -1025,38 +890,7 @@
     "lat": 28.5037,
     "lng": -81.4672
   },
-  {
-    "id": 283,
-    "name": "Kelly Park",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Apopka",
-    "description": "Tube down a natural spring at Kelly Park in Apopka, featuring Rock Springs Run at 400 E Kelly Park Rd. Open 8 AM–8 PM, entry ~$3–$5/vehicle. A refreshing Orlando outdoor adventure. Visit for a fun day in the water!",
-    "image": "/assets/kelly-park.jpg",
-    "link": "https://www.ocfl.net/Parks/KellyPark.aspx",
-    "hours": "8 AM–8 PM",
-    "price": "~$3–$5/vehicle",
-    "rating": 4.8,
-    "metaTitle": "Kelly Park | Apopka Outdoor 2025",
-    "metaDescription": "Tube at Kelly Park in Apopka. Open 8 AM–8 PM at 400 E Kelly Park Rd, ~$3–$5/vehicle. Visit for a spring adventure!",
-    "lat": 28.7542,
-    "lng": -81.5368
-  },
-  {
-    "id": 284,
-    "name": "Orlando Wetlands Park",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Christmas",
-    "description": "Hike or bike at Orlando Wetlands Park in Christmas, a 1-hour drive from Orlando, with 1650 acres of wildlife at 25155 Wheeler Rd. Open sunrise–sunset, free entry. A natural Orlando outdoor gem. Visit for a scenic wilderness experience!",
-    "image": "/assets/orlando-wetlands.jpg",
-    "link": "https://www.orlando.gov/Parks-the-Environment/Directory/Orlando-Wetlands-Park",
-    "hours": "Sunrise–sunset",
-    "price": "Free entry",
-    "rating": 4.7,
-    "metaTitle": "Orlando Wetlands Park | Christmas Outdoor 2025",
-    "metaDescription": "Explore Orlando Wetlands Park in Christmas. Open sunrise–sunset at 25155 Wheeler Rd, free entry. Visit for nature!",
-    "lat": 28.5737,
-    "lng": -81.0012
-  },
+
   {
     "id": 285,
     "name": "SEA LIFE Orlando Aquarium",
@@ -1107,38 +941,8 @@
     "lat": 28.3337,
     "lng": -81.5176
   },
-  {
-    "id": 291,
-    "name": "Wild Willy’s Airboat Tours",
-    "category": "Outdoor Adventures",
-    "neighborhood": "St. Cloud",
-    "description": "Glide through the Everglades with Wild Willy’s Airboat Tours in St. Cloud, a 30-minute drive from Orlando, at 4715 Kissimmee Park Rd. Open 9 AM–5 PM, tours ~$30–$50/person. An exciting Orlando outdoor adventure. Book your airboat ride now!",
-    "image": "/assets/wild-willys.jpg",
-    "link": "https://www.wildwillysairboattours.com/",
-    "hours": "9 AM–5 PM",
-    "price": "~$30–$50/person",
-    "rating": 4.7,
-    "metaTitle": "Wild Willy’s Airboat Tours | St. Cloud Outdoor 2025",
-    "metaDescription": "Ride with Wild Willy’s Airboat Tours in St. Cloud. Open 9 AM–5 PM at 4715 Kissimmee Park Rd, ~$30–$50. Book now!",
-    "lat": 28.2045,
-    "lng": -81.1958
-  },
-  {
-    "id": 292,
-    "name": "Airboat Adventures by Marsh Landing",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Kissimmee",
-    "description": "Experience the thrill of Airboat Adventures by Marsh Landing in Kissimmee, offering guided tours through the Everglades at 2830 Neptune Rd. Open 9 AM–5 PM, tickets ~$35–$65/person. An exhilarating Orlando outdoor activity for nature enthusiasts. Book your airboat adventure today!",
-    "image": "/assets/airboat-adventures.jpg",
-    "link": "https://www.marshlandingadventures.com/",
-    "hours": "9 AM–5 PM",
-    "price": "~$35–$65/person",
-    "rating": 4.7,
-    "metaTitle": "Airboat Adventures by Marsh Landing | Kissimmee Outdoor 2025",
-    "metaDescription": "Join Airboat Adventures by Marsh Landing in Kissimmee. Open 9 AM–5 PM at 2830 Neptune Rd, ~$35–$65/person. Book now!",
-    "lat": 28.2045,
-    "lng": -81.1958
-  },
+
+
   {
     "id": 293,
     "name": "Orlando Princess & Canaveral Princess Deep Sea Fishing",
@@ -1155,22 +959,7 @@
     "lat": 28.4057,
     "lng": -80.6047
   },
-  {
-    "id": 294,
-    "name": "Sanford RiverWalk",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Sanford",
-    "description": "Stroll along Sanford RiverWalk in Sanford, a 40-minute drive from Orlando, offering scenic Lake Monroe views at 1st St & Seminole Blvd. Open daily, free entry. A relaxing Orlando-area outdoor spot. Visit for a peaceful waterfront walk!",
-    "image": "/assets/sanford-riverwalk.jpg",
-    "link": "https://www.sanfordfl.gov/community/riverwalk",
-    "hours": "Daily",
-    "price": "Free entry",
-    "rating": 4.6,
-    "metaTitle": "Sanford RiverWalk | Sanford Outdoor 2025",
-    "metaDescription": "Walk Sanford RiverWalk in Sanford. Open daily at 1st St & Seminole Blvd, free entry. Visit for a scenic stroll!",
-    "lat": 28.8112,
-    "lng": -81.2687
-  },
+
   {
     "id": 295,
     "name": "Central Florida Zoo & Botanical Gardens",
@@ -1235,22 +1024,7 @@
     "lat": 28.5708,
     "lng": -81.3665
   },
-  {
-    "id": 311,
-    "name": "Sanford Museum",
-    "category": "Cultural/Educational",
-    "neighborhood": "Sanford",
-    "description": "Explore Sanford’s history at Sanford Museum, a 40-minute drive from Orlando, featuring city artifacts at 520 E 1st St. Open Tue–Fri 11 AM–4 PM, Sat 1 PM–4 PM, free entry. A cultural Orlando-area gem. Visit for a historical experience!",
-    "image": "/assets/sanford-museum.jpg",
-    "link": "https://www.sanfordfl.gov/departments/sanford-museum/",
-    "hours": "Tue–Fri 11 AM–4 PM, Sat 1 PM–4 PM",
-    "price": "Free entry",
-    "rating": 4.5,
-    "metaTitle": "Sanford Museum | Sanford Cultural 2025",
-    "metaDescription": "Visit Sanford Museum in Sanford. Open Tue–Fri 11 AM–4 PM, Sat 1 PM–4 PM at 520 E 1st St, free entry. Book now!",
-    "lat": 28.8112,
-    "lng": -81.2687
-  },
+
   {
     "id": 312,
     "name": "Maitland Art Center",
@@ -1285,70 +1059,9 @@
     "lat": 28.3575,
     "lng": -81.5582
   },
-  {
-    "id": 491,
-    "name": "Islands of Adventure",
-    "category": "Unique Attractions",
-    "neighborhood": "International Drive",
-    "description": "Embark on epic adventures at Islands of Adventure in Universal Orlando Resort, International Drive, at 6000 Universal Blvd. Features VelociCoaster and Jurassic World. Open typically 9 AM–9 PM, tickets ~$80–$150/day. An action-packed Orlando theme park. Book your thrilling ride!",
-    "image": "/assets/islands-adventure.jpg",
-    "link": "https://www.universalorlando.com/web/en/us/theme-parks/islands-of-adventure",
-    "hours": "Typically 9 AM–9 PM",
-    "price": "~$80–$150/day",
-    "rating": 4.9,
-    "metaTitle": "Islands of Adventure | International Drive Theme Parks 2025",
-    "metaDescription": "Visit Islands of Adventure at Universal Orlando. Open 9 AM–9 PM at 6000 Universal Blvd, ~$80–$150/day. Book now!",
-    "lat": 28.4731,
-    "lng": -81.4669
-  },
-  {
-    "id": 492,
-    "name": "Epic Universe",
-    "category": "Unique Attractions",
-    "neighborhood": "International Drive",
-    "description": "Discover new worlds at Epic Universe, opening May 22, 2025, in Universal Orlando Resort, International Drive, at 6000 Universal Blvd. Features SUPER NINTENDO WORLD and immersive lands. Open typically 9 AM–9 PM, tickets ~$80–$150/day. A groundbreaking Orlando theme park. Book your epic adventure!",
-    "image": "/assets/epic-universe.jpg",
-    "link": "https://www.universalorlando.com/web/en/us/theme-parks/epic-universe",
-    "hours": "Typically 9 AM–9 PM",
-    "price": "~$80–$150/day",
-    "rating": 4.8,
-    "metaTitle": "Epic Universe | International Drive Theme Parks 2025",
-    "metaDescription": "Visit Epic Universe at Universal Orlando, opening May 2025. Open 9 AM–9 PM at 6000 Universal Blvd, ~$80–$150/day. Book now!",
-    "lat": 28.4731,
-    "lng": -81.4669
-  },
-  {
-    "id": 494,
-    "name": "Woods ATV Rentals",
-    "category": "Outdoor Adventures",
-    "neighborhood": "Davenport",
-    "description": "Explore off-road trails with Woods ATV Rentals in Davenport, a 30-minute drive from Orlando, at 4715 Easy St. Offers ATV rentals for rugged adventures, open hours vary, tickets ~$40–$100. An exciting Orlando outdoor experience. Book your trail ride!",
-    "image": "/assets/woods-atv.jpg",
-    "link": "https://www.woodsatvrentals.com/",
-    "hours": "Hours vary",
-    "price": "~$40–$100",
-    "rating": 4.7,
-    "metaTitle": "Woods ATV Rentals | Davenport Outdoor Adventures 2025",
-    "metaDescription": "Ride with Woods ATV Rentals in Davenport, 30-min from Orlando. Hours vary at 4715 Easy St, ~$40–$100. Book now!",
-    "lat": 28.2437,
-    "lng": -81.6562
-  },
-  {
-    "id": 495,
-    "name": "Orlando StarFlyer",
-    "category": "Unique Attractions",
-    "neighborhood": "International Drive",
-    "description": "Soar 450 feet on the Orlando StarFlyer at ICON Park, International Drive, at 8375 International Dr, the world's tallest swing ride. Open 11 AM–12 AM, tickets ~$12–$20. A thrilling Orlando attraction for adrenaline seekers. Book your high-flying adventure!",
-    "image": "/assets/orlando-starflyer.jpg",
-    "link": "https://www.iconparkorlando.com/attractions/orlando-starflyer/",
-    "hours": "11 AM–12 AM",
-    "price": "~$12–$20",
-    "rating": 4.7,
-    "metaTitle": "Orlando StarFlyer | International Drive Unique Attractions 2025",
-    "metaDescription": "Ride Orlando StarFlyer at ICON Park. Open 11 AM–12 AM at 8375 International Dr, ~$12–$20. Book now!",
-    "lat": 28.4432,
-    "lng": -81.4683
-  },
+
+
+
   {
     "id": 496,
     "name": "Arcade Monsters",
@@ -1381,22 +1094,7 @@
     "lat": 28.4653,
     "lng": -81.4439
   },
-  {
-    "id": 498,
-    "name": "7D Dark Ride Adventure",
-    "category": "Unique Attractions",
-    "neighborhood": "International Drive",
-    "description": "Immerse in interactive thrills at 7D Dark Ride Adventure at ICON Park, International Drive, at 8375 International Dr. Features motion-based shooting games, open 11 AM–10 PM, tickets ~$10–$15. An action-packed Orlando attraction. Book your high-tech ride!",
-    "image": "/assets/7d-dark-ride.jpg",
-    "link": "https://www.iconparkorlando.com/attractions/7d-dark-ride-adventure/",
-    "hours": "11 AM–10 PM",
-    "price": "~$10–$15",
-    "rating": 4.6,
-    "metaTitle": "7D Dark Ride Adventure | International Drive Unique Attractions 2025",
-    "metaDescription": "Play at 7D Dark Ride Adventure at ICON Park. Open 11 AM–10 PM at 8375 International Dr, ~$10–$15. Book now!",
-    "lat": 28.4432,
-    "lng": -81.4683
-  },
+
   {
     "id": 499,
     "name": "Orlando Slingshot",
@@ -1413,38 +1111,8 @@
     "lat": 28.4432,
     "lng": -81.4683
   },
-  {
-    "id": 500,
-    "name": "Pearl Express Train",
-    "category": "Unique Attractions",
-    "neighborhood": "International Drive",
-    "description": "Ride the Pearl Express Train at ICON Park, International Drive, at 8375 International Dr. Offers a fun train tour for families, open 11 AM–10 PM, tickets ~$5–$10. A charming Orlando attraction for kids. Book your train ride!",
-    "image": "/assets/pearl-express.jpg",
-    "link": "https://www.iconparkorlando.com/attractions/pearl-express-train/",
-    "hours": "11 AM–10 PM",
-    "price": "~$5–$10",
-    "rating": 4.5,
-    "metaTitle": "Pearl Express Train | International Drive Unique Attractions 2025",
-    "metaDescription": "Ride Pearl Express Train at ICON Park. Open 11 AM–10 PM at 8375 International Dr, ~$5–$10. Book now!",
-    "lat": 28.4432,
-    "lng": -81.4683
-  },
-  {
-    "id": 501,
-    "name": "Mirror Maze at ICON Park",
-    "category": "Unique Attractions",
-    "neighborhood": "International Drive",
-    "description": "Navigate the Mirror Maze at ICON Park, International Drive, at 8375 International Dr. Offers a disorienting, fun challenge, open 11 AM–10 PM, tickets ~$8–$12. A quirky Orlando attraction for all ages. Book your maze adventure!",
-    "image": "/assets/mirror-maze.jpg",
-    "link": "https://www.iconparkorlando.com/attractions/mirror-maze/",
-    "hours": "11 AM–10 PM",
-    "price": "~$8–$12",
-    "rating": 4.5,
-    "metaTitle": "Mirror Maze at ICON Park | International Drive Unique Attractions 2025",
-    "metaDescription": "Navigate Mirror Maze at ICON Park. Open 11 AM–10 PM at 8375 International Dr, ~$8–$12. Book now!",
-    "lat": 28.4432,
-    "lng": -81.4683
-  },
+
+
   {
     "id": 502,
     "name": "Main Event Orlando",
@@ -1562,22 +1230,6 @@
     "metaDescription": "Discover Orlando Family Stage, Florida's premier professional youth theater offering captivating performances and educational programs in a historic venue within Loch Haven Park's cultural district.",
     "lat": 28.5729,
     "lng": -81.3687
-  },
-  {
-    "id": 656,
-    "name": "Historic Eatonville Walking Tour",
-    "category": "Cultural/Educational",
-    "neighborhood": "Eatonville",
-    "description": "Discover history with the Historic Eatonville Walking Tour in Eatonville, starting at various locations. Offers guided tours of America's oldest Black-incorporated town, hours vary, ~$20–$40/person. A major Orlando cultural activity. Book your historic tour!",
-    "image": "/assets/eatonville-tour.jpg",
-    "link": "https://www.eatonville.org/tours/",
-    "hours": "Hours vary",
-    "price": "~$20–$40/person",
-    "rating": 4.7,
-    "metaTitle": "Historic Eatonville Walking Tour | Eatonville Cultural 2025",
-    "metaDescription": "Join Eatonville Walking Tour in Eatonville. Hours vary, ~$20–$40/person. Book now!",
-    "lat": 28.6187,
-    "lng": -81.4056
   }
 ]
 

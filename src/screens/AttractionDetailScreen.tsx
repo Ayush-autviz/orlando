@@ -3,13 +3,12 @@ import {
   View,
   Text,
   StyleSheet,
-  SafeAreaView,
   ScrollView,
   TouchableOpacity,
   Image,
-  Dimensions,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import {
   ArrowLeft,
   ExternalLink,
@@ -17,27 +16,16 @@ import {
   Clock,
   DollarSign,
   Star,
-  Phone,
-  Lightbulb
 } from 'lucide-react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { Attraction } from '../data/attractions';
 import { getAttractionDetailsByName, AttractionDetailsType } from '../data/attraction-detail-data';
 import { getImageSource } from '../data/imageMap';
 
-const { width } = Dimensions.get('window');
-
-interface AttractionDetailScreenProps {
-  route: {
-    params: {
-      attraction: Attraction;
-    };
-  };
-}
-
 const AttractionDetailScreen: React.FC = () => {
   const navigation = useNavigation();
   const route = useRoute();
+  const insets = useSafeAreaInsets();
   const { attraction } = route.params as { attraction: Attraction };
   const [detailedData, setDetailedData] = useState<AttractionDetailsType | null>(null);
 
@@ -101,18 +89,7 @@ const AttractionDetailScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-          <ArrowLeft size={24} color="#ffffff" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle} numberOfLines={1}>
-          {attraction.name}
-        </Text>
-        <View style={styles.headerSpacer} />
-      </View>
-
+    <View style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Hero Image */}
         <View style={styles.heroImageContainer}>
@@ -125,6 +102,15 @@ const AttractionDetailScreen: React.FC = () => {
             colors={['transparent', 'rgba(0,0,0,0.7)']}
             style={styles.heroImageOverlay}
           />
+
+          {/* Back Button Overlay */}
+          <TouchableOpacity
+            style={[styles.backButtonOverlay, { top: insets.top  }]}
+            onPress={handleBack}
+          >
+            <ArrowLeft size={24} color="#000" />
+          </TouchableOpacity>
+
           <View style={styles.heroImageContent}>
             <Text style={styles.heroTitle}>{attraction.name}</Text>
             <View style={styles.heroSubtitle}>
@@ -229,7 +215,7 @@ const AttractionDetailScreen: React.FC = () => {
           )}
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -238,31 +224,23 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
   },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  backButtonOverlay: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 10,
-  },
-  backButton: {
+    left: 16,
+    zIndex: 20,
     padding: 8,
-  },
-  headerTitle: {
-    flex: 1,
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#ffffff',
-    textAlign: 'center',
-    marginHorizontal: 16,
-  },
-  headerSpacer: {
-    width: 40,
+    backgroundColor: '#fff',
+    borderRadius: 100,
+    borderWidth: 1,
+    borderColor: '#000',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   scrollView: {
     flex: 1,
@@ -468,7 +446,7 @@ const styles = StyleSheet.create({
     paddingVertical: 16,
     borderRadius: 12,
     gap: 12,
-    marginTop: 8,
+    marginTop: 0,
   },
   websiteButtonText: {
     fontSize: 16,
