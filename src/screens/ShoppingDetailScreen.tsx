@@ -62,8 +62,9 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
   };
 
   const handleWebsitePress = (url: string) => {
-    Linking.openURL(url).catch(() => {
-      Alert.alert('Error', 'Could not open website');
+    navigation.navigate('WebView', { 
+      url: url, 
+      title: 'Official Website' 
     });
   };
 
@@ -223,7 +224,10 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                   {store.website && (
                     <TouchableOpacity 
                       style={styles.storeWebsite}
-                      onPress={() => handleWebsitePress(store.website!)}
+                      onPress={() => navigation.navigate('WebView', { 
+                        url: store.website!, 
+                        title: `${store.name} Website` 
+                      })}
                     >
                       <Text style={styles.websiteText}>Visit Website</Text>
                       <ExternalLink size={12} color="#ea580c" />
@@ -251,7 +255,10 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                   {restaurant.website && (
                     <TouchableOpacity 
                       style={styles.restaurantWebsite}
-                      onPress={() => handleWebsitePress(restaurant.website!)}
+                      onPress={() => navigation.navigate('WebView', { 
+                        url: restaurant.website!, 
+                        title: `${restaurant.name} Website` 
+                      })}
                     >
                       <Text style={styles.websiteText}>Visit Website</Text>
                       <ExternalLink size={12} color="#ea580c" />

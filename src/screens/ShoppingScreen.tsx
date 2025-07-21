@@ -30,8 +30,9 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
   };
 
   const handleWebsitePress = (url: string) => {
-    Linking.openURL(url).catch(() => {
-      Alert.alert('Error', 'Could not open website');
+    navigation.navigate('WebView', { 
+      url: url, 
+      title: 'Official Website' 
     });
   };
 
