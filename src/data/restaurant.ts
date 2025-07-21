@@ -2103,22 +2103,22 @@ export const cuisineCategories: Record<string, { title: string, description: str
   "fine-dining": {
     title: "Fine Dining",
     description: "Experience Orlando's finest upscale restaurants offering exceptional service, ambiance, and culinary artistry.",
-    image: fineDiningImage
+    image: require("../../assets/images/FINEdining.jpeg")
   },
   "theme-park": {
     title: "Theme Park Dining",
     description: "Discover remarkable restaurants within Orlando's world-famous theme parks and entertainment complexes.",
-    image: themeParkCategoryImage
+    image: require("../../assets/images/themePark.jpeg")
   },
   "international": {
     title: "International Cuisine",
     description: "Explore global flavors with Orlando's diverse collection of authentic international restaurants.",
-    image: internationalCuisineCategoryImage
+    image: require("../../assets/images/international.jpeg")
   },
   "local-favorites": {
     title: "Local Favorites",
     description: "Experience beloved Orlando establishments that highlight Florida flavors and regional specialties.",
-    image: localFavoritesCategoryImage
+    image: require("../../assets/images/localFavorites.jpeg")
   }
 };
 

@@ -7,7 +7,7 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import { MapPin, ExternalLink, Star } from 'lucide-react-native';
+import { MapPin, ExternalLink, Star, Info } from 'lucide-react-native';
 import { Hotel } from '../types/Hotel';
 
 const { width } = Dimensions.get('window');
@@ -150,11 +150,11 @@ const HotelCard: React.FC<HotelCardProps> = ({
 
         {/* Price and Actions */}
         <View style={styles.footer}>
+          {/* <View >
           <View style={styles.priceContainer}>
-            {hotel.price && (
-              <Text style={styles.priceText}>{hotel.price}</Text>
-            )}
+            <Info size={20} />
           </View>
+          </View> */}
           
           <View style={styles.actionsContainer}>
             {hotel.website && (

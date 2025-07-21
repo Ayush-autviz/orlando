@@ -167,12 +167,12 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
             </View>
 
             {/* Price */}
-            {hotel.price && (
+            {/* {hotel.price && (
               <View style={styles.priceSection}>
                 <Text style={styles.priceLabel}>Starting from</Text>
                 <Text style={styles.priceText}>{hotel.price}</Text>
               </View>
-            )}
+            )} */}
 
             {/* Description */}
             <View style={styles.section}>
