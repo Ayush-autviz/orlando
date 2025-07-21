@@ -25,6 +25,7 @@ import HotelsScreen from '../screens/HotelsScreen';
 import EventsScreen from '../screens/EventsScreen';
 import NeighborhoodsScreen from '../screens/NeighborhoodsScreen';
 import ShoppingScreen from '../screens/ShoppingScreen';
+import GolfScreen from '../screens/GolfScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -47,6 +48,7 @@ const CustomDrawerContent = (props: any) => {
   ];
 
   const handleCategoryPress = (categoryId: string) => {
+    console.log('categoryId', categoryId);
     props.navigation.navigate(categoryId);
     props.navigation.closeDrawer();
   };
@@ -115,7 +117,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="shopping" component={ShoppingScreen} />
       <Drawer.Screen name="entertainment" component={EventsScreen} />
       <Drawer.Screen name="things-to-do" component={AttractionsScreen} />
-      <Drawer.Screen name="golf" component={AttractionsScreen} />
+      <Drawer.Screen name="golf" component={GolfScreen} />
       <Drawer.Screen name="sports" component={AttractionsScreen} />
       <Drawer.Screen name="neighborhoods" component={NeighborhoodsScreen} />
       <Drawer.Screen name="spas" component={AttractionsScreen} />

@@ -867,40 +867,7 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       ],
       "parkingInfo": "EPCOT parking (theme park admission required)"
     },
-    {
-      "id": "jungle-navigation-skipper-canteen",
-      "name": "Jungle Navigation Co. LTD Skipper Canteen",
-      "description": "Themed dining experience inspired by the Jungle Cruise attraction, located in Magic Kingdom's Adventureland. This unique restaurant is designed as the headquarters of the fictional Jungle Navigation Company with three distinctly themed dining rooms - the mess hall, a secret meeting room of the Society of Explorers and Adventurers, and a garden room filled with tropical artifacts. Servers double as \"skippers,\" delivering the same style of corny jokes featured on the famous boat ride.",
-      "image": require("../../assets/images/SkipperCanteen.jpeg"),
-      "neighborhood": "Magic Kingdom",
-      "address": "Magic Kingdom Park, Adventureland, Walt Disney World Resort, Orlando, FL",
-      "priceRange": "$$",
-      "cuisine": "Asian, African, and Latin",
-      "category": "theme-park",
-      "hours": "Lunch and Dinner: 11:00 AM - 9:00 PM",
-      "phone": "(407) 939-3463",
-      "website": "https://disneyworld.disney.go.com/dining/magic-kingdom/jungle-navigation-co-ltd-skipper-canteen/",
-      "signature": [
-        "\"Tastes like Chicken\" Because it is!",
-        "Sustainable Fish",
-        "Orinoco Ida's Cachapas",
-        "Schweitzer Falls Slushie"
-      ],
-      "recommendedFor": [
-        "Jungle Cruise fans",
-        "Adventurous eaters",
-        "Families seeking themed dining",
-        "Disney Parks enthusiasts"
-      ],
-      "reservations": true,
-      "amenities": [
-        "Themed dining rooms",
-        "In-character service",
-        "Detailed themeing",
-        "Full bar"
-      ],
-      "parkingInfo": "Magic Kingdom parking (theme park admission required)"
-    },
+
     {
       "id": "confisco-grille",
       "name": "Confisco Grille",
@@ -1490,7 +1457,7 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "id": "bosphorous-turkish-cuisine",
       "name": "Bosphorous Turkish Cuisine",
       "description": "Authentic Turkish restaurant showcasing traditional cuisine from Istanbul and beyond. The warm, elegant space with Turkish décor elements, including hand-painted ceramics and ornate light fixtures, creates a cultural dining environment. The open kitchen with wood-fired ovens allows guests to watch the preparation of freshly baked Turkish breads and grilled specialties.",
-      "image": require("../../assets/images/bosphorous.jpeg"),
+      "image": require("../../assets/images/bosphorous.jpg"),
       "neighborhood": "Winter Park",
       "address": "108 S Park Ave, Winter Park, FL 32789",
       "priceRange": "$$",

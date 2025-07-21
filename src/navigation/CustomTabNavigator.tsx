@@ -18,6 +18,8 @@ import AttractionsScreen from '../screens/AttractionsScreen';
 import DiningScreen from '../screens/DiningScreen';
 import HotelsScreen from '../screens/HotelsScreen';
 import DrawerContent from './DrawerContent';
+import ShoppingDetailScreen from '../screens/ShoppingDetailScreen';
+import ShoppingScreen from '../screens/ShoppingScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -90,6 +92,9 @@ const CustomTabBar: React.FC<any> = ({ state, navigation }) => {
         break;
       case 'hotels':
         navigation.navigate('Hotels');
+        break;
+      case 'golf':
+        navigation.navigate('Golf');
         break;
       default:
         // For other screens that aren't in the main tabs, keep current tab
@@ -180,8 +185,9 @@ const CustomTabNavigator: React.FC = () => {
       <Tab.Screen name="ThemeParks" component={ThemeParksScreen} />
       <Tab.Screen name="Attractions" component={AttractionsScreen} />
       <Tab.Screen name="Dining" component={DiningScreen} />
-      <Tab.Screen name="Hotels" component={HotelsScreen} />
+      <Tab.Screen name="Hotels" component={ShoppingScreen} />
       <Tab.Screen name="More" component={MoreScreen} />
+
     </Tab.Navigator>
   );
 };
