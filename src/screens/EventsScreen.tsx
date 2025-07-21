@@ -5,7 +5,7 @@ import Header from '../components/Header';
 const EventsScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header showDrawerButton={true} title="Live Entertainment" />
       <View style={styles.content}>
         <Text style={styles.title}>Events</Text>
         <Text style={styles.subtitle}>Coming soon...</Text>

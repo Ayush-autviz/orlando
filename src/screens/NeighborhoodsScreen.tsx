@@ -5,7 +5,7 @@ import Header from '../components/Header';
 const NeighborhoodsScreen: React.FC = () => {
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header showDrawerButton={true} title="Neighborhoods" />
       <View style={styles.content}>
         <Text style={styles.title}>Neighborhoods</Text>
         <Text style={styles.subtitle}>Coming soon...</Text>

@@ -102,7 +102,7 @@ const TabNavigator: React.FC = () => {
       }}
       tabBar={(props: any) => <CustomTabBar {...props} />}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" options={{ headerShown: false }} component={HomeScreen} />
       <Tab.Screen name="ThemeParks" component={ThemeParksScreen} />
       <Tab.Screen name="Attractions" component={AttractionsScreen} />
       <Tab.Screen name="Dining" component={DiningScreen} />

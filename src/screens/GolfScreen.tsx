@@ -66,7 +66,7 @@ const GolfScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header showDrawerButton={true} title="Golf Courses" />
       <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.headerContainer}>

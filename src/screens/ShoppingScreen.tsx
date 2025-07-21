@@ -109,7 +109,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header showDrawerButton={true} title="Shopping" />
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Hero Section */}
         <View style={styles.heroSection}>
