@@ -185,7 +185,7 @@ const CustomTabNavigator: React.FC = () => {
       <Tab.Screen name="ThemeParks" component={ThemeParksScreen} />
       <Tab.Screen name="Attractions" component={AttractionsScreen} />
       <Tab.Screen name="Dining" component={DiningScreen} />
-      <Tab.Screen name="Hotels" component={ShoppingScreen} />
+      <Tab.Screen name="Hotels" component={HotelsScreen} />
       <Tab.Screen name="More" component={MoreScreen} />
 
     </Tab.Navigator>
