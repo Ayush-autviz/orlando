@@ -394,8 +394,8 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
-    marginTop: 60,
-    marginBottom: 50,
+    marginTop: 50,
+    marginBottom: 20,
   },
   titleContainer: {
     alignItems: 'center',
@@ -458,7 +458,7 @@ const styles = StyleSheet.create({
   },
   categoriesWrapper: {
     flex: 1,
-    marginTop: 20,
+    marginTop: 0,
   },
   categoriesContainer: {
     paddingBottom: 140,

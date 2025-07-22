@@ -113,10 +113,10 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Hero Section */}
         <View style={styles.heroSection}>
-          <LinearGradient
+          {/* <LinearGradient
             colors={['#ea580c', '#0d9488']}
             style={styles.heroGradient}
-          >
+          > */}
             <View style={styles.heroContent}>
               <Text style={styles.heroTitle}>
                 <Text style={styles.heroTitleWhite}>WORLD</Text>
@@ -125,7 +125,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
               </Text>
               <View style={styles.heroUnderline} />
             </View>
-          </LinearGradient>
+          {/* </LinearGradient> */}
         </View>
 
         {/* Shopping Mall Cards */}
@@ -164,23 +164,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     letterSpacing: 1,
+    color: '#f97316',
   },
   heroTitleWhite: {
-    color: '#ffffff',
+    color: '#f97316',
   },
   heroTitleTeal: {
-    color: '#b2f5ea',
+    color: '#f97316',
   },
   heroUnderline: {
     width: 120,
     height: 2,
-    backgroundColor: 'rgba(255,255,255,0.4)',
+    //backgroundColor: 'rgba(255,255,255,0.4)',
     marginTop: 8,
     borderRadius: 1,
   },
   mallsContainer: {
     paddingHorizontal: 16,
-    paddingTop: 32,
+    paddingTop: 12,
     paddingBottom: 32,
   },
   sectionTitle: {

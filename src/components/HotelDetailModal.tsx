@@ -100,6 +100,7 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
   };
 
   const handleWebsitePress = () => {
+    onClose();
     onWebsitePress?.(hotel);
   };
 

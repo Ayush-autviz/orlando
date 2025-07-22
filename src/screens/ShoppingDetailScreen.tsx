@@ -270,7 +270,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
           </View>
 
           {/* Social Media */}
-          {mall.contactInfo.socialMedia && (
+          {/* {mall.contactInfo.socialMedia && (
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>Follow Us</Text>
               <View style={styles.socialContainer}>
@@ -303,7 +303,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                 )}
               </View>
             </View>
-          )}
+          )} */}
         </View>
       </ScrollView>
     </SafeAreaView>
