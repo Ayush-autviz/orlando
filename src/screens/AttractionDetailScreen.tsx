@@ -154,13 +154,23 @@ const AttractionDetailScreen: React.FC = () => {
             <View style={styles.infoGrid}>
               {/* Address */}
               {(detailedData?.address || attraction.address) && (
-                <View style={styles.infoItem}>
+                <TouchableOpacity 
+                  style={styles.infoItem}
+                  onPress={() => {
+                    const address = detailedData?.address || attraction.address;
+                    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+                    navigation.navigate('WebView' as never, {
+                      url: googleMapsUrl,
+                      title: `${attraction.name} - Location`
+                    } as never);
+                  }}
+                >
                   <MapPin size={20} color="#ea580c" />
                   <View style={styles.infoContent}>
                     <Text style={styles.infoLabel}>Address</Text>
-                    <Text style={styles.infoValue}>{detailedData?.address || attraction.address}</Text>
+                    <Text style={[styles.infoValue, styles.clickableText]}>{detailedData?.address || attraction.address}</Text>
                   </View>
-                </View>
+                </TouchableOpacity>
               )}
 
               {/* Hours */}
@@ -452,6 +462,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
     color: '#ffffff',
+  },
+  clickableText: {
+    color: '#0891b2',
+    textDecorationLine: 'underline',
   },
 });
 

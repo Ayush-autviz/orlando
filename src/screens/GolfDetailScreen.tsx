@@ -65,7 +65,10 @@ const GolfDetailScreen: React.FC = () => {
 
   const handleMapPress = (address: string) => {
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-    Linking.openURL(url);
+    navigation.navigate('WebView' as never, {
+      url: url,
+      title: `${course?.name || 'Golf Course'} - Location`
+    } as never);
   };
 
   if (loading) {

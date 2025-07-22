@@ -77,9 +77,10 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
   const handleMapPress = (address: string) => {
     const encodedAddress = encodeURIComponent(address);
     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-    Linking.openURL(mapUrl).catch(() => {
-      Alert.alert('Error', 'Could not open map');
-    });
+    navigation.navigate('WebView' as never, {
+      url: mapUrl,
+      title: `${mall?.name || 'Shopping Mall'} - Location`
+    } as never);
   };
 
   const handleSocialMediaPress = (url: string) => {

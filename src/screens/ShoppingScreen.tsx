@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-  Linking,
   Alert,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -39,9 +38,10 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
   const handleMapPress = (address: string) => {
     const encodedAddress = encodeURIComponent(address);
     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-    Linking.openURL(mapUrl).catch(() => {
-      Alert.alert('Error', 'Could not open map');
-    });
+    navigation.navigate('WebView' as never, {
+      url: mapUrl,
+      title: 'Location on Map'
+    } as never);
   };
 
   const renderMallCard = (mall: ShoppingMall) => (

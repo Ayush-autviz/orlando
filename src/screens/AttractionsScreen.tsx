@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
   heroTitle: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 8,
-    padding: 12,
+    padding: 8,
     marginBottom: 12,
     transform: [{ rotate: '-1deg' }],
   },
