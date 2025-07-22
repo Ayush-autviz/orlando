@@ -1,0 +1,6 @@
+projectKey=orlando
+serverUrl=http://127.0.0.1:9000
+serverVersion=25.6.0.109173
+dashboardUrl=http://127.0.0.1:9000/dashboard?id=orlando
+ceTaskId=2115d212-f5e1-4169-a684-3ba84382c60f
+ceTaskUrl=http://127.0.0.1:9000/api/ce/task?id=2115d212-f5e1-4169-a684-3ba84382c60f

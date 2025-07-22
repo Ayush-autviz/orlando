@@ -9,7 +9,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Home, MapPin, Star, Utensils, Bed, Menu, DoorOpen, Ticket } from 'lucide-react-native';
+import { Home, MapPin, Star, Utensils, Bed, Menu, DoorOpen, Ticket, ShoppingCart } from 'lucide-react-native';
 
 // Import screens
 import HomeScreen from '../screens/HomeScreen';
@@ -116,18 +116,18 @@ const TabNavigator: React.FC = () => {
 const CustomDrawerContent = (props: any) => {
   const categories = [
     { id: 'Home', label: 'Home', icon: <Home size={24} color="#374151" />, color: '#f97316' },
-    { id: 'ThemeParks', label: 'Theme Parks', icon: <MapPin size={24} color="#374151" />, color: '#3b82f6' },
-    { id: 'Attractions', label: 'All Attractions', icon: <Star size={24} color="#374151" />, color: '#10b981' },
+    { id: 'ThemeParks', label: 'Theme Parks', icon: <DoorOpen size={24} color="#374151" />, color: '#3b82f6' },
+    { id: 'Attractions', label: 'All Attractions', icon: <Ticket size={24} color="#374151" />, color: '#10b981' },
     { id: 'Hotels', label: 'Hotels', icon: <Bed size={24} color="#374151" />, color: '#f59e0b' },
     { id: 'Dining', label: 'Dining', icon: <Utensils size={24} color="#374151" />, color: '#ef4444' },
-    { id: 'shopping', label: 'Shopping', icon: <MapPin size={24} color="#374151" />, color: '#8b5cf6' },
-    { id: 'entertainment', label: 'Live Entertainment', icon: <Star size={24} color="#374151" />, color: '#06b6d4' },
-    { id: 'things-to-do', label: 'Things to Do', icon: <Star size={24} color="#374151" />, color: '#84cc16' },
-    { id: 'golf', label: 'Golf', icon: <MapPin size={24} color="#374151" />, color: '#f97316' },
-    { id: 'sports', label: 'Sports', icon: <Star size={24} color="#374151" />, color: '#ec4899' },
-    { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color="#374151" />, color: '#6366f1' },
-    { id: 'spas', label: 'Spas & Wellness', icon: <Star size={24} color="#374151" />, color: '#10b981' },
-    { id: 'nightlife', label: 'Nightlife', icon: <Star size={24} color="#374151" />, color: '#8b5cf6' },
+    { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color="#374151" />, color: '#8b5cf6' },
+    // { id: 'entertainment', label: 'Live Entertainment', icon: <Star size={24} color="#374151" />, color: '#06b6d4' },
+    // { id: 'things-to-do', label: 'Things to Do', icon: <Star size={24} color="#374151" />, color: '#84cc16' },
+    // { id: 'golf', label: 'Golf', icon: <MapPin size={24} color="#374151" />, color: '#f97316' },
+    // { id: 'sports', label: 'Sports', icon: <Star size={24} color="#374151" />, color: '#ec4899' },
+    // { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color="#374151" />, color: '#6366f1' },
+    // { id: 'spas', label: 'Spas & Wellness', icon: <Star size={24} color="#374151" />, color: '#10b981' },
+    // { id: 'nightlife', label: 'Nightlife', icon: <Star size={24} color="#374151" />, color: '#8b5cf6' },
   ];
 
   const handleCategoryPress = (categoryId: string) => {
@@ -175,10 +175,10 @@ const CustomDrawerContent = (props: any) => {
         </View>
       </View>
 
-      <View style={styles.footer}>
+      {/* <View style={styles.footer}>
         <Text style={styles.footerText}>Your Ultimate Orlando Guide</Text>
         <Text style={styles.footerSubtext}>Discover the magic of Orlando</Text>
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 };

@@ -39,12 +39,12 @@ const CustomDrawerContent = (props: any) => {
     { id: 'dining', label: 'Dining', icon: <Utensils size={24} color="#374151" />, color: '#ef4444' },
     { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color="#374151" />, color: '#8b5cf6' },
     { id: 'entertainment', label: 'Live Entertainment', icon: <Calendar size={24} color="#374151" />, color: '#06b6d4' },
-    { id: 'things-to-do', label: 'Things to Do', icon: <Star size={24} color="#374151" />, color: '#84cc16' },
-    { id: 'golf', label: 'Golf', icon: <Flag size={24} color="#374151" />, color: '#f97316' },
-    { id: 'sports', label: 'Sports', icon: <Star size={24} color="#374151" />, color: '#ec4899' },
-    { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color="#374151" />, color: '#6366f1' },
-    { id: 'spas', label: 'Spas & Wellness', icon: <Leaf size={24} color="#374151" />, color: '#10b981' },
-    { id: 'nightlife', label: 'Nightlife', icon: <Beer size={24} color="#374151" />, color: '#8b5cf6' },
+    // { id: 'things-to-do', label: 'Things to Do', icon: <Star size={24} color="#374151" />, color: '#84cc16' },
+    // { id: 'golf', label: 'Golf', icon: <Flag size={24} color="#374151" />, color: '#f97316' },
+    // { id: 'sports', label: 'Sports', icon: <Star size={24} color="#374151" />, color: '#ec4899' },
+    // { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color="#374151" />, color: '#6366f1' },
+    // { id: 'spas', label: 'Spas & Wellness', icon: <Leaf size={24} color="#374151" />, color: '#10b981' },
+    // { id: 'nightlife', label: 'Nightlife', icon: <Beer size={24} color="#374151" />, color: '#8b5cf6' },
   ];
 
   const handleCategoryPress = (categoryId: string) => {
@@ -115,13 +115,13 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="hotels" component={HotelsScreen} />
       <Drawer.Screen name="dining" component={DiningScreen} />
       <Drawer.Screen name="shopping" component={ShoppingScreen} />
-      <Drawer.Screen name="entertainment" component={EventsScreen} />
+      {/* <Drawer.Screen name="entertainment" component={EventsScreen} />
       <Drawer.Screen name="things-to-do" component={AttractionsScreen} />
       <Drawer.Screen name="golf" component={GolfScreen} />
       <Drawer.Screen name="sports" component={AttractionsScreen} />
       <Drawer.Screen name="neighborhoods" component={NeighborhoodsScreen} />
       <Drawer.Screen name="spas" component={AttractionsScreen} />
-      <Drawer.Screen name="nightlife" component={AttractionsScreen} />
+      <Drawer.Screen name="nightlife" component={AttractionsScreen} /> */}
     </Drawer.Navigator>
   );
 };

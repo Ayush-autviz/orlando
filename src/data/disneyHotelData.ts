@@ -228,178 +228,178 @@ export const disneyHotelData: Record<string, DisneyHotel> = {
     ]
   },
   
-  // Epcot Area
-  // "beach-club-resort": {
-  //   name: "Disney's Beach Club Resort",
-  //   category: "Deluxe",
-  //   description: "Disney's Beach Club Resort is a favorite among both families and adults, offering a beach oasis experience with numerous Disney amenities. The resort is situated around Crescent Lake, featuring a mini water park, sandy beaches, and various recreation and dining options. Guests can enjoy walking distance to EPCOT and access to the Boardwalk area. The lobby is adorned with a larger-than-life gingerbread carousel during the holidays, adding to the festive atmosphere. The resort's exterior boasts bright blue colors, giving it a vibrant yet classy beach flair. It is also connected to Disney's Yacht Club Resort, sharing amenities and creating a seamless experience for guests.",
-  //   parkArea: "Epcot",
-  //   price_range: "Deluxe",
-  //   imageUrl: "/images/hotels/disneys-beach-club-resort.jpg",
-  //   websiteUrl: "https://disneyworld.disney.go.com/resorts/beach-club-resort/",
-  //   diningOptions: [
-  //     "Cape May Cafe (Character Breakfast; Seafood Dinner)",
-  //     "Beaches & Cream Soda Shop",
-  //     "Beach Club Marketplace",
-  //     "Hurricane Hanna's Waterside Bar & Grill",
-  //     "Martha's Vineyard Lounge"
-  //   ],
-  //   amenities: [
-  //     "Stormalong Bay (3-acre waterpark pool with sand bottom)",
-  //     "Three leisure pools",
-  //     "Beach access",
-  //     "Volleyball court",
-  //     "Walking distance to Epcot",
-  //     "Ship Shape fitness center",
-  //     "Marina rentals",
-  //     "Sandcastle Club children's activity center"
-  //   ],
-  //   transportationOptions: [
-  //     "Walking path to Epcot (5-10 minutes)",
-  //     "Walking path or Friendship boat to Hollywood Studios (20 minutes)",
-  //     "Bus to Magic Kingdom, Animal Kingdom, and Disney Springs",
-  //     "Skyliner access nearby (at International Gateway)"
-  //   ],
-  //   roomTypes: [
-  //     "Standard Room",
-  //     "Garden View",
-  //     "Lagoon View",
-  //     "Club Level",
-  //     "1-Bedroom Suite",
-  //     "2-Bedroom Suite",
-  //     "DVC Studios and Villas (Beach Club Villas)"
-  //   ],
-  //   proximity: {
-  //     magicKingdom: "Bus (15-20 minutes)",
-  //     epcot: "Walking distance (5-10 minutes to International Gateway)",
-  //     hollywoodStudios: "Boat (15 minutes) or walking (20 minutes)",
-  //     animalKingdom: "Bus (20 minutes)",
-  //     disneySprings: "Bus (15 minutes)"
-  //   },
-  //   insiderTips: [
-  //     "Stormalong Bay is exclusive to Beach Club and Yacht Club guests",
-  //     "Try the Kitchen Sink sundae at Beaches & Cream",
-  //     "Walking to Epcot through International Gateway is faster than bus",
-  //     "Request upper-floor rooms for better views",
-  //     "Book early for Epcot festival periods when this resort fills quickly"
-  //   ]
-  // },
-  // "yacht-club-resort": {
-  //   name: "Disney's Yacht Club Resort",
-  //   category: "Deluxe",
-  //   description: "Sail into luxury at Disney's Yacht Club Resort, designed after New England yacht clubs with nautical theming. Share the amazing Stormalong Bay pool complex with Beach Club, enjoy steakhouse dining at Yachtsman Steakhouse, and walk to Epcot in minutes.",
-  //   parkArea: "Epcot",
-  //   price_range: "Deluxe",
-  //   imageUrl: "/images/hotels/disneys-yacht-club-resort.jpg",
-  //   websiteUrl: "https://disneyworld.disney.go.com/resorts/yacht-club-resort/",
-  //   diningOptions: [
-  //     "Yachtsman Steakhouse (Signature Dining)",
-  //     "Ale & Compass Restaurant",
-  //     "Ale & Compass Lounge",
-  //     "Crew's Cup Lounge",
-  //     "Market at Ale & Compass",
-  //     "Hurricane Hanna's Waterside Bar & Grill"
-  //   ],
-  //   amenities: [
-  //     "Stormalong Bay (3-acre waterpark pool with sand bottom)",
-  //     "Three leisure pools",
-  //     "Beach access",
-  //     "Ship Shape fitness center",
-  //     "Walking distance to Epcot",
-  //     "Marina rentals",
-  //     "Convention center facilities"
-  //   ],
-  //   transportationOptions: [
-  //     "Walking path to Epcot (5-10 minutes)",
-  //     "Walking path or Friendship boat to Hollywood Studios (20 minutes)",
-  //     "Bus to Magic Kingdom, Animal Kingdom, and Disney Springs",
-  //     "Skyliner access nearby (at International Gateway)"
-  //   ],
-  //   roomTypes: [
-  //     "Standard Room",
-  //     "Garden View",
-  //     "Lagoon View",
-  //     "Club Level",
-  //     "Junior Suite",
-  //     "1-Bedroom Suite",
-  //     "2-Bedroom Suite",
-  //     "Presidential Suite"
-  //   ],
-  //   proximity: {
-  //     magicKingdom: "Bus (15-20 minutes)",
-  //     epcot: "Walking distance (5-10 minutes to International Gateway)",
-  //     hollywoodStudios: "Boat (15 minutes) or walking (20 minutes)",
-  //     animalKingdom: "Bus (20 minutes)",
-  //     disneySprings: "Bus (15 minutes)"
-  //   },
-  //   insiderTips: [
-  //     "Yacht Club is typically quieter than Beach Club (popular with convention guests)",
-  //     "Yachtsman Steakhouse is one of Disney's best signature restaurants",
-  //     "Walking to Hollywood Studios is often faster than the boat",
-  //     "The quiet Admiral pool offers a break from busy Stormalong Bay",
-  //     "For fireworks views, request a room facing the Boardwalk"
-  //   ]
-  // },
-  // "boardwalk-inn": {
-  //   name: "Disney's BoardWalk Inn",
-  //   category: "Deluxe",
-  //   description: "Step into 1940s Atlantic City at Disney's BoardWalk Inn, surrounded by the lively entertainment district of Disney's BoardWalk. Enjoy the luna park-inspired pool, fine dining at Flying Fish, and easy walking access to both Epcot and Hollywood Studios.",
-  //   parkArea: "Epcot",
-  //   price_range: "Deluxe",
-  //   imageUrl: "/images/hotels/disneys-boardwalk-inn.jpeg",
-  //   websiteUrl: "https://disneyworld.disney.go.com/resorts/boardwalk-inn/",
-  //   diningOptions: [
-  //     "Flying Fish (Signature Dining)",
-  //     "Trattoria al Forno (Character Breakfast)",
-  //     "BoardWalk Bakery",
-  //     "Pizza Window",
-  //     "AbracadaBar",
-  //     "Belle Vue Lounge",
-  //     "BoardWalk Ice Cream",
-  //     "Various BoardWalk vendors and restaurants"
-  //   ],
-  //   amenities: [
-  //     "Luna Park Pool with Keister Coaster slide",
-  //     "Two leisure pools",
-  //     "Muscles & Bustles fitness center",
-  //     "Walking distance to Epcot",
-  //     "Nighttime entertainment on the BoardWalk",
-  //     "Surrey bike rentals",
-  //     "Marina",
-  //     "ESPN Club",
-  //     "Carnival games and street performers"
-  //   ],
-  //   transportationOptions: [
-  //     "Walking path to Epcot (5-10 minutes)",
-  //     "Walking path or Friendship boat to Hollywood Studios (15-20 minutes)",
-  //     "Bus to Magic Kingdom, Animal Kingdom, and Disney Springs",
-  //     "Skyliner access nearby (at International Gateway)"
-  //   ],
-  //   roomTypes: [
-  //     "Standard Room",
-  //     "Water View",
-  //     "Garden View",
-  //     "BoardWalk View",
-  //     "Club Level",
-  //     "1-Bedroom Suite",
-  //     "2-Bedroom Suite",
-  //     "DVC Studios and Villas (BoardWalk Villas)"
-  //   ],
-  //   proximity: {
-  //     magicKingdom: "Bus (15-20 minutes)",
-  //     epcot: "Walking distance (5-10 minutes to International Gateway)",
-  //     hollywoodStudios: "Boat (15 minutes) or walking (20 minutes)",
-  //     animalKingdom: "Bus (20 minutes)",
-  //     disneySprings: "Bus (15 minutes)"
-  //   },
-  //   insiderTips: [
-  //     "BoardWalk view rooms offer lively evening entertainment views",
-  //     "Street performers appear on the BoardWalk in the evenings",
-  //     "Jellyrolls dueling piano bar is a popular adult nightlife spot",
-  //     "Fewer families stay here compared to Beach Club, often quieter",
-  //     "Many rooms have balconies overlooking the activities below"
-  //   ]
-  // },
+  //Epcot Area
+  "beach-club-resort": {
+    name: "Disney's Beach Club Resort",
+    category: "Deluxe",
+    description: "Disney's Beach Club Resort is a favorite among both families and adults, offering a beach oasis experience with numerous Disney amenities. The resort is situated around Crescent Lake, featuring a mini water park, sandy beaches, and various recreation and dining options. Guests can enjoy walking distance to EPCOT and access to the Boardwalk area. The lobby is adorned with a larger-than-life gingerbread carousel during the holidays, adding to the festive atmosphere. The resort's exterior boasts bright blue colors, giving it a vibrant yet classy beach flair. It is also connected to Disney's Yacht Club Resort, sharing amenities and creating a seamless experience for guests.",
+    parkArea: "Epcot",
+    price_range: "Deluxe",
+    imageUrl: "/images/hotels/disneys-beach-club-resort.jpg",
+    websiteUrl: "https://disneyworld.disney.go.com/resorts/beach-club-resort/",
+    diningOptions: [
+      "Cape May Cafe (Character Breakfast; Seafood Dinner)",
+      "Beaches & Cream Soda Shop",
+      "Beach Club Marketplace",
+      "Hurricane Hanna's Waterside Bar & Grill",
+      "Martha's Vineyard Lounge"
+    ],
+    amenities: [
+      "Stormalong Bay (3-acre waterpark pool with sand bottom)",
+      "Three leisure pools",
+      "Beach access",
+      "Volleyball court",
+      "Walking distance to Epcot",
+      "Ship Shape fitness center",
+      "Marina rentals",
+      "Sandcastle Club children's activity center"
+    ],
+    transportationOptions: [
+      "Walking path to Epcot (5-10 minutes)",
+      "Walking path or Friendship boat to Hollywood Studios (20 minutes)",
+      "Bus to Magic Kingdom, Animal Kingdom, and Disney Springs",
+      "Skyliner access nearby (at International Gateway)"
+    ],
+    roomTypes: [
+      "Standard Room",
+      "Garden View",
+      "Lagoon View",
+      "Club Level",
+      "1-Bedroom Suite",
+      "2-Bedroom Suite",
+      "DVC Studios and Villas (Beach Club Villas)"
+    ],
+    proximity: {
+      magicKingdom: "Bus (15-20 minutes)",
+      epcot: "Walking distance (5-10 minutes to International Gateway)",
+      hollywoodStudios: "Boat (15 minutes) or walking (20 minutes)",
+      animalKingdom: "Bus (20 minutes)",
+      disneySprings: "Bus (15 minutes)"
+    },
+    insiderTips: [
+      "Stormalong Bay is exclusive to Beach Club and Yacht Club guests",
+      "Try the Kitchen Sink sundae at Beaches & Cream",
+      "Walking to Epcot through International Gateway is faster than bus",
+      "Request upper-floor rooms for better views",
+      "Book early for Epcot festival periods when this resort fills quickly"
+    ]
+  },
+  "yacht-club-resort": {
+    name: "Disney's Yacht Club Resort",
+    category: "Deluxe",
+    description: "Sail into luxury at Disney's Yacht Club Resort, designed after New England yacht clubs with nautical theming. Share the amazing Stormalong Bay pool complex with Beach Club, enjoy steakhouse dining at Yachtsman Steakhouse, and walk to Epcot in minutes.",
+    parkArea: "Epcot",
+    price_range: "Deluxe",
+    imageUrl: "/images/hotels/disneys-yacht-club-resort.jpg",
+    websiteUrl: "https://disneyworld.disney.go.com/resorts/yacht-club-resort/",
+    diningOptions: [
+      "Yachtsman Steakhouse (Signature Dining)",
+      "Ale & Compass Restaurant",
+      "Ale & Compass Lounge",
+      "Crew's Cup Lounge",
+      "Market at Ale & Compass",
+      "Hurricane Hanna's Waterside Bar & Grill"
+    ],
+    amenities: [
+      "Stormalong Bay (3-acre waterpark pool with sand bottom)",
+      "Three leisure pools",
+      "Beach access",
+      "Ship Shape fitness center",
+      "Walking distance to Epcot",
+      "Marina rentals",
+      "Convention center facilities"
+    ],
+    transportationOptions: [
+      "Walking path to Epcot (5-10 minutes)",
+      "Walking path or Friendship boat to Hollywood Studios (20 minutes)",
+      "Bus to Magic Kingdom, Animal Kingdom, and Disney Springs",
+      "Skyliner access nearby (at International Gateway)"
+    ],
+    roomTypes: [
+      "Standard Room",
+      "Garden View",
+      "Lagoon View",
+      "Club Level",
+      "Junior Suite",
+      "1-Bedroom Suite",
+      "2-Bedroom Suite",
+      "Presidential Suite"
+    ],
+    proximity: {
+      magicKingdom: "Bus (15-20 minutes)",
+      epcot: "Walking distance (5-10 minutes to International Gateway)",
+      hollywoodStudios: "Boat (15 minutes) or walking (20 minutes)",
+      animalKingdom: "Bus (20 minutes)",
+      disneySprings: "Bus (15 minutes)"
+    },
+    insiderTips: [
+      "Yacht Club is typically quieter than Beach Club (popular with convention guests)",
+      "Yachtsman Steakhouse is one of Disney's best signature restaurants",
+      "Walking to Hollywood Studios is often faster than the boat",
+      "The quiet Admiral pool offers a break from busy Stormalong Bay",
+      "For fireworks views, request a room facing the Boardwalk"
+    ]
+  },
+  "boardwalk-inn": {
+    name: "Disney's BoardWalk Inn",
+    category: "Deluxe",
+    description: "Step into 1940s Atlantic City at Disney's BoardWalk Inn, surrounded by the lively entertainment district of Disney's BoardWalk. Enjoy the luna park-inspired pool, fine dining at Flying Fish, and easy walking access to both Epcot and Hollywood Studios.",
+    parkArea: "Epcot",
+    price_range: "Deluxe",
+    imageUrl: "/images/hotels/disneys-boardwalk-inn.jpeg",
+    websiteUrl: "https://disneyworld.disney.go.com/resorts/boardwalk-inn/",
+    diningOptions: [
+      "Flying Fish (Signature Dining)",
+      "Trattoria al Forno (Character Breakfast)",
+      "BoardWalk Bakery",
+      "Pizza Window",
+      "AbracadaBar",
+      "Belle Vue Lounge",
+      "BoardWalk Ice Cream",
+      "Various BoardWalk vendors and restaurants"
+    ],
+    amenities: [
+      "Luna Park Pool with Keister Coaster slide",
+      "Two leisure pools",
+      "Muscles & Bustles fitness center",
+      "Walking distance to Epcot",
+      "Nighttime entertainment on the BoardWalk",
+      "Surrey bike rentals",
+      "Marina",
+      "ESPN Club",
+      "Carnival games and street performers"
+    ],
+    transportationOptions: [
+      "Walking path to Epcot (5-10 minutes)",
+      "Walking path or Friendship boat to Hollywood Studios (15-20 minutes)",
+      "Bus to Magic Kingdom, Animal Kingdom, and Disney Springs",
+      "Skyliner access nearby (at International Gateway)"
+    ],
+    roomTypes: [
+      "Standard Room",
+      "Water View",
+      "Garden View",
+      "BoardWalk View",
+      "Club Level",
+      "1-Bedroom Suite",
+      "2-Bedroom Suite",
+      "DVC Studios and Villas (BoardWalk Villas)"
+    ],
+    proximity: {
+      magicKingdom: "Bus (15-20 minutes)",
+      epcot: "Walking distance (5-10 minutes to International Gateway)",
+      hollywoodStudios: "Boat (15 minutes) or walking (20 minutes)",
+      animalKingdom: "Bus (20 minutes)",
+      disneySprings: "Bus (15 minutes)"
+    },
+    insiderTips: [
+      "BoardWalk view rooms offer lively evening entertainment views",
+      "Street performers appear on the BoardWalk in the evenings",
+      "Jellyrolls dueling piano bar is a popular adult nightlife spot",
+      "Fewer families stay here compared to Beach Club, often quieter",
+      "Many rooms have balconies overlooking the activities below"
+    ]
+  },
 
 
   // Animal Kingdom Area
