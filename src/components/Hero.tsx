@@ -68,7 +68,11 @@ const categories = [
 const imageWidth = width / 2.1;
 const imageHeight = 225;
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  navigation: any;
+}
+
+const Hero: React.FC<HeroProps> = ({ navigation }) => {
   
   // Animation values for smooth parallax scrolling
   const scrollX1 = useRef(new Animated.Value(0)).current;
@@ -194,12 +198,49 @@ const Hero: React.FC = () => {
   const CategoryButton = ({ category }: { category: typeof categories[0] }) => {
     const IconComponent = category.icon;
     
+    const handleCategoryPress = () => {
+      switch (category.id) {
+        case 'theme-parks':
+          navigation.navigate('TabNavigator', { screen: 'ThemeParks' });
+          break;
+        case 'attractions':
+          navigation.navigate('TabNavigator', { screen: 'Attractions' });
+          break;
+        case 'hotels':
+          navigation.navigate('TabNavigator', { screen: 'Hotels' });
+          break;
+        case 'dining':
+          navigation.navigate('TabNavigator', { screen: 'Dining' });
+          break;
+        case 'shopping':
+          navigation.navigate('shopping');
+          break;
+        case 'entertainment':
+          navigation.navigate('entertainment');
+          break;
+        case 'bar-hop':
+          navigation.navigate('entertainment');
+          break;
+        case 'golf':
+          navigation.navigate('golf');
+          break;
+        case 'spas':
+          navigation.navigate('TabNavigator', { screen: 'Attractions' });
+          break;
+        case 'neighborhoods':
+          navigation.navigate('neighborhoods');
+          break;
+        default:
+          console.log('Category selected:', category.id);
+      }
+    };
+    
     return (
       <TouchableOpacity
         style={[
           styles.categoryButton,
         ]}
-        onPress={() => console.log('Category selected:', category.id)}
+        onPress={handleCategoryPress}
         activeOpacity={0.7}>
         <View style={styles.categoryContent}>
           <IconComponent 
