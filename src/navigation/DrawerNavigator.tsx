@@ -87,6 +87,7 @@ const CustomDrawerContent = (props: any) => {
           ))}
         </View>
       </ScrollView>
+      
 
       <View style={styles.footer}>
         <Text style={styles.footerText}>Your Ultimate Orlando Guide</Text>

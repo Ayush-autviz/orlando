@@ -10,7 +10,6 @@ import {
   SafeAreaView,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-// import { LinearGradient } from 'expo-linear-gradient';
 import { cuisineCategories, RestaurantCategory } from '../data/restaurant';
 import { ArrowRight } from 'lucide-react-native';
 import Header from '../components/Header';
@@ -114,7 +113,11 @@ const styles = StyleSheet.create({
     right: -4,
     bottom: -4,
     borderRadius: 8,
-  //  backgroundColor: 'rgba(249, 115, 22, 0.1)',
+  //  backgroundColor: 'rgba(249, 115, 22, 0.2)',
+    shadowColor: '#EA580C',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
   },
   headerText: {
     fontSize: 32,
@@ -124,6 +127,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     paddingVertical: 8,
     paddingHorizontal: 8,
+    textShadowColor: 'rgba(0, 0, 0, 0.1)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
   },
   headerAccent: {
     color: '#B45309',
@@ -133,6 +139,7 @@ const styles = StyleSheet.create({
     width: 96,
     marginTop: 8,
     backgroundColor: '#EA580C',
+    borderRadius: 1,
   },
   categoriesContainer: {
     paddingHorizontal: 12,
@@ -166,7 +173,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: '50%',
-    backgroundColor: 'rgba(0,0,0,0.4)',
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   imageTextContainer: {
     position: 'absolute',

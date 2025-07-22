@@ -13,6 +13,7 @@ export interface ShoppingMall {
     description: string;            // Detailed description
     shortDescription: string;       // Brief overview for cards
     heroImage: any;                 // Main showcase image (require() return type)
+    galleryImages: any[];           // Gallery images (require() return type)
     location: {
       address: string;              // Full address
       neighborhood: string;         // Area of Orlando
@@ -77,6 +78,9 @@ export interface ShoppingMall {
       description: "The Mall at Millenia is Orlando's most upscale shopping destination, featuring an exceptional collection of over 150 stores, including the finest in luxury retail. With its soaring architecture, natural light, and modern design, the mall creates an unparalleled atmosphere of sophistication. Housing anchor stores like Neiman Marcus, Bloomingdale's, and Macy's alongside elite designers such as Louis Vuitton, Chanel, Gucci, and Tiffany & Co., The Mall at Millenia offers a true luxury shopping experience. Complementing the retail offerings is a curated selection of exceptional dining establishments, from fine restaurants to casual eateries. Located just minutes from Orlando's world-class attractions and International Drive, The Mall at Millenia has established itself as a must-visit destination for luxury shoppers from around the world seeking the finest in fashion, accessories, jewelry, and home goods.",
       shortDescription: "Orlando's premier luxury shopping destination featuring over 150 stores including high-end designer boutiques, exclusive brands, and upscale dining in an architecturally stunning setting.",
       heroImage: require("../../assets/images/mall-at-millenia.jpg"),
+      galleryImages: [
+        require("../../assets/images/mall-at-millenia-2.jpg")
+      ],
       location: {
         address: "4200 Conroy Road, Orlando, FL 32839",
         neighborhood: "Millenia",
@@ -289,6 +293,9 @@ export interface ShoppingMall {
       description: "The Florida Mall is Central Florida's largest shopping center, spanning over 1.8 million square feet and featuring more than 250 stores and restaurants. This impressive retail destination offers a dynamic mix of department stores, specialty retailers, and exclusive brands not found elsewhere in the market. Anchored by Macy's, Dillard's, JCPenney, and Dick's Sporting Goods, the mall provides extensive shopping options for every taste and budget. The Florida Mall is also home to many unique attractions such as American Girl, the Crayola Experience, and M&M's World, making it a favorite destination for families. The mall's Dining Pavilion offers an international array of quick-service options, while several full-service restaurants satisfy more substantial dining needs. With its modern design, bright and airy spaces, and family-friendly amenities, The Florida Mall provides a comprehensive shopping experience for Orlando residents and visitors alike, just minutes from Orlando International Airport and the region's world-famous attractions.",
       shortDescription: "Central Florida's largest shopping center with over 250 stores including exclusive brands, specialty retailers, family attractions, and diverse dining options in a modern, spacious environment.",
       heroImage: require("../../assets/images/the-florida-mall.jpg"),
+      galleryImages: [
+        require("../../assets/images/the-florida-mall-1.jpg")
+      ],
       location: {
         address: "8001 South Orange Blossom Trail, Orlando, FL 32809",
         neighborhood: "South Orlando",
@@ -493,6 +500,9 @@ export interface ShoppingMall {
       description: "Orlando International Premium Outlets is Florida's largest outlet shopping destination, featuring an impressive collection of 180 designer and name-brand outlet stores offering everyday savings of 25% to 65%. This outdoor shopping center combines the thrill of finding exceptional deals with an upscale shopping environment. Located on International Drive near Universal Orlando Resort, this premier outlet center attracts both locals and tourists seeking significant savings on top brands. The center features an extensive collection of designer names including Coach, Burberry, Kate Spade New York, Nike, Michael Kors, Armani, and many more. Beyond shopping, visitors can enjoy a variety of dining options at the food court or relax at one of the casual restaurants. With its convenient location in the heart of Orlando's tourist district, attractive architecture, and unparalleled selection of discounted luxury and designer brands, Orlando International Premium Outlets delivers a premier shopping experience that combines value and luxury.",
       shortDescription: "Florida's largest outlet shopping destination featuring 180 designer and name-brand stores offering 25% to 65% savings daily in an upscale outdoor shopping environment.",
       heroImage: require("../../assets/images/orlando-premium-outlets.jpg"),
+      galleryImages: [
+        require("../../assets/images/orlando-premium-outlets.jpeg")
+      ],
       location: {
         address: "5220 International Drive, Orlando, FL 32819",
         neighborhood: "International Drive",
@@ -704,6 +714,9 @@ export interface ShoppingMall {
       description: "Disney Springs is an expansive waterfront district at Walt Disney World Resort that immerses visitors in a vibrant blend of shopping, dining, and entertainment. This meticulously designed complex features over 150 venues spread across four distinct neighborhoods: The Landing, Town Center, West Side, and Marketplace, each with its own unique character and charm. The district seamlessly combines Disney magic with high-end brands, exclusive boutiques, and one-of-a-kind shops, creating a retail experience that can't be found anywhere else. Disney Springs is also home to more than 60 dining options, ranging from quick-service locations to signature restaurants created by celebrity chefs like Masaharu Morimoto, Wolfgang Puck, and José Andrés. Throughout the district, visitors encounter exceptional entertainment including live music, interactive experiences, and the breathtaking Cirque du Soleil show 'Drawn to Life.' With its picturesque waterfront setting, pedestrian-friendly layout, and distinctly Disney touches, Disney Springs offers a premium destination experience that extends the magic of Disney beyond the theme parks in a sophisticated, adult-friendly environment that still welcomes families.",
       shortDescription: "A waterfront shopping, dining, and entertainment district at Walt Disney World featuring over 150 venues across four themed neighborhoods with Disney magic woven throughout the experience.",
       heroImage: require("../../assets/images/disney-springs.jpg"),
+      galleryImages: [
+        require("../../assets/images/disney-springs-1.webp")
+      ],
       location: {
         address: "1486 Buena Vista Drive, Lake Buena Vista, FL 32830",
         neighborhood: "Lake Buena Vista",

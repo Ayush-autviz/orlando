@@ -11,7 +11,6 @@ import {
   Linking,
   Alert,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import { 
   ChevronLeft, 
   MapPin, 
@@ -29,7 +28,7 @@ import {
   Twitter, 
   Info, 
   Star,
-  ArrowLeft
+  Share2
 } from 'lucide-react-native';
 import { getShoppingMallById, ShoppingMall } from '../data/shoppingmalldata';
 
@@ -48,11 +47,16 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
   const { mallId } = route.params;
   const [mall, setMall] = useState<ShoppingMall | null>(null);
   const [loading, setLoading] = useState(true);
+  const [selectedTab, setSelectedTab] = useState('stores');
+  const [selectedImage, setSelectedImage] = useState<any>(null);
 
   useEffect(() => {
     if (mallId) {
       const mallData = getShoppingMallById(mallId);
       setMall(mallData || null);
+      if (mallData) {
+        setSelectedImage(mallData.heroImage);
+      }
       setLoading(false);
     }
   }, [mallId]);
@@ -83,12 +87,6 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
     } as never);
   };
 
-  const handleSocialMediaPress = (url: string) => {
-    Linking.openURL(url).catch(() => {
-      Alert.alert('Error', 'Could not open social media');
-    });
-  };
-
   if (loading) {
     return (
       <SafeAreaView style={styles.container}>
@@ -112,199 +110,422 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
     );
   }
 
-  return (
-    <SafeAreaView style={styles.container}>
-      {/* Header with back button */}
-      <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={handleBackPress}>
-          <ArrowLeft size={24} color="#374151" />
-          <Text style={styles.backButtonText}>Back to Shopping</Text>
-        </TouchableOpacity>
-      </View>
-
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        {/* Hero Image */}
-        <View style={styles.heroContainer}>
-          <Image source={mall.heroImage} style={styles.heroImage} />
-          <LinearGradient
-            colors={['transparent', 'rgba(0,0,0,0.6)']}
-            style={styles.heroOverlay}
-          />
-          
-          {/* Mall name overlay */}
-          <View style={styles.heroContent}>
-            <Text style={styles.mallName}>{mall.name}</Text>
-            <Text style={styles.mallTagline}>{mall.tagline}</Text>
-          </View>
-        </View>
-
-        {/* Mall Information */}
-        <View style={styles.contentContainer}>
-          {/* Quick Info */}
-          <View style={styles.quickInfoContainer}>
-            <View style={styles.infoItem}>
-              <Store size={20} color="#ea580c" />
-              <Text style={styles.infoText}>{mall.details.storeCount}+ Stores</Text>
-            </View>
-            <View style={styles.infoItem}>
-              <MapPin size={20} color="#ea580c" />
-              <Text style={styles.infoText}>{mall.location.neighborhood}</Text>
-            </View>
-            <View style={styles.infoItem}>
-              <Clock size={20} color="#ea580c" />
-              <Text style={styles.infoText}>{mall.hours.regular}</Text>
-            </View>
-          </View>
-
-          {/* Description */}
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>About {mall.name}</Text>
-            <Text style={styles.description}>{mall.description}</Text>
-          </View>
-
-          {/* Location & Contact */}
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Location & Contact</Text>
-            
-            <TouchableOpacity 
-              style={styles.contactItem}
-              onPress={() => handleMapPress(mall.location.address)}
-            >
-              <MapPin size={20} color="#6b7280" />
-              <Text style={styles.contactText}>{mall.location.address}</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity 
-              style={styles.contactItem}
-              onPress={() => handlePhonePress(mall.contactInfo.phone)}
-            >
-              <Phone size={20} color="#6b7280" />
-              <Text style={styles.contactText}>{mall.contactInfo.phone}</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity 
-              style={styles.contactItem}
-              onPress={() => handleWebsitePress(mall.contactInfo.website)}
-            >
-              <Globe size={20} color="#6b7280" />
-              <Text style={styles.contactText}>Official Website</Text>
-              <ExternalLink size={16} color="#ea580c" />
-            </TouchableOpacity>
-          </View>
-
-          {/* Features */}
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Features & Amenities</Text>
-            <View style={styles.featuresContainer}>
-              {mall.features.map((feature, index) => (
-                <View key={index} style={styles.featureItem}>
-                  <Text style={styles.featureText}>• {feature}</Text>
-                </View>
-              ))}
-            </View>
-          </View>
-
-          {/* Notable Stores */}
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Notable Stores</Text>
-            <View style={styles.storesContainer}>
-              {mall.notableStores.slice(0, 6).map((store, index) => (
-                <View key={index} style={styles.storeItem}>
-                  <View style={styles.storeHeader}>
-                    <Text style={styles.storeName}>{store.name}</Text>
-                    {store.flagship && (
-                      <View style={styles.flagshipBadge}>
-                        <Text style={styles.flagshipText}>Flagship</Text>
-                      </View>
-                    )}
+  const renderStoresTab = () => (
+    <View style={styles.tabContent}>
+      <Text style={styles.tabTitle}>Notable Stores</Text>
+      <View style={styles.storesGrid}>
+        {mall.notableStores.map((store, index) => (
+          <View key={index} style={[
+            styles.storeCard,
+            store.flagship && styles.flagshipCard
+          ]}>
+            <View style={styles.storeCardContent}>
+              <View style={styles.storeCardHeader}>
+                <Text style={styles.storeCardName}>{store.name}</Text>
+                {store.flagship && (
+                  <View style={styles.flagshipBadge}>
+                    <Star size={12} color="#FFFFFF" fill="#FFFFFF" />
+                    <Text style={styles.flagshipBadgeText}>Flagship</Text>
                   </View>
-                  <Text style={styles.storeCategory}>{store.category}</Text>
-                  <Text style={styles.storeDescription} numberOfLines={2}>
-                    {store.description}
-                  </Text>
-                  {store.website && (
-                    <TouchableOpacity 
-                      style={styles.storeWebsite}
-                      onPress={() => navigation.navigate('WebView', { 
-                        url: store.website!, 
-                        title: `${store.name} Website` 
-                      })}
-                    >
-                      <Text style={styles.websiteText}>Visit Website</Text>
-                      <ExternalLink size={12} color="#ea580c" />
-                    </TouchableOpacity>
-                  )}
-                </View>
-              ))}
-            </View>
-          </View>
-
-          {/* Dining Options */}
-          <View style={styles.section}>
-            <Text style={styles.sectionTitle}>Dining Options</Text>
-            <View style={styles.diningContainer}>
-              {mall.diningOptions.slice(0, 4).map((restaurant, index) => (
-                <View key={index} style={styles.restaurantItem}>
-                  <View style={styles.restaurantHeader}>
-                    <Text style={styles.restaurantName}>{restaurant.name}</Text>
-                    <Text style={styles.priceRange}>{restaurant.priceRange}</Text>
+                )}
+              </View>
+              <View style={styles.categoryBadge}>
+                <Text style={styles.categoryBadgeText}>{store.category}</Text>
+              </View>
+              <Text style={styles.storeCardDescription} numberOfLines={3}>
+                {store.description}
+              </Text>
+              
+              <View style={styles.storeCardSeparator} />
+              
+              <View style={styles.storeCardFooter}>
+                {store.location && (
+                  <View style={styles.storeLocation}>
+                    <View style={styles.locationIcon}>
+                      <MapPin size={12} color="#6B7280" />
+                    </View>
+                    <Text style={styles.storeLocationText}>{store.location}</Text>
                   </View>
-                  <Text style={styles.cuisineType}>{restaurant.cuisine}</Text>
-                  <Text style={styles.restaurantDescription} numberOfLines={2}>
-                    {restaurant.description}
-                  </Text>
-                  {restaurant.website && (
-                    <TouchableOpacity 
-                      style={styles.restaurantWebsite}
-                      onPress={() => navigation.navigate('WebView', { 
-                        url: restaurant.website!, 
-                        title: `${restaurant.name} Website` 
-                      })}
-                    >
-                      <Text style={styles.websiteText}>Visit Website</Text>
-                      <ExternalLink size={12} color="#ea580c" />
-                    </TouchableOpacity>
-                  )}
-                </View>
-              ))}
-            </View>
-          </View>
-
-          {/* Social Media */}
-          {/* {mall.contactInfo.socialMedia && (
-            <View style={styles.section}>
-              <Text style={styles.sectionTitle}>Follow Us</Text>
-              <View style={styles.socialContainer}>
-                {mall.contactInfo.socialMedia.facebook && (
-                  <TouchableOpacity 
-                    style={styles.socialButton}
-                    onPress={() => handleSocialMediaPress(mall.contactInfo.socialMedia!.facebook!)}
-                  >
-                    <Facebook size={20} color="#1877f2" />
-                    <Text style={styles.socialText}>Facebook</Text>
-                  </TouchableOpacity>
                 )}
-                {mall.contactInfo.socialMedia.instagram && (
+                {store.website && (
                   <TouchableOpacity 
-                    style={styles.socialButton}
-                    onPress={() => handleSocialMediaPress(mall.contactInfo.socialMedia!.instagram!)}
+                    style={styles.storeWebsiteLink}
+                    onPress={() => navigation.navigate('WebView', { 
+                      url: store.website!, 
+                      title: `${store.name} Website` 
+                    })}
                   >
-                    <Instagram size={20} color="#e4405f" />
-                    <Text style={styles.socialText}>Instagram</Text>
-                  </TouchableOpacity>
-                )}
-                {mall.contactInfo.socialMedia.twitter && (
-                  <TouchableOpacity 
-                    style={styles.socialButton}
-                    onPress={() => handleSocialMediaPress(mall.contactInfo.socialMedia!.twitter!)}
-                  >
-                    <Twitter size={20} color="#1da1f2" />
-                    <Text style={styles.socialText}>Twitter</Text>
+                    <Text style={styles.storeWebsiteText}>Visit Store</Text>
+                    <ExternalLink size={12} color="#EA580C" />
                   </TouchableOpacity>
                 )}
               </View>
             </View>
-          )} */}
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+
+  const renderDiningTab = () => (
+    <View style={styles.tabContent}>
+      <Text style={styles.tabTitle}>Dining Options</Text>
+      <View style={styles.diningGrid}>
+        {mall.diningOptions.map((dining, index) => (
+          <View key={index} style={styles.diningCard}>
+            <View style={styles.diningCardHeader}>
+              <View style={styles.diningIconContainer}>
+                <Coffee size={32} color="#EA580C" />
+              </View>
+              <View style={[
+                styles.priceBadge,
+                dining.priceRange === '$$$$' && styles.priceBadgeExpensive,
+                dining.priceRange === '$$$' && styles.priceBadgeModerate,
+                dining.priceRange === '$$' && styles.priceBadgeAffordable
+              ]}>
+                <Text style={styles.priceBadgeText}>{dining.priceRange}</Text>
+              </View>
+            </View>
+            
+            <View style={styles.diningCardContent}>
+              <Text style={styles.diningCardName}>{dining.name}</Text>
+              <View style={styles.cuisineBadge}>
+                <Text style={styles.cuisineBadgeText}>{dining.cuisine}</Text>
+              </View>
+              <Text style={styles.diningCardDescription} numberOfLines={3}>
+                {dining.description}
+              </Text>
+              
+              <View style={styles.diningCardSeparator} />
+              
+              <View style={styles.diningCardFooter}>
+                {dining.location && (
+                  <View style={styles.diningLocation}>
+                    <View style={styles.locationIcon}>
+                      <MapPin size={12} color="#6B7280" />
+                    </View>
+                    <Text style={styles.diningLocationText}>{dining.location}</Text>
+                  </View>
+                )}
+                {dining.website && (
+                  <TouchableOpacity 
+                    style={styles.diningWebsiteLink}
+                    onPress={() => navigation.navigate('WebView', { 
+                      url: dining.website!, 
+                      title: `${dining.name} Website` 
+                    })}
+                  >
+                    <Text style={styles.diningWebsiteText}>View Menu</Text>
+                    <ExternalLink size={12} color="#EA580C" />
+                  </TouchableOpacity>
+                )}
+              </View>
+            </View>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+
+  const renderFeaturesTab = () => (
+    <View style={styles.tabContent}>
+      <Text style={styles.tabTitle}>Mall Features</Text>
+      <View style={styles.featuresGrid}>
+        {mall.features.map((feature, index) => {
+          let iconColor = '#EA580C';
+          let bgColor = '#FEF3C7';
+          let borderColor = '#F59E0B';
+          
+          if (feature.toLowerCase().includes('wifi')) {
+            iconColor = '#0D9488';
+            bgColor = '#CCFBF1';
+            borderColor = '#14B8A6';
+          } else if (feature.toLowerCase().includes('parking')) {
+            iconColor = '#3B82F6';
+            bgColor = '#DBEAFE';
+            borderColor = '#2563EB';
+          } else if (feature.toLowerCase().includes('currency') || feature.toLowerCase().includes('exchange')) {
+            iconColor = '#10B981';
+            bgColor = '#D1FAE5';
+            borderColor = '#059669';
+          } else if (feature.toLowerCase().includes('concierge') || feature.toLowerCase().includes('service')) {
+            iconColor = '#6366F1';
+            bgColor = '#E0E7FF';
+            borderColor = '#4F46E5';
+          }
+          
+          return (
+            <View key={index} style={[styles.featureCard, { backgroundColor: bgColor, borderColor }]}>
+              <View style={styles.featureIconContainer}>
+                <ShoppingBag size={24} color={iconColor} />
+              </View>
+              <Text style={styles.featureText}>{feature}</Text>
+            </View>
+          );
+        })}
+      </View>
+    </View>
+  );
+
+  return (
+    <SafeAreaView style={styles.container}>
+      {/* Header with breadcrumb and back button */}
+      <View style={styles.header}>
+        <View style={styles.headerContent}>
+          <TouchableOpacity style={styles.backButton} onPress={handleBackPress}>
+            <ChevronLeft size={16} color="#6B7280" />
+            <Text style={styles.backButtonText}>Back to Shopping</Text>
+          </TouchableOpacity>
+          {/* <View style={styles.breadcrumb}>
+            <Text style={styles.breadcrumbText}>Home</Text>
+            <Text style={styles.breadcrumbSeparator}>/</Text>
+            <Text style={styles.breadcrumbText}>Shopping</Text>
+            <Text style={styles.breadcrumbSeparator}>/</Text>
+            <Text style={styles.breadcrumbActive}>{mall.name}</Text>
+          </View> */}
+        </View>
+      </View>
+
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        {/* Hero section */}
+        <View style={styles.heroSection}>
+          <Image source={mall.heroImage} style={styles.heroImage} />
+          <View style={styles.heroOverlay} />
+          <View style={styles.heroPattern} />
+          
+          {/* Share button */}
+          <TouchableOpacity style={styles.shareButton}>
+            <Share2 size={20} color="#374151" />
+          </TouchableOpacity>
+          
+          {/* Hero content */}
+          <View style={styles.heroContent}>
+            <View style={styles.geometricAccent}>
+              <View style={styles.accentLine} />
+              <View style={styles.accentLineShort} />
+              <View style={styles.accentLine} />
+            </View>
+            
+            <Text style={styles.heroTitle}>{mall.name}</Text>
+            <Text style={styles.heroTagline}>{mall.tagline}</Text>
+            
+            <View style={styles.heroBadges}>
+              <View style={styles.heroBadge}>
+                <Text style={styles.heroBadgeText}>{mall.details.storeCount}+ Stores</Text>
+              </View>
+              <View style={styles.heroBadgeTeal}>
+                <Text style={styles.heroBadgeText}>{mall.location.neighborhood}</Text>
+              </View>
+              <View style={styles.heroBadgeWhite}>
+                <Text style={styles.heroBadgeTextDark}>{mall.hours.regular.split(',')[0]}</Text>
+              </View>
+            </View>
+            
+            <View style={styles.geometricAccent}>
+              <View style={styles.accentLineShort} />
+              <View style={styles.accentLine} />
+              <View style={styles.accentLineShort} />
+            </View>
+            
+            <View style={styles.heroButtons}>
+              <TouchableOpacity 
+                style={styles.heroWebsiteButton}
+                onPress={() => handleWebsitePress(mall.contactInfo.website)}
+              >
+                <Text style={styles.heroWebsiteButtonText}>Official Website</Text>
+                <ExternalLink size={16} color="#FFFFFF" />
+              </TouchableOpacity>
+              
+              <TouchableOpacity 
+                style={styles.heroPhoneButton}
+                onPress={() => handlePhonePress(mall.contactInfo.phone)}
+              >
+                <Phone size={16} color="#FFFFFF" />
+                <Text style={styles.heroPhoneButtonText}>{mall.contactInfo.phone}</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          
+          <View style={styles.heroBottomGradient} />
+        </View>
+
+        {/* Main content */}
+        <View style={styles.mainContent}>
+          <View style={styles.contentGrid}>
+            {/* Left column - Main content */}
+            <View style={styles.mainColumn}>
+              {/* Overview */}
+              <View style={styles.overviewSection}>
+                <Text style={styles.overviewTitle}>Overview</Text>
+                <Text style={styles.overviewText}>{mall.description}</Text>
+              </View>
+              
+              {/* Gallery */}
+              <View style={styles.gallerySection}>
+                <Text style={styles.galleryTitle}>Gallery</Text>
+                <View style={styles.mainGalleryImage}>
+                  {selectedImage && (
+                    <Image source={selectedImage} style={styles.galleryImage} />
+                  )}
+                </View>
+                <View style={styles.galleryThumbnails}>
+                  {[mall.heroImage, ...mall.galleryImages].map((image, index) => (
+                    <TouchableOpacity 
+                      key={index}
+                      style={[
+                        styles.galleryThumbnail,
+                        selectedImage === image && styles.galleryThumbnailSelected
+                      ]}
+                      onPress={() => setSelectedImage(image)}
+                    >
+                      <Image source={image} style={styles.thumbnailImage} />
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </View>
+              
+              {/* Tabs */}
+              <View style={styles.tabsSection}>
+                <View style={styles.tabsList}>
+                  <TouchableOpacity 
+                    style={[styles.tabTrigger, selectedTab === 'stores' && styles.tabTriggerActive]}
+                    onPress={() => setSelectedTab('stores')}
+                  >
+                    <ShoppingBag size={16} color={selectedTab === 'stores' ? '#FFFFFF' : '#6B7280'} />
+                    <Text style={[styles.tabTriggerText, selectedTab === 'stores' && styles.tabTriggerTextActive]}>
+                      Stores
+                    </Text>
+                  </TouchableOpacity>
+                  
+                  <TouchableOpacity 
+                    style={[styles.tabTrigger, selectedTab === 'dining' && styles.tabTriggerActive]}
+                    onPress={() => setSelectedTab('dining')}
+                  >
+                    <Coffee size={16} color={selectedTab === 'dining' ? '#FFFFFF' : '#6B7280'} />
+                    <Text style={[styles.tabTriggerText, selectedTab === 'dining' && styles.tabTriggerTextActive]}>
+                      Dining
+                    </Text>
+                  </TouchableOpacity>
+                  
+                  <TouchableOpacity 
+                    style={[styles.tabTrigger, selectedTab === 'features' && styles.tabTriggerActive]}
+                    onPress={() => setSelectedTab('features')}
+                  >
+                    <Info size={16} color={selectedTab === 'features' ? '#FFFFFF' : '#6B7280'} />
+                    <Text style={[styles.tabTriggerText, selectedTab === 'features' && styles.tabTriggerTextActive]}>
+                      Features
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+                
+                {selectedTab === 'stores' && renderStoresTab()}
+                {selectedTab === 'dining' && renderDiningTab()}
+                {selectedTab === 'features' && renderFeaturesTab()}
+              </View>
+            </View>
+            
+            {/* Right column - Sidebar */}
+            <View style={styles.sidebarColumn}>
+              <View style={styles.sidebarSticky}>
+                {/* Mall Info Card */}
+                <View style={styles.mallInfoCard}>
+                  <Text style={styles.mallInfoTitle}>Mall Information</Text>
+                  
+                  <View style={styles.mallInfoContent}>
+                    <View style={styles.mallInfoItem}>
+                      <MapPin size={20} color="#6B7280" />
+                      <View style={styles.mallInfoItemContent}>
+                        <Text style={styles.mallInfoLabel}>Location</Text>
+                        <View style={styles.mallInfoAddress}>
+                          <Text style={styles.mallInfoText}>{mall.location.address}</Text>
+                          <Text style={styles.mallInfoText}>{mall.location.neighborhood}</Text>
+                          <TouchableOpacity 
+                            style={styles.mallInfoMapButton}
+                            onPress={() => handleMapPress(mall.location.address)}
+                          >
+                            <MapPin size={12} color="#EA580C" />
+                            <Text style={styles.mallInfoMapText}>Map It</Text>
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    </View>
+                    
+                    <View style={styles.mallInfoItem}>
+                      <Clock size={20} color="#6B7280" />
+                      <View style={styles.mallInfoItemContent}>
+                        <Text style={styles.mallInfoLabel}>Hours</Text>
+                        <Text style={styles.mallInfoText}>{mall.hours.regular.replace(/,/g, '\n')}</Text>
+                        {mall.hours.holiday && (
+                          <Text style={styles.mallInfoHoliday}>{mall.hours.holiday}</Text>
+                        )}
+                      </View>
+                    </View>
+                    
+                    <View style={styles.mallInfoSeparator} />
+                    
+                    <View style={styles.mallInfoItem}>
+                      <Phone size={20} color="#6B7280" />
+                      <View style={styles.mallInfoItemContent}>
+                        <Text style={styles.mallInfoLabel}>Phone</Text>
+                        <TouchableOpacity onPress={() => handlePhonePress(mall.contactInfo.phone)}>
+                          <Text style={styles.mallInfoLink}>{mall.contactInfo.phone}</Text>
+                        </TouchableOpacity>
+                      </View>
+                    </View>
+                    
+                    <View style={styles.mallInfoItem}>
+                      <Globe size={20} color="#6B7280" />
+                      <View style={styles.mallInfoItemContent}>
+                        <Text style={styles.mallInfoLabel}>Website</Text>
+                                                 <TouchableOpacity onPress={() => handleWebsitePress(mall.contactInfo.website)}>
+                           <Text style={styles.mallInfoLink}>
+                             {mall.contactInfo.website.replace(/^https?:\/\//, '').replace(/\/.*$/, '')}
+                           </Text>
+                           <ExternalLink size={12} color="#EA580C" />
+                         </TouchableOpacity>
+                      </View>
+                    </View>
+                    
+                    <View style={styles.mallInfoSeparator} />
+                    
+                    <View style={styles.mallInfoItem}>
+                      <Store size={20} color="#6B7280" />
+                      <View style={styles.mallInfoItemContent}>
+                        <Text style={styles.mallInfoLabel}>Mall Details</Text>
+                        <Text style={styles.mallInfoText}>Size: {mall.details.squareFeet}</Text>
+                        <Text style={styles.mallInfoText}>Stores: {mall.details.storeCount}+</Text>
+                        <Text style={styles.mallInfoText}>Levels: {mall.details.levels}</Text>
+                        <Text style={styles.mallInfoText}>Opened: {mall.details.openingYear}</Text>
+                      </View>
+                    </View>
+                    
+                    <View style={styles.mallInfoItem}>
+                      <Car size={20} color="#6B7280" />
+                      <View style={styles.mallInfoItemContent}>
+                        <Text style={styles.mallInfoLabel}>Parking</Text>
+                        <Text style={styles.mallInfoText}>{mall.details.parkingInfo}</Text>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        
+        {/* Call to action */}
+        <View style={styles.ctaSection}>
+          <Text style={styles.ctaTitle}>Ready to Explore {mall.name}?</Text>
+          <Text style={styles.ctaSubtitle}>
+            Visit {mall.name} today to experience luxury shopping, dining, and entertainment.
+          </Text>
+          <TouchableOpacity 
+            style={styles.ctaButton}
+            onPress={() => handleWebsitePress(mall.contactInfo.website)}
+          >
+            <Text style={styles.ctaButtonText}>Official Website</Text>
+            <ExternalLink size={16} color="#EA580C" />
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -314,7 +535,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#FFFFFF',
   },
   loadingContainer: {
     flex: 1,
@@ -323,7 +544,7 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 18,
-    color: '#6b7280',
+    color: '#6B7280',
   },
   errorContainer: {
     flex: 1,
@@ -339,230 +560,721 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   header: {
+    backgroundColor: '#F9FAFB',
+    borderBottomWidth: 1,
+    borderBottomColor: '#E5E7EB',
+  },
+  headerContent: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    paddingVertical: 16,
   },
   backButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 8,
+    marginRight: 16,
   },
   backButtonText: {
     fontSize: 16,
-    color: '#374151',
+    color: '#6B7280',
     marginLeft: 8,
+  },
+  breadcrumb: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  breadcrumbText: {
+    fontSize: 14,
+    color: '#6B7280',
+  },
+  breadcrumbSeparator: {
+    fontSize: 14,
+    color: '#6B7280',
+    marginHorizontal: 8,
+  },
+  breadcrumbActive: {
+    fontSize: 14,
+    color: '#374151',
+    fontWeight: '500',
   },
   scrollView: {
     flex: 1,
   },
-  heroContainer: {
-    height: 300,
+  heroSection: {
+    height: 500,
     position: 'relative',
+    overflow: 'hidden',
   },
   heroImage: {
+    position: 'absolute',
     width: '100%',
     height: '100%',
     resizeMode: 'cover',
   },
   heroOverlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    height: '50%',
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    zIndex: 10,
+  },
+  heroPattern: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 0.1,
+    zIndex: 10,
+  },
+  shareButton: {
+    position: 'absolute',
+    top: 16,
+    right: 16,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    padding: 8,
+    borderRadius: 8,
+    zIndex: 30,
   },
   heroContent: {
     position: 'absolute',
-    bottom: 20,
-    left: 20,
-    right: 20,
-  },
-  mallName: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    marginBottom: 8,
-  },
-  mallTagline: {
-    fontSize: 16,
-    color: '#f3f4f6',
-  },
-  contentContainer: {
-    paddingHorizontal: 16,
-    paddingTop: 24,
-  },
-  quickInfoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginBottom: 24,
-    paddingVertical: 16,
-    backgroundColor: '#f9fafb',
-    borderRadius: 12,
-  },
-  infoItem: {
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+    zIndex: 20,
   },
-  infoText: {
-    fontSize: 12,
-    color: '#6b7280',
-    marginTop: 4,
-    textAlign: 'center',
-  },
-  section: {
-    marginBottom: 32,
-  },
-  sectionTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#111827',
+  geometricAccent: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 16,
   },
-  description: {
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#6b7280',
+  accentLine: {
+    height: 2,
+    width: Math.min(64, width * 0.15),
+    backgroundColor: '#FB923C',
   },
-  contactItem: {
+  accentLineShort: {
+    height: 2,
+    width: Math.min(32, width * 0.08),
+    backgroundColor: '#2DD4BF',
+    marginHorizontal: Math.min(12, width * 0.03),
+  },
+  heroTitle: {
+    fontSize: Math.min(56, width * 0.12),
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    textAlign: 'center',
+    marginBottom: 12,
+    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowOffset: { width: 0, height: 2 },
+    textShadowRadius: 4,
+  },
+  heroTagline: {
+    fontSize: Math.min(24, width * 0.05),
+    color: '#FFFFFF',
+    textAlign: 'center',
+    marginBottom: 20,
+    fontStyle: 'italic',
+    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+  heroBadges: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 8,
+    marginBottom: 24,
+  },
+  heroBadge: {
+    backgroundColor: '#EA580C',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  heroBadgeTeal: {
+    backgroundColor: '#0D9488',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  heroBadgeWhite: {
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 5,
+  },
+  heroBadgeText: {
+    color: '#FFFFFF',
+    fontSize: Math.min(14, width * 0.035),
+    fontWeight: '600',
+  },
+  heroBadgeTextDark: {
+    color: '#374151',
+    fontSize: Math.min(14, width * 0.035),
+    fontWeight: '600',
+  },
+  heroButtons: {
+    flexDirection: 'column',
+    gap: 12,
+    width: '100%',
+    paddingHorizontal: 20,
+  },
+  heroWebsiteButton: {
+    backgroundColor: '#EA580C',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: '#f3f4f6',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    borderRadius: 25,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 8,
   },
-  contactText: {
-    fontSize: 16,
-    color: '#374151',
-    marginLeft: 12,
+  heroWebsiteButtonText: {
+    color: '#FFFFFF',
+    fontSize: Math.min(18, width * 0.045),
+    fontWeight: '600',
+    marginRight: 8,
+  },
+  heroPhoneButton: {
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+    borderRadius: 25,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 12,
+    elevation: 8,
+  },
+  heroPhoneButtonText: {
+    color: '#FFFFFF',
+    fontSize: Math.min(18, width * 0.045),
+    fontWeight: '600',
+    marginLeft: 8,
+  },
+  heroBottomGradient: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 96,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    zIndex: 10,
+  },
+  mainContent: {
+    paddingHorizontal: 16,
+    paddingVertical: 24,
+  },
+  contentGrid: {
+    flexDirection: 'column',
+    gap: 24,
+  },
+  mainColumn: {
     flex: 1,
   },
-  featuresContainer: {
-    backgroundColor: '#f9fafb',
+  sidebarColumn: {
+    flex: 1,
+  },
+  sidebarSticky: {
+    position: 'relative',
+    top: 24,
+  },
+  overviewSection: {
+    marginBottom: 48,
+  },
+  overviewTitle: {
+    fontSize: Math.min(32, width * 0.08),
+    fontWeight: 'bold',
+    color: '#374151',
+    marginBottom: 16,
+  },
+  overviewText: {
+    fontSize: Math.min(18, width * 0.045),
+    color: '#6B7280',
+    lineHeight: 24,
+  },
+  gallerySection: {
+    marginBottom: 24,
+  },
+  galleryTitle: {
+    fontSize: Math.min(32, width * 0.08),
+    fontWeight: 'bold',
+    color: '#374151',
+    marginBottom: 16,
+  },
+  mainGalleryImage: {
+    height: Math.min(400, width * 0.6),
     borderRadius: 12,
-    padding: 16,
+    marginBottom: 16,
+    backgroundColor: '#F3F4F6',
+    overflow: 'hidden',
   },
-  featureItem: {
-    marginBottom: 8,
+  galleryImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
   },
-  featureText: {
-    fontSize: 14,
-    color: '#6b7280',
-    lineHeight: 20,
+  galleryThumbnails: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
   },
-  storesContainer: {
+  galleryThumbnail: {
+    width: Math.min(96, width * 0.2),
+    height: Math.min(96, width * 0.2),
+    borderRadius: 8,
+    borderWidth: 2,
+    borderColor: 'transparent',
+    overflow: 'hidden',
+  },
+  galleryThumbnailSelected: {
+    borderColor: '#EA580C',
+  },
+  thumbnailImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  tabsSection: {
+    marginBottom: 24,
+  },
+  tabsList: {
+    flexDirection: 'row',
+    marginBottom: 32,
+    backgroundColor: '#F3F4F6',
+    borderRadius: 8,
+    padding: 4,
+  },
+  tabTrigger: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    borderRadius: 6,
+    gap: 8,
+  },
+  tabTriggerActive: {
+    backgroundColor: '#EA580C',
+  },
+  tabTriggerText: {
+    fontSize: 16,
+    color: '#6B7280',
+    fontWeight: '500',
+  },
+  tabTriggerTextActive: {
+    color: '#FFFFFF',
+  },
+  tabContent: {
+    marginTop: 16,
+  },
+  tabTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 16,
+  },
+  storesGrid: {
+    flexDirection: 'column',
     gap: 16,
   },
-  storeItem: {
-    backgroundColor: '#f9fafb',
+  storeCard: {
+    backgroundColor: '#FFFFFF',
     borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  flagshipCard: {
+    borderColor: '#FED7AA',
+    backgroundColor: '#FFFBEB',
+  },
+  storeCardContent: {
     padding: 16,
   },
-  storeHeader: {
+  storeCardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: 12,
   },
-  storeName: {
-    fontSize: 16,
-    fontWeight: 'bold',
+  storeCardName: {
+    fontSize: 20,
+    fontWeight: '600',
     color: '#111827',
     flex: 1,
   },
   flagshipBadge: {
-    backgroundColor: '#ea580c',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 12,
-  },
-  flagshipText: {
-    fontSize: 12,
-    color: '#ffffff',
-    fontWeight: '600',
-  },
-  storeCategory: {
-    fontSize: 14,
-    color: '#ea580c',
-    marginBottom: 8,
-  },
-  storeDescription: {
-    fontSize: 14,
-    color: '#6b7280',
-    lineHeight: 20,
-    marginBottom: 8,
-  },
-  storeWebsite: {
+    backgroundColor: '#EA580C',
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'flex-start',
-  },
-  websiteText: {
-    fontSize: 14,
-    color: '#ea580c',
-    marginRight: 4,
-  },
-  diningContainer: {
-    gap: 16,
-  },
-  restaurantItem: {
-    backgroundColor: '#f9fafb',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
     borderRadius: 12,
-    padding: 16,
+    gap: 4,
   },
-  restaurantHeader: {
+  flagshipBadgeText: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  categoryBadge: {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 12,
+    alignSelf: 'flex-start',
+    marginBottom: 16,
+  },
+  categoryBadgeText: {
+    color: '#6B7280',
+    fontSize: 12,
+    fontWeight: '500',
+  },
+  storeCardDescription: {
+    fontSize: 14,
+    color: '#6B7280',
+    lineHeight: 20,
+    marginBottom: 16,
+  },
+  storeCardSeparator: {
+    height: 1,
+    backgroundColor: '#E5E7EB',
+    marginVertical: 16,
+  },
+  storeCardFooter: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 8,
   },
-  restaurantName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#111827',
-    flex: 1,
-  },
-  priceRange: {
-    fontSize: 14,
-    color: '#ea580c',
-    fontWeight: '600',
-  },
-  cuisineType: {
-    fontSize: 14,
-    color: '#6b7280',
-    marginBottom: 8,
-  },
-  restaurantDescription: {
-    fontSize: 14,
-    color: '#6b7280',
-    lineHeight: 20,
-    marginBottom: 8,
-  },
-  restaurantWebsite: {
+  storeLocation: {
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'flex-start',
   },
-  socialContainer: {
+  locationIcon: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#F3F4F6',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 8,
+  },
+  storeLocationText: {
+    fontSize: 14,
+    color: '#6B7280',
+  },
+  storeWebsiteLink: {
     flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  storeWebsiteText: {
+    color: '#EA580C',
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  diningGrid: {
+    flexDirection: 'column',
     gap: 16,
   },
-  socialButton: {
+  diningCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+    overflow: 'hidden',
+  },
+  diningCardHeader: {
+    height: 112,
+    backgroundColor: 'rgba(251, 146, 60, 0.1)',
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  diningIconContainer: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  priceBadge: {
+    position: 'absolute',
+    top: 16,
+    right: 16,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 12,
+    borderWidth: 1,
+  },
+  priceBadgeExpensive: {
+    backgroundColor: '#FEF3C7',
+    borderColor: '#F59E0B',
+  },
+  priceBadgeModerate: {
+    backgroundColor: '#D1FAE5',
+    borderColor: '#10B981',
+  },
+  priceBadgeAffordable: {
+    backgroundColor: '#DBEAFE',
+    borderColor: '#3B82F6',
+  },
+  priceBadgeText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  diningCardContent: {
+    padding: 16,
+  },
+  diningCardName: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#111827',
+    marginBottom: 8,
+  },
+  cuisineBadge: {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 12,
+    alignSelf: 'flex-start',
+    marginBottom: 16,
+  },
+  cuisineBadgeText: {
+    color: '#6B7280',
+    fontSize: 12,
+    fontWeight: '500',
+  },
+  diningCardDescription: {
+    fontSize: 14,
+    color: '#6B7280',
+    lineHeight: 20,
+    marginBottom: 16,
+  },
+  diningCardSeparator: {
+    height: 1,
+    backgroundColor: '#E5E7EB',
+    marginVertical: 16,
+  },
+  diningCardFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  diningLocation: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f9fafb',
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+  },
+  diningLocationText: {
+    fontSize: 14,
+    color: '#6B7280',
+  },
+  diningWebsiteLink: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  diningWebsiteText: {
+    color: '#EA580C',
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  featuresGrid: {
+    flexDirection: 'column',
+    gap: 12,
+  },
+  featureCard: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 16,
     borderRadius: 8,
+    borderWidth: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  featureIconContainer: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 1,
+  },
+  featureText: {
+    fontSize: 14,
+    fontWeight: '500',
+    color: '#374151',
     flex: 1,
   },
-  socialText: {
+  mallInfoCard: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    padding: 24,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  mallInfoTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#111827',
+    marginBottom: 16,
+  },
+  mallInfoContent: {
+    gap: 16,
+  },
+  mallInfoItem: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  mallInfoItemContent: {
+    marginLeft: 12,
+    flex: 1,
+  },
+  mallInfoLabel: {
     fontSize: 14,
-    color: '#374151',
+    fontWeight: '500',
+    color: '#111827',
+    marginBottom: 4,
+  },
+  mallInfoText: {
+    fontSize: 14,
+    color: '#6B7280',
+    lineHeight: 20,
+  },
+  mallInfoAddress: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+  },
+  mallInfoMapButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FED7AA',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    gap: 4,
     marginLeft: 8,
+  },
+  mallInfoMapText: {
+    fontSize: 12,
+    color: '#EA580C',
+    fontWeight: '500',
+  },
+  mallInfoHoliday: {
+    fontSize: 14,
+    color: '#EA580C',
+    marginTop: 4,
+  },
+  mallInfoSeparator: {
+    height: 1,
+    backgroundColor: '#E5E7EB',
+    marginVertical: 8,
+  },
+  mallInfoLink: {
+    fontSize: 14,
+    color: '#EA580C',
+    textDecorationLine: 'underline',
+  },
+  ctaSection: {
+    backgroundColor: '#EA580C',
+    paddingVertical: 24,
+    paddingHorizontal: 16,
+    alignItems: 'center',
+  },
+  ctaTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#FFFFFF',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  ctaSubtitle: {
+    fontSize: 18,
+    color: 'rgba(255, 255, 255, 0.9)',
+    textAlign: 'center',
+    marginBottom: 24,
+    maxWidth: 600,
+  },
+  ctaButton: {
+    backgroundColor: '#FFFFFF',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 8,
+    gap: 8,
+  },
+  ctaButtonText: {
+    color: '#EA580C',
+    fontSize: 18,
+    fontWeight: '600',
   },
 });
 

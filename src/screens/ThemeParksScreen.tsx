@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,8 +7,12 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  Animated,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
+import Svg, { Path } from 'react-native-svg';
+import Video from 'react-native-video';
 import {
   Sparkles,
   Rocket,
@@ -26,6 +30,26 @@ import Header from '../components/Header';
 
 const ThemeParksScreen: React.FC = () => {
   const navigation = useNavigation();
+  const pingAnimation = new Animated.Value(1);
+
+  useEffect(() => {
+    const startPingAnimation = () => {
+      Animated.sequence([
+        Animated.timing(pingAnimation, {
+          toValue: 1.5,
+          duration: 1500,
+          useNativeDriver: true,
+        }),
+        Animated.timing(pingAnimation, {
+          toValue: 1,
+          duration: 1500,
+          useNativeDriver: true,
+        }),
+      ]).start(() => startPingAnimation());
+    };
+
+    startPingAnimation();
+  }, []);
 
   const openWebsite = (url: string, title?: string) => {
     navigation.navigate('WebView' as never, { url, title } as never);
@@ -39,36 +63,70 @@ const ThemeParksScreen: React.FC = () => {
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Hero Section */}
         <View style={styles.heroSection}>
-          <View style={styles.heroContent}>
-            <View style={styles.heroTitle}>
-              <Text style={styles.heroTitleText}>
-                ORLANDO<Text style={styles.heroTitleAccent}>THEME PARKS</Text>
-              </Text>
+          <LinearGradient
+            colors={['#2563eb', '#8b5cf6', '#ec4899']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.heroGradientBackground}
+          >
+            <View style={styles.heroPatternOverlay}>
+              <Svg width="100%" height="100%" style={styles.patternSvg}>
+                {/* Create a more visible dot pattern */}
+                {Array.from({ length: 8 }).map((_, rowIndex) =>
+                  Array.from({ length: 6 }).map((_, colIndex) => (
+                    <Path
+                      key={`${rowIndex}-${colIndex}`}
+                      d="M30 30c-5.523 0-10-4.477-10-10s4.477-10 10-10 10 4.477 10 10-4.477 10-10 10zm20 10c-5.523 0-10-4.477-10-10s4.477-10 10-10 10 4.477 10 10-4.477 10-10 10zm-20 0c-5.523 0-10-4.477-10-10s4.477-10 10-10 10 4.477 10 10-4.477 10-10 10zM10 40c-5.523 0-10-4.477-10-10s4.477-10 10-10 10 4.477 10 10-4.477 10-10 10zm0-20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm20 0c-5.523 0-10-4.477-10-10S24.477 0 30 0s10 4.477 10 10-4.477 10-10 10zm20 0c-5.523 0-10-4.477-10-10S44.477 0 50 0s10 4.477 10 10-4.477 10-10 10z"
+                      fill="#ffffff"
+                      fillOpacity="0.4"
+                      fillRule="evenodd"
+                      transform={`translate(${colIndex * 60}, ${rowIndex * 60})`}
+                    />
+                  ))
+                )}
+              </Svg>
             </View>
-            <Text style={styles.heroDescription}>
-              Discover the magic of world-class theme parks that make Orlando the Theme Park Capital of the World.
-            </Text>
-            <View style={styles.heroTags}>
-              <View style={styles.heroTag}>
-                <View style={styles.heroTagContent}>
-                  <Rocket size={14} color="#ffffff" />
-                  <Text style={styles.heroTagText}>Thrilling Rides</Text>
+            <View style={styles.heroContent}>
+              <View style={styles.heroTitleContainer}>
+                <View style={styles.heroTitle}>
+                  <Text style={styles.heroTitleText}>
+                    ORLANDO<Text style={styles.heroTitleAccent}>THEME PARKS</Text>
+                  </Text>
                 </View>
+                <Animated.View 
+                  style={[
+                    styles.heroTitleDecoration,
+                    {
+                      transform: [{ scale: pingAnimation }],
+                      opacity: pingAnimation.interpolate({
+                        inputRange: [1, 1.5],
+                        outputRange: [0.8, 0],
+                      }),
+                    }
+                  ]} 
+                />
               </View>
-              <View style={styles.heroTag}>
-                <View style={styles.heroTagContent}>
-                  <Sparkles size={14} color="#ffffff" />
-                  <Text style={styles.heroTagText}>Magical Experiences</Text>
-                </View>
-              </View>
-              <View style={styles.heroTag}>
-                <View style={styles.heroTagContent}>
-                  <Palmtree size={14} color="#ffffff" />
-                  <Text style={styles.heroTagText}>Adventures</Text>
+              <View style={styles.heroContentArea}>
+                <Text style={styles.heroDescription}>
+                  Discover the magic of world-class theme parks that make Orlando the Theme Park Capital of the World.
+                </Text>
+                <View style={styles.heroTags}>
+                  <View style={styles.heroTag}>
+                    <Rocket size={10} color="#ffffff" style={{ marginRight: 2 }} />
+                    <Text style={styles.heroTagText}>Thrilling Rides</Text>
+                  </View>
+                  <View style={styles.heroTag}>
+                    <Sparkles size={10} color="#ffffff" style={{ marginRight: 2 }} />
+                    <Text style={styles.heroTagText}>Magical Experiences</Text>
+                  </View>
+                  <View style={styles.heroTag}>
+                    <Palmtree size={10} color="#ffffff" style={{ marginRight: 2 }} />
+                    <Text style={styles.heroTagText}>Adventures</Text>
+                  </View>
                 </View>
               </View>
             </View>
-          </View>
+          </LinearGradient>
         </View>
 
         {/* Disney World Section */}
@@ -80,18 +138,21 @@ const ThemeParksScreen: React.FC = () => {
             <Text style={styles.sectionTitle}>Walt Disney World Resort</Text>
           </View>
 
-          {/* Disney Main Card with Video */}
+          {/* Disney Main Card with Castle Video Background */}
           <TouchableOpacity
             style={styles.mainCard}
             onPress={() => openWebsite('https://disneyworld.disney.go.com/', 'Walt Disney World')}
           >
             <View style={styles.videoContainer}>
-              <Image
-                source={require('../../assets/images/DonaldDuck.jpeg')}
+              <Video
+                source={require('../../assets/images/castle-video1.mp4')}
                 style={styles.mainCardImage}
                 resizeMode="cover"
+                repeat
+                muted
+                playInBackground={false}
+                playWhenInactive={false}
               />
-              <View style={styles.videoOverlay} />
             </View>
             <View style={styles.mainCardOverlay}>
               <View style={styles.mainCardContent}>
@@ -375,6 +436,39 @@ const ThemeParksScreen: React.FC = () => {
               </View>
             </View>
           </View>
+
+          <Text style={[styles.gridTitle, { color: '#7c3aed',marginVertical:15 }]}>Universal's Epic Universe</Text>
+
+          <TouchableOpacity
+            style={styles.mainCard}
+            onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe', 'Universal Epic Universe')}
+          >
+            <View style={styles.videoContainer}>
+              <Video
+                source={require('../../assets/images/EpicEntrance.mp4')}
+                style={styles.mainCardImage}
+                resizeMode="cover"
+                repeat
+                muted
+                playInBackground={false}
+                playWhenInactive={false}
+              />
+            </View>
+            <View style={[styles.mainCardOverlay, { backgroundColor: 'rgba(124, 58, 237, 0.6)' }]}>
+              <View style={styles.mainCardContent}>
+                <Text style={styles.mainCardTitle}>Universal's Epic Universe</Text>
+                <Text style={styles.mainCardDescription}>
+                  Experience the future of theme parks with five immersive worlds including Super Nintendo World, Ministry of Magic, and more. Opening 2025.
+                </Text>
+                <View style={[styles.mainCardButton, { backgroundColor: '#7c3aed' }]}>
+                  <View style={styles.buttonContent}>
+                    <Star size={16} color="#ffffff" />
+                    <Text style={styles.mainCardButtonText}>Learn More</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </TouchableOpacity>
 
           {/* BRAND NEW ATTRACTIONS Section */}
           <View style={styles.brandNewSection}>
@@ -749,62 +843,115 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   heroSection: {
-    backgroundColor: '#2563eb',
     marginHorizontal: 16,
     marginTop: 16,
     marginBottom: 24,
     borderRadius: 12,
     overflow: 'hidden',
+    backgroundColor: 'transparent',
   },
   heroContent: {
-    padding: 16,
+    padding: 12,
+    paddingHorizontal: 16,
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   heroTitle: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 8,
-    padding: 12,
-    marginBottom: 12,
-    transform: [{ rotate: '-1deg' }],
+    padding: 8,
+    paddingHorizontal: 12,
+    marginBottom: 8,
+    transform: [{ rotate: '-2deg' }],
+    borderWidth: 1,
+    borderColor: 'rgba(59, 130, 246, 0.2)',
   },
   heroTitleText: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: '800',
     color: '#ffffff',
     textAlign: 'center',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
   },
   heroTitleAccent: {
     color: '#fde047',
   },
   heroDescription: {
-    fontSize: 14,
+    fontSize: 10,
     color: '#ffffff',
     textAlign: 'center',
-    marginBottom: 16,
-    lineHeight: 20,
+    marginBottom: 4,
+    lineHeight: 14,
+    textShadowColor: 'rgba(0, 0, 0, 0.5)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 1,
   },
   heroTags: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: 8,
+    gap: 4,
   },
   heroTag: {
     backgroundColor: 'rgba(147, 51, 234, 0.3)',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 20,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 12,
     borderWidth: 1,
     borderColor: 'rgba(147, 51, 234, 0.3)',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   heroTagText: {
-    fontSize: 12,
+    fontSize: 9,
     color: '#ffffff',
     fontWeight: '500',
   },
   heroTagContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    gap: 2,
+  },
+  heroGradientBackground: {
+    borderRadius: 12,
+    overflow: 'hidden',
+    backgroundColor: 'transparent',
+  },
+  heroPatternOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 0.1,
+    backgroundColor: 'transparent',
+  },
+  patternSvg: {
+    width: '100%',
+    height: '100%',
+    opacity: 0.3,
+  },
+  heroTitleContainer: {
+    position: 'relative',
+    marginRight: 0,
+    marginBottom: 8,
+  },
+  heroTitleDecoration: {
+    position: 'absolute',
+    top: -4,
+    right: -4,
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: '#fde047',
+    opacity: 0.8,
+  },
+  heroContentArea: {
+    flex: 1,
+    marginTop: 0,
+    alignItems: 'center',
   },
   section: {
     marginBottom: 32,
@@ -850,7 +997,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+   // backgroundColor: 'rgba(0, 0, 0, 0.5)',
     padding: 20,
   },
   mainCardContent: {

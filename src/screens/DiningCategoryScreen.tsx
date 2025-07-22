@@ -7,9 +7,10 @@ import {
   Image,
   StyleSheet,
   SafeAreaView,
+  Linking,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { ChevronLeft, MapPin } from 'lucide-react-native';
+import { ChevronLeft, MapPin, Globe, Info } from 'lucide-react-native';
 import { 
   getRestaurantsByCategory, 
   Restaurant, 
@@ -44,6 +45,21 @@ const DiningCategoryScreen: React.FC = () => {
     navigation.goBack();
   };
 
+  const handleMapPress = (address: string) => {
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+    navigation.navigate('WebView' as never, {
+      url: url,
+      title: 'Restaurant Location'
+    } as never);
+  };
+
+  const handleWebsitePress = (website: string) => {
+    navigation.navigate('WebView' as never, {
+      url: website,
+      title: 'Restaurant Website'
+    } as never);
+  };
+
   if (!categoryId || !categoryDetails) {
     return (
       <SafeAreaView style={styles.container}>
@@ -57,6 +73,70 @@ const DiningCategoryScreen: React.FC = () => {
       </SafeAreaView>
     );
   }
+
+  const renderRestaurantCard = (restaurant: Restaurant) => (
+    <View key={restaurant.id} style={styles.restaurantCard}>
+      {/* Image Section */}
+      <View style={styles.imageSection}>
+        <Image
+          source={restaurant.image}
+          style={styles.restaurantImage}
+          resizeMode="cover"
+        />
+        <View style={styles.cuisineBadge}>
+          <Text style={styles.cuisineBadgeText}>{restaurant.cuisine}</Text>
+        </View>
+      </View>
+      
+      {/* Content Section */}
+      <View style={styles.contentSection}>
+        <Text style={styles.restaurantName}>{restaurant.name}</Text>
+        
+        <View style={styles.locationContainer}>
+          <MapPin size={16} color="#6B7280" />
+          <Text style={styles.neighborhoodText}>{restaurant.neighborhood}</Text>
+        </View>
+        
+        <Text style={styles.addressText}>{restaurant.address}</Text>
+        
+        <TouchableOpacity 
+          style={styles.mapItButton}
+          onPress={() => handleMapPress(restaurant.address)}
+        >
+          <MapPin size={12} color="#EA580C" />
+          <Text style={styles.mapItText}>Map It</Text>
+        </TouchableOpacity>
+        
+        <Text style={styles.descriptionText}>
+          {restaurant.shortDescription || restaurant.description.substring(0, 150) + '...'}
+        </Text>
+        
+        {/* Button Container */}
+        <View style={styles.buttonContainer}>
+          {/* Website Button */}
+          <TouchableOpacity
+            style={restaurant.website ? styles.websiteButton : styles.noWebsiteButton}
+            onPress={() => restaurant.website && handleWebsitePress(restaurant.website)}
+            disabled={!restaurant.website}
+          >
+            <Globe size={16} color={restaurant.website ? "#FFFFFF" : "#777777"} />
+            <Text style={[styles.buttonText, restaurant.website ? styles.websiteButtonText : styles.noWebsiteButtonText]}>
+              {restaurant.website ? "Website" : "No Website"}
+            </Text>
+          </TouchableOpacity>
+          
+          {/* Details Button */}
+          <TouchableOpacity
+            style={styles.detailsButton}
+            onPress={() => handleRestaurantPress(restaurant)}
+          >
+            <Info size={16} color="#FFFFFF" />
+            <Text style={styles.detailsButtonText}>Details</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </View>
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -78,50 +158,7 @@ const DiningCategoryScreen: React.FC = () => {
 
         {/* Restaurants Grid */}
         <View style={styles.restaurantsContainer}>
-          {restaurants.map(restaurant => (
-            <TouchableOpacity
-              key={restaurant.id}
-              style={styles.restaurantCard}
-              onPress={() => handleRestaurantPress(restaurant)}
-              activeOpacity={0.9}
-            >
-              {/* Image Section */}
-              <View style={styles.imageContainer}>
-                <Image
-                  source={restaurant.image}
-                  style={styles.restaurantImage}
-                  resizeMode="cover"
-                />
-                <View style={styles.cuisineBadge}>
-                  <Text style={styles.cuisineBadgeText}>{restaurant.cuisine}</Text>
-                </View>
-              </View>
-
-              {/* Content Section */}
-              <View style={styles.contentContainer}>
-                <Text style={styles.restaurantName} numberOfLines={2}>
-                  {restaurant.name}
-                </Text>
-                
-                <View style={styles.locationContainer}>
-                  <MapPin size={16} color="#6B7280" />
-                  <Text style={styles.neighborhoodText}>{restaurant.neighborhood}</Text>
-                </View>
-                
-                <Text style={styles.addressText} numberOfLines={1}>
-                  {restaurant.address}
-                </Text>
-
-                <Text style={styles.descriptionText} numberOfLines={3}>
-                  {restaurant.shortDescription || restaurant.description}
-                </Text>
-
-                {/* <View style={styles.priceContainer}>
-                  <Text style={styles.priceText}>{restaurant.priceRange}</Text>
-                </View> */}
-              </View>
-            </TouchableOpacity>
-          ))}
+          {restaurants.map(renderRestaurantCard)}
         </View>
 
         {restaurants.length === 0 && (
@@ -191,9 +228,9 @@ const styles = StyleSheet.create({
     elevation: 4,
     overflow: 'hidden',
   },
-  imageContainer: {
+  imageSection: {
     position: 'relative',
-    height: 200,
+    height: 192,
   },
   restaurantImage: {
     width: '100%',
@@ -206,7 +243,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EA580C',
     paddingHorizontal: 8,
     paddingVertical: 4,
-    borderRadius: 12,
+    borderRadius: 16,
   },
   cuisineBadgeText: {
     color: '#FFFFFF',
@@ -214,7 +251,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textTransform: 'uppercase',
   },
-  contentContainer: {
+  contentSection: {
     padding: 16,
   },
   restaurantName: {
@@ -236,21 +273,75 @@ const styles = StyleSheet.create({
   addressText: {
     fontSize: 12,
     color: '#6B7280',
-    marginBottom: 8,
+    marginBottom: 4,
+  },
+  mapItButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    marginBottom: 12,
+    gap: 4,
+  },
+  mapItText: {
+    fontSize: 12,
+    color: '#EA580C',
+    fontWeight: '500',
   },
   descriptionText: {
     fontSize: 14,
-    color: '#374151',
+    color: '#6B7280',
     lineHeight: 20,
-    marginBottom: 12,
+    marginBottom: 16,
   },
-  priceContainer: {
-    alignSelf: 'flex-start',
+  buttonContainer: {
+    flexDirection: 'row',
+    gap: 8,
   },
-  priceText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#EA580C',
+  websiteButton: {
+    backgroundColor: '#FF5500',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    flex: 1,
+    gap: 4,
+  },
+  noWebsiteButton: {
+    backgroundColor: '#E0E0E0',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    flex: 1,
+    gap: 4,
+  },
+  detailsButton: {
+    backgroundColor: '#009688',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    flex: 1,
+    gap: 4,
+  },
+  buttonText: {
+    fontSize: 12,
+    fontWeight: '500',
+  },
+  websiteButtonText: {
+    color: '#FFFFFF',
+  },
+  noWebsiteButtonText: {
+    color: '#777777',
+  },
+  detailsButtonText: {
+    color: '#FFFFFF',
   },
   errorContainer: {
     flex: 1,

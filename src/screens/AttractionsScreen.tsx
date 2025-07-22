@@ -97,14 +97,11 @@ export const searchAttractions = (query: string): Attraction[] => {
   );
 };
 
-//import { attractionsData, categories, getAttractionsByCategory, Attraction } from '../data/attractions';
-
 const { width } = Dimensions.get('window');
 
 const AttractionsScreen: React.FC = () => {
   const navigation = useNavigation();
   const [selectedCategory, setSelectedCategory] = useState('Unique Attractions');
-
 
   const [filteredAttractions, setFilteredAttractions] = useState<Attraction[]>([]);
 
@@ -122,18 +119,51 @@ const AttractionsScreen: React.FC = () => {
     navigation.navigate('AttractionDetail' as never, { attraction } as never);
   };
 
+  // Category data matching the web version
+  const categoryData = [
+    {
+      id: "Unique Attractions",
+      name: "Unique",
+      count: getAttractionsByCategory("Unique Attractions").length,
+      icon: "🎪",
+      color: "#f59e0b"
+    },
+    {
+      id: "Outdoor Adventures",
+      name: "Outdoor",
+      count: getAttractionsByCategory("Outdoor Adventures").length,
+      icon: "🌿",
+      color: "#10b981"
+    },
+    {
+      id: "Cultural/Educational",
+      name: "Cultural",
+      count: getAttractionsByCategory("Cultural/Educational").length,
+      icon: "🏛️",
+      color: "#8b5cf6"
+    },
+    {
+      id: "Dinner Shows",
+      name: "Dinner Shows",
+      count: getAttractionsByCategory("Dinner Shows").length,
+      icon: "🍽️",
+      color: "#3b82f6"
+    }
+  ];
+
+  const totalAttractionsCount = attractionsData.length;
+
   const renderAttractionCard = ({ item: attraction }: { item: Attraction }) => (
-    <TouchableOpacity
-      style={styles.attractionCard}
-      onPress={() => openAttractionDetail(attraction)}
-      activeOpacity={0.7}
-    >
+    <View style={styles.attractionCard}>
+      {/* Card Image with Title */}
       <View style={styles.cardImageContainer}>
         <Image
           source={getImageSource(attraction.image)}
           style={styles.cardImage}
           resizeMode="cover"
         />
+        
+        {/* Gradient overlay */}
         <View style={styles.cardImageOverlay}>
           <View style={styles.cardImageContent}>
             <Text style={styles.cardTitle} numberOfLines={2}>{attraction.name}</Text>
@@ -143,65 +173,92 @@ const AttractionsScreen: React.FC = () => {
       </View>
 
       <View style={styles.cardContent}>
+        {/* Category and Location Info */}
         <View style={styles.cardHeader}>
           <View style={styles.categoryBadge}>
             <Text style={styles.categoryBadgeText}>{attraction.category}</Text>
           </View>
           <View style={styles.locationInfo}>
-            <MapPin size={12} color="#6b7280" />
+            <MapPin size={14} color="#6b7280" />
             <Text style={styles.locationText}>{attraction.neighborhood || "Orlando"}</Text>
           </View>
         </View>
-
-        <Text style={styles.cardDescription} numberOfLines={2}>
-          {attraction.description}
-        </Text>
-
-        <View style={styles.cardFooter}>
-          {attraction.link ? (
-            <TouchableOpacity
-              style={styles.websiteButton}
-              onPress={(e) => {
-                e.stopPropagation();
-                openWebsite(attraction.link!, attraction.name);
-              }}
-            >
-              <ExternalLink size={14} color="#ffffff" />
-              <Text style={styles.websiteButtonText}>Website</Text>
-            </TouchableOpacity>
-          ) : (
-            <View style={styles.noWebsiteButton}>
-              <ExternalLink size={14} color="#9ca3af" />
-              <Text style={styles.noWebsiteButtonText}>No Website</Text>
-            </View>
-          )}
-
+        
+        {/* Map It link - color varies based on category for better visibility */}
+        <View style={styles.mapItContainer}>
           <TouchableOpacity
-            style={styles.detailsButton}
-            onPress={() => openAttractionDetail(attraction)}
+            style={styles.mapItButton}
+            onPress={() => {
+              const address = attraction.address || `${attraction.name} ${attraction.neighborhood || ''} Orlando FL`;
+              const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+              openWebsite(url, `${attraction.name} - Map`);
+            }}
           >
-            <Info size={14} color="#ffffff" />
-            <Text style={styles.detailsButtonText}>Details</Text>
+            <MapPin size={12} color={getMapItColor(attraction.category)} />
+            <Text style={[styles.mapItText, { color: getMapItColor(attraction.category) }]}>Map It</Text>
           </TouchableOpacity>
         </View>
+        
+        {/* Description */}
+        <Text style={styles.cardDescription} numberOfLines={4}>
+          {attraction.description}
+        </Text>
       </View>
-    </TouchableOpacity>
+      
+      {/* Website and Details Buttons */}
+      <View style={styles.cardFooter}>
+        {attraction.link ? (
+          <TouchableOpacity
+            style={styles.websiteButton}
+            onPress={() => openWebsite(attraction.link!, attraction.name)}
+          >
+            <ExternalLink size={14} color="#ffffff" />
+            <Text style={styles.websiteButtonText}>Website</Text>
+          </TouchableOpacity>
+        ) : (
+          <View style={styles.noWebsiteButton}>
+            <ExternalLink size={14} color="#777777" />
+            <Text style={styles.noWebsiteButtonText}>No Website</Text>
+          </View>
+        )}
+
+        <TouchableOpacity
+          style={styles.detailsButton}
+          onPress={() => openAttractionDetail(attraction)}
+        >
+          <Info size={14} color="#009688" />
+          <Text style={styles.detailsButtonText}>Details</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 
-  const renderCategoryFilter = (category: string) => (
+  // Helper function to get Map It button color based on category
+  const getMapItColor = (category: string) => {
+    const categoryLower = category.toLowerCase();
+    if (categoryLower.includes('dining')) return '#ea580c'; // orange-600
+    if (categoryLower.includes('shopping')) return '#0d9488'; // teal-600
+    if (categoryLower.includes('cultural')) return '#9333ea'; // purple-600
+    if (categoryLower.includes('outdoor')) return '#16a34a'; // green-600
+    if (categoryLower.includes('nightlife')) return '#4f46e5'; // indigo-600
+    return '#ea580c'; // Default orange
+  };
+
+  const renderCategoryFilter = (category: any) => (
     <TouchableOpacity
-      key={category}
+      key={category.id}
       style={[
         styles.categoryFilter,
-        selectedCategory === category && styles.categoryFilterActive
+        selectedCategory === category.id && { backgroundColor: category.color }
       ]}
-      onPress={() => setSelectedCategory(category)}
+      onPress={() => setSelectedCategory(category.id)}
     >
+      <Text style={styles.categoryIcon}>{category.icon}</Text>
       <Text style={[
         styles.categoryFilterText,
-        selectedCategory === category && styles.categoryFilterTextActive
+        selectedCategory === category.id && styles.categoryFilterTextActive
       ]}>
-        {category}
+        {category.name}
       </Text>
     </TouchableOpacity>
   );
@@ -210,33 +267,40 @@ const AttractionsScreen: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <Header />
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        {/* Hero Section - Matching ThemeParksScreen design */}
+        {/* Hero Section - Exact match to web version */}
         <View style={styles.heroSection}>
+          {/* Decorative background pattern */}
+          <View style={styles.heroBackgroundPattern} />
+          
           <View style={styles.heroContent}>
-            <View style={styles.heroTitle}>
-              <Text style={styles.heroTitleText}>
-                ORLANDO<Text style={styles.heroTitleAccent}>ATTRACTIONS</Text>
-              </Text>
+            {/* Title with decorative element */}
+            <View style={styles.heroTitleContainer}>
+              <View style={styles.heroTitle}>
+                <Text style={styles.heroTitleText}>
+                  ORLANDO<Text style={styles.heroTitleAccent}>ATTRACTIONS</Text>
+                </Text>
+              </View>
+              {/* Small decorative element */}
+              <View style={styles.heroTitleDecoration} />
             </View>
-            <Text style={styles.heroDescription}>
-              Discover Orlando's unique attractions beyond the major theme parks.
-            </Text>
-            <View style={styles.heroTags}>
-              <View style={styles.heroTag}>
-                <View style={styles.heroTagContent}>
-                  <MapPin size={14} color="#ffffff" />
+            
+            {/* Content area */}
+            <View style={styles.heroContentArea}>
+              <Text style={styles.heroDescription}>
+                Discover Orlando's unique attractions beyond the major theme parks.
+              </Text>
+              
+              <View style={styles.heroTags}>
+                <View style={styles.heroTag}>
+                  <MapPin size={12} color="#ffffff" />
                   <Text style={styles.heroTagText}>Cultural Sites</Text>
                 </View>
-              </View>
-              <View style={styles.heroTag}>
-                <View style={styles.heroTagContent}>
-                  <Sparkles size={14} color="#ffffff" />
+                <View style={styles.heroTag}>
+                  <Sparkles size={12} color="#ffffff" />
                   <Text style={styles.heroTagText}>Unique Experiences</Text>
                 </View>
-              </View>
-              <View style={styles.heroTag}>
-                <View style={styles.heroTagContent}>
-                  <Info size={14} color="#ffffff" />
+                <View style={styles.heroTag}>
+                  <Info size={12} color="#ffffff" />
                   <Text style={styles.heroTagText}>Hidden Gems</Text>
                 </View>
               </View>
@@ -244,16 +308,21 @@ const AttractionsScreen: React.FC = () => {
           </View>
         </View>
 
-        {/* Category Filter Tabs */}
-        <View style={styles.categoryTabsContainer}>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={styles.categoryTabsContent}
-            style={styles.categoryTabsScrollView}
-          >
-            {categories?.filter(cat => cat !== 'All').map(renderCategoryFilter)}
-          </ScrollView>
+        {/* Category filters - Exact match to web version */}
+        <View style={styles.categoryFiltersContainer}>
+          {/* Category counter */}
+          <View style={styles.categoryCounter}>
+            <Text style={styles.categoryCounterText}>
+              Browse <Text style={styles.categoryCounterBold}>{totalAttractionsCount}</Text> Orlando attractions
+            </Text>
+          </View>
+          
+          {/* Category filter buttons */}
+          <View style={styles.categoryFiltersWrapper}>
+            <View style={styles.categoryFiltersContent}>
+              {categoryData.map(renderCategoryFilter)}
+            </View>
+          </View>
         </View>
 
         {/* Results Count */}
@@ -269,11 +338,11 @@ const AttractionsScreen: React.FC = () => {
             data={filteredAttractions}
             renderItem={renderAttractionCard}
             keyExtractor={(item) => item.id.toString()}
-            numColumns={2}
-            columnWrapperStyle={styles.row}
+            numColumns={1}
             contentContainerStyle={styles.attractionsGrid}
             showsVerticalScrollIndicator={false}
             scrollEnabled={false}
+            ItemSeparatorComponent={() => <View style={styles.cardSeparator} />}
           />
         </View>
       </ScrollView>
@@ -290,107 +359,178 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   heroSection: {
-    backgroundColor: '#0d9488',
-    paddingHorizontal: 20,
-    paddingVertical: 24,
-    marginHorizontal: 16,
+    backgroundColor: '#10b981', // emerald-500
+    paddingHorizontal: 12,
+    paddingVertical: 12,
+    marginHorizontal: 12,
     marginTop: 16,
-    marginBottom: 20,
-    borderRadius: 12,
+    marginBottom: 16,
+    borderRadius: 8,
     position: 'relative',
     overflow: 'hidden',
   },
+  heroBackgroundPattern: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 0.1,
+    backgroundColor: '#ffffff',
+    // This creates a subtle pattern effect similar to the web version
+  },
   heroContent: {
-    alignItems: 'center',
     position: 'relative',
-    zIndex: 2,
+    zIndex: 10,
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  heroTitleContainer: {
+    position: 'relative',
+    marginBottom: 12,
+    alignItems: 'center',
   },
   heroTitle: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: 8,
-    padding: 8,
-    marginBottom: 12,
-    transform: [{ rotate: '-1deg' }],
+    borderRadius: 6,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    transform: [{ rotate: '-2deg' }],
+    borderWidth: 1,
+    borderColor: '#5eead4', // teal-200
+    alignItems: 'center',
   },
   heroTitleText: {
-    fontSize: 24,
+    fontSize: Math.min(width * 0.06, 24), // Responsive font size
     fontWeight: '900',
     color: '#ffffff',
-    textAlign: 'center',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 0, height: 2 },
-    textShadowRadius: 4,
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+    textAlign: 'center',
   },
   heroTitleAccent: {
-    color: '#fde047',
+    color: '#fde047', // yellow-300
+  },
+  heroTitleDecoration: {
+    position: 'absolute',
+    top: -4,
+    right: -4,
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    backgroundColor: '#fbbf24', // orange-300
+    opacity: 0.8,
+  },
+  heroContentArea: {
+    alignItems: 'center',
+    width: '100%',
   },
   heroDescription: {
-    fontSize: 14,
+    fontSize: Math.min(width * 0.035, 14), // Responsive font size
     color: '#ffffff',
+    marginBottom: 12,
     textAlign: 'center',
-    opacity: 0.9,
-    marginBottom: 16,
-    maxWidth: width - 80,
+    lineHeight: Math.min(width * 0.04, 18),
+    paddingHorizontal: 8,
   },
   heroTags: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: 8,
+    gap: 6,
+    paddingHorizontal: 8,
   },
   heroTag: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: 16,
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    borderRadius: 12,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.3)',
-  },
-  heroTagContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    gap: 4,
+    marginBottom: 4,
   },
   heroTagText: {
-    fontSize: 12,
+    fontSize: Math.min(width * 0.025, 11), // Responsive font size
     color: '#ffffff',
     fontWeight: '500',
   },
-  categoryTabsContainer: {
-    paddingHorizontal: 16,
+  categoryFiltersContainer: {
     marginBottom: 16,
+    paddingHorizontal: 8,
   },
-  categoryTabsScrollView: {
-    flexGrow: 0,
-  },
-  categoryTabsContent: {
-    paddingHorizontal: 4,
-    gap: 12,
-    flexDirection: 'row',
+  categoryCounter: {
     alignItems: 'center',
+    marginBottom: 12,
+  },
+  categoryCounterText: {
+    fontSize: Math.min(width * 0.03, 13), // Responsive font size
+    color: '#6b7280',
+    textAlign: 'center',
+  },
+  categoryCounterBold: {
+    fontWeight: '600',
+  },
+  categoryFiltersWrapper: {
+    alignItems: 'center',
+    marginHorizontal:5
+  },
+  categoryFiltersContent: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(243, 244, 246, 0.7)',
+    borderRadius: 8,
+    padding: 10,
+    gap: 8,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 1,
+    width: '100%',
   },
   categoryFilter: {
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    borderRadius: 25,
-    backgroundColor: '#f3f4f6',
-    borderWidth: 2,
-    borderColor: '#e5e7eb',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+ //   paddingHorizontal: Math.min(width * 0.04, 16),
+    paddingVertical: 8,
+    borderRadius: 8,
+    backgroundColor: 'transparent',
+    gap: 6,
+    minWidth: 100, // Responsive minimum width
   },
-  categoryFilterActive: {
-    backgroundColor: '#0891b2',
-    borderColor: '#0891b2',
+  categoryIcon: {
+    fontSize: Math.min(width * 0.04, 18), // Responsive icon size
   },
   categoryFilterText: {
-    fontSize: 14,
-    fontWeight: '600',
+    fontSize: Math.min(width * 0.03, 13), // Responsive font size
+    fontWeight: '500',
     color: '#6b7280',
     textAlign: 'center',
   },
   categoryFilterTextActive: {
     color: '#ffffff',
+  },
+  categoryCount: {
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    borderRadius: 10,
+    paddingHorizontal: 5,
+    paddingVertical: 2,
+    minWidth: 16,
+    alignItems: 'center',
+  },
+  categoryCountActive: {
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+  },
+  categoryCountText: {
+    fontSize: Math.min(width * 0.02, 9), // Responsive font size
+    color: '#ffffff',
+    fontWeight: '500',
   },
   attractionsContainer: {
     flex: 1,
@@ -409,28 +549,23 @@ const styles = StyleSheet.create({
   attractionsGrid: {
     paddingBottom: 20,
   },
-  row: {
-    justifyContent: 'space-between',
-    marginBottom: 20,
-    paddingHorizontal: 0,
+  cardSeparator: {
+    height: 20,
   },
   attractionCard: {
-    flex: 1,
-    marginHorizontal: 8,
     backgroundColor: '#ffffff',
-    borderRadius: 16,
+    borderRadius: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.15,
     shadowRadius: 8,
-    borderWidth: 0.5,
-    borderColor: '#d3d3d3',
     elevation: 8,
     overflow: 'hidden',
-    maxWidth: (width - 64) / 2, // Responsive width
+    borderWidth: 0.5,
+    borderColor: '#d3d3d3',
   },
   cardImageContainer: {
-    height: 150,
+    height: 160,
     position: 'relative',
   },
   cardImage: {
@@ -442,8 +577,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    padding: 10,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    padding: 12,
   },
   cardImageContent: {
     flex: 1,
@@ -459,21 +594,21 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.8)',
   },
   cardContent: {
-    padding: 10,
+    padding: 12,
     flex: 1,
   },
   cardHeader: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: 8,
     marginBottom: 8,
-    gap: 6,
   },
   categoryBadge: {
     backgroundColor: '#fed7aa',
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 12,
-    alignSelf: 'flex-start',
   },
   categoryBadgeText: {
     fontSize: 10,
@@ -486,8 +621,19 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   locationText: {
-    fontSize: 11,
+    fontSize: 12,
     color: '#6b7280',
+  },
+  mapItContainer: {
+    marginBottom: 8,
+  },
+  mapItButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  mapItText: {
+    fontSize: 12,
     fontWeight: '500',
   },
   cardDescription: {
@@ -498,50 +644,60 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cardFooter: {
-    flexDirection: 'column',
+    flexDirection: 'row',
     gap: 8,
+    padding: 12,
+    paddingTop: 0,
   },
   websiteButton: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#0891b2',
-    paddingVertical: 10,
-    borderRadius: 8,
-    gap: 6,
+    backgroundColor: '#ff6b35', // var(--orlando-orange)
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+    borderRadius: 4,
+    gap: 4,
   },
   websiteButtonText: {
     fontSize: 12,
     color: '#ffffff',
-    fontWeight: '600',
+    fontWeight: '500',
   },
   noWebsiteButton: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#f3f4f6',
-    paddingVertical: 10,
-    borderRadius: 8,
-    gap: 6,
+    backgroundColor: '#e0e0e0',
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+    borderRadius: 4,
+    gap: 4,
   },
   noWebsiteButtonText: {
     fontSize: 12,
-    color: '#9ca3af',
-    fontWeight: '600',
+    color: '#777777',
+    fontWeight: '500',
   },
   detailsButton: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ea580c',
-    paddingVertical: 10,
-    borderRadius: 8,
-    gap: 6,
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: '#009688', // var(--orlando-teal)
+    paddingVertical: 6,
+    paddingHorizontal: 8,
+    borderRadius: 4,
+    gap: 4,
   },
   detailsButtonText: {
     fontSize: 12,
-    color: '#ffffff',
-    fontWeight: '600',
+    color: '#009688', // var(--orlando-teal)
+    fontWeight: '500',
   },
 });
 
