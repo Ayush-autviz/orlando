@@ -6,8 +6,10 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  Linking,
+  Share,
 } from 'react-native';
-import { MapPin, ExternalLink, Star, Info } from 'lucide-react-native';
+import { MapPin, ExternalLink, Globe, Hotel as HotelIcon, Share2 } from 'lucide-react-native';
 import { Hotel } from '../types/Hotel';
 
 const { width } = Dimensions.get('window');
@@ -48,19 +50,19 @@ const HotelCard: React.FC<HotelCardProps> = ({
   const getSubcategoryColor = (subcategory: string): string => {
     switch (subcategory) {
       case 'luxury':
-        return '#f59e0b';
+        return '#3b82f6'; // Blue-600 (default blue like web)
       case 'theme-park':
-        return '#8b5cf6';
+        return '#dc2626'; // Red-600 (destructive like web)
       case 'budget-friendly':
-        return '#10b981';
+        return '#6b7280'; // Gray-600 (secondary like web)
       case 'resorts':
-        return '#3b82f6';
+        return '#3b82f6'; // Blue-600
       case 'villas':
-        return '#ec4899';
+        return '#3b82f6'; // Blue-600
       case 'business':
-        return '#6b7280';
+        return '#6b7280'; // Gray-600
       default:
-        return '#f97316';
+        return '#3b82f6'; // Blue-600
     }
   };
 
@@ -73,7 +75,37 @@ const HotelCard: React.FC<HotelCardProps> = ({
     onWebsitePress?.(hotel);
   };
 
-  // Default image for hotels without images - using a theme park image as placeholder
+  const handleMapPress = (e: any) => {
+    e.stopPropagation();
+    const query = encodeURIComponent(hotel.address || `${hotel.name} ${hotel.neighborhood || ''} Orlando FL`);
+    const url = `https://www.google.com/maps/search/?api=1&query=${query}`;
+    Linking.openURL(url);
+  };
+
+  const handleShare = async (e: any) => {
+    e.stopPropagation();
+    
+    const shareUrl = `https://www.awesomeorlando.com/hotel/${hotel.id}`;
+    const shareTitle = `${hotel.name} | Awesome Orlando ${
+      hotel.subcategory === 'luxury' ? 'Luxury Hotel' : 
+      hotel.subcategory === 'theme-park' ? 'Theme Park Hotel' : 
+      hotel.subcategory === 'budget-friendly' ? 'Budget-Friendly Hotel' : 
+      'Orlando Hotel'
+    }`;
+    const shareMessage = `Check out this amazing ${hotel.subcategory?.replace('-', ' ') || ''} hotel in ${hotel.neighborhood || 'Orlando'} - ${hotel.description?.substring(0, 100)}... ${shareUrl}`;
+    
+    try {
+      await Share.share({
+        message: shareMessage,
+        url: shareUrl,
+        title: shareTitle,
+      });
+    } catch (error) {
+      console.error('Error sharing hotel:', error);
+    }
+  };
+
+  // Default image for hotels without images
   const defaultImage = require('../../assets/images/DisneySprings.jpg');
   
   return (
@@ -87,28 +119,41 @@ const HotelCard: React.FC<HotelCardProps> = ({
     >
       {/* Hotel Image */}
       <View style={styles.imageContainer}>
-        <Image
-          source={
-            hotel.imageUrl && typeof hotel.imageUrl === 'string' && hotel.imageUrl.startsWith('http')
-              ? { uri: hotel.imageUrl }
-              : hotel.imageUrl || defaultImage
-          }
-          style={styles.image}
-          resizeMode="cover"
-        />
+        {hotel.imageUrl ? (
+          <Image
+            source={
+              typeof hotel.imageUrl === 'string' && hotel.imageUrl.startsWith('http')
+                ? { uri: hotel.imageUrl }
+                : hotel.imageUrl || defaultImage
+            }
+            style={styles.image}
+            resizeMode="cover"
+          />
+        ) : (
+          <View style={styles.placeholderContainer}>
+            <HotelIcon size={64} color="#9ca3af" />
+          </View>
+        )}
         
-        {/* Category Badge */}
+        {/* Category Badge in top-left */}
         <View style={[styles.categoryBadge, { backgroundColor: getSubcategoryColor(hotel.subcategory) }]}>
           <Text style={styles.categoryText}>
             {getSubcategoryLabel(hotel.subcategory)}
           </Text>
         </View>
 
-        {/* Rating Badge */}
-        {hotel.rating && (
-          <View style={styles.ratingBadge}>
-            <Star size={12} color="#fbbf24" fill="#fbbf24" />
-            <Text style={styles.ratingText}>{hotel.rating.toFixed(1)}</Text>
+        {/* Share button in top-right - FIXED TO MATCH WEB */}
+        <TouchableOpacity style={styles.shareButton} onPress={handleShare}>
+          <Share2 size={16} color="#374151" />
+        </TouchableOpacity>
+
+        {/* Neighborhood overlay at bottom */}
+        {hotel.neighborhood && (
+          <View style={styles.neighborhoodOverlay}>
+            <MapPin size={12} color="#ffffff" />
+            <Text style={styles.neighborhoodText} numberOfLines={1}>
+              {hotel.neighborhood}
+            </Text>
           </View>
         )}
       </View>
@@ -118,54 +163,45 @@ const HotelCard: React.FC<HotelCardProps> = ({
         <Text style={styles.hotelName} numberOfLines={2}>
           {hotel.name}
         </Text>
-        
-        {hotel.neighborhood && (
-          <View style={styles.locationContainer}>
-            <MapPin size={12} color="#6b7280" />
-            <Text style={styles.locationText} numberOfLines={1}>
-              {hotel.neighborhood}
-            </Text>
-          </View>
-        )}
 
+        {/* Map It link */}
+        <TouchableOpacity style={styles.mapLink} onPress={handleMapPress}>
+          <MapPin size={12} color="#3b82f6" />
+          <Text style={styles.mapLinkText}>Map It</Text>
+        </TouchableOpacity>
+        
         <Text style={styles.description} numberOfLines={3}>
-          {hotel.description}
+          {hotel.description || "Experience the ultimate Orlando vacation at this exceptional accommodation."}
         </Text>
 
         {/* Amenities */}
         {hotel.amenities && hotel.amenities.length > 0 && (
           <View style={styles.amenitiesContainer}>
-            {hotel.amenities.slice(0, 2).map((amenity, index) => (
+            {hotel.amenities.slice(0, 3).map((amenity, index) => (
               <View key={index} style={styles.amenityTag}>
                 <Text style={styles.amenityText}>{amenity}</Text>
               </View>
             ))}
-            {hotel.amenities.length > 2 && (
-              <View style={styles.amenityTag}>
-                <Text style={styles.amenityText}>+{hotel.amenities.length - 2}</Text>
-              </View>
-            )}
           </View>
         )}
 
-        {/* Price and Actions */}
+        {/* Footer with website and details button - FIXED COLORS TO MATCH WEB EXACTLY */}
         <View style={styles.footer}>
-          {/* <View >
-          <View style={styles.priceContainer}>
-            <Info size={20} />
-          </View>
-          </View> */}
+          {hotel.website ? (
+            <TouchableOpacity
+              style={styles.websiteButton}
+              onPress={handleWebsitePress}
+            >
+              <Globe size={14} color="#ffffff" />
+              <Text style={styles.websiteButtonText}>Official Website</Text>
+            </TouchableOpacity>
+          ) : (
+            <View />
+          )}
           
-          <View style={styles.actionsContainer}>
-            {hotel.website && (
-              <TouchableOpacity
-                style={styles.websiteButton}
-                onPress={handleWebsitePress}
-              >
-                <ExternalLink size={14} color="#ffffff" />
-              </TouchableOpacity>
-            )}
-          </View>
+          <TouchableOpacity style={styles.detailsButton} onPress={handlePress}>
+            <Text style={styles.detailsButtonText}>Details</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </TouchableOpacity>
@@ -186,17 +222,27 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: 'rgba(229, 231, 235, 0.8)', // border-border/80
   },
   fullWidthCard: {
     width: '100%',
   },
   imageContainer: {
-    height: 160,
+    height: 208, // h-52 from web (13rem = 208px)
     position: 'relative',
+    overflow: 'hidden',
   },
   image: {
     width: '100%',
     height: '100%',
+  },
+  placeholderContainer: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#f3f4f6', // bg-muted/80
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   categoryBadge: {
     position: 'absolute',
@@ -210,66 +256,78 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 10,
     fontWeight: '600',
+    textTransform: 'capitalize',
   },
-  ratingBadge: {
+  shareButton: {
     position: 'absolute',
     top: 8,
     right: 8,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    paddingHorizontal: 6,
-    paddingVertical: 3,
-    borderRadius: 8,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    padding: 6,
+    borderRadius: 6,
+  },
+  neighborhoodOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 2,
   },
-  ratingText: {
+  neighborhoodText: {
     color: '#ffffff',
-    fontSize: 10,
-    fontWeight: '600',
+    fontSize: 12,
+    marginLeft: 6,
+    flex: 1,
   },
   content: {
-    padding: 12,
+    padding: 16,
+    paddingBottom: 8,
     flex: 1,
   },
   hotelName: {
-    fontSize: 14,
+    fontSize: 18,
     fontWeight: '600',
     color: '#111827',
-    marginBottom: 4,
-    lineHeight: 18,
+    marginBottom: 12,
+    lineHeight: 22,
   },
-  locationContainer: {
+  mapLink: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 6,
-    gap: 4,
+    marginBottom: 12,
   },
-  locationText: {
-    fontSize: 11,
-    color: '#6b7280',
-    flex: 1,
+  mapLinkText: {
+    fontSize: 12,
+    color: '#3b82f6',
+    fontWeight: '500',
+    marginLeft: 4,
   },
   description: {
-    fontSize: 11,
+    fontSize: 14,
     color: '#6b7280',
-    lineHeight: 14,
-    marginBottom: 8,
+    lineHeight: 20,
+    marginBottom: 12,
   },
   amenitiesContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 4,
-    marginBottom: 8,
+    gap: 6,
+    marginBottom: 12,
   },
   amenityTag: {
     backgroundColor: '#f3f4f6',
-    paddingHorizontal: 6,
-    paddingVertical: 2,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
     borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
   },
   amenityText: {
-    fontSize: 9,
+    fontSize: 12,
     color: '#6b7280',
     fontWeight: '500',
   },
@@ -277,26 +335,42 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(229, 231, 235, 0.5)', // border-border/50
     marginTop: 'auto',
   },
-  priceContainer: {
-    flex: 1,
-  },
-  priceText: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#059669',
-  },
-  actionsContainer: {
-    flexDirection: 'row',
-    gap: 8,
-  },
+  // FIXED: Official Website button to match web exactly (orlando-orange background)
   websiteButton: {
-    backgroundColor: '#3b82f6',
-    padding: 6,
-    borderRadius: 6,
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 6,
+    backgroundColor: '#ff5500', // var(--orlando-orange) from web CSS
+  },
+  websiteButtonText: {
+    fontSize: 12,
+    color: '#ffffff',
+    marginLeft: 4,
+    fontWeight: '500',
+  },
+  // FIXED: Details button to match web exactly (orlando-teal border)
+  detailsButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderWidth: 1,
+    borderColor: '#009688', // var(--orlando-teal) from web CSS
+    borderRadius: 6,
+    backgroundColor: '#ffffff',
+  },
+  detailsButtonText: {
+    fontSize: 12,
+    color: '#009688', // var(--orlando-teal) from web CSS
+    marginLeft: 4,
+    fontWeight: '500',
   },
 });
 

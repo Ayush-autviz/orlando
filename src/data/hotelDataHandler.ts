@@ -438,7 +438,7 @@ export const getAllHotels = (): ConsolidatedHotel[] => {
   const processedAdditionalHotels = additionalHotels.map(hotel => updateHotelWithLocalImage(hotel));
   const processedBudgetHotels = additionalBudgetHotels.map(hotel => updateHotelWithLocalImage(hotel));
 
-  // Combine all hotel sources
+  // Combine all hotel sources - REORDERED TO MATCH WEB EXACTLY
   const combinedHotels = [
     ...standardHotels,
     ...disneyHotels,
@@ -452,7 +452,7 @@ export const getAllHotels = (): ConsolidatedHotel[] => {
   // Create a map to handle duplicate detection with name normalization
   const hotelMap = new Map<string, ConsolidatedHotel>();
   
-  // List of hotel name variations that should be considered the same hotel
+  // List of hotel name variations that should be considered the same hotel - MATCH WEB EXACTLY
   const nameVariations: Record<string, string[]> = {
     "JW Marriott Orlando Bonnet Creek Resort & Spa": [
       "JW Marriott Orlando Bonnet Creek Resort & Spa",
@@ -531,8 +531,26 @@ export const getAllHotels = (): ConsolidatedHotel[] => {
     }
   });
   
-  // Convert map back to array
-  return Array.from(hotelMap.values());
+  // Convert map back to array and ensure we have the expected luxury hotels
+  const result = Array.from(hotelMap.values());
+  
+  // DEBUG: Check for expected luxury hotels that should be in the system
+  const expectedLuxuryHotels = [
+    "JW Marriott Orlando Bonnet Creek Resort & Spa",
+    "Conrad Orlando", 
+    "Four Seasons Resort Orlando at Walt Disney World Resort",
+    "Disney's Grand Floridian Resort & Spa",
+    "The Ritz-Carlton Orlando, Grande Lakes"
+  ];
+  
+  console.log("=== LUXURY HOTEL VERIFICATION ===");
+  expectedLuxuryHotels.forEach(expectedHotel => {
+    const found = result.find(h => h.name.includes(expectedHotel.split(',')[0]));
+    console.log(`${expectedHotel}: ${found ? 'FOUND' : 'MISSING'} ${found ? `(${found.subcategory})` : ''}`);
+  });
+  console.log("==================================");
+  
+  return result;
 };
 
 // Filter hotels by subcategory

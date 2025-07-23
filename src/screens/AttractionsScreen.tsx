@@ -9,6 +9,7 @@ import {
   Image,
   FlatList,
   Dimensions,
+  Share,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -16,7 +17,8 @@ import {
   ExternalLink,
   Info,
   Star,
-  Sparkles
+  Sparkles,
+  Share2
 } from 'lucide-react-native';
 import Header from '../components/Header';
 import { getImageSource } from '../data/imageMap';
@@ -119,6 +121,22 @@ const AttractionsScreen: React.FC = () => {
     navigation.navigate('AttractionDetail' as never, { attraction } as never);
   };
 
+  const handleShare = async (attraction: Attraction) => {
+    const shareUrl = `https://www.awesomeorlando.com/attraction/${encodeURIComponent(attraction.name)}`;
+    const shareTitle = `${attraction.name} | Awesome Orlando ${attraction.category}`;
+    const shareMessage = `Check out ${attraction.name} in ${attraction.neighborhood || 'Orlando'} - ${attraction.description.substring(0, 100)}... ${shareUrl}`;
+    
+    try {
+      await Share.share({
+        message: shareMessage,
+        url: shareUrl,
+        title: shareTitle,
+      });
+    } catch (error) {
+      console.error('Error sharing attraction:', error);
+    }
+  };
+
   // Category data matching the web version
   const categoryData = [
     {
@@ -151,7 +169,7 @@ const AttractionsScreen: React.FC = () => {
     }
   ];
 
-  const totalAttractionsCount = attractionsData.length;
+  const totalAttractionsCount = attractionsData.length - 1;
 
   const renderAttractionCard = ({ item: attraction }: { item: Attraction }) => (
     <View style={styles.attractionCard}>
@@ -162,6 +180,14 @@ const AttractionsScreen: React.FC = () => {
           style={styles.cardImage}
           resizeMode="cover"
         />
+        
+        {/* Share button in top-right */}
+        <TouchableOpacity 
+          style={styles.shareButton} 
+          onPress={() => handleShare(attraction)}
+        >
+          <Share2 size={16} color="#374151" />
+        </TouchableOpacity>
         
         {/* Gradient overlay */}
         <View style={styles.cardImageOverlay}>
@@ -260,6 +286,18 @@ const AttractionsScreen: React.FC = () => {
       ]}>
         {category.name}
       </Text>
+      {/* Count badge */}
+      <View style={[
+        styles.categoryCount,
+        selectedCategory === category.id && styles.categoryCountActive
+      ]}>
+        <Text style={[
+          styles.categoryCountText,
+          selectedCategory === category.id && { color: '#374151' }
+        ]}>
+          {category.count}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 
@@ -497,7 +535,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
- //   paddingHorizontal: Math.min(width * 0.04, 16),
+    paddingHorizontal: Math.min(width * 0.04, 16),
     paddingVertical: 8,
     borderRadius: 8,
     backgroundColor: 'transparent',
@@ -571,6 +609,15 @@ const styles = StyleSheet.create({
   cardImage: {
     width: '100%',
     height: '100%',
+  },
+  shareButton: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    padding: 6,
+    borderRadius: 6,
+    zIndex: 10,
   },
   cardImageOverlay: {
     position: 'absolute',

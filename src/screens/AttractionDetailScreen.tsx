@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  Share,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -50,6 +51,22 @@ const AttractionDetailScreen: React.FC = () => {
         url: websiteUrl,
         title: attraction.name
       } as never);
+    }
+  };
+
+  const handleShare = async () => {
+    const shareUrl = `https://www.awesomeorlando.com/attraction/${encodeURIComponent(attraction.name)}`;
+    const shareTitle = `${attraction.name} | Awesome Orlando ${attraction.category}`;
+    const shareMessage = `Check out ${attraction.name} in ${attraction.neighborhood || 'Orlando'} - ${attraction.description.substring(0, 100)}... ${shareUrl}`;
+    
+    try {
+      await Share.share({
+        message: shareMessage,
+        url: shareUrl,
+        title: shareTitle,
+      });
+    } catch (error) {
+      console.error('Error sharing attraction:', error);
     }
   };
 
@@ -113,7 +130,7 @@ const AttractionDetailScreen: React.FC = () => {
               resizeMode="cover"
             />
             {/* Share button on top right */}
-            <TouchableOpacity style={styles.shareButton}>
+            <TouchableOpacity style={styles.shareButton} onPress={handleShare}>
               <Share2 size={20} color="#374151" />
             </TouchableOpacity>
           </View>

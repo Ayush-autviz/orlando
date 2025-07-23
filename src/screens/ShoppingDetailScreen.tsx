@@ -9,6 +9,7 @@ import {
   Image,
   Dimensions,
   Linking,
+  Share,
   Alert,
 } from 'react-native';
 import { 
@@ -85,6 +86,24 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
       url: mapUrl,
       title: `${mall?.name || 'Shopping Mall'} - Location`
     } as never);
+  };
+
+  const handleShare = async () => {
+    if (!mall) return;
+    
+    try {
+      const shareUrl = `https://www.awesomeorlando.com/shopping/${mall.id}`;
+      const shareTitle = `${mall.name} | Awesome Orlando Shopping`;
+      const shareMessage = `Check out ${mall.name} in ${mall.location.neighborhood} - ${mall.shortDescription} ${shareUrl}`;
+
+      await Share.share({
+        message: shareMessage,
+        url: shareUrl,
+        title: shareTitle,
+      });
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
   };
 
   if (loading) {
@@ -294,7 +313,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
           <View style={styles.heroPattern} />
           
           {/* Share button */}
-          <TouchableOpacity style={styles.shareButton}>
+          <TouchableOpacity style={styles.shareButton} onPress={handleShare}>
             <Share2 size={20} color="#374151" />
           </TouchableOpacity>
           
@@ -306,7 +325,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
               <View style={styles.accentLine} />
             </View>
             
-            <Text style={styles.heroTitle}>{mall.name}</Text>
+            <Text numberOfLines={2} style={styles.heroTitle}>{mall.name}</Text>
             <Text style={styles.heroTagline}>{mall.tagline}</Text>
             
             <View style={styles.heroBadges}>
@@ -346,7 +365,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
             </View>
           </View>
           
-          <View style={styles.heroBottomGradient} />
+          {/* <View style={styles.heroBottomGradient} /> */}
         </View>
 
         {/* Main content */}
@@ -602,7 +621,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   heroSection: {
-    height: 500,
+     height: 500,
     position: 'relative',
     overflow: 'hidden',
   },

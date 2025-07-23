@@ -9,18 +9,22 @@ import {
   Image,
   Dimensions,
   SafeAreaView,
+  Linking,
+  Share,
 } from 'react-native';
 import {
   X,
   MapPin,
-  Star,
   ExternalLink,
+  Globe,
+  Hotel as HotelIcon,
   Wifi,
   Car,
   Utensils,
   Waves,
   Dumbbell,
   Coffee,
+  Share2,
 } from 'lucide-react-native';
 import { Hotel } from '../types/Hotel';
 
@@ -46,7 +50,7 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
       case 'theme-park':
         return 'Theme Park Hotel';
       case 'budget-friendly':
-        return 'Budget Friendly';
+        return 'Budget Friendly Hotel';
       case 'luxury':
         return 'Luxury Hotel';
       case 'resorts':
@@ -63,19 +67,19 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
   const getSubcategoryColor = (subcategory: string): string => {
     switch (subcategory) {
       case 'luxury':
-        return '#f59e0b';
+        return '#3b82f6'; // Blue-600 (default like web)
       case 'theme-park':
-        return '#8b5cf6';
+        return '#dc2626'; // Red-600 (destructive like web)
       case 'budget-friendly':
-        return '#10b981';
+        return '#6b7280'; // Gray-600 (secondary like web)
       case 'resorts':
-        return '#3b82f6';
+        return '#3b82f6'; // Blue-600
       case 'villas':
-        return '#ec4899';
+        return '#3b82f6'; // Blue-600
       case 'business':
-        return '#6b7280';
+        return '#6b7280'; // Gray-600
       default:
-        return '#f97316';
+        return '#3b82f6'; // Blue-600
     }
   };
 
@@ -104,6 +108,33 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
     onWebsitePress?.(hotel);
   };
 
+  const handleMapPress = () => {
+    const query = encodeURIComponent(hotel.address || `${hotel.name} ${hotel.neighborhood || ''} Orlando FL`);
+    const url = `https://www.google.com/maps/search/?api=1&query=${query}`;
+    Linking.openURL(url);
+  };
+
+  const handleShare = async () => {
+    const shareUrl = `https://www.awesomeorlando.com/hotel/${hotel.id}`;
+    const shareTitle = `${hotel.name} | Awesome Orlando ${
+      hotel.subcategory === 'luxury' ? 'Luxury Hotel' : 
+      hotel.subcategory === 'theme-park' ? 'Theme Park Hotel' : 
+      hotel.subcategory === 'budget-friendly' ? 'Budget-Friendly Hotel' : 
+      'Orlando Hotel'
+    }`;
+    const shareMessage = `Check out this amazing ${hotel.subcategory?.replace('-', ' ') || ''} hotel in ${hotel.neighborhood || 'Orlando'} - ${hotel.description?.substring(0, 100)}... ${shareUrl}`;
+    
+    try {
+      await Share.share({
+        message: shareMessage,
+        url: shareUrl,
+        title: shareTitle,
+      });
+    } catch (error) {
+      console.error('Error sharing hotel:', error);
+    }
+  };
+
   const defaultImage = require('../../assets/images/DisneySprings.jpg');
 
   return (
@@ -114,7 +145,7 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
       onRequestClose={onClose}
     >
       <SafeAreaView style={styles.container}>
-        {/* Header */}
+        {/* Header - Match web version exactly */}
         <View style={styles.header}>
           <TouchableOpacity style={styles.closeButton} onPress={onClose}>
             <X size={24} color="#374151" />
@@ -122,21 +153,30 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
           <Text style={styles.headerTitle} numberOfLines={1}>
             Hotel Details
           </Text>
-          <View style={styles.headerSpacer} />
+          {/* Share button like web */}
+          <TouchableOpacity style={styles.shareButton} onPress={handleShare}>
+            <Share2 size={20} color="#374151" />
+          </TouchableOpacity>
         </View>
 
         <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-          {/* Hero Image */}
+          {/* Hero Image - Match web exactly */}
           <View style={styles.imageContainer}>
-            <Image
-              source={
-                hotel.imageUrl && typeof hotel.imageUrl === 'string' && hotel.imageUrl.startsWith('http')
-                  ? { uri: hotel.imageUrl }
-                  : hotel.imageUrl || defaultImage
-              }
-              style={styles.heroImage}
-              resizeMode="cover"
-            />
+            {hotel.imageUrl ? (
+              <Image
+                source={
+                  typeof hotel.imageUrl === 'string' && hotel.imageUrl.startsWith('http')
+                    ? { uri: hotel.imageUrl }
+                    : hotel.imageUrl || defaultImage
+                }
+                style={styles.heroImage}
+                resizeMode="cover"
+              />
+            ) : (
+              <View style={styles.placeholderContainer}>
+                <HotelIcon size={80} color="#9ca3af" />
+              </View>
+            )}
             
             {/* Category Badge */}
             <View style={[styles.categoryBadge, { backgroundColor: getSubcategoryColor(hotel.subcategory) }]}>
@@ -145,11 +185,11 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
               </Text>
             </View>
 
-            {/* Rating Badge */}
-            {hotel.rating && (
-              <View style={styles.ratingBadge}>
-                <Star size={16} color="#fbbf24" fill="#fbbf24" />
-                <Text style={styles.ratingText}>{hotel.rating.toFixed(1)}</Text>
+            {/* Neighborhood overlay at bottom like web */}
+            {hotel.neighborhood && (
+              <View style={styles.neighborhoodOverlay}>
+                <MapPin size={14} color="#ffffff" />
+                <Text style={styles.neighborhoodText}>{hotel.neighborhood}</Text>
               </View>
             )}
           </View>
@@ -159,26 +199,20 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
             {/* Hotel Name and Location */}
             <View style={styles.titleSection}>
               <Text style={styles.hotelName}>{hotel.name}</Text>
-              {hotel.neighborhood && (
-                <View style={styles.locationContainer}>
-                  <MapPin size={16} color="#6b7280" />
-                  <Text style={styles.locationText}>{hotel.neighborhood}</Text>
-                </View>
-              )}
+              
+              {/* Map It link */}
+              <TouchableOpacity style={styles.mapLink} onPress={handleMapPress}>
+                <MapPin size={16} color="#3b82f6" />
+                <Text style={styles.mapLinkText}>Map It</Text>
+              </TouchableOpacity>
             </View>
-
-            {/* Price */}
-            {/* {hotel.price && (
-              <View style={styles.priceSection}>
-                <Text style={styles.priceLabel}>Starting from</Text>
-                <Text style={styles.priceText}>{hotel.price}</Text>
-              </View>
-            )} */}
 
             {/* Description */}
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>About</Text>
-              <Text style={styles.description}>{hotel.description}</Text>
+              <Text style={styles.description}>
+                {hotel.description || "Experience the ultimate Orlando vacation at this exceptional accommodation."}
+              </Text>
             </View>
 
             {/* Amenities */}
@@ -220,15 +254,15 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
           </View>
         </ScrollView>
 
-        {/* Footer Actions */}
+        {/* Footer Actions - Match web exactly */}
         <View style={styles.footer}>
           {hotel.website && (
             <TouchableOpacity
               style={styles.websiteButton}
               onPress={handleWebsitePress}
             >
-              <ExternalLink size={20} color="#ffffff" />
-              <Text style={styles.websiteButtonText}>Visit Website</Text>
+              <Globe size={20} color="#ffffff" />
+              <Text style={styles.websiteButtonText}>Visit Official Website</Text>
             </TouchableOpacity>
           )}
         </View>
@@ -245,6 +279,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderBottomWidth: 1,
@@ -254,26 +289,33 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   headerTitle: {
-    flex: 1,
     fontSize: 18,
     fontWeight: '600',
     color: '#111827',
+    flex: 1,
     textAlign: 'center',
     marginHorizontal: 16,
   },
-  headerSpacer: {
-    width: 40,
+  shareButton: {
+    padding: 8,
   },
   scrollView: {
     flex: 1,
   },
   imageContainer: {
-    height: 250,
+    height: 280, // Slightly taller for mobile
     position: 'relative',
   },
   heroImage: {
     width: '100%',
     height: '100%',
+  },
+  placeholderContainer: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#f3f4f6',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   categoryBadge: {
     position: 'absolute',
@@ -287,66 +329,54 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 12,
     fontWeight: '600',
+    textTransform: 'capitalize',
   },
-  ratingBadge: {
+  neighborhoodOverlay: {
     position: 'absolute',
-    top: 16,
-    right: 16,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    paddingHorizontal: 8,
-    paddingVertical: 6,
-    borderRadius: 12,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 4,
   },
-  ratingText: {
+  neighborhoodText: {
     color: '#ffffff',
     fontSize: 14,
-    fontWeight: '600',
+    marginLeft: 6,
+    fontWeight: '500',
   },
   content: {
     padding: 20,
   },
   titleSection: {
-    marginBottom: 16,
+    marginBottom: 20,
   },
   hotelName: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     color: '#111827',
-    marginBottom: 8,
+    marginBottom: 12,
+    lineHeight: 34,
   },
-  locationContainer: {
+  mapLink: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    alignSelf: 'flex-start',
   },
-  locationText: {
-    fontSize: 16,
-    color: '#6b7280',
-  },
-  priceSection: {
-    marginBottom: 20,
-    padding: 16,
-    backgroundColor: '#f9fafb',
-    borderRadius: 12,
-  },
-  priceLabel: {
+  mapLinkText: {
     fontSize: 14,
-    color: '#6b7280',
-    marginBottom: 4,
-  },
-  priceText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#059669',
+    color: '#3b82f6',
+    fontWeight: '500',
+    marginLeft: 4,
   },
   section: {
     marginBottom: 24,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: '600',
     color: '#111827',
     marginBottom: 12,
@@ -368,12 +398,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 8,
     borderRadius: 20,
-    gap: 6,
     marginBottom: 8,
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
   },
   amenityText: {
     fontSize: 14,
     color: '#374151',
+    marginLeft: 6,
+    fontWeight: '500',
   },
   perksText: {
     fontSize: 16,
@@ -403,7 +436,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#e5e7eb',
   },
   websiteButton: {
-    backgroundColor: '#3b82f6',
+    backgroundColor: '#3b82f6', // Blue-600 like web
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -415,6 +448,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 16,
     fontWeight: '600',
+    marginLeft: 8,
   },
 });
 

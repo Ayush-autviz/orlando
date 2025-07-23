@@ -8,9 +8,10 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  Share,
   Alert,
 } from 'react-native';
-import { MapPin, ExternalLink, ChevronRight, ShoppingBag, Store, Coffee } from 'lucide-react-native';
+import { MapPin, ExternalLink, ChevronRight, ShoppingBag, Store, Coffee, Share2 } from 'lucide-react-native';
 import Header from '../components/Header';
 import { shoppingMalls, ShoppingMall } from '../data/shoppingmalldata';
 
@@ -43,6 +44,22 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
     } as never);
   };
 
+  const handleShare = async (mall: ShoppingMall) => {
+    try {
+      const shareUrl = `https://www.awesomeorlando.com/shopping/${mall.id}`;
+      const shareTitle = `${mall.name} | Awesome Orlando Shopping`;
+      const shareMessage = `Check out ${mall.name} in ${mall.location.neighborhood} - ${mall.shortDescription} ${shareUrl}`;
+
+      await Share.share({
+        message: shareMessage,
+        url: shareUrl,
+        title: shareTitle,
+      });
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
+  };
+
   const renderMallCard = (mall: ShoppingMall) => (
     <View key={mall.id} style={styles.mallCard}>
       {/* Image Section */}
@@ -60,8 +77,16 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
           </View>
         </View>
 
+        {/* Share button */}
+        <TouchableOpacity
+          style={styles.shareButton}
+          onPress={() => handleShare(mall)}
+        >
+          <Share2 size={16} color="#374151" />
+        </TouchableOpacity>
+
         {/* Mall name */}
-        <Text style={styles.mallName}>{mall.name}</Text>
+        <Text numberOfLines={1} style={styles.mallName}>{mall.name}</Text>
       </View>
 
       {/* Content Section */}
@@ -147,7 +172,6 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
 
         {/* Shopping Mall Cards */}
         <View style={styles.mallsContainer}>
-          <Text style={styles.sectionTitle}>Premier Shopping Destinations</Text>
           {malls.map(renderMallCard)}
         </View>
       </ScrollView>
@@ -366,6 +390,22 @@ const styles = StyleSheet.create({
     color: '#EA580C',
     fontSize: 14,
     fontWeight: '500',
+  },
+  shareButton: {
+    position: 'absolute',
+    top: 12,
+    right: 12,
+    backgroundColor: '#ffffff',
+    borderRadius: 20,
+    width: 36,
+    height: 36,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
 });
 

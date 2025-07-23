@@ -20,6 +20,7 @@ export const hotelImageMapping: { [key: string]: any } = {
   "Disney's Pop Century Resort": require('../../assets/images/disneys-pop-century-resort.jpeg'),
   "Disney's Port Orleans Resort - French Quarter": require('../../assets/images/port-orleans-french-quarter-optimized.jpg'),
   "Disney's Port Orleans Resort - Riverside": require('../../assets/images/port-orleans-riverside.webp'),
+  "Marriott Orlando Downtown": require('../../assets/images/marriott-orlando-downtown-new.jpg'),
 
   // Universal Hotels
   "Hard Rock Hotel® at Universal Orlando": require('../../assets/images/hard-rock-hotel-2.jpg'),
@@ -48,15 +49,35 @@ export const hotelImageMapping: { [key: string]: any } = {
   "Hyatt Regency Grand Cypress": require('../../assets/images/hyatt-regency-grand-cypress-optimized.webp'),
   "Caribe Royale Orlando": require('../../assets/images/caribe-royale-orlando.jpg'),
   "Rosen Centre Hotel": require('../../assets/images/rosen-centre-hotel-optimized.jpg'),
-
+  "Residence Inn by Marriott at SeaWorld": require('../../assets/images/residence-inn-seaworld.jpg'),
+  "SpringHill Suites by Marriott at SeaWorld": require('../../assets/images/springhill-suites-seaworld.jpg'),
+  "Fairfield Inn & Suites Orlando at SeaWorld": require('../../assets/images/fairfield-inn-seaworld.jpg'),
+  "Holiday Inn Express & Suites Orlando at SeaWorld": require('../../assets/images/holiday-inn-express-seaworld.jpg'),
+  "Rosen Plaza Hotel": require('../../assets/images/rosen-plaza-hotel.jpg'),
+  "Homewood Suites by Hilton Orlando International Drive": require('../../assets/images/homewood-suites-idrive.jpg'),
+  "Comfort Inn & Suites Convention Center": require('../../assets/images/comfort-inn-convention-center.jpg'),
+  "Wyndham Orlando Resort International Drive": require('../../assets/images/wyndham-orlando-idrive.jpg'),
+  "Rosen Inn at Pointe Orlando": require('../../assets/images/rosen-inn-pointe-orlando.jpg'),
+  "Best Western Orlando Gateway Hotel": require('../../assets/images/best-western-gateway.jpg'),
+  "DoubleTree by Hilton Orlando Downtown": require('../../assets/images/doubletree-orlando-downtown.jpg'),
+  "Hilton Orlando Buena Vista Palace Disney Springs": require('../../assets/images/hilton-orlando-buena-vista-palace.jpg'),
+  "Holiday Inn Orlando – Disney Springs Area": require('../../assets/images/holiday-inn-orlando-disney-springs.jpg'),
+  "Rosen Inn International": require('../../assets/images/rosen-inn-international.jpg'),
+  "Universal Stella Nova Resort": require('../../assets/images/universal-stella-nova-optimized.jpg'),
+  "Holiday Inn Express & Suites - ICON Park": require('../../assets/images/holiday-inn-express-icon-park.jpg'),
+  
   // Other Hotels
   "DoubleTree by Hilton at the Entrance to Universal Orlando": require('../../assets/images/doubletree-by-hilton.jpeg'),
   "Hilton Orlando Lake Buena Vista": require('../../assets/images/hilton-orlando-buena-vista-palace.jpg'),
   "The Alfond Inn": require('../../assets/images/alfond-inn.webp'),
-  "Marriott Orlando Downtown": require('../../assets/images/hyatt-regency-orlando.jpeg'), // Using similar hotel image
+  "Renaissance Orlando at SeaWorld": require('../../assets/images/renaissance-orlando-seaworld-hotel-optimized.webp'),
+  "Hilton Grand Vacations at SeaWorld": require('../../assets/images/hilton-grand-vacations-seaworld.jpg'),
+  "DoubleTree by Hilton Orlando at SeaWorld": require('../../assets/images/doubletree-seaworld.jpg'),
+  "Signia by Hilton Orlando Bonnet Creek": require('../../assets/images/signia-by-hilton.jpg'), // Using similar hotel image
   "B Resort & Spa Lake Buena Vista": require('../../assets/images/b-resort-and-spa.jpg'),
   "DoubleTree Suites by Hilton Orlando - Disney Springs": require('../../assets/images/doubletree-suites-disney-springs.jpg'),
   "Embassy Suites by Hilton Orlando Lake Buena Vista South": require('../../assets/images/embassy-suites-lbv-south.jpg'),
+ // "Residence Inn by Marriott at SeaWorld": require('../../assets/images/residence-inn-seaworld.jpg'),
   "Holiday Inn Orlando - Disney Springs": require('../../assets/images/holiday-inn-orlando-disney-springs.jpg'),
   "Encantada Resort": require('../../assets/images/encantada-resort.jpg'),
   "Magic Village Yards": require('../../assets/images/magic-village-yards.jpg'),

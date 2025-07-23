@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   Linking,
   Dimensions,
+  Share,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { 
@@ -73,6 +74,24 @@ const RestaurantDetailScreen: React.FC = () => {
     } as never);
   };
 
+  const handleShare = async () => {
+    if (!restaurant) return;
+    
+    const shareUrl = `https://www.awesomeorlando.com/dining/restaurant/${restaurant.id}`;
+    const shareTitle = `${restaurant.name} | Awesome Orlando ${restaurant.cuisine}`;
+    const shareMessage = `Check out ${restaurant.name} in ${restaurant.neighborhood || 'Orlando'} - ${restaurant.shortDescription || restaurant.description.substring(0, 100)}... ${shareUrl}`;
+    
+    try {
+      await Share.share({
+        message: shareMessage,
+        url: shareUrl,
+        title: shareTitle,
+      });
+    } catch (error) {
+      console.error('Error sharing restaurant:', error);
+    }
+  };
+
   if (loading) {
     return (
       <SafeAreaView style={styles.container}>
@@ -122,7 +141,7 @@ const RestaurantDetailScreen: React.FC = () => {
             <View style={styles.cuisineBadge}>
               <Text style={styles.cuisineBadgeText}>{restaurant.cuisine}</Text>
             </View>
-            <TouchableOpacity style={styles.shareButton}>
+            <TouchableOpacity style={styles.shareButton} onPress={handleShare}>
               <Share2 size={20} color="#374151" />
             </TouchableOpacity>
             <View style={styles.heroOverlay}>

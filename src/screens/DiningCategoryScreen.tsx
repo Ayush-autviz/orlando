@@ -8,9 +8,10 @@ import {
   StyleSheet,
   SafeAreaView,
   Linking,
+  Share,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { ChevronLeft, MapPin, Globe, Info } from 'lucide-react-native';
+import { ChevronLeft, MapPin, Globe, Info, Share2 } from 'lucide-react-native';
 import { 
   getRestaurantsByCategory, 
   Restaurant, 
@@ -60,6 +61,22 @@ const DiningCategoryScreen: React.FC = () => {
     } as never);
   };
 
+  const handleShare = async (restaurant: Restaurant) => {
+    const shareUrl = `https://www.awesomeorlando.com/dining/restaurant/${restaurant.id}`;
+    const shareTitle = `${restaurant.name} | Awesome Orlando ${restaurant.cuisine}`;
+    const shareMessage = `Check out ${restaurant.name} in ${restaurant.neighborhood || 'Orlando'} - ${restaurant.shortDescription || restaurant.description.substring(0, 100)}... ${shareUrl}`;
+    
+    try {
+      await Share.share({
+        message: shareMessage,
+        url: shareUrl,
+        title: shareTitle,
+      });
+    } catch (error) {
+      console.error('Error sharing restaurant:', error);
+    }
+  };
+
   if (!categoryId || !categoryDetails) {
     return (
       <SafeAreaView style={styles.container}>
@@ -86,6 +103,13 @@ const DiningCategoryScreen: React.FC = () => {
         <View style={styles.cuisineBadge}>
           <Text style={styles.cuisineBadgeText}>{restaurant.cuisine}</Text>
         </View>
+        {/* Share button in top-right */}
+        <TouchableOpacity 
+          style={styles.shareButton} 
+          onPress={() => handleShare(restaurant)}
+        >
+          <Share2 size={16} color="#374151" />
+        </TouchableOpacity>
       </View>
       
       {/* Content Section */}
@@ -250,6 +274,14 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: 'bold',
     textTransform: 'uppercase',
+  },
+  shareButton: {
+    position: 'absolute',
+    top: 8,
+    right: 8,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    padding: 6,
+    borderRadius: 6,
   },
   contentSection: {
     padding: 16,

@@ -1,4 +1,4 @@
-//import { DisneyHotel } from "../types/disney";
+import { DisneyHotel } from "../../types/disney";
 
 // Disney hotels organized by park proximity
 export const disneyHotelData: Record<string, DisneyHotel> = {
