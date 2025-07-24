@@ -14,41 +14,37 @@ import {
   Home,
   X
 } from 'lucide-react-native';
+import AnimatedGradientLogo from '../components/AnimatedGradientLogo';
 
 interface DrawerContentProps {
-  onNavigate: (screenName: string) => void;
+  navigation: any;
   onClose: () => void;
 }
 
-const DrawerContent: React.FC<DrawerContentProps> = ({ onNavigate, onClose }) => {
+const DrawerContent: React.FC<DrawerContentProps> = ({ navigation, onClose }) => {
   const categories = [
-    { id: 'home', label: 'Home', icon: <Home size={24} color="#374151" />, color: '#f97316' },
-    { id: 'theme-parks', label: 'Theme Parks', icon: <MapPin size={24} color="#374151" />, color: '#3b82f6' },
-    { id: 'attractions', label: 'All Attractions', icon: <Star size={24} color="#374151" />, color: '#10b981' },
-    { id: 'hotels', label: 'Hotels', icon: <Building size={24} color="#374151" />, color: '#f59e0b' },
-    { id: 'dining', label: 'Dining', icon: <Utensils size={24} color="#374151" />, color: '#ef4444' },
-    { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color="#374151" />, color: '#8b5cf6' },
-    { id: 'entertainment', label: 'Live Entertainment', icon: <Calendar size={24} color="#374151" />, color: '#06b6d4' },
-    { id: 'things-to-do', label: 'Things to Do', icon: <Star size={24} color="#374151" />, color: '#84cc16' },
-    { id: 'golf', label: 'Golf', icon: <Flag size={24} color="#374151" />, color: '#f97316' },
-    { id: 'sports', label: 'Sports', icon: <Star size={24} color="#374151" />, color: '#ec4899' },
-    { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color="#374151" />, color: '#6366f1' },
-    { id: 'spas', label: 'Spas & Wellness', icon: <Leaf size={24} color="#374151" />, color: '#10b981' },
-    { id: 'nightlife', label: 'Nightlife', icon: <Beer size={24} color="#374151" />, color: '#8b5cf6' },
+    { id: 'theme-parks', label: 'Theme Parks', icon: <Building size={24} color="#A855F7" />, color: '#A855F7' },
+    { id: 'attractions', label: 'Attractions', icon: <Star size={24} color="#EF4444" />, color: '#EF4444' },
+    { id: 'hotels', label: 'Hotels', icon: <Building size={24} color="#3B82F6" />, color: '#3B82F6' },
+    { id: 'dining', label: 'Dining', icon: <Utensils size={24} color="#F59E0B" />, color: '#F59E0B' },
+    { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color="#10B981" />, color: '#10B981' },
+    { id: 'entertainment', label: 'Live Entertainment', icon: <Calendar size={24} color="#8B5CF6" />, color: '#8B5CF6' },
+    { id: 'golf', label: 'Golf', icon: <Flag size={24} color="#059669" />, color: '#059669' },
+    { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color="#DC2626" />, color: '#DC2626' },
+    { id: 'nightlife', label: 'Nightlife', icon: <Beer size={24} color="#7C3AED" />, color: '#7C3AED' },
+    { id: 'spas', label: 'Spas', icon: <Leaf size={24} color="#16A34A" />, color: '#16A34A' },
   ];
 
   const handleCategoryPress = (categoryId: string) => {
-    onNavigate(categoryId);
+    navigation.navigate(categoryId);
+    onClose();
   };
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.logoContainer}>
-          <Text style={styles.logoText}>
-            <Text style={styles.logoOrange}>Orlando</Text>
-            <Text style={styles.logoTeal}>Guide</Text>
-          </Text>
+          <AnimatedGradientLogo fontSize={20} width={91} />
         </View>
         <TouchableOpacity 
           style={styles.closeButton}
@@ -99,23 +95,11 @@ const styles = StyleSheet.create({
     borderBottomColor: '#e5e7eb',
   },
   logoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  logoText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  logoOrange: {
-    color: '#f97316',
-  },
-  logoTeal: {
-    color: '#0d9488',
-    fontWeight: '300',
+    flex: 1,
   },
   closeButton: {
     padding: 8,
-    borderRadius: 20,
+    borderRadius: 8,
     backgroundColor: '#f3f4f6',
   },
   scrollView: {

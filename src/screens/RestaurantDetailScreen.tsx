@@ -68,10 +68,7 @@ const RestaurantDetailScreen: React.FC = () => {
 
   const handleMapPress = (address: string) => {
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-    navigation.navigate('WebView' as never, {
-      url: url,
-      title: `${restaurant?.name || 'Restaurant'} - Location`
-    } as never);
+    Linking.openURL(url);
   };
 
   const handleShare = async () => {

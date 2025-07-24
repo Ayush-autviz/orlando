@@ -10,6 +10,7 @@ import {
   Dimensions,
   Share,
   Alert,
+  Linking,
 } from 'react-native';
 import { MapPin, ExternalLink, ChevronRight, ShoppingBag, Store, Coffee, Share2 } from 'lucide-react-native';
 import Header from '../components/Header';
@@ -38,10 +39,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
   const handleMapPress = (address: string) => {
     const encodedAddress = encodeURIComponent(address);
     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-    navigation.navigate('WebView' as never, {
-      url: mapUrl,
-      title: 'Location on Map'
-    } as never);
+    Linking.openURL(mapUrl);
   };
 
   const handleShare = async (mall: ShoppingMall) => {

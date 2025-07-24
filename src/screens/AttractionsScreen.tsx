@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
   FlatList,
   Dimensions,
   Share,
+  Linking,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -217,7 +218,7 @@ const AttractionsScreen: React.FC = () => {
             onPress={() => {
               const address = attraction.address || `${attraction.name} ${attraction.neighborhood || ''} Orlando FL`;
               const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-              openWebsite(url, `${attraction.name} - Map`);
+              Linking.openURL(url);
             }}
           >
             <MapPin size={12} color={getMapItColor(attraction.category)} />

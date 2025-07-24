@@ -10,6 +10,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Home, MapPin, Star, Utensils, Bed, Menu, DoorOpen, Ticket, ShoppingCart } from 'lucide-react-native';
+import AnimatedGradientLogo from '../components/AnimatedGradientLogo';
 
 // Import screens
 import HomeScreen from '../screens/HomeScreen';
@@ -150,10 +151,7 @@ const CustomDrawerContent = (props: any) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.logoContainer}>
-          <Text style={styles.logoText}>
-            <Text style={styles.logoOrange}>Orlando</Text>
-            <Text style={styles.logoTeal}>Guide</Text>
-          </Text>
+          <AnimatedGradientLogo fontSize={24} width={109} />
         </View>
       </View>
 
@@ -251,19 +249,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#e5e7eb',
   },
   logoContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  logoText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  logoOrange: {
-    color: '#f97316',
-  },
-  logoTeal: {
-    color: '#0d9488',
-    fontWeight: '300',
+    flex: 1,
   },
   scrollView: {
     flex: 1,

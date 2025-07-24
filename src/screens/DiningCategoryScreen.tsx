@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,11 +7,27 @@ import {
   Image,
   StyleSheet,
   SafeAreaView,
-  Linking,
+  Dimensions,
   Share,
+  Linking,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { ChevronLeft, MapPin, Globe, Info, Share2 } from 'lucide-react-native';
+import { 
+  ChevronLeft, 
+  MapPin, 
+  DollarSign, 
+  Clock, 
+  ExternalLink,
+  Phone,
+  Globe,
+  CheckCircle,
+  Utensils,
+  Heart,
+  Users,
+  Car,
+  Share2,
+  Info,
+} from 'lucide-react-native';
 import { 
   getRestaurantsByCategory, 
   Restaurant, 
@@ -48,10 +64,7 @@ const DiningCategoryScreen: React.FC = () => {
 
   const handleMapPress = (address: string) => {
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-    navigation.navigate('WebView' as never, {
-      url: url,
-      title: 'Restaurant Location'
-    } as never);
+    Linking.openURL(url);
   };
 
   const handleWebsitePress = (website: string) => {

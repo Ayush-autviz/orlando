@@ -8,6 +8,7 @@ import {
   Image,
   Dimensions,
   Share,
+  Linking,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -190,10 +191,7 @@ const AttractionDetailScreen: React.FC = () => {
                         onPress={() => {
                           const address = detailedData?.address || attraction.address;
                           const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
-                          navigation.navigate('WebView' as never, {
-                            url: googleMapsUrl,
-                            title: `${attraction.name} - Location`
-                          } as never);
+                          Linking.openURL(googleMapsUrl);
                         }}
                       >
                         <MapPin size={12} color="#ea580c" />

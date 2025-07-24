@@ -150,9 +150,9 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
       );
     };
 
-    createSmoothAnimation(scrollX1, 85000).start(); // Row 1: Left to right
-    createSmoothAnimation(scrollX2, 70000, true).start(); // Row 2: Right to left (reverse)
-    createSmoothAnimation(scrollX3, 95000).start(); // Row 3: Left to right
+    createSmoothAnimation(scrollX1, 180000).start(); // Row 1: Left to right (slowed down)
+    createSmoothAnimation(scrollX2, 150000, true).start(); // Row 2: Right to left (slowed down)
+    createSmoothAnimation(scrollX3, 200000).start(); // Row 3: Left to right (slowed down)
   }, []);
 
   const renderImageRow = (images: any[], animatedValue: Animated.Value, isMiddleRow: boolean = false) => (
@@ -319,9 +319,9 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
             }
           ]}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Awesome Orlando</Text>
+            <Text style={styles.title}>Awesome Orlando Guide</Text>
             <View style={styles.subtitleContainer}>
-              <Text style={styles.subtitle}>Your Ultimate Guide to the Magic City</Text>
+              <Text style={styles.subtitle}>Your complete resource for exploring Orlando</Text>
               {/* <Animated.View
                 style={[
                   styles.sparkle,
@@ -442,7 +442,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 52,
+    fontSize: 42,
     fontWeight: '900',
     color: '#ffffff',
     textAlign: 'center',
@@ -465,7 +465,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   subtitle: {
-    fontSize: 22,
+    fontSize: 18,
     color: '#ffffff',
     textAlign: 'center',
     fontWeight: '600',

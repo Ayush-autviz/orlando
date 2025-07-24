@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Menu } from 'lucide-react-native';
+import AnimatedGradientLogo from './AnimatedGradientLogo';
 
 interface HeaderProps {
   title?: string;
@@ -29,10 +30,7 @@ const Header: React.FC<HeaderProps> = ({ title, showDrawerButton = false }) => {
         )}
         
         <View style={styles.logoContainer}>
-          <Text style={styles.logoText}>
-            <Text style={styles.logoOrange}>Orlando</Text>
-            <Text style={styles.logoTeal}>Guide</Text>
-          </Text>
+          <AnimatedGradientLogo fontSize={20} width={91} />
         </View>
 
         {/* Invisible spacer to balance the drawer button */}
@@ -66,29 +64,6 @@ const styles = StyleSheet.create({
   logoContainer: {
     flex: 1,
     alignItems: 'center',
-  },
-  logoText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  logoOrange: {
-    color: '#f97316',
-  },
-  logoTeal: {
-    color: '#0d9488',
-    fontWeight: '300',
-  },
-  titleContainer: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    alignItems: 'center',
-    zIndex: -1,
-  },
-  titleText: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#374151',
   },
   spacer: {
     width: 40,
