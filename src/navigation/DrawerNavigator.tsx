@@ -26,6 +26,7 @@ import EventsScreen from '../screens/EventsScreen';
 import NeighborhoodsScreen from '../screens/NeighborhoodsScreen';
 import ShoppingScreen from '../screens/ShoppingScreen';
 import GolfScreen from '../screens/GolfScreen';
+import VenuesScreen from '../screens/VenuesScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -116,7 +117,8 @@ const DrawerNavigator = () => {
       <Drawer.Screen name="hotels" component={HotelsScreen} />
       <Drawer.Screen name="dining" component={DiningScreen} />
       <Drawer.Screen name="shopping" component={ShoppingScreen} />
-      {/* <Drawer.Screen name="entertainment" component={EventsScreen} />
+      <Drawer.Screen name="entertainment" component={VenuesScreen} />
+      {/* <Drawer.Screen name="events" component={EventsScreen} />
       <Drawer.Screen name="things-to-do" component={AttractionsScreen} />
       <Drawer.Screen name="golf" component={GolfScreen} />
       <Drawer.Screen name="sports" component={AttractionsScreen} />
