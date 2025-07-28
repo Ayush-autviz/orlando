@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -11,6 +11,7 @@ import {
   Dimensions,
   Share,
   Linking,
+  Animated,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -107,12 +108,35 @@ const AttractionsScreen: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('Unique Attractions');
 
   const [filteredAttractions, setFilteredAttractions] = useState<Attraction[]>([]);
+  
+  // Animation for blinking dot
+  const pingAnimation = useRef(new Animated.Value(1)).current;
 
   console.log(filteredAttractions,'filetered attrctions')
 
   useEffect(() => {
     setFilteredAttractions(getAttractionsByCategory(selectedCategory));
   }, [selectedCategory]);
+
+  // Start ping animation
+  useEffect(() => {
+    const startPingAnimation = () => {
+      Animated.sequence([
+        Animated.timing(pingAnimation, {
+          toValue: 1.5,
+          duration: 1500,
+          useNativeDriver: true,
+        }),
+        Animated.timing(pingAnimation, {
+          toValue: 1,
+          duration: 1500,
+          useNativeDriver: true,
+        }),
+      ]).start(() => startPingAnimation());
+    };
+
+    startPingAnimation();
+  }, []);
 
   const openWebsite = (url: string, title: string) => {
     navigation.navigate('WebView' as never, { url, title } as never);
@@ -319,8 +343,19 @@ const AttractionsScreen: React.FC = () => {
                   ORLANDO<Text style={styles.heroTitleAccent}>ATTRACTIONS</Text>
                 </Text>
               </View>
-              {/* Small decorative element */}
-              <View style={styles.heroTitleDecoration} />
+              {/* Animated blinking dot */}
+              <Animated.View 
+                style={[
+                  styles.heroTitleDecoration,
+                  {
+                    transform: [{ scale: pingAnimation }],
+                    opacity: pingAnimation.interpolate({
+                      inputRange: [1, 1.5],
+                      outputRange: [0.8, 0],
+                    }),
+                  }
+                ]} 
+              />
             </View>
             
             {/* Content area */}
@@ -455,10 +490,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -4,
     right: -4,
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: '#fbbf24', // orange-300
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: '#fde047', // yellow-300 to match ThemeParksScreen
     opacity: 0.8,
   },
   heroContentArea: {

@@ -24,7 +24,8 @@ import {
   Mountain,
   ExternalLink,
   Globe,
-  Palmtree
+  Palmtree,
+  Droplet
 } from 'lucide-react-native';
 import Header from '../components/Header';
 
@@ -454,18 +455,20 @@ const ThemeParksScreen: React.FC = () => {
                 playWhenInactive={false}
               />
             </View>
-            <View style={[styles.mainCardOverlay, { backgroundColor: 'rgba(124, 58, 237, 0.6)' }]}>
+            <View style={[styles.mainCardOverlay, { backgroundColor: 'rgba(124, 58, 237, 0.4)' }]}>
               <View style={styles.mainCardContent}>
-                <Text style={styles.mainCardTitle}>Universal's Epic Universe</Text>
                 <Text style={styles.mainCardDescription}>
-                  Experience the future of theme parks with five immersive worlds including Super Nintendo World, Ministry of Magic, and more. Opening 2025.
+                  Experience the magic of Universal's Epic Universe - Now Open!
                 </Text>
-                <View style={[styles.mainCardButton, { backgroundColor: '#7c3aed' }]}>
+                <TouchableOpacity 
+                  style={[styles.mainCardButton, { backgroundColor: '#7c3aed' }]}
+                  onPress={() => openWebsite('https://www.universalorlando.com/', 'Universal Orlando')}
+                >
                   <View style={styles.buttonContent}>
-                    <Star size={16} color="#ffffff" />
-                    <Text style={styles.mainCardButtonText}>Learn More</Text>
+                    <ExternalLink size={16} color="#ffffff" />
+                    <Text style={styles.mainCardButtonText}>Official Site</Text>
                   </View>
-                </View>
+                </TouchableOpacity>
               </View>
             </View>
           </TouchableOpacity>
@@ -638,41 +641,96 @@ const ThemeParksScreen: React.FC = () => {
             {/* Experience the Magic of SeaWorld */}
             <View style={styles.seaworldExperience}>
               <Text style={styles.seaworldExperienceTitle}>Experience the Magic of SeaWorld</Text>
-              <View style={styles.seaworldGrid}>
-                <TouchableOpacity
-                  style={styles.seaworldCard}
-                  onPress={() => openWebsite('https://aquatica.com/orlando/')}
-                >
+              <View style={styles.seaworldExperienceGrid}>
+                {/* Dolphin Show */}
+                <TouchableOpacity style={styles.seaworldExperienceCard}>
                   <Image
-                    source={require('../../assets/images/Aquatica.jpg')}
-                    style={styles.seaworldCardImage}
+                    source={require('../../assets/images/Seaworld.png')}
+                    style={styles.seaworldExperienceImage}
                     resizeMode="cover"
                   />
-                  <View style={styles.seaworldCardOverlay}>
-                    <Text style={styles.seaworldCardTitle}>Aquatica Orlando</Text>
-                    <Text style={styles.seaworldCardDescription}>
-                      Waterpark with high-speed slides and up-close animal experiences.
-                    </Text>
+                  <View style={styles.seaworldExperienceOverlay}>
+                    <Text style={styles.seaworldExperienceLabel}>Dolphin Encounter</Text>
                   </View>
                 </TouchableOpacity>
-
-                <TouchableOpacity
-                  style={styles.seaworldCard}
-                  onPress={() => openWebsite('https://discoverycove.com/')}
-                >
+                
+                {/* Roller Coaster */}
+                <TouchableOpacity style={styles.seaworldExperienceCard}>
                   <Image
-                    source={require('../../assets/images/DiscoveryCove.jpg')}
-                    style={styles.seaworldCardImage}
+                    source={require('../../assets/images/Seaworld3.webp')}
+                    style={styles.seaworldExperienceImage}
                     resizeMode="cover"
                   />
-                  <View style={styles.seaworldCardOverlay}>
-                    <Text style={styles.seaworldCardTitle}>Discovery Cove</Text>
-                    <Text style={styles.seaworldCardDescription}>
-                      All-inclusive day resort with dolphin swims and snorkeling.
-                    </Text>
+                  <View style={styles.seaworldExperienceOverlay}>
+                    <Text style={styles.seaworldExperienceLabel}>Thrilling Coasters</Text>
+                  </View>
+                </TouchableOpacity>
+                
+                {/* Sesame Street */}
+                <TouchableOpacity style={styles.seaworldExperienceCard}>
+                  <Image
+                    source={require('../../assets/images/SesameStreet.webp')}
+                    style={styles.seaworldExperienceImage}
+                    resizeMode="cover"
+                  />
+                  <View style={styles.seaworldExperienceOverlay}>
+                    <Text style={styles.seaworldExperienceLabel}>Sesame Street Land</Text>
                   </View>
                 </TouchableOpacity>
               </View>
+            </View>
+            
+            {/* Aquatica and Discovery Cove smaller cards */}
+            <View style={styles.seaworldWaterParksGrid}>
+              {/* Aquatica Card */}
+              <TouchableOpacity
+                style={styles.seaworldWaterParkCard}
+                onPress={() => openWebsite('https://aquatica.com/orlando/')}
+              >
+                <Image
+                  source={require('../../assets/images/Aquatica.jpg')}
+                  style={styles.seaworldWaterParkImage}
+                  resizeMode="cover"
+                />
+                <View style={styles.seaworldWaterParkOverlay}>
+                  <Text style={styles.seaworldWaterParkTitle}>Aquatica Orlando</Text>
+                  <Text style={styles.seaworldWaterParkDescription}>
+                    SeaWorld's water park with thrilling slides and animal encounters in a South Seas-inspired setting.
+                  </Text>
+                  <TouchableOpacity 
+                    style={styles.seaworldWaterParkButton}
+                    onPress={() => openWebsite('https://aquatica.com/orlando/')}
+                  >
+                    <Waves size={12} color="#ffffff" />
+                    <Text style={styles.seaworldWaterParkButtonText}>Visit Aquatica</Text>
+                  </TouchableOpacity>
+                </View>
+              </TouchableOpacity>
+              
+              {/* Discovery Cove Card */}
+              <TouchableOpacity
+                style={styles.seaworldWaterParkCard}
+                onPress={() => openWebsite('https://discoverycove.com/')}
+              >
+                <Image
+                  source={require('../../assets/images/DiscoveryCove.jpg')}
+                  style={styles.seaworldWaterParkImage}
+                  resizeMode="cover"
+                />
+                <View style={styles.seaworldWaterParkOverlay}>
+                  <Text style={styles.seaworldWaterParkTitle}>Discovery Cove</Text>
+                  <Text style={styles.seaworldWaterParkDescription}>
+                    All-inclusive day resort with dolphin swims, snorkeling, and tropical relaxation.
+                  </Text>
+                  <TouchableOpacity 
+                    style={styles.seaworldWaterParkButton}
+                    onPress={() => openWebsite('https://discoverycove.com/')}
+                  >
+                    <Droplet size={12} color="#ffffff" />
+                    <Text style={styles.seaworldWaterParkButtonText}>Discover Paradise</Text>
+                  </TouchableOpacity>
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
 
@@ -720,7 +778,12 @@ const ThemeParksScreen: React.FC = () => {
           </View>
 
           <View style={styles.seasonalEventsContainer}>
-            <Text style={styles.gridTitle}>Major Annual Events</Text>
+            <View style={styles.majorEventsHeader}>
+              <View style={styles.majorEventsIcon}>
+                <Sparkles size={16} color="#ffffff" />
+              </View>
+              <Text style={styles.majorEventsTitle}>Major Annual Events</Text>
+            </View>
 
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.tableScrollContainer}>
               <View style={styles.tableContainer}>
@@ -806,6 +869,121 @@ const ThemeParksScreen: React.FC = () => {
                 </TouchableOpacity>
               </View>
             </ScrollView>
+            
+            {/* Seasonal Cards Grid */}
+            <View style={styles.seasonalCardsGrid}>
+              {/* Spring Card */}
+              <View style={styles.seasonalCardSpring}>
+                <View style={styles.seasonalCardHeader}>
+                  <View style={styles.seasonalCardIconSpring}>
+                    <Palmtree size={16} color="#ffffff" />
+                  </View>
+                  <Text style={styles.seasonalCardTitleSpring}>Spring Magic</Text>
+                </View>
+                <View style={styles.seasonalCardList}>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletSpring} />
+                    <Text style={styles.seasonalCardText}>SeaWorld Seven Seas Food Festival</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletSpring} />
+                    <Text style={styles.seasonalCardText}>Easter celebrations at all major parks</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletSpring} />
+                    <Text style={styles.seasonalCardText}>Disney's Star Wars Galactic Nights</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletSpring} />
+                    <Text style={styles.seasonalCardText}>Discovery Cove Spring Break events</Text>
+                  </View>
+                </View>
+              </View>
+              
+              {/* Summer Card */}
+              <View style={styles.seasonalCardSummer}>
+                <View style={styles.seasonalCardHeader}>
+                  <View style={styles.seasonalCardIconSummer}>
+                    <Droplet size={16} color="#ffffff" />
+                  </View>
+                  <Text style={styles.seasonalCardTitleSummer}>Summer Fun</Text>
+                </View>
+                <View style={styles.seasonalCardList}>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletSummer} />
+                    <Text style={styles.seasonalCardText}>Universal Summer Concert Series</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletSummer} />
+                    <Text style={styles.seasonalCardText}>Extended evening hours at all parks</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletSummer} />
+                    <Text style={styles.seasonalCardText}>Special summer fireworks displays</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletSummer} />
+                    <Text style={styles.seasonalCardText}>Water park peak season operations</Text>
+                  </View>
+                </View>
+              </View>
+              
+              {/* Fall Card */}
+              <View style={styles.seasonalCardFall}>
+                <View style={styles.seasonalCardHeader}>
+                  <View style={styles.seasonalCardIconFall}>
+                    <Sparkles size={16} color="#ffffff" />
+                  </View>
+                  <Text style={styles.seasonalCardTitleFall}>Fall Adventures</Text>
+                </View>
+                <View style={styles.seasonalCardList}>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletFall} />
+                    <Text style={styles.seasonalCardText}>SeaWorld Spooktacular Weekends</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletFall} />
+                    <Text style={styles.seasonalCardText}>LEGOLAND Brick-or-Treat</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletFall} />
+                    <Text style={styles.seasonalCardText}>Gaylord Palms Fall Festivities</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletFall} />
+                    <Text style={styles.seasonalCardText}>Fun Spot's Halloween events</Text>
+                  </View>
+                </View>
+              </View>
+              
+              {/* Winter Card */}
+              <View style={styles.seasonalCardWinter}>
+                <View style={styles.seasonalCardHeader}>
+                  <View style={styles.seasonalCardIconWinter}>
+                    <Rocket size={16} color="#ffffff" />
+                  </View>
+                  <Text style={styles.seasonalCardTitleWinter}>Winter Wonders</Text>
+                </View>
+                <View style={styles.seasonalCardList}>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletWinter} />
+                    <Text style={styles.seasonalCardText}>Epcot Festival of the Holidays</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletWinter} />
+                    <Text style={styles.seasonalCardText}>Disney Springs Christmas Tree Trail</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletWinter} />
+                    <Text style={styles.seasonalCardText}>LEGOLAND Holidays</Text>
+                  </View>
+                  <View style={styles.seasonalCardItem}>
+                    <View style={styles.seasonalCardBulletWinter} />
+                    <Text style={styles.seasonalCardText}>ICE! at Gaylord Palms</Text>
+                  </View>
+                </View>
+              </View>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -1030,6 +1208,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
+    borderRadius: 999,
   },
   parksGrid: {
     marginTop: 16,
@@ -1226,15 +1405,14 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   waterParksGrid: {
-    flexDirection: 'row',
-    gap: 12,
+    flexDirection: 'column',
+    gap: 16,
   },
   waterParkCard: {
-    flex: 1,
     borderRadius: 12,
     overflow: 'hidden',
     shadowColor: '#000',
-    paddingTop: 10,
+   // paddingTop: 10,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 4,
@@ -1242,14 +1420,14 @@ const styles = StyleSheet.create({
   },
   waterParkImage: {
     width: '100%',
-    height: 180,
+    height: 200,
   },
   waterParkOverlay: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
     padding: 16,
   },
   waterParkTitle: {
@@ -1376,6 +1554,181 @@ const styles = StyleSheet.create({
   websiteColumn: {
     width: 80,
     minWidth: 80,
+  },
+  // Seasonal Cards Styles
+  seasonalCardsGrid: {
+    flexDirection: 'column',
+    gap: 16,
+    marginTop: 24,
+  },
+  seasonalCardSpring: {
+    backgroundColor: '#faf5ff',
+    padding: 20,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4,
+    borderWidth: 2,
+    borderColor: '#e9d5ff',
+  },
+  seasonalCardSummer: {
+    backgroundColor: '#fff7ed',
+    padding: 20,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4,
+    borderWidth: 2,
+    borderColor: '#fed7aa',
+  },
+  seasonalCardFall: {
+    backgroundColor: '#fffbeb',
+    padding: 20,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4,
+    borderWidth: 2,
+    borderColor: '#fde68a',
+  },
+  seasonalCardWinter: {
+    backgroundColor: '#eff6ff',
+    padding: 20,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 4,
+    borderWidth: 2,
+    borderColor: '#bfdbfe',
+  },
+  seasonalCardHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  seasonalCardIconSpring: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#a855f7',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  seasonalCardIconSummer: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#fb923c',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  seasonalCardIconFall: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#f59e0b',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  seasonalCardIconWinter: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#3b82f6',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  seasonalCardTitleSpring: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#7c3aed',
+  },
+  seasonalCardTitleSummer: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#ea580c',
+  },
+  seasonalCardTitleFall: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#d97706',
+  },
+  seasonalCardTitleWinter: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#1d4ed8',
+  },
+  seasonalCardList: {
+    gap: 8,
+  },
+  seasonalCardItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  seasonalCardBulletSpring: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#a855f7',
+    marginRight: 8,
+  },
+  seasonalCardBulletSummer: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#fb923c',
+    marginRight: 8,
+  },
+  seasonalCardBulletFall: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#f59e0b',
+    marginRight: 8,
+  },
+  seasonalCardBulletWinter: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#3b82f6',
+    marginRight: 8,
+  },
+  seasonalCardText: {
+    fontSize: 14,
+    color: '#374151',
+    flex: 1,
+  },
+  // Major Events Header Styles
+  majorEventsHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  majorEventsIcon: {
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: '#6366f1',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 8,
+  },
+  majorEventsTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#6366f1',
   },
   universalParksContainer: {
     borderRadius: 12,
@@ -1607,6 +1960,96 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: '#0891b2',
     marginBottom: 12,
+  },
+  seaworldExperienceGrid: {
+    flexDirection: 'column',
+    gap: 12,
+    marginBottom: 24,
+  },
+  seaworldExperienceCard: {
+    height: 160,
+    borderRadius: 12,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  seaworldExperienceImage: {
+    width: '100%',
+    height: '100%',
+  },
+  seaworldExperienceOverlay: {
+    position: 'absolute',
+    bottom: 8,
+    left: 8,
+    right: 8,
+  },
+  seaworldExperienceLabel: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#ffffff',
+    textShadowColor: 'rgba(0, 0, 0, 0.8)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+  seaworldWaterParksGrid: {
+    flexDirection: 'column',
+    gap: 16,
+  },
+  seaworldWaterParkCard: {
+    borderRadius: 12,
+    overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 4,
+  },
+  seaworldWaterParkImage: {
+    width: '100%',
+    height: 200,
+  },
+  seaworldWaterParkOverlay: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: 16,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  seaworldWaterParkTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#ffffff',
+    marginBottom: 4,
+    textShadowColor: 'rgba(0, 0, 0, 0.8)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+  seaworldWaterParkDescription: {
+    fontSize: 14,
+    color: '#ffffff',
+    marginBottom: 12,
+    textShadowColor: 'rgba(0, 0, 0, 0.8)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+  seaworldWaterParkButton: {
+    backgroundColor: '#2563eb',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 6,
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    gap: 4,
+  },
+  seaworldWaterParkButtonText: {
+    fontSize: 12,
+    color: '#ffffff',
+    fontWeight: '600',
   },
   // LEGOLAND Section Styles
   legolandSection: {

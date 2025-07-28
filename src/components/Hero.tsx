@@ -86,9 +86,6 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
   
   // Floating animation for categories
   const floatAnim = useRef(new Animated.Value(0)).current;
-  
-  // Sparkle animation
-  const sparkleAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     const totalWidth = imageWidth * orlandoImages.length;
@@ -130,16 +127,9 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
       ])
     ).start();
     
-    // Sparkle animation
-    Animated.loop(
-      Animated.timing(sparkleAnim, {
-        toValue: 1,
-        duration: 4000,
-        useNativeDriver: true,
-      })
-    ).start();
+
     
-    // Enhanced smooth scrolling animations with easing
+    // Optimized smooth scrolling animations
     const createSmoothAnimation = (animValue: Animated.Value, duration: number, reverse: boolean = false) => {
       return Animated.loop(
         Animated.timing(animValue, {
@@ -150,9 +140,10 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
       );
     };
 
-    createSmoothAnimation(scrollX1, 180000).start(); // Row 1: Left to right (slowed down)
-    createSmoothAnimation(scrollX2, 150000, true).start(); // Row 2: Right to left (slowed down)
-    createSmoothAnimation(scrollX3, 200000).start(); // Row 3: Left to right (slowed down)
+    // Slower animations for smoother effect
+    createSmoothAnimation(scrollX1, 200000).start(); // Row 1: Left to right (slower)
+    createSmoothAnimation(scrollX2, 180000, true).start(); // Row 2: Right to left (slower)
+    createSmoothAnimation(scrollX3, 220000).start(); // Row 3: Left to right (slower)
   }, []);
 
   const renderImageRow = (images: any[], animatedValue: Animated.Value, isMiddleRow: boolean = false) => (
@@ -165,29 +156,21 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
         },
       ]}>
       {isMiddleRow
-        ? [...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images].map((imageSource, index) => (
+        ? [...images, ...images, ...images, ...images, ...images].map((imageSource, index) => (
             <View key={index} style={styles.imageContainer}>
               <Image
                 source={imageSource}
                 style={styles.backgroundImage}
                 resizeMode="cover"
-              />
-              <LinearGradient
-                colors={['transparent', 'rgba(0,0,0,0.3)']}
-                style={styles.imageOverlay}
               />
             </View>
           ))
-        : [...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images, ...images].map((imageSource, index) => (
+        : [...images, ...images, ...images, ...images, ...images].map((imageSource, index) => (
             <View key={index} style={styles.imageContainer}>
               <Image
                 source={imageSource}
                 style={styles.backgroundImage}
                 resizeMode="cover"
-              />
-              <LinearGradient
-                colors={['transparent', 'rgba(0,0,0,0.3)']}
-                style={styles.imageOverlay}
               />
             </View>
           ))
@@ -287,7 +270,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
         ]}
       /> */}
       
-      {/* Enhanced multi-row scrolling background */}
+      {/* Three-row scrolling background with slower animations */}
       <View style={styles.backgroundContainer}>
         <View style={styles.backgroundRow}>
           {renderImageRow(orlandoImages, scrollX1)}
@@ -408,11 +391,6 @@ const styles = StyleSheet.create({
     width: imageWidth,
     height: imageHeight,
     borderRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.4,
-    shadowRadius: 20,
-    elevation: 15,
   },
   imageOverlay: {
     position: 'absolute',

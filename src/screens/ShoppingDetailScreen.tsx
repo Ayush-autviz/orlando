@@ -288,10 +288,10 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
       {/* Header with breadcrumb and back button */}
       <View style={styles.header}>
         <View style={styles.headerContent}>
-          <TouchableOpacity style={styles.backButton} onPress={handleBackPress}>
+        <TouchableOpacity style={styles.backButton} onPress={handleBackPress}>
             <ChevronLeft size={16} color="#6B7280" />
-            <Text style={styles.backButtonText}>Back to Shopping</Text>
-          </TouchableOpacity>
+          <Text style={styles.backButtonText}>Back to Shopping</Text>
+        </TouchableOpacity>
           {/* <View style={styles.breadcrumb}>
             <Text style={styles.breadcrumbText}>Home</Text>
             <Text style={styles.breadcrumbSeparator}>/</Text>
@@ -320,50 +320,50 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
               <View style={styles.accentLine} />
               <View style={styles.accentLineShort} />
               <View style={styles.accentLine} />
-            </View>
-            
+        </View>
+
             <Text numberOfLines={2} style={styles.heroTitle}>{mall.name}</Text>
             <Text style={styles.heroTagline}>{mall.tagline}</Text>
             
             <View style={styles.heroBadges}>
               <View style={styles.heroBadge}>
                 <Text style={styles.heroBadgeText}>{mall.details.storeCount}+ Stores</Text>
-              </View>
+            </View>
               <View style={styles.heroBadgeTeal}>
                 <Text style={styles.heroBadgeText}>{mall.location.neighborhood}</Text>
-              </View>
+            </View>
               <View style={styles.heroBadgeWhite}>
                 <Text style={styles.heroBadgeTextDark}>{mall.hours.regular.split(',')[0]}</Text>
-              </View>
             </View>
-            
+          </View>
+
             <View style={styles.geometricAccent}>
               <View style={styles.accentLineShort} />
               <View style={styles.accentLine} />
               <View style={styles.accentLineShort} />
-            </View>
-            
+          </View>
+
             <View style={styles.heroButtons}>
-              <TouchableOpacity 
+            <TouchableOpacity 
                 style={styles.heroWebsiteButton}
                 onPress={() => handleWebsitePress(mall.contactInfo.website)}
-              >
+            >
                 <Text style={styles.heroWebsiteButtonText}>Official Website</Text>
                 <ExternalLink size={16} color="#FFFFFF" />
-              </TouchableOpacity>
-              
-              <TouchableOpacity 
+            </TouchableOpacity>
+
+            <TouchableOpacity 
                 style={styles.heroPhoneButton}
-                onPress={() => handlePhonePress(mall.contactInfo.phone)}
-              >
+              onPress={() => handlePhonePress(mall.contactInfo.phone)}
+            >
                 <Phone size={16} color="#FFFFFF" />
                 <Text style={styles.heroPhoneButtonText}>{mall.contactInfo.phone}</Text>
-              </TouchableOpacity>
+            </TouchableOpacity>
             </View>
           </View>
-          
+
           {/* <View style={styles.heroBottomGradient} /> */}
-        </View>
+          </View>
 
         {/* Main content */}
         <View style={styles.mainContent}>
@@ -374,7 +374,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
               <View style={styles.overviewSection}>
                 <Text style={styles.overviewTitle}>Overview</Text>
                 <Text style={styles.overviewText}>{mall.description}</Text>
-              </View>
+                      </View>
               
               {/* Gallery */}
               <View style={styles.gallerySection}>
@@ -382,8 +382,8 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                 <View style={styles.mainGalleryImage}>
                   {selectedImage && (
                     <Image source={selectedImage} style={styles.galleryImage} />
-                  )}
-                </View>
+                    )}
+                  </View>
                 <View style={styles.galleryThumbnails}>
                   {[mall.heroImage, ...mall.galleryImages].map((image, index) => (
                     <TouchableOpacity 
@@ -396,14 +396,14 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                     >
                       <Image source={image} style={styles.thumbnailImage} />
                     </TouchableOpacity>
-                  ))}
-                </View>
-              </View>
-              
+              ))}
+            </View>
+          </View>
+
               {/* Tabs */}
               <View style={styles.tabsSection}>
                 <View style={styles.tabsList}>
-                  <TouchableOpacity 
+                    <TouchableOpacity 
                     style={[styles.tabTrigger, selectedTab === 'stores' && styles.tabTriggerActive]}
                     onPress={() => setSelectedTab('stores')}
                   >
@@ -411,7 +411,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                     <Text style={[styles.tabTriggerText, selectedTab === 'stores' && styles.tabTriggerTextActive]}>
                       Stores
                     </Text>
-                  </TouchableOpacity>
+                    </TouchableOpacity>
                   
                   <TouchableOpacity 
                     style={[styles.tabTrigger, selectedTab === 'dining' && styles.tabTriggerActive]}
@@ -455,13 +455,13 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                         <View style={styles.mallInfoAddress}>
                           <Text style={styles.mallInfoText}>{mall.location.address}</Text>
                           <Text style={styles.mallInfoText}>{mall.location.neighborhood}</Text>
-                          <TouchableOpacity 
+                  <TouchableOpacity 
                             style={styles.mallInfoMapButton}
                             onPress={() => handleMapPress(mall.location.address)}
-                          >
+                  >
                             <MapPin size={12} color="#EA580C" />
                             <Text style={styles.mallInfoMapText}>Map It</Text>
-                          </TouchableOpacity>
+                  </TouchableOpacity>
                         </View>
                       </View>
                     </View>
@@ -473,9 +473,9 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                         <Text style={styles.mallInfoText}>{mall.hours.regular.replace(/,/g, '\n')}</Text>
                         {mall.hours.holiday && (
                           <Text style={styles.mallInfoHoliday}>{mall.hours.holiday}</Text>
-                        )}
-                      </View>
-                    </View>
+                )}
+              </View>
+            </View>
                     
                     <View style={styles.mallInfoSeparator} />
                     
