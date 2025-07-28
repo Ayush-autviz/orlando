@@ -100,7 +100,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
       Animated.spring(slideAnim, {
         toValue: 0,
         tension: 50,
-        friction: 8,
+        friction: 8 ,
         useNativeDriver: true,
       }),
       Animated.spring(scaleAnim, {
