@@ -11,8 +11,11 @@ import {
   Share,
   Alert,
   Linking,
-} from 'react-native';
+  ImageBackground,
+} from 'react-native';  
 import { MapPin, ExternalLink, ChevronRight, ShoppingBag, Store, Coffee, Share2 } from 'lucide-react-native';
+import LinearGradient from 'react-native-linear-gradient';
+import Svg, { Path } from 'react-native-svg';
 import Header from '../components/Header';
 import { shoppingMalls, ShoppingMall } from '../data/shoppingmalldata';
 
@@ -156,16 +159,32 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
     <SafeAreaView style={styles.container}>
       <Header showDrawerButton={true} title="Shopping" />
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        {/* Hero Section */}
+        {/* Hero Section with gradient background and pattern */}
         <View style={styles.heroSection}>
+          <LinearGradient
+            colors={['#ea580c', '#0d9488']} // orange-600 to teal-600
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.heroGradient}
+          >  {/* Overlay gradient to match web version's opacity */}
+          </LinearGradient>
+          <ImageBackground
+            source={require('../../assets/images/Rectangle4.png')}
+            style={styles.heroImageBackground}
+            resizeMode="cover"
+          >
           <View style={styles.heroContent}>
-            <Text style={styles.heroTitle}>
-              <Text style={styles.heroTitleWhite}>WORLD</Text>
-              <Text style={styles.heroTitleTeal}> CLASS </Text>
-              <Text style={styles.heroTitleWhite}>SHOPPING</Text>
-            </Text>
-            <View style={styles.heroUnderline} />
+            <View style={styles.heroTitleContainer}>
+              <View style={styles.heroTitleGlow} />
+              <Text style={styles.heroTitle}>
+                <Text style={styles.heroTitleWhite}>WORLD</Text>
+                <Text style={styles.heroTitleTeal}> CLASS </Text>
+                <Text style={styles.heroTitleWhite}>SHOPPING</Text>
+              </Text>
+              <View style={styles.heroUnderline} />
+            </View>
           </View>
+          </ImageBackground>
         </View>
 
         {/* Shopping Mall Cards */}
@@ -186,36 +205,105 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   heroSection: {
-    marginTop: 20,
-    marginHorizontal: 16,
-    borderRadius: 12,
+ //   marginTop: 16,
+//    marginHorizontal: 12,
+//    borderRadius: 12,
     overflow: 'hidden',
+    position: 'relative',
+    paddingVertical: 35,
+//    paddingHorizontal: 16,
+    // Responsive padding
+    // ...(width >= 640 && { paddingVertical: 32 }),
+    // ...(width >= 768 && { paddingVertical: 40 }),
+    // ...(width >= 1024 && { paddingVertical: 64 }),
+  },
+  heroGradient: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    overflow: 'hidden',
+  },
+  heroPattern: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 0.1,
+    backgroundColor: 'transparent',
+  },
+  heroOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  patternSvg: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
   heroContent: {
     alignItems: 'center',
+    position: 'relative',
+    zIndex: 10,
+  },
+  heroTitleContainer: {
+    position: 'relative',
+    alignItems: 'center',
+  },
+  heroTitleGlow: {
+    position: 'absolute',
+    top: -4,
+    left: -4,
+    right: -4,
+    bottom: -4,
+   // backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    borderRadius: 8,
+    // Note: React Native doesn't support CSS blur, this is a fallback
   },
   heroTitle: {
-    fontSize: 28,
-    fontWeight: 'bold',
+    fontSize: 24,
+    fontWeight: '800',
     textAlign: 'center',
-    letterSpacing: 1,
-    color: '#f97316',
+    letterSpacing: 0.5,
+    textTransform: 'uppercase',
+    position: 'relative',
+    zIndex: 1,
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    // Responsive font sizes
+    ...(width >= 640 && { fontSize: 30 }),
+    ...(width >= 768 && { fontSize: 36 }),
+    ...(width >= 1024 && { fontSize: 48 }),
   },
   heroTitleWhite: {
-    color: '#f97316',
+    color: '#FFFFFF',
   },
   heroTitleTeal: {
-    color: '#f97316',
+    color: '#CCFBF1', // teal-100
   },
   heroUnderline: {
-    width: 120,
-    height: 2,
-    marginTop: 8,
-    borderRadius: 1,
+    width: 112,
+    height: 1,
+    marginTop: 4,
+    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    borderRadius: 0.5,
+    // Responsive widths
+    ...(width >= 640 && { width: 144 }),
+    ...(width >= 768 && { width: 192 }),
+    ...(width >= 1024 && { width: 192 }),
+    // Note: Web version uses gradient from-white/40 to-teal-300/70
+    // This is a fallback color that matches the gradient
   },
   mallsContainer: {
     paddingHorizontal: 16,
-    paddingTop: 12,
+    paddingTop: 35,
     paddingBottom: 32,
   },
   sectionTitle: {
@@ -404,6 +492,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+  },
+  heroImageBackground: {
+    alignSelf: 'center',
+    paddingHorizontal: 12,
+
   },
 });
 

@@ -5,6 +5,7 @@ import {
   ScrollView,
   TouchableOpacity,
   Image,
+  ImageBackground,
   StyleSheet,
   Dimensions,
   SafeAreaView,
@@ -29,13 +30,16 @@ const DiningScreen: React.FC = () => {
       <ScrollView style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         {/* Header */}
         <View style={styles.headerContainer}>
-          <View style={styles.headerWrapper}>
-            <View style={styles.headerGradient} />
+          <ImageBackground
+            source={require('../../assets/images/Rectangle2.png')}
+            style={styles.headerWrapper}
+            resizeMode="contain"
+          >
             <Text style={styles.headerText}>
               TASTE<Text style={styles.headerAccent}>ORLANDO</Text>
             </Text>
             <View style={styles.headerUnderline} />
-          </View>
+          </ImageBackground>
         </View>
 
         {/* Categories Grid */}
@@ -100,24 +104,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 16,
     marginBottom: 40,
-    paddingHorizontal: 12,
+   // paddingHorizontal: 12,
   },
   headerWrapper: {
-    position: 'relative',
     alignItems: 'center',
-  },
-  headerGradient: {
-    position: 'absolute',
-    top: -4,
-    left: -4,
-    right: -4,
-    bottom: -4,
-    borderRadius: 8,
-  //  backgroundColor: 'rgba(249, 115, 22, 0.2)',
-    shadowColor: '#EA580C',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
+    paddingVertical: 16,
+    paddingHorizontal: 28,
+   // borderRadius: 8,
+    // shadowColor: '#EA580C',
+    // shadowOffset: { width: 0, height: 0 },
+    // shadowOpacity: 0.3,
+    // shadowRadius: 8,
+    // elevation: 4,
   },
   headerText: {
     fontSize: 32,
@@ -137,7 +135,7 @@ const styles = StyleSheet.create({
   headerUnderline: {
     height: 2,
     width: 96,
-    marginTop: 8,
+    marginTop: 4,
     backgroundColor: '#EA580C',
     borderRadius: 1,
   },

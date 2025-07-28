@@ -513,7 +513,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     gap: 6,
-    paddingHorizontal: 8,
+   // paddingHorizontal: 8,
   },
   heroTag: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',

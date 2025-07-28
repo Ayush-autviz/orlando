@@ -10,6 +10,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
 import { Hotel, HotelFilterType } from '../types/Hotel';
 import { getAllHotels, getHotelsBySubcategory, getFeaturedHotels } from '../data/hotelDataHandler';
 import HotelCard from '../components/HotelCard';
@@ -262,7 +263,12 @@ const HotelsScreen: React.FC = () => {
 
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Hero Banner - Match web version exactly */}
-        <View style={styles.heroBanner}>
+        <LinearGradient
+          colors={['#3b82f6', '#22d3ee']} // blue-500 to cyan-400
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.heroBanner}
+        >
           <Text style={styles.heroTitle}>AWESOME ACCOMMODATIONS</Text>
           <Text style={styles.heroSubtitle}>Find Your Perfect Orlando Vacation Stay</Text>
           
@@ -286,7 +292,7 @@ const HotelsScreen: React.FC = () => {
               </TouchableOpacity>
             ))}
           </View>
-        </View>
+        </LinearGradient>
 
         {/* Filter Tabs */}
         {/* <ScrollView
@@ -526,9 +532,8 @@ const styles = StyleSheet.create({
   
   // Hero Banner Styles - Match web exactly
   heroBanner: {
-    backgroundColor: '#3b82f6', // Blue-600
-    paddingVertical: 20,
-    paddingHorizontal: 16,
+    // paddingVertical: 20,
+    // paddingHorizontal: 16,
     alignItems: 'center',
     marginTop: 0,
   },
@@ -538,6 +543,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     textAlign: 'center',
     marginBottom: 8,
+    marginTop: 15,
   },
   heroSubtitle: {
     fontSize: 18,
@@ -552,6 +558,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 12,
     marginTop: 12,
+    marginBottom: 22,
   },
   quickJumpButton: {
     paddingHorizontal: 16,
