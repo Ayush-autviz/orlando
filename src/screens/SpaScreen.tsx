@@ -356,6 +356,9 @@ const SpaScreen: React.FC<SpaScreenProps> = ({ navigation }) => {
       <Header showDrawerButton={true} title="Spas & Wellness" />
       
       {/* Hero Section - RELAXORLANDO */}
+
+
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
       <LinearGradient
         colors={['#075985', '#0891b2']}
         start={{ x: 0, y: 0 }}
@@ -417,8 +420,6 @@ const SpaScreen: React.FC<SpaScreenProps> = ({ navigation }) => {
           </View>
         </View>
       </View>
-
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Spa Collection Header */}
         <View style={styles.collectionHeader}>
           <View style={styles.collectionTitleRow}>

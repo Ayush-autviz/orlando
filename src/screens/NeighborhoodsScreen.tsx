@@ -53,6 +53,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
       url, 
       title: 'Neighborhood Website' 
     });
+    setSelectedNeighborhood(null)
   };
 
   const handleMapPress = (address: string) => {
@@ -82,30 +83,47 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
     }
   };
 
-  // Image Carousel component
-  const ImageCarousel = ({ images, height = 240, itemId, isModal = false }: { images: any[], height?: number, itemId?: string, isModal?: boolean }) => {
+  // Image Carousel component - copied exactly from SpaScreen
+  const renderImageCarousel = (images: any[], height: number = 240, isModal: boolean = false, itemId?: string) => {
+    if (!images || images.length === 0) {
+      return null;
+    }
+
+    // For single image, just show the image
+    if (images.length === 1) {
+      return (
+        <Image 
+          source={images[0]} 
+          style={[
+            { width: '100%', height },
+            isModal ? {} : { borderTopLeftRadius: 8, borderTopRightRadius: 8 }
+          ]} 
+          resizeMode="cover"
+        />
+      );
+    }
+
     const indexKey = `${itemId || 'default'}-${isModal ? 'modal' : 'card'}`;
     const currentIndex = currentImageIndex[indexKey] || 0;
 
-    const handlePrevious = () => {
+    const goToPrevious = () => {
       const newIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
       setCurrentImageIndex(prev => ({ ...prev, [indexKey]: newIndex }));
     };
 
-    const handleNext = () => {
+    const goToNext = () => {
       const newIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
       setCurrentImageIndex(prev => ({ ...prev, [indexKey]: newIndex }));
     };
 
-    if (!images || images.length === 0) return null;
-
+    // For multiple images, use controlled view with arrows
     return (
       <View style={{ height, position: 'relative' }}>
         <View style={{ height, overflow: 'hidden' }}>
           <ScrollView
             ref={(ref) => {
               if (ref) {
-                const scrollToX = currentIndex * width;
+                const scrollToX = currentIndex * (isModal ? width : width - 32);
                 ref.scrollTo({ x: scrollToX, animated: true });
               }
             }}
@@ -113,19 +131,27 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
             pagingEnabled
             showsHorizontalScrollIndicator={false}
             style={{ height }}
-            snapToInterval={width}
+            snapToInterval={isModal ? width : width - 32}
             decelerationRate="fast"
             onMomentumScrollEnd={(event) => {
               const contentOffsetX = event.nativeEvent.contentOffset.x;
-              const newIndex = Math.round(contentOffsetX / width);
+              const newIndex = Math.round(contentOffsetX / (isModal ? width : width - 32));
               setCurrentImageIndex(prev => ({ ...prev, [indexKey]: newIndex }));
             }}
           >
             {images.map((image, index) => (
-              <View key={index} style={{ width, height }}>
+              <View 
+                key={index} 
+                style={[
+                  isModal ? styles.modalCarouselImageContainer : styles.carouselImageContainer, 
+                  { height }
+                ]}
+              >
                 <Image 
                   source={image} 
-                  style={{ width: '100%', height: '100%' }} 
+                  style={[
+                    isModal ? styles.modalCarouselImage : styles.carouselImage
+                  ]} 
                   resizeMode="cover"
                 />
               </View>
@@ -133,39 +159,34 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
           </ScrollView>
         </View>
 
-        {images.length > 1 && (
-          <>
-            {/* Left Arrow */}
-            <TouchableOpacity
-              style={[styles.carouselArrow, styles.leftArrow]}
-              onPress={handlePrevious}
-            >
-              <ChevronLeft size={20} color="#ffffff" />
-            </TouchableOpacity>
+        {/* Left Arrow */}
+        <TouchableOpacity
+          style={[styles.carouselArrow, styles.leftArrow]}
+          onPress={goToPrevious}
+        >
+          <ChevronLeft size={20} color="#ffffff" />
+        </TouchableOpacity>
 
-            {/* Right Arrow */}
-            <TouchableOpacity
-              style={[styles.carouselArrow, styles.rightArrow]}
-              onPress={handleNext}
-            >
-              <ChevronRight size={20} color="#ffffff" />
-            </TouchableOpacity>
+        {/* Right Arrow */}
+        <TouchableOpacity
+          style={[styles.carouselArrow, styles.rightArrow]}
+          onPress={goToNext}
+        >
+          <ChevronRight size={20} color="#ffffff" />
+        </TouchableOpacity>
 
-            {/* Dots Indicator */}
-            <View style={styles.dotsContainer}>
-              {images.map((_, index) => (
-                <TouchableOpacity
-                  key={index}
-                  style={[
-                    styles.dot,
-                    index === currentIndex && styles.activeDot
-                  ]}
-                  onPress={() => setCurrentImageIndex(prev => ({ ...prev, [indexKey]: index }))}
-                />
-              ))}
-            </View>
-          </>
-        )}
+        {/* Dots Indicator */}
+        <View style={styles.dotsContainer}>
+          {images.map((_, index) => (
+            <View
+              key={index}
+              style={[
+                styles.dot,
+                index === currentIndex && styles.activeDot
+              ]}
+            />
+          ))}
+        </View>
       </View>
     );
   };
@@ -206,11 +227,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
       activeOpacity={0.8}
     >
       <View style={styles.cardImageContainer}>
-        <ImageCarousel 
-          images={neighborhood.images} 
-          height={240}
-          itemId={neighborhood.id}
-        />
+        {renderImageCarousel(neighborhood.images, 240, false, neighborhood.id)}
         <LinearGradient
           colors={['transparent', 'rgba(0,0,0,0.8)']}
           style={styles.imageGradient}
@@ -236,7 +253,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
       
       <View style={styles.cardContent}>
         <View style={styles.tagsContainer}>
-          {neighborhood.tags.slice(0, 3).map((tag: string, index: number) => (
+          {neighborhood.tags.map((tag: string, index: number) => (
             <View key={index} style={styles.tagBadge}>
               <Text style={styles.tagBadgeText}>{tag}</Text>
             </View>
@@ -363,7 +380,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
                   <View style={styles.attractionHeader}>
                     <View style={styles.attractionTitleRow}>
                       <AttractionIcon type={attraction.type} />
-                      <Text style={styles.attractionName}>{attraction.name}</Text>
+                      <Text numberOfLines={1} style={styles.attractionName}>{attraction.name}</Text>
                     </View>
                     <View style={styles.attractionActions}>
                       {attraction.link && (
@@ -759,6 +776,10 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
       <Header showDrawerButton={true} title="Orlando Neighborhoods" />
       
       {/* Hero Section */}
+
+
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+
       <View style={styles.hero}>
         <View style={styles.heroContent}>
           <View style={styles.heroHeader}>
@@ -790,8 +811,6 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
           </View>
         </View>
       </View>
-
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         {/* Introduction */}
         <View style={styles.introSection}>
           <Text style={styles.introTitle}>Explore Like a Local</Text>
@@ -854,12 +873,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
           <SafeAreaView style={styles.modalContainer}>
             {/* Modal Header */}
             <View style={styles.modalHeader}>
-              <ImageCarousel 
-                images={selectedNeighborhood.images} 
-                height={320}
-                itemId={selectedNeighborhood.id}
-                isModal={true}
-              />
+              {renderImageCarousel(selectedNeighborhood.images, 320, true, selectedNeighborhood.id)}
               <LinearGradient
                 colors={['rgba(30, 41, 59, 0.5)', 'rgba(30, 41, 59, 0.9)']}
                 style={styles.modalHeaderGradient}
@@ -982,7 +996,7 @@ const styles = StyleSheet.create({
   },
   heroTags: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     gap: 16,
   },
   tagItem: {
@@ -1151,7 +1165,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 8,
     backgroundColor: '#0891b2',
-    paddingVertical: 8,
+    paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 6,
   },
@@ -1162,13 +1176,13 @@ const styles = StyleSheet.create({
   },
   exploreButton: {
     backgroundColor: '#ea580c',
-    paddingVertical: 12,
+    paddingVertical: 10,
     paddingHorizontal: 16,
     borderRadius: 6,
     alignItems: 'center',
   },
   exploreButtonText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: '600',
     color: '#ffffff',
   },
@@ -1211,6 +1225,22 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   // Carousel Styles
+  carouselImageContainer: {
+    width: width - 32,
+  },
+  carouselImage: {
+    width: '100%',
+    height: '100%',
+    borderTopLeftRadius: 8,
+    borderTopRightRadius: 8,
+  },
+  modalCarouselImageContainer: {
+    width: width,
+  },
+  modalCarouselImage: {
+    width: '100%',
+    height: '100%',
+  },
   carouselArrow: {
     position: 'absolute',
     top: '50%',
@@ -1325,7 +1355,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   modalWebsiteText: {
-    fontSize: 16,
+    fontSize: 14,
     color: 'rgba(255, 255, 255, 0.9)',
   },
   modalContent: {
@@ -1464,6 +1494,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   attractionActions: {
+    marginLeft: 10,
     flexDirection: 'row',
     gap: 8,
   },

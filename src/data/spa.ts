@@ -119,39 +119,39 @@ export interface Spa {
       ]
     },
   
-    // {
-    //   id: 4,
-    //   name: "The Spa at JW Marriott Bonnet Creek",
-    //   location: {
-    //     address: "14900 Chelonia Parkway, Orlando, FL 32821",
-    //     area: "Bonnet Creek Area"
-    //   },
-    //   phone: "(407) 919-6319",
-    //   description: "The Spa at JW Marriott Bonnet Creek offers a contemporary wellness experience guided by holistic principles and cutting-edge therapies. This elegant sanctuary provides a sophisticated retreat where every element is designed to promote deep relaxation and rejuvenation, from the moment guests enter the crystal-infused relaxation lounge. The spa draws inspiration from global healing traditions while incorporating local elements like Florida citrus and honey. The specialized Halotherapy Salt Room features Himalayan salt that purifies the air while guests relax in zero-gravity loungers, offering respiratory benefits and deep relaxation before traditional spa treatments.",
-    //   features: [
-    //     "Halotherapy Salt Room with therapeutic benefits",
-    //     "Private couples' treatment suites",
-    //     "Aromatherapy steam room",
-    //     "Experience showers with varying pressures and temperatures",
-    //     "Vitality pools with massage jets",
-    //     "Dedicated relaxation lounges",
-    //     "Wellness retail boutique featuring luxury products",
-    //     "Outdoor relaxation garden with private seating areas"
-    //   ],
-    //   signature: [
-    //     "Salt Stone Therapeutic Massage",
-    //     "Florida Citrus and Sugar Body Polish",
-    //     "Vitamin C Brightening Facial",
-    //     "Himalayan Salt Therapy sessions"
-    //   ],
-    //   website: "https://www.marriott.com/en-us/hotels/mcojb-jw-marriott-orlando-bonnet-creek-resort-and-spa/experiences/",
-    //   imageUrl: require("../../assets/images/jwmarriott/spa-1.jpeg"),
-    //   images: [
-    //     require("../../assets/images/jwmarriott/spa-1.jpeg"),
-    //     require("../../assets/images/jwmarriott/spa-2.jpeg"),
-    //     require("../../assets/images/jwmarriott/spa-3.jpeg")
-    //   ]
-    // },
+    {
+      id: 4,
+      name: "The Spa at JW Marriott Bonnet Creek",
+      location: {
+        address: "14900 Chelonia Parkway, Orlando, FL 32821",
+        area: "Bonnet Creek Area"
+      },
+      phone: "(407) 919-6319",
+      description: "The Spa at JW Marriott Bonnet Creek offers a contemporary wellness experience guided by holistic principles and cutting-edge therapies. This elegant sanctuary provides a sophisticated retreat where every element is designed to promote deep relaxation and rejuvenation, from the moment guests enter the crystal-infused relaxation lounge. The spa draws inspiration from global healing traditions while incorporating local elements like Florida citrus and honey. The specialized Halotherapy Salt Room features Himalayan salt that purifies the air while guests relax in zero-gravity loungers, offering respiratory benefits and deep relaxation before traditional spa treatments.",
+      features: [
+        "Halotherapy Salt Room with therapeutic benefits",
+        "Private couples' treatment suites",
+        "Aromatherapy steam room",
+        "Experience showers with varying pressures and temperatures",
+        "Vitality pools with massage jets",
+        "Dedicated relaxation lounges",
+        "Wellness retail boutique featuring luxury products",
+        "Outdoor relaxation garden with private seating areas"
+      ],
+      signature: [
+        "Salt Stone Therapeutic Massage",
+        "Florida Citrus and Sugar Body Polish",
+        "Vitamin C Brightening Facial",
+        "Himalayan Salt Therapy sessions"
+      ],
+      website: "https://www.marriott.com/en-us/hotels/mcojb-jw-marriott-orlando-bonnet-creek-resort-and-spa/experiences/",
+      imageUrl: require("../../assets/images/jwmarriott/spa-1.jpeg"),
+      images: [
+        require("../../assets/images/jwmarriott/spa-1.jpeg"),
+        require("../../assets/images/jwmarriott/spa-2.jpeg"),
+        require("../../assets/images/jwmarriott/spa-3.jpeg")
+      ]
+    },
     {
       id: 5,
       name: "Poseidon Spa at Grand Bohemian Hotel",
@@ -388,39 +388,39 @@ export interface Spa {
       ]
     },
   
-    // {
-    //   id: 12,
-    //   name: "The Spa at Caribe Royale",
-    //   location: {
-    //     address: "8101 World Center Drive, Orlando, FL 32821",
-    //     area: "Lake Buena Vista Area (Disney)"
-    //   },
-    //   phone: "(407) 238-8000",
-    //   description: "The Spa at Caribe Royale provides a tropical-inspired wellness retreat within this expansive all-suite resort near Walt Disney World. This intimate spa creates a Caribbean ambiance with tropical décor elements, soothing colors, and thoughtful design details that evoke island tranquility. Treatment rooms feature premium amenities and are designed for complete comfort and privacy, where skilled therapists deliver a range of services using quality products. The spa specializes in treatments that incorporate tropical ingredients and techniques inspired by Caribbean wellness traditions, providing an island-inspired escape within the bustling Orlando tourism corridor.",
-    //   features: [
-    //     "Tropically-themed treatment rooms",
-    //     "Couple's suite with dual massage tables",
-    //     "Relaxation lounge with refreshment service",
-    //     "Steam rooms with essential oil infusions",
-    //     "Island-inspired aromatherapy selection",
-    //     "Specialized bridal services and packages",
-    //     "Full beauty salon with professional stylists",
-    //     "Fitness center access included with spa services"
-    //   ],
-    //   signature: [
-    //     "Caribbean Cocoa and Coconut Body Treatment",
-    //     "Island Stone Massage",
-    //     "Tropical Fruit Enzyme Facial",
-    //     "Stress Relief Aromatherapy Massage"
-    //   ],
-    //   website: "https://www.cariberoyale.com/spa-resorts-orlando-florida",
-    //   imageUrl: require("../../assets/images/caribe-royale/spa-1.jpeg"),
-    //   images: [
-    //     require("../../assets/images/caribe-royale/spa-1.jpeg"),
-    //     require("../../assets/images/caribe-royale/spa-2.jpeg"),
-    //     require("../../assets/images/caribe-royale/spa-3.jpeg")
-    //   ]
-    // },
+    {
+      id: 12,
+      name: "The Spa at Caribe Royale",
+      location: {
+        address: "8101 World Center Drive, Orlando, FL 32821",
+        area: "Lake Buena Vista Area (Disney)"
+      },
+      phone: "(407) 238-8000",
+      description: "The Spa at Caribe Royale provides a tropical-inspired wellness retreat within this expansive all-suite resort near Walt Disney World. This intimate spa creates a Caribbean ambiance with tropical décor elements, soothing colors, and thoughtful design details that evoke island tranquility. Treatment rooms feature premium amenities and are designed for complete comfort and privacy, where skilled therapists deliver a range of services using quality products. The spa specializes in treatments that incorporate tropical ingredients and techniques inspired by Caribbean wellness traditions, providing an island-inspired escape within the bustling Orlando tourism corridor.",
+      features: [
+        "Tropically-themed treatment rooms",
+        "Couple's suite with dual massage tables",
+        "Relaxation lounge with refreshment service",
+        "Steam rooms with essential oil infusions",
+        "Island-inspired aromatherapy selection",
+        "Specialized bridal services and packages",
+        "Full beauty salon with professional stylists",
+        "Fitness center access included with spa services"
+      ],
+      signature: [
+        "Caribbean Cocoa and Coconut Body Treatment",
+        "Island Stone Massage",
+        "Tropical Fruit Enzyme Facial",
+        "Stress Relief Aromatherapy Massage"
+      ],
+      website: "https://www.cariberoyale.com/spa-resorts-orlando-florida",
+      imageUrl: require("../../assets/images/caribe-royal/spa-1.jpeg"),
+      images: [
+        require("../../assets/images/caribe-royal/spa-1.jpeg"),
+        require("../../assets/images/caribe-royal/spa-2.jpeg"),
+        require("../../assets/images/caribe-royal/spa-3.jpeg")
+      ]
+    },
   
   
   
@@ -697,39 +697,39 @@ export interface Spa {
       ]
     },
   
-    // {
-    //   id: 21,
-    //   name: "The Spa at Rosen Centre",
-    //   location: {
-    //     address: "9840 International Drive, Orlando, FL 32819",
-    //     area: "International Drive Area"
-    //   },
-    //   phone: "(407) 996-2229",
-    //   description: "The Spa at Rosen Centre provides an elegant sanctuary within this premier convention hotel, offering a carefully curated selection of treatments designed to rejuvenate both leisure and business travelers. This sophisticated spa creates a serene environment with contemporary design elements, soothing neutral tones, and subtle lighting that instantly transports guests away from the bustle of International Drive. Treatment rooms are thoughtfully appointed with premium linens, advanced equipment, and customizable comfort settings to enhance each therapy. The spa specializes in efficient yet effective services that can be tailored to accommodate varying schedules, making it particularly appealing to convention attendees and business travelers while still offering indulgent experiences for those with more time to spend.",
-    //   features: [
-    //     "Elegantly designed treatment rooms",
-    //     "Couples' suite for shared experiences",
-    //     "Relaxation lounge with refreshment service",
-    //     "Full-service hair and nail salon",
-    //     "Private men's and women's lounges",
-    //     "Steam room and shower facilities",
-    //     "Express treatment menu for time-conscious guests",
-    //     "Bridal and special occasion services"
-    //   ],
-    //   signature: [
-    //     "Rosen Signature Massage",
-    //     "Executive Stress Relief Treatment",
-    //     "Advanced Hydrating Facial",
-    //     "Hot Stone Therapy Massage"
-    //   ],
-    //   website: "https://spaatrosencentre.com",
-    //   imageUrl: require("../../assets/images/rosen-centre/spa-1.jpeg"),
-    //   images: [
-    //     require("../../assets/images/rosen-centre/spa-1.jpeg"),
-    //     require("../../assets/images/rosen-centre/spa-2.jpeg"),
-    //     require("../../assets/images/rosen-centre/spa-3.jpeg")
-    //   ]
-    // }
+    {
+      id: 21,
+      name: "The Spa at Rosen Centre",
+      location: {
+        address: "9840 International Drive, Orlando, FL 32819",
+        area: "International Drive Area"
+      },
+      phone: "(407) 996-2229",
+      description: "The Spa at Rosen Centre provides an elegant sanctuary within this premier convention hotel, offering a carefully curated selection of treatments designed to rejuvenate both leisure and business travelers. This sophisticated spa creates a serene environment with contemporary design elements, soothing neutral tones, and subtle lighting that instantly transports guests away from the bustle of International Drive. Treatment rooms are thoughtfully appointed with premium linens, advanced equipment, and customizable comfort settings to enhance each therapy. The spa specializes in efficient yet effective services that can be tailored to accommodate varying schedules, making it particularly appealing to convention attendees and business travelers while still offering indulgent experiences for those with more time to spend.",
+      features: [
+        "Elegantly designed treatment rooms",
+        "Couples' suite for shared experiences",
+        "Relaxation lounge with refreshment service",
+        "Full-service hair and nail salon",
+        "Private men's and women's lounges",
+        "Steam room and shower facilities",
+        "Express treatment menu for time-conscious guests",
+        "Bridal and special occasion services"
+      ],
+      signature: [
+        "Rosen Signature Massage",
+        "Executive Stress Relief Treatment",
+        "Advanced Hydrating Facial",
+        "Hot Stone Therapy Massage"
+      ],
+      website: "https://spaatrosencentre.com",
+      imageUrl: require("../../assets/images/rosen-center/spa-1.jpeg"),
+      images: [
+        require("../../assets/images/rosen-center/spa-1.jpeg"),
+        require("../../assets/images/rosen-center/spa-2.jpeg"),
+        require("../../assets/images/rosen-center/spa-3.jpeg")
+      ]
+    }
   ];
   
   export default spas;
