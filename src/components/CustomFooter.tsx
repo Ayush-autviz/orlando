@@ -65,11 +65,8 @@ const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
         navigation.navigate('neighborhoods');
         break;
       case 'epic-universe':
-        // Open Epic Universe guide in WebView
-        navigation.navigate('WebViewScreen', { 
-          url: 'https://awesomeorlando.com/epic-universe-rides',
-          title: 'Epic Universe Rides Guide'
-        });
+        // Navigate to Epic Universe guide screen
+        navigation.navigate('EpicUniverseGuide');
         break;
       default:
         console.log('Footer link pressed:', route);
@@ -209,7 +206,7 @@ const styles = StyleSheet.create({
     color: '#fbbf24', // text-yellow-300
   },
   mainContent: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     marginBottom: 16,

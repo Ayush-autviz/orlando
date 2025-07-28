@@ -11,8 +11,8 @@ export interface GolfCourse {
     priceRange: string;
     website?: string;
     phone?: string;
-    image: string;
-    gallery?: string[];
+    image: any; // React Native image source
+    gallery?: any[]; // React Native image sources
     rating: number;
     par?: number; 
     holes?: number;
@@ -43,6 +43,10 @@ export interface GolfCourse {
       website: "https://www.golfwdw.com/courses/disneys-magnolia-golf-course",
       phone: "(407) 939-4653",
       image: require("../../assets/images/magnolia-course.jpg"),
+      gallery: [
+        require("../../assets/images/magnolia-course.jpg"),
+        require("../../assets/images/magnolia-course-2.jpg")
+      ],
       rating: 4.7,
       par: 72,
       holes: 18,
@@ -69,6 +73,11 @@ export interface GolfCourse {
       website: "https://waldorfastoriaorlando.com/golf",
       phone: "(407) 597-3780",
       image: require("../../assets/images/waldorf-golf.jpg"),
+      gallery: [
+        require("../../assets/images/waldorf-golf.jpg"),
+        require("../../assets/images/waldorf-golf-2.jpg"),
+        require("../../assets/images/waldorf-golf-3.jpg")
+      ],
       rating: 4.8,
       par: 72,
       holes: 18,
@@ -95,6 +104,11 @@ export interface GolfCourse {
       website: "https://www.ritzcarlton.com/en/hotels/mcorz-the-ritz-carlton-orlando-grande-lakes/golf/",
       phone: "(407) 393-4900",
       image: require("../../assets/images/ritz-golf.jpg"),
+      gallery: [
+        require("../../assets/images/ritz-golf.jpg"),
+        require("../../assets/images/ritz-golf-2.jpg"),
+        require("../../assets/images/ritz-golf-3.jpg")
+      ],
       rating: 4.8,
       par: 72,
       holes: 18,
@@ -121,6 +135,11 @@ export interface GolfCourse {
       website: "https://www.shinglecreekgolf.com",
       phone: "(407) 996-9933",
       image: require("../../assets/images/shingle-creek.jpeg"),
+      gallery: [
+        require("../../assets/images/shingle-creek.jpeg"),
+        require("../../assets/images/shingle-creek-2.jpeg"),
+        require("../../assets/images/shingle-creek-3.jpeg")
+      ],
       rating: 4.6,
       par: 72,
       holes: 18,
@@ -147,6 +166,11 @@ export interface GolfCourse {
       website: "https://evermoreresort.com/golf",
       phone: "(407) 239-1909",
       image: require("../../assets/images/grand-cypress.jpeg"),
+      gallery: [
+        require("../../assets/images/grand-cypress.jpeg"),
+        require("../../assets/images/grand-cypress-2.jpeg"),
+        require("../../assets/images/grand-cypress-3.jpeg")
+      ],
       rating: 4.7,
       par: 72,
       holes: 45,
@@ -175,6 +199,11 @@ export interface GolfCourse {
       website: "https://www.ocngolf.com",
       phone: "(407) 656-2626",
       image: require("../../assets/images/ocn.jpeg"),
+      gallery: [
+        require("../../assets/images/ocn.jpeg"),
+        require("../../assets/images/ocn-2.jpeg"),
+        require("../../assets/images/ocn-3.jpeg")
+      ],
       rating: 4.8,
       par: 72,
       holes: 45,
@@ -201,6 +230,11 @@ export interface GolfCourse {
       website: "https://www.historicaldubsdread.com",
       phone: "(407) 246-2551",
       image: require("../../assets/images/dubsdread.jpeg"),
+      gallery: [
+        require("../../assets/images/dubsdread.jpeg"),
+        require("../../assets/images/dubsdread-2.jpeg"),
+        require("../../assets/images/dubsdread-3.jpeg")
+      ],
       rating: 4.5,
       par: 70,
       holes: 18,
@@ -227,6 +261,10 @@ export interface GolfCourse {
       website: "https://www.metrowestgolf.com",
       phone: "(407) 299-8800",
       image: require("../../assets/images/metrowest.jpeg"),
+      gallery: [
+        require("../../assets/images/metrowest.jpeg"),
+        require("../../assets/images/metrowest-2.jpeg")
+      ],
       rating: 4.5,
       par: 72,
       holes: 18,
@@ -253,6 +291,10 @@ export interface GolfCourse {
       website: "https://golfatnorthshore.com",
       phone: "(407) 277-1640",
       image: require("../../assets/images/north-shore.jpeg"),
+      gallery: [
+        require("../../assets/images/north-shore.jpeg"),
+        require("../../assets/images/north-shore-2.jpeg")
+      ],
       rating: 4.4,
       par: 72,
       holes: 18,
@@ -279,6 +321,10 @@ export interface GolfCourse {
       website: "https://www.falconsfire.com",
       phone: "(407) 239-5445",
       image: require("../../assets/images/falcons-fire.jpeg"),
+      gallery: [
+        require("../../assets/images/falcons-fire.jpeg"),
+        require("../../assets/images/falcons-fire-2.jpeg")
+      ],
       rating: 4.6,
       par: 72,
       holes: 18,
@@ -307,6 +353,11 @@ export interface GolfCourse {
       website: "https://www.celebrationgolf.com",
       phone: "(407) 566-4653",
       image: require("../../assets/images/celebration.jpeg"),
+      gallery: [
+        require("../../assets/images/celebration.jpeg"),
+        require("../../assets/images/celebration-2.jpeg"),
+        require("../../assets/images/celebration-3.jpeg")
+      ],
       rating: 4.5,
       par: 72,
       holes: 18,
@@ -333,6 +384,10 @@ export interface GolfCourse {
       website: "https://www.championsgategolf.com",
       phone: "(407) 787-4653",
       image: require("../../assets/images/championsgate.jpeg"),
+      gallery: [
+        require("../../assets/images/championsgate.jpeg"),
+        require("../../assets/images/championsgate-2.jpeg")
+      ],
       rating: 4.6,
       par: 72,
       holes: 36,
@@ -359,6 +414,11 @@ export interface GolfCourse {
       website: "https://www.eaglecreekorlando.com",
       phone: "(407) 273-4653",
       image: require("../../assets/images/eagle-creek.jpeg"),
+          gallery: [
+      require("../../assets/images/eagle-creek.jpeg"),
+      require("../../assets/images/eagle-creek-2.jpeg"),
+      require("../../assets/images/eagle-creek-3.jpeg")
+    ],
       rating: 4.5,
       par: 73,
       holes: 18,
@@ -385,6 +445,11 @@ export interface GolfCourse {
       website: "https://www.grandevistagolf.com",
       phone: "(407) 238-7668",
       image: require("../../assets/images/grande-vista.jpeg"),
+      gallery: [
+        require("../../assets/images/grande-vista.jpeg"),
+        require("../../assets/images/grande-vista-2.jpeg"),
+        require("../../assets/images/grande-vista-3.jpeg")
+      ],
       rating: 4.4,
       par: 32,
       holes: 9,
@@ -413,6 +478,11 @@ export interface GolfCourse {
       website: "https://www.lakenona.club",
       phone: "(407) 851-9091",
       image: require("../../assets/images/lake-nona.jpeg"),
+      gallery: [
+        require("../../assets/images/lake-nona.jpeg"),
+        require("../../assets/images/lake-nona-2.jpeg"),
+        require("../../assets/images/lake-nona-3.jpeg")
+      ],
       rating: 4.9,
       par: 72,
       holes: 18,
@@ -439,6 +509,11 @@ export interface GolfCourse {
       website: "https://www.isleworth.com",
       phone: "(407) 876-8066",
       image: require("../../assets/images/isleworth.jpeg"),
+      gallery: [
+        require("../../assets/images/isleworth.jpeg"),
+        require("../../assets/images/isleworth-2.jpeg"),
+        require("../../assets/images/isleworth-3.jpeg")
+      ],
       rating: 4.9,
       par: 72,
       holes: 18,
@@ -465,6 +540,11 @@ export interface GolfCourse {
       website: "https://www.bayhill.com",
       phone: "(407) 876-2429",
       image: require("../../assets/images/bay-hill.jpeg"),
+      gallery: [
+        require("../../assets/images/bay-hill.jpeg"),
+        require("../../assets/images/bay-hill-2.jpeg"),
+        require("../../assets/images/bay-hill-3.jpeg")
+      ],
       rating: 4.8,
       par: 72,
       holes: 27,
@@ -491,6 +571,10 @@ export interface GolfCourse {
       website: "https://www.reunionresort.com/golf",
       phone: "(407) 662-1000",
       image: require("../../assets/images/reunion.jpeg"),
+      gallery: [
+        require("../../assets/images/reunion.jpeg"),
+        require("../../assets/images/reunion-2.jpeg")
+      ],
       rating: 4.7,
       par: 72,
       holes: 54,
@@ -519,6 +603,10 @@ export interface GolfCourse {
       website: "https://www.golfwdw.com/courses/disneys-palm-golf-course",
       phone: "(407) 939-4653",
       image: require("../../assets/images/palm-course.jpeg"),
+      gallery: [
+        require("../../assets/images/palm-course.jpeg"),
+        require("../../assets/images/palm-course-2.jpeg")
+      ],
       rating: 4.6,
       par: 72,
       holes: 18,
@@ -545,6 +633,10 @@ export interface GolfCourse {
       website: "https://www.fourseasons.com/orlando/golf/",
       phone: "(407) 313-7777",
       image: require("../../assets/images/tranquilo.jpeg"),
+      gallery: [
+        require("../../assets/images/tranquilo.jpeg"),
+        require("../../assets/images/tranquilo-2.jpeg")
+      ],
       rating: 4.8,
       par: 71,
       holes: 18,
@@ -571,6 +663,10 @@ export interface GolfCourse {
       website: "https://www.marriott.com/en-us/hotels/mcowc-orlando-world-center-marriott/golf/",
       phone: "(407) 238-8660",
       image: require("../../assets/images/hawks-landing.jpeg"),
+      gallery: [
+        require("../../assets/images/hawks-landing.jpeg"),
+        require("../../assets/images/hawks-landing-2.jpeg")
+      ],
       rating: 4.5,
       par: 71,
       holes: 18,
@@ -598,6 +694,11 @@ export interface GolfCourse {
       website: "https://www.bellacollina.com/golf-course",
       phone: "(407) 469-4999",
       image: require("../../assets/images/bella-collina.jpg"),
+      gallery: [
+        require("../../assets/images/bella-collina.jpg"),
+        require("../../assets/images/bella-collina-2.jpg"),
+        require("../../assets/images/bella-collina-3.jpg")
+      ],
       rating: 4.7,
       par: 72,
       holes: 18,
@@ -624,6 +725,11 @@ export interface GolfCourse {
       website: "https://www.golfwdw.com/courses/disneys-lake-buena-vista-golf-course",
       phone: "(407) 939-4653",
       image: require("../../assets/images/lake-buena-vista.jpeg"),
+      gallery: [
+        require("../../assets/images/lake-buena-vista.jpeg"),
+        require("../../assets/images/lake-buena-vista-2.jpeg")
+      ],
+
       rating: 4.5,
       par: 72,
       holes: 18,
@@ -650,6 +756,11 @@ export interface GolfCourse {
       website: "https://www.golfwdw.com/courses/disneys-oak-trail-golf-course",
       phone: "(407) 939-4653",
       image: require("../../assets/images/oak-trail.jpeg"),
+      gallery: [
+        require("../../assets/images/oak-trail.jpeg"),
+        require("../../assets/images/oak-trail-2.jpg")
+      ],
+
       rating: 4.3,
       par: 36,
       holes: 9,
@@ -676,6 +787,10 @@ export interface GolfCourse {
       website: "https://www.harmonygolfpreserve.com",
       phone: "(407) 891-8525",
       image: require("../../assets/images/harmony.jpeg"),
+      gallery: [
+        require("../../assets/images/harmony.jpeg"),
+        require("../../assets/images/harmony-2.jpeg")
+      ],
       rating: 4.4,
       par: 72,
       holes: 18,
@@ -703,6 +818,10 @@ export interface GolfCourse {
       website: "https://www.golfkissimmeebay.com",
       phone: "(407) 348-4653",
       image: require("../../assets/images/kissimmee-bay.jpeg"),
+      gallery: [
+        require("../../assets/images/kissimmee-bay.jpeg"),
+        require("../../assets/images/kissimmee-bay-2.jpeg")
+      ],
       rating: 4.1,
       par: 71,
       holes: 18,
@@ -730,6 +849,10 @@ export interface GolfCourse {
       website: "https://www.orangetreegolfclub.com",
       phone: "(407) 351-2521",
       image: require("../../assets/images/orange-tree.jpeg"),
+      gallery: [
+        require("../../assets/images/orange-tree.jpeg"),
+        require("../../assets/images/orange-tree-2.jpeg")
+      ],
       rating: 4.3,
       par: 71,
       holes: 18,
@@ -756,6 +879,10 @@ export interface GolfCourse {
       website: "https://www.providence-golf.com",
       phone: "(863) 424-7916",
       image: require("../../assets/images/providence.jpeg"),
+      gallery: [
+        require("../../assets/images/providence.jpeg"),
+        require("../../assets/images/providence-2.jpeg")
+      ],
       rating: 4.2,
       par: 72,
       holes: 18,
@@ -782,6 +909,10 @@ export interface GolfCourse {
       website: "https://www.golfremington.com",
       phone: "(407) 344-4004",
       image: require("../../assets/images/remington.jpeg"),
+      gallery: [
+        require("../../assets/images/remington.jpeg"),
+        require("../../assets/images/remington-2.jpeg")
+      ],
       rating: 3.9,
       par: 72,
       holes: 18,
@@ -808,6 +939,10 @@ export interface GolfCourse {
       website: "https://www.royalstcloudgolflinks.com",
       phone: "(407) 891-7010",
       image: require("../../assets/images/royal-st-cloud.jpeg"),
+      gallery: [
+        require("../../assets/images/royal-st-cloud.jpeg"),
+        require("../../assets/images/royal-st-cloud-2.jpeg")
+      ],
       rating: 4.3,
       par: 72,
       holes: 18,
@@ -834,6 +969,10 @@ export interface GolfCourse {
       website: "https://www.southerndunes.com",
       phone: "(863) 421-4653",
       image: require("../../assets/images/southern-dunes.jpeg"),
+      gallery: [
+        require("../../assets/images/southern-dunes.jpeg"),
+        require("../../assets/images/southern-dunes-2.jpeg")
+      ],
       rating: 4.5,
       par: 72,
       holes: 18,
@@ -860,6 +999,10 @@ export interface GolfCourse {
       website: "https://golfatstoneybrook.com",
       phone: "(407) 384-6888",
       image: require("../../assets/images/stoneybrook-east.jpeg"),
+      gallery: [
+        require("../../assets/images/stoneybrook-east.jpeg"),
+        require("../../assets/images/stoneybrook-east-2.jpeg")
+      ],
       rating: 4.0,
       par: 72,
       holes: 18,
@@ -886,6 +1029,10 @@ export interface GolfCourse {
       website: "https://www.countrycluboforlando.com",
       phone: "(407) 425-2319",
       image: require("../../assets/images/country-club-orlando.jpg"),
+      gallery: [
+        "/images/golf/country-club-orlando/country-club-orlando.jpg",
+        "/images/golf/country-club-orlando/country-club-orlando-2.jpeg"
+      ],
       rating: 4.8,
       par: 72,
       holes: 18,
@@ -912,6 +1059,10 @@ export interface GolfCourse {
       website: "https://www.thedeltonaclub.com",
       phone: "(386) 789-4911",
       image: require("../../assets/images/deltona.jpeg"),
+      gallery: [
+        require("../../assets/images/deltona.jpeg"),
+        require("../../assets/images/deltona-2.jpeg")
+      ],
       rating: 4.4,
       par: 72,
       holes: 18,
@@ -938,6 +1089,10 @@ export interface GolfCourse {
       website: "https://venturacc.org",
       phone: "(407) 281-1744",
       image: require("../../assets/images/ventura.jpeg"),
+      gallery: [
+        require("../../assets/images/ventura.jpeg"),
+        require("../../assets/images/ventura-2.jpeg")
+      ],
       rating: 3.8,
       par: 70,
       holes: 18,
@@ -964,6 +1119,10 @@ export interface GolfCourse {
       website: "https://www.wedgefieldgolf.net",
       phone: "(407) 568-2116",
       image: require("../../assets/images/wedgefield.jpeg"),
+      gallery: [
+        require("../../assets/images/wedgefield.jpeg"),
+        require("../../assets/images/wedgefield-2.jpeg")
+      ],
       rating: 3.7,
       par: 72,
       holes: 18,
@@ -991,6 +1150,10 @@ export interface GolfCourse {
       website: "https://cityofwinterpark.org/departments/parks-recreation/golf-courses/winter-park-golf-course/",
       phone: "(407) 599-3339",
       image: require("../../assets/images/winter-park.jpeg"),
+      gallery: [
+        require("../../assets/images/winter-park.jpeg"),
+        require("../../assets/images/winter-park-2.jpg")
+      ],
       rating: 4.5,
       par: 35,
       holes: 9,
@@ -1017,6 +1180,10 @@ export interface GolfCourse {
       website: "https://cityofwinterpark.org/departments/parks-recreation/golf-courses/winter-park-pines-golf-club/",
       phone: "(407) 671-3172",
       image: require("../../assets/images/winter-park-pines.jpeg"),
+      gallery: [
+        require("../../assets/images/winter-park-pines.jpeg"),
+        require("../../assets/images/winter-park-pines-2.jpeg")
+      ],
       rating: 3.9,
       par: 70,
       holes: 18,

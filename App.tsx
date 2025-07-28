@@ -17,6 +17,7 @@ import RestaurantDetailScreen from './src/screens/RestaurantDetailScreen';
 import GolfScreen from './src/screens/GolfScreen';
 import GolfDetailScreen from './src/screens/GolfDetailScreen';
 import ShoppingDetailScreen from './src/screens/ShoppingDetailScreen';
+import EpicUniverseGuideScreen from './src/screens/EpicUniverseGuideScreen';
 
 const Stack = createStackNavigator();
 
@@ -35,6 +36,7 @@ function App() {
         <Stack.Screen name="Golf" component={GolfScreen} />
         <Stack.Screen name="GolfDetail" component={GolfDetailScreen} />
         <Stack.Screen name="ShoppingDetail" component={ShoppingDetailScreen} />
+        <Stack.Screen name="EpicUniverseGuide" component={EpicUniverseGuideScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
