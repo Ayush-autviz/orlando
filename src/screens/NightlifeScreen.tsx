@@ -50,7 +50,6 @@ interface NightlifeScreenProps {
 
 const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
   const [selectedLocation, setSelectedLocation] = useState<any>(null);
-  const [activeTab, setActiveTab] = useState<string>("about");
 
   const handleWebsitePress = (url: string) => {
     navigation.navigate('WebViewScreen', { 
@@ -236,89 +235,130 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
     </TouchableOpacity>
   );
 
-  const renderModalTab = (tabName: string, label: string) => (
-    <TouchableOpacity
-      key={tabName}
-      style={[
-        styles.tabButton,
-        activeTab === tabName && styles.activeTabButton
-      ]}
-      onPress={() => setActiveTab(tabName)}
-    >
-      <Text style={[
-        styles.tabButtonText,
-        activeTab === tabName && styles.activeTabButtonText
-      ]}>
-        {label}
-      </Text>
-    </TouchableOpacity>
-  );
+
 
   const renderTabContent = () => {
     if (!selectedLocation) return null;
 
-    switch (activeTab) {
-      case 'about':
-        return (
-          <View style={styles.tabContent}>
-            <View style={styles.aboutSection}>
-              <Text style={styles.aboutTitle}>About This Spot</Text>
-              <Text style={styles.aboutDescription}>
-                {selectedLocation.longDescription || selectedLocation.description}
-              </Text>
+    return (
+      <View style={styles.modalContentGrid}>
+        {/* Left Column - Main Content */}
+        <View style={styles.leftColumn}>
+          {/* About Section */}
+          <View style={styles.aboutSection}>
+            <Text style={styles.aboutTitle}>About This Spot</Text>
+            <Text style={styles.aboutDescription}>
+              {selectedLocation.longDescription || selectedLocation.description}
+            </Text>
+          </View>
+          
+          {/* Must Try Section */}
+          {selectedLocation.mustTry && selectedLocation.mustTry.length > 0 && (
+            <View style={styles.mustTrySection}>
+              <View style={styles.sectionHeader}>
+                <ThumbsUp size={20} color="#92400e" />
+                <Text style={styles.sectionTitle}>Must Try</Text>
+              </View>
+              <View style={styles.mustTryList}>
+                {selectedLocation.mustTry.map((item: string, index: number) => (
+                  <View key={index} style={styles.mustTryItem}>
+                    <View style={styles.mustTryNumber}>
+                      <Text style={styles.mustTryNumberText}>{index + 1}</Text>
+                    </View>
+                    <Text style={styles.mustTryText}>{item}</Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+          )}
+          
+          {/* Insider Tips Section */}
+          {selectedLocation.insiderTips && selectedLocation.insiderTips.length > 0 && (
+            <View style={styles.tipsSection}>
+              <View style={styles.sectionHeader}>
+                <Info size={20} color="#1e40af" />
+                <Text style={styles.sectionTitle}>Insider Tips</Text>
+              </View>
+              <View style={styles.tipsList}>
+                {selectedLocation.insiderTips.map((tip: string, index: number) => (
+                  <View key={index} style={styles.tipItem}>
+                    <CornerDownRight size={16} color="#3b82f6" />
+                    <Text style={styles.tipText}>{tip}</Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+          )}
+        </View>
+        
+        {/* Right Column - Sidebar */}
+        <View style={styles.rightColumn}>
+          {/* What To Expect Section */}
+          <View style={styles.expectSection}>
+            <Text style={styles.expectTitle}>What To Expect</Text>
+            <View style={styles.featuresContainer}>
+              {selectedLocation.features.map((feature: string, index: number) => (
+                <View key={index} style={styles.featureBadge}>
+                  <Text style={styles.featureBadgeText}>{feature}</Text>
+                </View>
+              ))}
             </View>
             
-            {selectedLocation.phone && (
-              <View style={styles.phoneContainer}>
-                <Phone size={16} color="#0d9488" />
-                <View style={styles.phoneInfo}>
-                  <Text style={styles.phoneLabel}>Contact</Text>
-                  <Text style={styles.phoneNumber}>{selectedLocation.phone}</Text>
+            <View style={styles.hoursContainer}>
+              <Clock size={16} color="#ea580c" />
+              <View style={styles.hoursInfo}>
+                <Text style={styles.hoursLabel}>Hours</Text>
+                <View style={styles.hoursList}>
+                  {selectedLocation.hours.split(',').map((time: string, index: number) => (
+                    <Text key={index} style={styles.hoursText}>{time.trim()}</Text>
+                  ))}
                 </View>
               </View>
-            )}
+            </View>
           </View>
-        );
-      case 'features':
-        return (
-          <View style={styles.tabContent}>
-            {selectedLocation.features.map((feature: string, idx: number) => (
-              <View key={idx} style={styles.featureItem}>
-                <View style={styles.featureNumber}>
-                  <Text style={styles.featureNumberText}>{idx + 1}</Text>
-                </View>
-                <Text style={styles.featureText}>{feature}</Text>
+          
+          {/* Special Events Section */}
+          {selectedLocation.specialEvents && selectedLocation.specialEvents.length > 0 && (
+            <View style={styles.eventsSection}>
+              <View style={styles.sectionHeader}>
+                <Calendar size={16} color="#7c3aed" />
+                <Text style={styles.sectionTitle}>Upcoming Events</Text>
               </View>
-            ))}
-          </View>
-        );
-      case 'must-try':
-        return (
-          <View style={styles.tabContent}>
-            {selectedLocation.mustTry?.map((item: string, idx: number) => (
-              <View key={idx} style={styles.mustTryItem}>
-                <View style={styles.mustTryNumber}>
-                  <Text style={styles.mustTryNumberText}>{idx + 1}</Text>
-                </View>
-                <Text style={styles.mustTryText}>{item}</Text>
+              <View style={styles.eventsList}>
+                {selectedLocation.specialEvents.map((event: string, index: number) => (
+                  <View key={index} style={styles.eventItem}>
+                    <View style={styles.eventIcon}>
+                      <Music size={12}  color="#7c3aed" />
+                    </View>
+                    <Text style={styles.eventText}>{event}</Text>
+                  </View>
+                ))}
               </View>
-            ))}
-          </View>
-        );
-      case 'tips':
-        return (
-          <View style={styles.tabContent}>
-            {selectedLocation.insiderTips?.map((tip: string, idx: number) => (
-              <View key={idx} style={styles.tipItem}>
-                <CornerDownRight size={16} color="#3b82f6" />
-                <Text style={styles.tipText}>{tip}</Text>
+            </View>
+          )}
+          
+          {/* Nearby Attractions Section */}
+          {selectedLocation.nearbyAttractions && selectedLocation.nearbyAttractions.length > 0 && (
+            <View style={styles.nearbySection}>
+              <View style={styles.sectionHeader}>
+                <Compass size={16} color="#0f766e" />
+                <Text style={styles.sectionTitle}>Nearby Spots</Text>
               </View>
-            ))}
-          </View>
-        );
-      default:
-        return null;
-    }
+              <View style={styles.nearbyList}>
+                {selectedLocation.nearbyAttractions.map((attraction: string, index: number) => (
+                  <View key={index} style={styles.nearbyItem}>
+                    <View style={styles.nearbyIcon}>
+                      <MapPin size={12} color="#0f766e" />
+                    </View>
+                    <Text style={styles.nearbyText}>{attraction}</Text>
+                  </View>
+                ))}
+              </View>
+            </View>
+          )}
+        </View>
+      </View>
+    );
   };
 
   return (
@@ -441,6 +481,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
             </View>
 
             {/* Action Buttons */}
+            <ScrollView style={styles.modalContent} showsVerticalScrollIndicator={false}>
             <View style={styles.modalActions}>
               {selectedLocation.website && (
                 <TouchableOpacity
@@ -477,27 +518,9 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
             </View>
 
             {/* Modal Content */}
-            <View style={styles.modalContent}>
-              {/* Tabs */}
-              <View style={styles.tabsContainer}>
-                <ScrollView 
-                  horizontal 
-                  showsHorizontalScrollIndicator={false}
-                  style={styles.tabsScrollView}
-                >
-                  <View style={styles.tabsList}>
-                    {renderModalTab('about', 'About')}
-                    {renderModalTab('features', 'Features')}
-                    {selectedLocation.mustTry && selectedLocation.mustTry.length > 0 && renderModalTab('must-try', 'Must Try')}
-                    {selectedLocation.insiderTips && selectedLocation.insiderTips.length > 0 && renderModalTab('tips', 'Tips')}
-                  </View>
-                </ScrollView>
-              </View>
 
-              <ScrollView style={styles.tabContentContainer} showsVerticalScrollIndicator={false}>
-                {renderTabContent()}
-              </ScrollView>
-            </View>
+              {renderTabContent()}
+            </ScrollView>
           </SafeAreaView>
         )}
       </Modal>
@@ -639,7 +662,7 @@ const styles = StyleSheet.create({
     left: 12,
     paddingHorizontal: 8,
     paddingVertical: 4,
-    borderRadius: 6,
+    borderRadius: 999,
     zIndex: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
@@ -701,7 +724,9 @@ const styles = StyleSheet.create({
   },
   cardTopRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+   // justifyContent: 'space-between',
+    gap:2,
+    flexWrap:'wrap',
     alignItems: 'center',
     marginBottom: 12,
   },
@@ -833,7 +858,7 @@ const styles = StyleSheet.create({
   modalCategoryBadge: {
     paddingHorizontal: 12,
     paddingVertical: 6,
-    borderRadius: 8,
+    borderRadius: 999,
     alignSelf: 'flex-start',
     marginBottom: 8,
   },
@@ -856,7 +881,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 12,
-    paddingHorizontal: 24,
+    //paddingHorizontal: 24,
     paddingVertical: 24,
   },
   modalActionButton: {
@@ -906,40 +931,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingBottom: 24,
   },
-  tabsContainer: {
-    marginBottom: 20,
+  modalContentGrid: {
+    flexDirection: 'column',
+    gap: 20,
   },
-  tabsScrollView: {
-    backgroundColor: 'rgba(248, 250, 252, 0.7)',
-    borderRadius: 8,
-    padding: 4,
-  },
-  tabsList: {
-    flexDirection: 'row',
-    gap: 4,
-  },
-  tabButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 6,
-    backgroundColor: 'transparent',
-  },
-  activeTabButton: {
-    backgroundColor: '#ffffff',
-  },
-  tabButtonText: {
-    fontSize: 14,
-    color: '#64748b',
-    fontWeight: '500',
-  },
-  activeTabButtonText: {
-    color: '#1f2937',
-  },
-  tabContentContainer: {
+  leftColumn: {
     flex: 1,
   },
-  tabContent: {
-    paddingBottom: 20,
+  rightColumn: {
+    flex: 1,
   },
   aboutSection: {
     backgroundColor: '#fed7aa',
@@ -958,59 +958,18 @@ const styles = StyleSheet.create({
     color: '#374151',
     lineHeight: 24,
   },
-  phoneContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 12,
-    backgroundColor: '#f8fafc',
-    borderRadius: 8,
-  },
-  phoneInfo: {
-    marginLeft: 12,
-  },
-  phoneLabel: {
-    fontSize: 12,
-    color: '#64748b',
-  },
-  phoneNumber: {
-    fontSize: 16,
-    fontWeight: '500',
-    color: '#1f2937',
-  },
-  featureItem: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    padding: 12,
-    backgroundColor: '#f8fafc',
-    borderRadius: 8,
-    marginBottom: 12,
-  },
-  featureNumber: {
-    width: 24,
-    height: 24,
+  mustTrySection: {
+    backgroundColor: '#fef3c7',
     borderRadius: 12,
-    backgroundColor: 'rgba(8, 145, 178, 0.1)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 12,
-    flexShrink: 0,
+    padding: 20,
+    marginBottom: 24,
   },
-  featureNumberText: {
-    fontSize: 12,
-    color: '#0891b2',
-    fontWeight: '600',
-  },
-  featureText: {
-    fontSize: 14,
-    color: '#334155',
-    flex: 1,
+  mustTryList: {
+    marginTop: 12,
   },
   mustTryItem: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    padding: 16,
-    backgroundColor: '#fef3c7',
-    borderRadius: 8,
     marginBottom: 12,
   },
   mustTryNumber: {
@@ -1033,19 +992,147 @@ const styles = StyleSheet.create({
     color: '#374151',
     flex: 1,
   },
+  tipsSection: {
+    backgroundColor: '#dbeafe',
+    borderRadius: 12,
+    padding: 20,
+    marginBottom: 24,
+  },
+  tipsList: {
+    marginTop: 12,
+  },
   tipItem: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    padding: 12,
-    backgroundColor: '#dbeafe',
-    borderRadius: 8,
     marginBottom: 12,
-    gap: 8,
   },
   tipText: {
     fontSize: 14,
     color: '#374151',
     flex: 1,
+  },
+  expectSection: {
+    backgroundColor: '#f8fafc',
+    borderRadius: 12,
+    padding: 20,
+    marginBottom: 24,
+  },
+  expectTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#1f2937',
+    marginBottom: 12,
+  },
+  featuresContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginBottom: 16,
+  },
+  featureBadge: {
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
+  },
+  featureBadgeText: {
+    fontSize: 12,
+    color: '#374151',
+    fontWeight: '600',
+  },
+  hoursContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 12,
+  },
+  hoursInfo: {
+    marginLeft: 12,
+  },
+  hoursLabel: {
+    fontSize: 14,
+    color: '#374151',
+    marginBottom: 4,
+  },
+  hoursList: {
+    flexDirection: 'column',
+    gap: 2,
+  },
+  hoursText: {
+    fontSize: 14,
+    color: '#ea580c',
+    fontWeight: '600',
+  },
+  eventsSection: {
+    backgroundColor: '#f3e8ff',
+    borderRadius: 12,
+    padding: 20,
+    marginBottom: 24,
+  },
+  eventsList: {
+    marginTop: 12,
+  },
+  eventItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  eventIcon: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#E0b0FF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+    flexShrink: 0,
+   
+  },
+  eventText: {
+    fontSize: 14,
+    color: '#374151',
+    flex: 1,
+  },
+  nearbySection: {
+    backgroundColor: '#e0f2fe',
+    borderRadius: 12,
+    padding: 20,
+    marginBottom: 24,
+  },
+  nearbyList: {
+    marginTop: 12,
+  },
+  nearbyItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  nearbyIcon: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#aaf0c9',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+    flexShrink: 0,
+  },
+  nearbyText: {
+    fontSize: 14,
+    color: '#374151',
+    flex: 1,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#1f2937',
+    marginLeft: 8,
   },
 });
 
