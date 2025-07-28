@@ -1,24 +1,26 @@
 import React from 'react';
-import { View, StyleSheet, SafeAreaView } from 'react-native';
+import { View, StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
+import CustomFooter from '../components/CustomFooter';
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation();
   
   return (
-    <View style={styles.container}>
-      {/* <Header /> */}
+    <ScrollView style={styles.container}>
+      <Header />
       <Hero navigation={navigation} />
-    </View>
+      <CustomFooter navigation={navigation} />
+    </ScrollView>   
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000000',
+    backgroundColor: '#fff',
   },
 });
 

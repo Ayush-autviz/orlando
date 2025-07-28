@@ -30,7 +30,39 @@ import {
 
 const { width, height } = Dimensions.get('window');
 
-// Orlando-themed images from local montage folder
+// Responsive dimensions based on screen size
+const getResponsiveDimensions = () => {
+  const screenWidth = width;
+  const screenHeight = height;
+  
+  // Fixed heights for different device sizes
+  let containerHeight;
+  if (screenWidth < 375) { // Small phones
+    containerHeight = 600;
+  } else if (screenWidth < 768) { // Medium phones and small tablets
+    containerHeight = 500;
+  } else { // Large tablets and desktops
+    containerHeight = 800;
+  }
+  
+  return {
+    containerHeight,
+    row1ImageWidth: screenWidth * 0.85,
+    row1ImageHeight: containerHeight * 0.38,
+    row2ImageWidth: screenWidth * 0.65,
+    row2ImageHeight: containerHeight * 0.28,
+    row3ImageWidth: screenWidth * 0.45,
+    row3ImageHeight: containerHeight * 0.18,
+    titleFontSize: Math.max(28, screenWidth * 0.065),
+    subtitleFontSize: 14,
+    categoryFontSize: Math.max(13, screenWidth * 0.038),
+    categoryPadding: 10,
+    categoryGap: 10,
+    contentPadding: 20,
+  };
+};
+
+// Orlando-themed images from local montage folder - matching website exactly
 const orlandoImages = [
   require('../../assets/montage/DonaldDuck.jpeg'),
   require('../../assets/montage/AnimalKingdom.jpeg'),
@@ -48,6 +80,22 @@ const orlandoImages = [
   require('../../assets/montage/Aquatica.jpg'),
   require('../../assets/montage/BlizzardBeach.jpg'),
   require('../../assets/montage/Gatorland.jpg'),
+  require('../../assets/montage/BlueManGroup.jpeg'),
+  require('../../assets/montage/HardRockLive.jpg'),
+  require('../../assets/montage/BlueSpringStatePark.jpeg'),
+  require('../../assets/montage/ArcadeMonsters.jpeg'),
+  require('../../assets/montage/DaveBusterOrlando.jpeg'),
+  require('../../assets/montage/BoggyCreekAirboatAdventures.jpeg'),
+  require('../../assets/montage/BuenaVistaWatersports.jpeg'),
+  require('../../assets/montage/EpicPaddleAdventures.jpeg'),
+  require('../../assets/montage/DisneyCharacters.jpeg'),
+  require('../../assets/montage/DisneyWildernessLodge.jpeg'),
+  require('../../assets/montage/DisneySaratogaSpringsResortSpa.jpeg'),
+  require('../../assets/montage/DisneysAnimalKingdomLodge1.jpg'),
+  require('../../assets/montage/FourSeasonsOrlandoHotel.jpg'),
+  require('../../assets/montage/GrandBohemianDowntownHotel.jpg'),
+  require('../../assets/montage/CastleHotelAutographCollection.jpg'),
+  require('../../assets/montage/HoopDeeDooMusicalRevue.jpeg'),
 ];
 
 // Enhanced categories with Lucide icons matching the screenshot
@@ -64,17 +112,14 @@ const categories = [
   { id: 'neighborhoods', label: 'Neighborhoods', icon: MapPin, color: '#0D9488' },
 ];
 
-// Enhanced image dimensions
-const imageWidth = width / 2.1;
-const imageHeight = 225;
-
 interface HeroProps {
   navigation: any;
 }
 
 const Hero: React.FC<HeroProps> = ({ navigation }) => {
+  const responsiveDims = getResponsiveDimensions();
   
-  // Animation values for smooth parallax scrolling
+  // Animation values for smooth parallax scrolling - matching website speeds exactly
   const scrollX1 = useRef(new Animated.Value(0)).current;
   const scrollX2 = useRef(new Animated.Value(0)).current;
   const scrollX3 = useRef(new Animated.Value(0)).current;
@@ -88,7 +133,10 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
   const floatAnim = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
-    const totalWidth = imageWidth * orlandoImages.length;
+    // Calculate total width for each row based on image count
+    const totalWidth1 = responsiveDims.row1ImageWidth * orlandoImages.length;
+    const totalWidth2 = responsiveDims.row2ImageWidth * orlandoImages.length;
+    const totalWidth3 = responsiveDims.row3ImageWidth * orlandoImages.length;
     
     // Enhanced content entrance animation
     Animated.parallel([
@@ -100,7 +148,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
       Animated.spring(slideAnim, {
         toValue: 0,
         tension: 50,
-        friction: 8 ,
+        friction: 8,
         useNativeDriver: true,
       }),
       Animated.spring(scaleAnim, {
@@ -127,26 +175,24 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
       ])
     ).start();
     
-
-    
-    // Optimized smooth scrolling animations
+    // Exact animation speeds matching website
     const createSmoothAnimation = (animValue: Animated.Value, duration: number, reverse: boolean = false) => {
       return Animated.loop(
         Animated.timing(animValue, {
-          toValue: reverse ? totalWidth : -totalWidth,
-          duration: duration,
+          toValue: reverse ? totalWidth1 : -totalWidth1,
+          duration: duration * 1000, // Convert to milliseconds
           useNativeDriver: true,
         })
       );
     };
 
-    // Slower animations for smoother effect
-    createSmoothAnimation(scrollX1, 200000).start(); // Row 1: Left to right (slower)
-    createSmoothAnimation(scrollX2, 180000, true).start(); // Row 2: Right to left (slower)
-    createSmoothAnimation(scrollX3, 220000).start(); // Row 3: Left to right (slower)
-  }, []);
+    // Slower speeds for more gentle scrolling
+    createSmoothAnimation(scrollX1, 400).start(); // Row 1: Left to right (400s)
+    createSmoothAnimation(scrollX2, 350, true).start(); // Row 2: Right to left (350s)
+    createSmoothAnimation(scrollX3, 450).start(); // Row 3: Left to right (450s)
+  }, [responsiveDims]);
 
-  const renderImageRow = (images: any[], animatedValue: Animated.Value, isMiddleRow: boolean = false) => (
+  const renderImageRow = (images: any[], animatedValue: Animated.Value, isMiddleRow: boolean = false, imageWidth: number, imageHeight: number) => (
     <Animated.View
       style={[
         styles.imageRow,
@@ -155,26 +201,15 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
           flexDirection: isMiddleRow ? 'row-reverse' : 'row',
         },
       ]}>
-      {isMiddleRow
-        ? [...images, ...images, ...images, ...images, ...images].map((imageSource, index) => (
-            <View key={index} style={styles.imageContainer}>
-              <Image
-                source={imageSource}
-                style={styles.backgroundImage}
-                resizeMode="cover"
-              />
-            </View>
-          ))
-        : [...images, ...images, ...images, ...images, ...images].map((imageSource, index) => (
-            <View key={index} style={styles.imageContainer}>
-              <Image
-                source={imageSource}
-                style={styles.backgroundImage}
-                resizeMode="cover"
-              />
-            </View>
-          ))
-      }
+      {[...images, ...images, ...images, ...images, ...images].map((imageSource, index) => (
+        <View key={index} style={[styles.imageContainer, { width: imageWidth, height: imageHeight, marginHorizontal: responsiveDims.categoryGap / 2 }]}>
+          <Image
+            source={imageSource}
+            style={[styles.backgroundImage, { width: imageWidth, height: imageHeight, borderRadius: 8 }]}
+            resizeMode="cover"
+          />
+        </View>
+      ))}
     </Animated.View>
   );
 
@@ -225,9 +260,9 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
         ]}
         onPress={handleCategoryPress}
         activeOpacity={0.7}>
-        <View style={styles.categoryContent}>
+        <View style={[styles.categoryContent, { paddingHorizontal: responsiveDims.categoryPadding, paddingVertical: responsiveDims.categoryPadding }]}>
           <IconComponent 
-            size={20} 
+            size={Math.max(16, width * 0.04)} 
             color="#ffffff" 
             style={styles.categoryIcon}
           />
@@ -236,6 +271,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
               styles.categoryText,
               {
                 color: '#ffffff',
+                fontSize: responsiveDims.categoryFontSize,
               },
             ]}>
             {category.label}
@@ -246,50 +282,42 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { height: responsiveDims.containerHeight }]}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
       
-      {/* Enhanced gradient background - changed to green */}
+      {/* Exact gradient background matching website */}
       <LinearGradient
-  colors={['#D6B59C', '#A47551', '#8B5E3C']}
-  style={styles.gradientBackground}
-  start={{ x: 0, y: 0 }}
-  end={{ x: 1, y: 1 }}
-/>
+        colors={['#f97316', '#14b8a6']} // from-orange-400 to-teal-400
+        style={styles.gradientBackground}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+      />
       
-      {/* Animated background pattern */}
-      {/* <Animated.View
-        style={[
-          styles.backgroundPattern,
-          {
-            opacity: sparkleAnim.interpolate({
-              inputRange: [0, 1],
-              outputRange: [0.1, 0.3],
-            }),
-          },
-        ]}
-      /> */}
-      
-      {/* Three-row scrolling background with slower animations */}
+      {/* Three-row scrolling background with exact website structure */}
       <View style={styles.backgroundContainer}>
-        <View style={styles.backgroundRow}>
-          {renderImageRow(orlandoImages, scrollX1)}
+        {/* First Row - large flagship images */}
+        <View style={[styles.backgroundRow, { height: responsiveDims.row1ImageHeight, marginBottom: responsiveDims.categoryGap * 2 }]}>
+          {renderImageRow(orlandoImages, scrollX1, false, responsiveDims.row1ImageWidth, responsiveDims.row1ImageHeight)}
         </View>
-        <View style={styles.backgroundRow}>
-          {renderImageRow(orlandoImages, scrollX2, true)}
+        
+        {/* Second Row - medium-sized images */}
+        <View style={[styles.backgroundRow, { height: responsiveDims.row2ImageHeight, marginBottom: responsiveDims.categoryGap * 2 }]}>
+          {renderImageRow(orlandoImages, scrollX2, true, responsiveDims.row2ImageWidth, responsiveDims.row2ImageHeight)}
         </View>
-        <View style={styles.backgroundRow}>
-          {renderImageRow(orlandoImages, scrollX3)}
+        
+        {/* Third Row - smaller images */}
+        <View style={[styles.backgroundRow, { height: responsiveDims.row3ImageHeight, marginBottom: responsiveDims.categoryGap * 2 }]}>
+          {renderImageRow(orlandoImages, scrollX3, false, responsiveDims.row3ImageWidth, responsiveDims.row3ImageHeight)}
         </View>
       </View>
 
-      {/* Enhanced content overlay */}
-      {/* <LinearGradient
-        colors={['rgba(0,0,0,0.1)', 'rgba(0,0,0,0.3)', 'rgba(0,0,0,0.1)']}
+      {/* Content overlay */}
+      <LinearGradient
+        colors={['rgba(0,0,0,0.4)', 'rgba(0,0,0,0.3)', 'rgba(0,0,0,0.4)']}
         style={styles.overlay}
-      /> */}
+      />
       
-      <SafeAreaView style={styles.content}>
+      <SafeAreaView style={[styles.content, { paddingHorizontal: responsiveDims.contentPadding }]}>
         <Animated.View 
           style={[
             styles.header,
@@ -302,25 +330,9 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
             }
           ]}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Awesome Orlando Guide</Text>
+            <Text style={[styles.title, { fontSize: responsiveDims.titleFontSize }]}>Awesome Orlando Guide</Text>
             <View style={styles.subtitleContainer}>
-              <Text style={styles.subtitle}>Your complete resource for exploring Orlando</Text>
-              {/* <Animated.View
-                style={[
-                  styles.sparkle,
-                  {
-                    opacity: sparkleAnim,
-                    transform: [
-                      {
-                        scale: sparkleAnim.interpolate({
-                          inputRange: [0, 1],
-                          outputRange: [0.5, 1.5],
-                        }),
-                      },
-                    ],
-                  },
-                ]}
-              /> */}
+              <Text style={[styles.subtitle, { fontSize: responsiveDims.subtitleFontSize }]}>Your complete resource for exploring Orlando</Text>
             </View>
           </View>
         </Animated.View>
@@ -333,7 +345,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
               transform: [{ translateY: slideAnim }],
             }
           ]}>
-          <View style={styles.categoriesGrid}>
+          <View style={[styles.categoriesGrid, { gap: responsiveDims.categoryGap }]}>
             {categories.map((category) => (
               <CategoryButton key={category.id} category={category} />
             ))}
@@ -347,6 +359,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    position: 'relative',
     backgroundColor: '#10B981',
   },
   gradientBackground: {
@@ -356,49 +369,28 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
   },
-  backgroundPattern: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(255,255,255,0.1)',
-  },
   backgroundContainer: {
     position: 'absolute',
-    top: 65,
     left: 0,
     right: 0,
     bottom: 0,
     overflow: 'hidden',
   },
   backgroundRow: {
-    height: imageHeight,
     overflow: 'hidden',
-    marginBottom: 20,
   },
   imageRow: {
     flexDirection: 'row',
-    height: imageHeight,
   },
   imageContainer: {
-    width: imageWidth,
-    height: imageHeight,
-    marginHorizontal: 10,
     position: 'relative',
   },
   backgroundImage: {
-    width: imageWidth,
-    height: imageHeight,
-    borderRadius: 20,
-  },
-  imageOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    borderRadius: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 8,
   },
   overlay: {
     position: 'absolute',
@@ -409,18 +401,18 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingHorizontal: 24,
+    position: 'relative',
+    paddingBottom: 20, // Add space for footer
   },
   header: {
     alignItems: 'center',
-    marginTop: 50,
-    marginBottom: 20,
+    //marginTop: Math.max(20, height * 0.03),
+    marginBottom: 15,
   },
   titleContainer: {
     alignItems: 'center',
   },
   title: {
-    fontSize: 42,
     fontWeight: '900',
     color: '#ffffff',
     textAlign: 'center',
@@ -428,7 +420,7 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 0, height: 6 },
     textShadowRadius: 20,
     letterSpacing: 2,
-    marginBottom: 20,
+    marginBottom: Math.max(15, height * 0.02),
     ...Platform.select({
       ios: {
         fontFamily: 'System',
@@ -443,7 +435,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   subtitle: {
-    fontSize: 18,
     color: '#ffffff',
     textAlign: 'center',
     fontWeight: '600',
@@ -461,20 +452,6 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  sparkle: {
-    position: 'absolute',
-    top: -10,
-    right: -20,
-    width: 20,
-    height: 20,
-    backgroundColor: '#FFD700',
-    borderRadius: 10,
-    shadowColor: '#FFD700',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.8,
-    shadowRadius: 10,
-    elevation: 10,
-  },
   categoriesWrapper: {
     flex: 1,
     marginTop: 0,
@@ -486,8 +463,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: 12,
-   paddingHorizontal: 20,
+    paddingHorizontal: 0,
   },
   categoryButton: {
     borderRadius: 999,
@@ -506,24 +482,20 @@ const styles = StyleSheet.create({
     elevation: 18,
   },
   categoryContent: {
-    paddingHorizontal: 16,
-    paddingVertical: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth: 120,
     position: 'relative',
     backgroundColor: '#0D9488',
     borderRadius: 999,
     borderWidth: 1,
     borderColor: '#ffffff',
     flexDirection: 'row',
-    gap: 8,
+    gap: 4,
   },
   categoryIcon: {
     marginRight: 4,
   },
   categoryText: {
-    fontSize: 14,
     fontWeight: '600',
     textAlign: 'center',
     letterSpacing: 0.5,
