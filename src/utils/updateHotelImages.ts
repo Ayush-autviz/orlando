@@ -65,7 +65,8 @@ export const hotelImageMapping: { [key: string]: any } = {
   "Rosen Inn International": require('../../assets/images/rosen-inn-international.jpg'),
   "Universal Stella Nova Resort": require('../../assets/images/universal-stella-nova-optimized.jpg'),
   "Holiday Inn Express & Suites - ICON Park": require('../../assets/images/holiday-inn-express-icon-park.jpg'),
-  
+  "Universal Terra Luna Resort": require('../../assets/images/universal-terra-luna-hotel-2.webp'),
+  "Universal Helios Grand Hotel": require('../../assets/images/universal-grand-helios-optimized.jpg'),
   // Other Hotels
   "DoubleTree by Hilton at the Entrance to Universal Orlando": require('../../assets/images/doubletree-by-hilton.jpeg'),
   "Hilton Orlando Lake Buena Vista": require('../../assets/images/hilton-orlando-buena-vista-palace.jpg'),

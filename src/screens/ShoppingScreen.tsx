@@ -66,7 +66,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
       {/* Image Section */}
       <View style={styles.imageSection}>
         <Image source={mall.heroImage} style={styles.mallImage} />
-        {/* <View style={styles.imageOverlay} /> */}
+        <View style={styles.imageOverlay} />
         
         {/* Badges */}
         <View style={styles.badgeContainer}>
@@ -83,7 +83,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
           style={styles.shareButton}
           onPress={() => handleShare(mall)}
         >
-          <Share2 size={16} color="#374151" />
+          <Share2 size={16} color="#FFFFFF" />
         </TouchableOpacity>
 
         {/* Mall name */}
@@ -338,11 +338,11 @@ const styles = StyleSheet.create({
   },
   imageOverlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    height: '70%',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
   },
   badgeContainer: {
     position: 'absolute',

@@ -720,7 +720,7 @@ const styles = StyleSheet.create({
   heroContent: {
     position: 'relative',
     zIndex: 2,
-    paddingHorizontal: 16,
+    paddingHorizontal: 14,
     paddingVertical: 24,
   },
   heroGrid: {
@@ -731,7 +731,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heroTitle: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: '800',
     textAlign: 'center',
     marginBottom: 12,
@@ -769,7 +769,7 @@ const styles = StyleSheet.create({
   },
   heroImage: {
     width: '100%',
-    aspectRatio: 16/10, // Better ratio for hero image
+   height:300
   },
   heroImageOverlay: {
     position: 'absolute',
@@ -942,7 +942,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   rideImages: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     gap: 16,
     marginBottom: 24,
   },
@@ -958,7 +958,8 @@ const styles = StyleSheet.create({
   },
   rideImage: {
     width: '100%',
-    aspectRatio: 16/9, // More web-like ratio, less tall
+    height: 200,
+   // aspectRatio: 16/9, // More web-like ratio, less tall
     borderRadius: 4,
   },
   rideContent: {

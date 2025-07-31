@@ -9,7 +9,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Home, MapPin, Star, Utensils, Bed, Menu, DoorOpen, Ticket, ShoppingCart } from 'lucide-react-native';
+import { Home, MapPin, Star, Utensils, Bed, Menu, DoorOpen, Ticket, ShoppingCart, Calendar, Beer, Flag, Leaf, Music } from 'lucide-react-native';
 import AnimatedGradientLogo from '../components/AnimatedGradientLogo';
 
 // Import screens
@@ -28,6 +28,7 @@ import VenuesScreen from '../screens/VenuesScreen';
 import SpaScreen from '../screens/SpaScreen';
 import WebViewScreen from '../screens/WebViewScreen';
 import NightlifeScreen from '../screens/NightlifeScreen';
+import EpicUniverseGuideScreen from '../screens/EpicUniverseGuideScreen';
 
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -126,15 +127,13 @@ const CustomDrawerContent = (props: any) => {
     { id: 'Hotels', label: 'Hotels', icon: <Bed size={24} color="#374151" />, color: '#f59e0b' },
     { id: 'Dining', label: 'Dining', icon: <Utensils size={24} color="#374151" />, color: '#ef4444' },
     { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color="#374151" />, color: '#8b5cf6' },
-    { id: 'entertainment', label: 'Live Entertainment', icon: <Star size={24} color="#374151" />, color: '#06b6d4' },
-    { id: 'spas', label: 'Spas & Wellness', icon: <Star size={24} color="#374151" />, color: '#10b981' },
-    { id: 'nightlife', label: 'Orlando Bar Hop', icon: <Star size={24} color="#374151" />, color: '#f59e0b' },
-    { id: 'neighborhoods', label: 'Neighborhoods', icon: <Star size={24} color="#374151" />, color: '#06b6d4' },
+    { id: 'entertainment', label: 'Live Entertainment', icon: <Music size={24} color="#374151" />, color: '#06b6d4' },
+    { id: 'nightlife', label: 'Local Bar Hop', icon: <Beer size={24} color="#374151" />, color: '#f59e0b' },
+    { id: 'golf', label: 'Golf', icon: <Flag size={24} color="#374151" />, color: '#f97316' },
+    { id: 'spas', label: 'Spas & Wellness', icon: <Leaf size={24} color="#374151" />, color: '#10b981' },
+    { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color="#374151" />, color: '#06b6d4' },
     // { id: 'things-to-do', label: 'Things to Do', icon: <Star size={24} color="#374151" />, color: '#84cc16' },
-    // { id: 'golf', label: 'Golf', icon: <MapPin size={24} color="#374151" />, color: '#f97316' },
     // { id: 'sports', label: 'Sports', icon: <Star size={24} color="#374151" />, color: '#ec4899' },
-    // { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color="#374151" />, color: '#6366f1' },
-    // { id: 'nightlife', label: 'Nightlife', icon: <Star size={24} color="#374151" />, color: '#8b5cf6' },
   ];
 
   const handleCategoryPress = (categoryId: string) => {
@@ -211,6 +210,7 @@ const CustomTabNavigator: React.FC = () => {
       <Drawer.Screen name="things-to-do" component={AttractionsScreen} />
       <Drawer.Screen name="golf" component={GolfScreen} />
       <Drawer.Screen name="sports" component={AttractionsScreen} />
+      <Drawer.Screen name="EpicUniverseGuide" component={EpicUniverseGuideScreen} />
       {/* <Drawer.Screen name="neighborhoods" component={NeighborhoodsScreen} /> */}
     
       {/* <Drawer.Screen name="nightlife" component={AttractionsScreen} /> */}

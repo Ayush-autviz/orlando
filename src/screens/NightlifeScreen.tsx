@@ -52,6 +52,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
   const [selectedLocation, setSelectedLocation] = useState<any>(null);
 
   const handleWebsitePress = (url: string) => {
+    setSelectedLocation(null)
     navigation.navigate('WebViewScreen', { 
       url, 
       title: 'Nightlife Website' 
@@ -218,7 +219,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
         </Text>
         
         <View style={styles.featuresContainer}>
-          {location.features.slice(0, 3).map((feature: string, index: number) => (
+          {location.features.map((feature: string, index: number) => (
             <View key={index} style={styles.featureBadge}>
               <Text style={styles.featureBadgeText}>{feature}</Text>
             </View>
@@ -298,8 +299,8 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
             <Text style={styles.expectTitle}>What To Expect</Text>
             <View style={styles.featuresContainer}>
               {selectedLocation.features.map((feature: string, index: number) => (
-                <View key={index} style={styles.featureBadge}>
-                  <Text style={styles.featureBadgeText}>{feature}</Text>
+                <View key={index} style={styles.modalFeatureBadge}>
+                  <Text style={styles.modalFeatureBadgeText}>{feature}</Text>
                 </View>
               ))}
             </View>
@@ -425,6 +426,778 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
         {/* Locations Grid */}
         <View style={styles.locationsGrid}>
           {NIGHTLIFE_LOCATIONS.map((location) => renderLocationCard(location))}
+        </View>
+
+        {/* Comprehensive Directory Section */}
+        <View style={styles.directorySection}>
+          <Text style={styles.directoryTitle}>Complete Orlando Nightlife Directory</Text>
+          
+          {/* Speakeasies List */}
+          <View style={styles.categorySection}>
+            <View style={styles.categoryHeader}>
+              <GlassWater size={20} color="#6b21a8" />
+              <Text style={[styles.categoryTitle, { color: '#6b21a8' }]}>Speakeasies in Orlando</Text>
+            </View>
+            
+            <View style={styles.locationList}>
+              <View style={styles.neighborhoodGroup}>
+                <Text style={styles.neighborhoodTitle}>Downtown Orlando</Text>
+                <View style={styles.locationItem}>
+                  <Text style={styles.directoryLocationName}>Mathers Social Gathering</Text>
+                  <Text style={styles.directoryLocationAddress}>30 S Magnolia Ave, Downtown Orlando</Text>
+                  <Text style={styles.locationDetails}>Boutique spirits, dress code, 5 PM–2 AM</Text>
+                  <View style={styles.locationActions}>
+                    <TouchableOpacity 
+                      style={styles.websiteButton}
+                      onPress={() => handleWebsitePress('https://mathersorlando.com')}
+                    >
+                      <Text style={styles.websiteButtonText}>Visit Website</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={styles.mapButton}
+                      onPress={() => handleMapPress('30 S Magnolia Ave Orlando FL')}
+                    >
+                      <Text style={styles.mapButtonText}>Map It</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                
+                <View style={styles.locationItem}>
+                  <Text style={styles.directoryLocationName}>The Courtesy Bar</Text>
+                  <Text style={styles.directoryLocationAddress}>114 N Orange Ave, Winter Park</Text>
+                  <Text style={styles.locationDetails}>Craft cocktails, 5 PM–2 AM</Text>
+                  <View style={styles.locationActions}>
+                    <TouchableOpacity 
+                      style={styles.websiteButton}
+                      onPress={() => handleWebsitePress('https://www.thecourtesybar.com')}
+                    >
+                      <Text style={styles.websiteButtonText}>Visit Website</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={styles.mapButton}
+                      onPress={() => handleMapPress('114 N Orange Ave Winter Park FL')}
+                    >
+                      <Text style={styles.mapButtonText}>Map It</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                
+                <View style={styles.locationItem}>
+                  <Text style={styles.directoryLocationName}>Hanson's Shoe Repair</Text>
+                  <Text style={styles.directoryLocationAddress}>27 E Pine St, Downtown Orlando</Text>
+                  <Text style={styles.locationDetails}>Password-protected, 8 PM–2 AM</Text>
+                  <View style={styles.locationActions}>
+                    <TouchableOpacity 
+                      style={styles.websiteButton}
+                      onPress={() => handleWebsitePress('https://www.facebook.com/hansonsshoerepair')}
+                    >
+                      <Text style={styles.websiteButtonText}>Visit Website</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={styles.mapButton}
+                      onPress={() => handleMapPress('27 E Pine St Orlando FL')}
+                    >
+                      <Text style={styles.mapButtonText}>Map It</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                
+                <View style={styles.locationItem}>
+                  <Text style={styles.directoryLocationName}>The Treehouse</Text>
+                  <Text style={styles.directoryLocationAddress}>68 E Pine St, Downtown Orlando</Text>
+                  <Text style={styles.locationDetails}>Secret club vibe, 8 PM–2 AM</Text>
+                  <View style={styles.locationActions}>
+                    <TouchableOpacity 
+                      style={styles.mapButton}
+                      onPress={() => handleMapPress('68 E Pine St Orlando FL')}
+                    >
+                      <Text style={styles.mapButtonText}>Map It</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+              
+              <View style={styles.neighborhoodGroup}>
+                <Text style={styles.neighborhoodTitle}>Greater Orlando Area</Text>
+                <View style={styles.locationItem}>
+                  <Text style={styles.directoryLocationName}>The Imperial Wine & Beer Garden</Text>
+                  <Text style={styles.directoryLocationAddress}>1800 N Orange Ave, Ivanhoe Village</Text>
+                  <Text style={styles.locationDetails}>Furniture store by day, 5 PM–12 AM</Text>
+                  <View style={styles.locationActions}>
+                    <TouchableOpacity 
+                      style={styles.websiteButton}
+                      onPress={() => handleWebsitePress('https://imperialfurniture.com')}
+                    >
+                      <Text style={styles.websiteButtonText}>Visit Website</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={styles.mapButton}
+                      onPress={() => handleMapPress('1800 N Orange Ave Orlando FL')}
+                    >
+                      <Text style={styles.mapButtonText}>Map It</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                
+                <View style={styles.locationItem}>
+                  <Text style={styles.directoryLocationName}>Permanent Vacation</Text>
+                  <Text style={styles.directoryLocationAddress}>1111 N Orlando Ave, Maitland</Text>
+                  <Text style={styles.locationDetails}>Tiki-themed, hidden in Copper Rocket Pub, 5 PM–2 AM</Text>
+                  <View style={styles.locationActions}>
+                    <TouchableOpacity 
+                      style={styles.websiteButton}
+                      onPress={() => handleWebsitePress('https://copperrocketpub.com/permanent-vacation')}
+                    >
+                      <Text style={styles.websiteButtonText}>Visit Website</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={styles.mapButton}
+                      onPress={() => handleMapPress('1111 N Orlando Ave Maitland FL')}
+                    >
+                      <Text style={styles.mapButtonText}>Map It</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                
+                <View style={styles.locationItem}>
+                  <Text style={styles.directoryLocationName}>Lorelai Wine Bar</Text>
+                  <Text style={styles.directoryLocationAddress}>113 S Orange Ave, Downtown Orlando</Text>
+                  <Text style={styles.locationDetails}>Opening Feb 2025, European wines, 4 PM–12 AM</Text>
+                  <View style={styles.locationActions}>
+                    <TouchableOpacity 
+                      style={styles.mapButton}
+                      onPress={() => handleMapPress('113 S Orange Ave Orlando FL')}
+                    >
+                      <Text style={styles.mapButtonText}>Map It</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+              
+              <View style={styles.neighborhoodGroup}>
+                <Text style={styles.neighborhoodTitle}>Tourist District</Text>
+                <View style={styles.locationItem}>
+                  <Text style={styles.directoryLocationName}>Enzo's Hideaway Tunnel Bar</Text>
+                  <Text style={styles.directoryLocationAddress}>1560 E Buena Vista Dr, Disney Springs</Text>
+                  <Text style={styles.locationDetails}>Prohibition-era cocktails, 11:30 AM–11 PM</Text>
+                  <View style={styles.locationActions}>
+                    <TouchableOpacity 
+                      style={styles.websiteButton}
+                      onPress={() => handleWebsitePress('https://enzoshideawayfla.com')}
+                    >
+                      <Text style={styles.websiteButtonText}>Visit Website</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={styles.mapButton}
+                      onPress={() => handleMapPress('1560 E Buena Vista Dr Lake Buena Vista FL')}
+                    >
+                      <Text style={styles.mapButtonText}>Map It</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                
+                <View style={styles.locationItem}>
+                  <Text style={styles.directoryLocationName}>Roka Hula</Text>
+                  <Text style={styles.directoryLocationAddress}>7624 W Sand Lake Rd, Restaurant Row</Text>
+                  <Text style={styles.locationDetails}>Asian tiki bar, hidden in Voodoo Bayou, 5 PM–12 AM</Text>
+                  <View style={styles.locationActions}>
+                    <TouchableOpacity 
+                      style={styles.websiteButton}
+                      onPress={() => handleWebsitePress('https://voodoo-bayou.com')}
+                    >
+                      <Text style={styles.websiteButtonText}>Visit Website</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={styles.mapButton}
+                      onPress={() => handleMapPress('7624 W Sand Lake Rd Orlando FL')}
+                    >
+                      <Text style={styles.mapButtonText}>Map It</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+                
+                <View style={styles.locationItem}>
+                  <Text style={styles.directoryLocationName}>Epilogue</Text>
+                  <Text style={styles.directoryLocationAddress}>10100 Dream Tree Blvd, Four Seasons Resort</Text>
+                  <Text style={styles.locationDetails}>Library-themed, adults-only, opened Oct 2024, 5 PM–12 AM</Text>
+                  <View style={styles.locationActions}>
+                    <TouchableOpacity 
+                      style={styles.websiteButton}
+                      onPress={() => handleWebsitePress('https://www.fourseasons.com/orlando/dining/lounges/epilogue/')}
+                    >
+                      <Text style={styles.websiteButtonText}>Visit Website</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                      style={styles.mapButton}
+                      onPress={() => handleMapPress('10100 Dream Tree Blvd Orlando FL')}
+                    >
+                      <Text style={styles.mapButtonText}>Map It</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          
+          {/* Breweries List */}
+          <View style={styles.categorySection}>
+            <View style={styles.categoryHeader}>
+              <Beer size={20} color="#92400e" />
+              <Text style={[styles.categoryTitle, { color: '#92400e' }]}>Craft Breweries in Orlando</Text>
+            </View>
+            
+            <View style={styles.breweryGrid}>
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Ivanhoe Park Brewing Co.</Text>
+                <Text style={styles.locationAddress}>1300 Alden Rd, Ivanhoe Village</Text>
+                <Text style={styles.locationDetails}>Joyland-inspired, 12 PM–10 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.ivanhoeparkbrewing.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('1300 Alden Rd Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Park Pizza & Brewing Company</Text>
+                <Text style={styles.locationAddress}>6941 Lake Nona Blvd, Lake Nona</Text>
+                <Text style={styles.locationDetails}>Wood-fired pizza, 11 AM–10 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.parkpizzalakenona.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('6941 Lake Nona Blvd Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Twelve Talons Beerworks</Text>
+                <Text style={styles.locationAddress}>2805 E Kaley St, The Milk District</Text>
+                <Text style={styles.locationDetails}>Unique flavors, 4 PM–10 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://twelvetalons.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('2805 E Kaley St Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Brewlando Brewing</Text>
+                <Text style={styles.locationAddress}>6820 Hoffner Ave, Southeast Orlando</Text>
+                <Text style={styles.locationDetails}>Orlando-centric names, 12 PM–10 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.brewlandobrewing.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('6820 Hoffner Ave Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Cask & Larder</Text>
+                <Text style={styles.locationAddress}>Orlando International Airport</Text>
+                <Text style={styles.locationDetails}>James Beard-recognized, hours vary</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.caskandlarder.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('Cask and Larder Orlando International Airport')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Hourglass Brewing</Text>
+                <Text style={styles.locationAddress}>2500 Curry Ford Rd, Hourglass District</Text>
+                <Text style={styles.locationDetails}>Nostalgic decor, 4 PM–12 AM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.hourglassbrewing.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('2500 Curry Ford Rd Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Motorworks Brewing</Text>
+                <Text style={styles.locationAddress}>1014 E Pine St, City District</Text>
+                <Text style={styles.locationDetails}>24 drafts, open-air deck, 11 AM–12 AM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://motorworksbrewing.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('1014 E Pine St Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Redlight Redlight</Text>
+                <Text style={styles.locationAddress}>2810 Corrine Dr, Audubon Park</Text>
+                <Text style={styles.locationDetails}>20+ page beer list, 4 PM–2 AM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.redlightredlightbeerparlour.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('2810 Corrine Dr Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>RockPit Brewing</Text>
+                <Text style={styles.locationAddress}>10 W Illiana St, SODO</Text>
+                <Text style={styles.locationDetails}>20 drafts, barbecue, 4 PM–11 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.rockpitbrewing.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('10 W Illiana St Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Sideward Brewing</Text>
+                <Text style={styles.locationAddress}>210 N Bumby Ave, The Milk District</Text>
+                <Text style={styles.locationDetails}>Pub fare, 12 PM–11 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.sidewardbrewing.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('210 N Bumby Ave Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Tactical Brewing Co.</Text>
+                <Text style={styles.locationAddress}>4882 New Broad St, Baldwin Park</Text>
+                <Text style={styles.locationDetails}>Veteran-founded, 3 PM–12 AM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.tacticalbrewingco.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('4882 New Broad St Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Ten10 Brewing Company</Text>
+                <Text style={styles.locationAddress}>1010 Virginia Dr, Mills 50</Text>
+                <Text style={styles.locationDetails}>Pure ingredients, 3 PM–12 AM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.ten10brewing.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('1010 Virginia Dr Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>New York Beer Project</Text>
+                <Text style={styles.locationAddress}>923 N Plant St, Winter Garden</Text>
+                <Text style={styles.locationDetails}>NYC-themed, 11 AM–11 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.newyorkbeerproject.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('923 N Plant St Winter Garden FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Bowigens Beer Company</Text>
+                <Text style={styles.locationAddress}>13060 Avalon Lake Dr, Avalon Park</Text>
+                <Text style={styles.locationDetails}>Innovative brews, 3 PM–11 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.bowigens.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('13060 Avalon Lake Dr Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Crooked Can Brewing Company</Text>
+                <Text style={styles.locationAddress}>426 W Plant St, Winter Garden</Text>
+                <Text style={styles.locationDetails}>Plant Street Market, 11 AM–11 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.crookedcan.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('426 W Plant St Winter Garden FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.breweryItem}>
+                <Text style={styles.locationName}>Gatlin Hall Brewing</Text>
+                <Text style={styles.locationAddress}>4720 S Orange Ave, South Orlando</Text>
+                <Text style={styles.locationDetails}>Family-friendly patio, 11 AM–10 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.gatlinhall.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('4720 S Orange Ave Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          </View>
+          
+          {/* Wineries List */}
+          <View style={styles.categorySection}>
+            <View style={styles.categoryHeader}>
+              <Wine size={20} color="#991b1b" />
+              <Text style={[styles.categoryTitle, { color: '#991b1b' }]}>Wineries & Wine Bars in Orlando</Text>
+            </View>
+            
+            <View style={styles.wineryGrid}>
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>Lakeridge Winery & Vineyards</Text>
+                <Text style={styles.locationAddress}>19239 US-27, Clermont (35-min drive)</Text>
+                <Text style={styles.locationDetails}>80-acre vineyard, tastings, 10 AM–5 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.lakeridgewinery.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('19239 US-27 Clermont FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>Cooper's Hawk Winery & Restaurant</Text>
+                <Text style={styles.locationAddress}>8005 International Dr, I-Drive</Text>
+                <Text style={styles.locationDetails}>Hand-crafted wines, 11 AM–10 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.coopershawkwinery.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('8005 International Dr Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>Quantum Leap Winery</Text>
+                <Text style={styles.locationAddress}>1312 Wilfred Dr, Orlando</Text>
+                <Text style={styles.locationDetails}>Sustainable wines, available at local venues</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.quantumleapwinery.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('1312 Wilfred Dr Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>Wine Bar George</Text>
+                <Text style={styles.locationAddress}>1610 E Buena Vista Dr, Disney Springs</Text>
+                <Text style={styles.locationDetails}>Master-sommelier-led, 11 AM–11 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://winebargeorge.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('1610 E Buena Vista Dr Lake Buena Vista FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>VINIA Wine & Kitchen</Text>
+                <Text style={styles.locationAddress}>110 S Orlando Ave, Winter Park</Text>
+                <Text style={styles.locationDetails}>Italian-Brazilian menu, 5 PM–10 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://viniawine.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('110 S Orlando Ave Winter Park FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>Swirlery Wine Bar</Text>
+                <Text style={styles.locationAddress}>1508 E Michigan St, SODO</Text>
+                <Text style={styles.locationDetails}>Tasting room, retail, 4 PM–10 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.swirlery.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('1508 E Michigan St Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>RusTeak Restaurant & Wine Bar</Text>
+                <Text style={styles.locationAddress}>101 S Eola Dr, Thornton Park</Text>
+                <Text style={styles.locationDetails}>New American, 11 AM–10 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.rusteakwinebar.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('101 S Eola Dr Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>Vines Grille & Wine Bar</Text>
+                <Text style={styles.locationAddress}>7533 W Sand Lake Rd, Restaurant Row</Text>
+                <Text style={styles.locationDetails}>Boutique wines, 4 PM–11 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.vinesgrille.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('7533 W Sand Lake Rd Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>The Wine Room on Park Avenue</Text>
+                <Text style={styles.locationAddress}>270 S Park Ave, Winter Park</Text>
+                <Text style={styles.locationDetails}>Self-serve dispensers, 12 PM–11 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://thewineroomonline.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('270 S Park Ave Winter Park FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>Eola Wine Company</Text>
+                <Text style={styles.locationAddress}>430 E Central Blvd, Thornton Park</Text>
+                <Text style={styles.locationDetails}>Boutique wines, 4 PM–11 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.eolawinecompany.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('430 E Central Blvd Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              
+              <View style={styles.wineryItem}>
+                <Text style={styles.locationName}>Digress Wine</Text>
+                <Text style={styles.locationAddress}>2603 Edgewater Dr, College Park</Text>
+                <Text style={styles.locationDetails}>Unique pairings, 4 PM–10 PM</Text>
+                <View style={styles.locationActions}>
+                  <TouchableOpacity 
+                    style={styles.websiteButton}
+                    onPress={() => handleWebsitePress('https://www.digresswine.com')}
+                  >
+                    <Text style={styles.websiteButtonText}>Visit Website</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.mapButton}
+                    onPress={() => handleMapPress('2603 Edgewater Dr Orlando FL')}
+                  >
+                    <Text style={styles.mapButtonText}>Map It</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          </View>
         </View>
       </ScrollView>
 
@@ -691,13 +1464,17 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   locationName: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#ffffff',
+    // fontSize: 20,
+    // fontWeight: '500',
+    // color: '#000000',
+    // marginBottom: 4,
+    // textShadowColor: 'rgba(0, 0, 0, 0.3)',
+    // textShadowOffset: { width: 0, height: 1 },
+    // textShadowRadius: 2,
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#1f2937',
     marginBottom: 4,
-    textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 2,
   },
   addressRow: {
     flexDirection: 'row',
@@ -778,7 +1555,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   featureBadge: {
-    backgroundColor: '#fed7aa',
+    backgroundColor: '#fff7ed',
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 6,
@@ -787,7 +1564,7 @@ const styles = StyleSheet.create({
   },
   featureBadgeText: {
     fontSize: 12,
-    color: '#ea580c',
+    color: '#c2410c',
     fontWeight: '600',
   },
   checkItOutButton: {
@@ -1030,16 +1807,30 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   featureBadge: {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#fff7ed',
     paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: '#ea580c',
+  },
+  featureBadgeText: {
+    fontSize: 12,
+    color: '#c2410c',
+    fontWeight: '600',
+  },
+  // Modal feature badges (neutral styling like web)
+  modalFeatureBadge: {
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 12,
     paddingVertical: 4,
     borderRadius: 6,
     borderWidth: 1,
     borderColor: '#e2e8f0',
   },
-  featureBadgeText: {
+  modalFeatureBadgeText: {
     fontSize: 12,
-    color: '#374151',
+    color: '#475569',
     fontWeight: '600',
   },
   hoursContainer: {
@@ -1133,6 +1924,115 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#1f2937',
     marginLeft: 8,
+  },
+  // Directory Section Styles
+  directorySection: {
+    backgroundColor: '#f9fafb',
+    paddingVertical: 32,
+    paddingHorizontal: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#e5e7eb',
+  },
+  directoryTitle: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#1f2937',
+    textAlign: 'center',
+    marginBottom: 32,
+  },
+  categorySection: {
+    marginBottom: 40,
+  },
+  categoryHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  categoryTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#1f2937',
+    marginLeft: 8,
+  },
+  locationList: {
+    gap: 24,
+  },
+  neighborhoodGroup: {
+    marginBottom: 24,
+  },
+  neighborhoodTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: 12,
+  },
+  locationItem: {
+    backgroundColor: '#ffffff',
+    padding: 16,
+    borderRadius: 8,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
+  },
+  directoryLocationName: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#1f2937',
+    marginBottom: 4,
+  },
+  directoryLocationAddress: {
+    fontSize: 14,
+    color: '#6b7280',
+    marginBottom: 4,
+  },
+  locationDetails: {
+    fontSize: 14,
+    color: '#6b7280',
+    marginBottom: 12,
+  },
+  locationActions: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  websiteButton: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+  },
+  websiteButtonText: {
+    fontSize: 12,
+    color: '#3b82f6',
+    fontWeight: '500',
+  },
+  mapButton: {
+    backgroundColor: '#7c3aed',
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 4,
+  },
+  mapButtonText: {
+    fontSize: 12,
+    color: '#ffffff',
+    fontWeight: '500',
+  },
+  breweryGrid: {
+    gap: 12,
+  },
+  breweryItem: {
+    backgroundColor: '#ffffff',
+    padding: 16,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
+  },
+  wineryGrid: {
+    gap: 12,
+  },
+  wineryItem: {
+    backgroundColor: '#ffffff',
+    padding: 16,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#e5e7eb',
   },
 });
 

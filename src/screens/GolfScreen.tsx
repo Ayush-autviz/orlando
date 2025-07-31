@@ -13,6 +13,7 @@ import {
   Linking,
   StatusBar,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { 
   Flag, 
@@ -62,7 +63,10 @@ const GolfScreen: React.FC = () => {
 
   const handleWebsitePress = (course: GolfCourse) => {
     if (course.website) {
-      Linking.openURL(course.website);
+      navigation.navigate('WebView' as never, {
+        url: course.website,
+        title: `${course.name} Website`
+      } as never);
     }
   };
 
@@ -184,9 +188,14 @@ const GolfScreen: React.FC = () => {
             </View>
             
             <View style={styles.heroRight}>
-              <View style={styles.decorativeBar}>
+              <LinearGradient
+                colors={['#059669', '#22C55E']} // emerald-600 to green-500
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.decorativeBar}
+              >
                 <View style={styles.decorativePattern} />
-              </View>
+              </LinearGradient>
             </View>
           </View>
         </View>
@@ -202,33 +211,27 @@ const GolfScreen: React.FC = () => {
             
                          {/* Filter Tabs - Exactly like web */}
              <View style={styles.tabsContainer}>
-               <ScrollView 
-                 horizontal={width < 640}
-                 showsHorizontalScrollIndicator={false}
-                 contentContainerStyle={width < 640 ? styles.tabsScrollContainer : null}
-               >
-                 <View style={[styles.tabsGrid, width < 640 && styles.tabsGridMobile]}>
-                   {filterTabs.map((tab) => (
-                     <TouchableOpacity
-                       key={tab.id}
-                       style={[
-                         styles.tab,
-                         width < 640 && styles.tabMobile,
-                         activeTab === tab.id && styles.activeTab
-                       ]}
-                       onPress={() => setActiveTab(tab.id as FilterCategory)}
-                     >
-                       <Text style={[
-                         styles.tabText,
-                         width < 640 && styles.tabTextMobile,
-                         activeTab === tab.id && styles.activeTabText
-                       ]}>
-                         {tab.label}
-                       </Text>
-                     </TouchableOpacity>
-                   ))}
-                 </View>
-               </ScrollView>
+               <View style={[styles.tabsGrid, width < 640 && styles.tabsGridMobile]}>
+                 {filterTabs.map((tab) => (
+                   <TouchableOpacity
+                     key={tab.id}
+                     style={[
+                       styles.tab,
+                       width < 640 && styles.tabMobile,
+                       activeTab === tab.id && styles.activeTab
+                     ]}
+                     onPress={() => setActiveTab(tab.id as FilterCategory)}
+                   >
+                     <Text style={[
+                       styles.tabText,
+                       width < 640 && styles.tabTextMobile,
+                       activeTab === tab.id && styles.activeTabText
+                     ]}>
+                       {tab.label}
+                     </Text>
+                   </TouchableOpacity>
+                 ))}
+               </View>
              </View>
           </View>
 
@@ -364,7 +367,7 @@ const GolfScreen: React.FC = () => {
 
                   {/* Features */}
                   <View style={styles.featuresContainer}>
-                    {course.features.slice(0, 3).map((feature, index) => (
+                    {course.features.map((feature, index) => (
                       <View key={index} style={styles.featureBadge}>
                         <Text style={styles.featureText}>{feature}</Text>
                       </View>
@@ -587,7 +590,7 @@ const styles = StyleSheet.create({
   // Hero Section - Exactly like web
   heroSection: {
     backgroundColor: '#064E3B', // emerald-900
-    paddingTop: 40, // pt-10
+    paddingTop: 25, // pt-10
     paddingBottom: 8, // pb-2
     borderBottomWidth: 1,
     borderBottomColor: '#047857', // emerald-800
@@ -595,18 +598,18 @@ const styles = StyleSheet.create({
   heroContent: {
     maxWidth: width - 32,
     marginHorizontal: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
+    // flexDirection: 'row',
+    // alignItems: 'center',
   },
   heroLeft: {
-    flex: 3, // sm:w-3/5 (60%)
+    //flex: 3, // sm:w-3/5 (60%)
   },
   headerBadges: {
     flexDirection: 'row',
     alignItems: 'center',
     flexWrap: 'wrap',
     marginBottom: 6, // mb-1.5
-    gap: 8,
+    gap: 2,
   },
   badgeContainer: {
     flexDirection: 'row',
@@ -614,7 +617,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   badgeText: {
-    fontSize: 12, // text-xs
+    fontSize: 11, // text-xs
     fontWeight: '500', // font-medium
     color: '#6EE7B7', // text-emerald-400
   },
@@ -652,16 +655,16 @@ const styles = StyleSheet.create({
   },
   decorativeBar: {
     height: width > 640 ? 32 : 24, // h-6 sm:h-8
-    backgroundColor: '#10B981', // bg-gradient-to-r from-emerald-600 to-green-500
     borderRadius: 4,
     opacity: 0.9,
     overflow: 'hidden',
+    marginBottom: 10,
   },
   decorativePattern: {
     height: '100%',
     width: '100%',
     opacity: 0.2,
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: 'rgba(255,255,255,0.2)',
   },
 
   // Main Content
@@ -671,7 +674,7 @@ const styles = StyleSheet.create({
   },
   sectionHeader: {
     alignItems: 'center',
-    marginBottom: 32,
+    marginBottom: 6,
     paddingHorizontal: 16,
   },
   sectionTitle: {
@@ -690,41 +693,39 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
 
-  // Filter Tabs - Exactly like web
+    // Filter Tabs - Exactly like web
   tabsContainer: {
     width: '100%',
     maxWidth: width < 640 ? width - 32 : 1024, // max-w-4xl, responsive width
     alignSelf: 'center',
     paddingHorizontal: width < 640 ? 16 : 0,
   },
-  tabsScrollContainer: {
-    paddingHorizontal: 0,
-    minWidth: width - 32,
-  },
   tabsGrid: {
-    flexDirection: 'row', // grid grid-cols-5
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 32, // mb-8
     backgroundColor: '#F8FAFC', // bg-slate-50 (TabsList background)
     borderRadius: 8,
     padding: 4,
-    minWidth: width < 640 ? width - 64 : 'auto',
   },
   tabsGridMobile: {
     gap: 4,
   },
-  tab: {
-    flex: width < 640 ? 0 : 1, // Equal width for desktop, auto for mobile
-    paddingHorizontal: 12,
+    tab: {
+    flex: 0,
+    paddingHorizontal: 8,
     paddingVertical: 8,
     borderRadius: 6,
     backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth: width < 640 ? 'auto' : undefined,
+    marginHorizontal: 2,
+    marginVertical: 2,
   },
   tabMobile: {
-    paddingHorizontal: 16,
-    minWidth: 100,
+    paddingHorizontal: 8,
     flexShrink: 0,
   },
   activeTab: {
@@ -736,7 +737,7 @@ const styles = StyleSheet.create({
     elevation: 1,
   },
   tabText: {
-    fontSize: width < 640 ? 13 : 12,
+    fontSize: width < 640 ? 10 : 10,
     fontWeight: '500',
     color: '#64748B', // text-slate-600
     textAlign: 'center',

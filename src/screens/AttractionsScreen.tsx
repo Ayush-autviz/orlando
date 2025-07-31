@@ -657,14 +657,16 @@ const styles = StyleSheet.create({
   },
   cardImageOverlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    justifyContent: 'flex-end',
     padding: 12,
   },
   cardImageContent: {
-    flex: 1,
+    width: '100%',
   },
   cardTitle: {
     fontSize: 16,

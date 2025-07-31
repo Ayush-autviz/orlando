@@ -229,7 +229,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
       <View style={styles.cardImageContainer}>
         {renderImageCarousel(neighborhood.images, 240, false, neighborhood.id)}
         <LinearGradient
-          colors={['transparent', 'rgba(0,0,0,0.8)']}
+          colors={['rgba(0,0,0,0.4)', 'rgba(0,0,0,0.4)']}
           style={styles.imageGradient}
         />
         
@@ -241,7 +241,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
             handleShare(neighborhood);
           }}
         >
-          <Share2 size={16} color="#374151" />
+          <Share2 size={16} color="#000000" />
         </TouchableOpacity>
         
         {/* Bottom Content */}
@@ -1057,10 +1057,10 @@ const styles = StyleSheet.create({
   },
   imageGradient: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    height: 150,
+    bottom: 0,
     zIndex: 2,
   },
   shareButton: {

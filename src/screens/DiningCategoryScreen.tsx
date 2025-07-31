@@ -14,6 +14,7 @@ import {
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { 
   ChevronLeft, 
+  ChevronRight,
   MapPin, 
   DollarSign, 
   Clock, 
@@ -40,11 +41,14 @@ interface RouteParams {
   categoryId: RestaurantCategory;
 }
 
+const { width } = Dimensions.get('window');
+
 const DiningCategoryScreen: React.FC = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const { categoryId } = route.params as RouteParams;
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState<Record<string, number>>({});
   const categoryDetails = cuisineCategories[categoryId];
 
   useEffect(() => {
@@ -90,6 +94,112 @@ const DiningCategoryScreen: React.FC = () => {
     }
   };
 
+  // Image Carousel component - copied from SpaScreen
+  const renderImageCarousel = (images: any[], height: number = 192, itemId?: string) => {
+    if (!images || images.length === 0) {
+      return null;
+    }
+
+    // For single image, just show the image
+    if (images.length === 1) {
+      return (
+        <Image 
+          source={images[0]} 
+          style={[
+            { width: '100%', height },
+            { borderTopLeftRadius: 12, borderTopRightRadius: 12 }
+          ]} 
+          resizeMode="cover"
+        />
+      );
+    }
+
+    const indexKey = `${itemId || 'default'}-card`;
+    const currentIndex = currentImageIndex[indexKey] || 0;
+
+    const goToPrevious = () => {
+      const newIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+      setCurrentImageIndex(prev => ({ ...prev, [indexKey]: newIndex }));
+    };
+
+    const goToNext = () => {
+      const newIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+      setCurrentImageIndex(prev => ({ ...prev, [indexKey]: newIndex }));
+    };
+
+    // For multiple images, use controlled view with arrows
+    return (
+      <View style={{ height, position: 'relative' }}>
+        <View style={{ height, overflow: 'hidden' }}>
+          <ScrollView
+            ref={(ref) => {
+              if (ref) {
+                const scrollToX = currentIndex * (width - 32);
+                ref.scrollTo({ x: scrollToX, animated: true });
+              }
+            }}
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            style={{ height }}
+            snapToInterval={width - 32}
+            decelerationRate="fast"
+            onMomentumScrollEnd={(event) => {
+              const contentOffsetX = event.nativeEvent.contentOffset.x;
+              const newIndex = Math.round(contentOffsetX / (width - 32));
+              setCurrentImageIndex(prev => ({ ...prev, [indexKey]: newIndex }));
+            }}
+          >
+            {images.map((image, index) => (
+              <View 
+                key={index} 
+                style={[
+                  styles.carouselImageContainer, 
+                  { height }
+                ]}
+              >
+                <Image 
+                  source={image} 
+                  style={styles.carouselImage} 
+                  resizeMode="cover"
+                />
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+
+        {/* Left Arrow */}
+        <TouchableOpacity
+          style={[styles.carouselArrow, styles.leftArrow]}
+          onPress={goToPrevious}
+        >
+          <ChevronLeft size={20} color="#ffffff" />
+        </TouchableOpacity>
+
+        {/* Right Arrow */}
+        <TouchableOpacity
+          style={[styles.carouselArrow, styles.rightArrow]}
+          onPress={goToNext}
+        >
+          <ChevronRight size={20} color="#ffffff" />
+        </TouchableOpacity>
+
+        {/* Dots Indicator */}
+        <View style={styles.dotsContainer}>
+          {images.map((_, index) => (
+            <View
+              key={index}
+              style={[
+                styles.dot,
+                index === currentIndex && styles.activeDot
+              ]}
+            />
+          ))}
+        </View>
+      </View>
+    );
+  };
+
   if (!categoryId || !categoryDetails) {
     return (
       <SafeAreaView style={styles.container}>
@@ -104,76 +214,81 @@ const DiningCategoryScreen: React.FC = () => {
     );
   }
 
-  const renderRestaurantCard = (restaurant: Restaurant) => (
-    <View key={restaurant.id} style={styles.restaurantCard}>
-      {/* Image Section */}
-      <View style={styles.imageSection}>
-        <Image
-          source={restaurant.image}
-          style={styles.restaurantImage}
-          resizeMode="cover"
-        />
-        <View style={styles.cuisineBadge}>
-          <Text style={styles.cuisineBadgeText}>{restaurant.cuisine}</Text>
-        </View>
-        {/* Share button in top-right */}
-        <TouchableOpacity 
-          style={styles.shareButton} 
-          onPress={() => handleShare(restaurant)}
-        >
-          <Share2 size={16} color="#374151" />
-        </TouchableOpacity>
-      </View>
-      
-      {/* Content Section */}
-      <View style={styles.contentSection}>
-        <Text style={styles.restaurantName}>{restaurant.name}</Text>
-        
-        <View style={styles.locationContainer}>
-          <MapPin size={16} color="#6B7280" />
-          <Text style={styles.neighborhoodText}>{restaurant.neighborhood}</Text>
-        </View>
-        
-        <Text style={styles.addressText}>{restaurant.address}</Text>
-        
-        <TouchableOpacity 
-          style={styles.mapItButton}
-          onPress={() => handleMapPress(restaurant.address)}
-        >
-          <MapPin size={12} color="#EA580C" />
-          <Text style={styles.mapItText}>Map It</Text>
-        </TouchableOpacity>
-        
-        <Text style={styles.descriptionText}>
-          {restaurant.shortDescription || restaurant.description.substring(0, 150) + '...'}
-        </Text>
-        
-        {/* Button Container */}
-        <View style={styles.buttonContainer}>
-          {/* Website Button */}
-          <TouchableOpacity
-            style={restaurant.website ? styles.websiteButton : styles.noWebsiteButton}
-            onPress={() => restaurant.website && handleWebsitePress(restaurant.website)}
-            disabled={!restaurant.website}
+  const renderRestaurantCard = (restaurant: Restaurant) => {
+    // Create an array of images for the carousel
+    const carouselImages = restaurant.gallery && restaurant.gallery.length > 0
+      ? [restaurant.image, ...restaurant.gallery]
+      : [restaurant.image];
+
+    return (
+      <View key={restaurant.id} style={styles.restaurantCard}>
+        {/* Image Section */}
+        <View style={styles.imageSection}>
+          {/* Image Carousel */}
+          {renderImageCarousel(carouselImages, 192, restaurant.id)}
+          
+          <View style={styles.cuisineBadge}>
+            <Text style={styles.cuisineBadgeText}>{restaurant.cuisine}</Text>
+          </View>
+          {/* Share button in top-right */}
+          <TouchableOpacity 
+            style={styles.shareButton} 
+            onPress={() => handleShare(restaurant)}
           >
-            <Globe size={16} color={restaurant.website ? "#FFFFFF" : "#777777"} />
-            <Text style={[styles.buttonText, restaurant.website ? styles.websiteButtonText : styles.noWebsiteButtonText]}>
-              {restaurant.website ? "Website" : "No Website"}
-            </Text>
+            <Share2 size={16} color="#374151" />
+          </TouchableOpacity>
+        </View>
+        
+        {/* Content Section */}
+        <View style={styles.contentSection}>
+          <Text style={styles.restaurantName}>{restaurant.name}</Text>
+          
+          <View style={styles.locationContainer}>
+            <MapPin size={16} color="#6B7280" />
+            <Text style={styles.neighborhoodText}>{restaurant.neighborhood}</Text>
+          </View>
+          
+          <Text style={styles.addressText}>{restaurant.address}</Text>
+          
+          <TouchableOpacity 
+            style={styles.mapItButton}
+            onPress={() => handleMapPress(restaurant.address)}
+          >
+            <MapPin size={12} color="#EA580C" />
+            <Text style={styles.mapItText}>Map It</Text>
           </TouchableOpacity>
           
-          {/* Details Button */}
-          <TouchableOpacity
-            style={styles.detailsButton}
-            onPress={() => handleRestaurantPress(restaurant)}
-          >
-            <Info size={16} color="#FFFFFF" />
-            <Text style={styles.detailsButtonText}>Details</Text>
-          </TouchableOpacity>
+          <Text style={styles.descriptionText}>
+            {restaurant.shortDescription || restaurant.description.substring(0, 150) + '...'}
+          </Text>
+          
+          {/* Button Container */}
+          <View style={styles.buttonContainer}>
+            {/* Website Button */}
+            <TouchableOpacity
+              style={restaurant.website ? styles.websiteButton : styles.noWebsiteButton}
+              onPress={() => restaurant.website && handleWebsitePress(restaurant.website)}
+              disabled={!restaurant.website}
+            >
+              <Globe size={16} color={restaurant.website ? "#FFFFFF" : "#777777"} />
+              <Text style={[styles.buttonText, restaurant.website ? styles.websiteButtonText : styles.noWebsiteButtonText]}>
+                {restaurant.website ? "Website" : "No Website"}
+              </Text>
+            </TouchableOpacity>
+            
+            {/* Details Button */}
+            <TouchableOpacity
+              style={styles.detailsButton}
+              onPress={() => handleRestaurantPress(restaurant)}
+            >
+              <Info size={16} color="#FFFFFF" />
+              <Text style={styles.detailsButtonText}>Details</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
-  );
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -417,6 +532,52 @@ const styles = StyleSheet.create({
   emptyText: {
     fontSize: 18,
     color: '#6B7280',
+  },
+  carouselImageContainer: {
+    width: width - 32,
+  },
+  carouselImage: {
+    width: '100%',
+    height: '100%',
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+  },
+  carouselArrow: {
+    position: 'absolute',
+    top: '50%',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    borderRadius: 20,
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 5,
+    transform: [{ translateY: -20 }],
+  },
+  leftArrow: {
+    left: 12,
+  },
+  rightArrow: {
+    right: 12,
+  },
+  dotsContainer: {
+    position: 'absolute',
+    bottom: 12,
+    left: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 6,
+    zIndex: 5,
+  },
+  dot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+  },
+  activeDot: {
+    backgroundColor: '#ffffff',
   },
 });
 

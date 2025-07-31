@@ -13,6 +13,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import { ExternalLink, MapPin } from 'lucide-react-native';
 import { TOP_VENUES } from '../data/topvenues';
+import Header from '../components/Header';
 
 const { width } = Dimensions.get('window');
 
@@ -102,6 +103,7 @@ const VenuesScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header showDrawerButton={true}/>
       {/* Header Section */}
       <LinearGradient
         colors={['#581c87', '#3730a3']}
@@ -125,7 +127,7 @@ const VenuesScreen: React.FC = () => {
             </Text>
           </View>
           
-          <View style={styles.badgeRow}>
+          {/* <View style={styles.badgeRow}>
             <View style={styles.headerBadge}>
               <View style={styles.badgeDot} />
               <Text style={styles.headerBadgeText}>Concerts</Text>
@@ -138,7 +140,7 @@ const VenuesScreen: React.FC = () => {
               <View style={styles.badgeDot} />
               <Text style={styles.headerBadgeText}>Shows</Text>
             </View>
-          </View>
+          </View> */}
         </View>
       </LinearGradient>
 
@@ -162,12 +164,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   header: {
-    paddingTop: 20,
-    paddingBottom: 12,
-    paddingHorizontal: 16,
-    position: 'relative',
-    overflow: 'hidden',
-    borderBottomWidth: 1,
+   // paddingTop: 20,
+    // paddingBottom: 12,
+   // paddingHorizontal: 16,
+    // position: 'relative',
+    // overflow: 'hidden',
+    // borderBottomWidth: 1,
     borderBottomColor: '#4338ca',
   },
   patternOverlay: {
@@ -184,6 +186,8 @@ const styles = StyleSheet.create({
     // Add grid pattern using borderColor if needed
   },
   headerContent: {
+    paddingVertical: 20,
+    paddingHorizontal: 16,
     zIndex: 1,
   },
   titleSection: {

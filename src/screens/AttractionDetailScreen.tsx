@@ -214,7 +214,7 @@ const AttractionDetailScreen: React.FC = () => {
               )}
 
               {/* Price */}
-              {(detailedData?.price || attraction.price) && (
+              {/* {(detailedData?.price || attraction.price) && (
                 <View style={styles.infoItem}>
                   <DollarSign size={20} color="#ea580c" />
                   <View style={styles.infoContent}>
@@ -222,7 +222,7 @@ const AttractionDetailScreen: React.FC = () => {
                     <Text style={styles.infoValue}>{removeCitations(detailedData?.price || attraction.price)}</Text>
                   </View>
                 </View>
-              )}
+              )} */}
             </View>
           </View>
         </View>

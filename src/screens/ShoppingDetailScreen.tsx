@@ -193,14 +193,14 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
               <View style={styles.diningIconContainer}>
                 <Coffee size={32} color="#EA580C" />
               </View>
-              <View style={[
+              {/* <View style={[
                 styles.priceBadge,
                 dining.priceRange === '$$$$' && styles.priceBadgeExpensive,
                 dining.priceRange === '$$$' && styles.priceBadgeModerate,
                 dining.priceRange === '$$' && styles.priceBadgeAffordable
               ]}>
                 <Text style={styles.priceBadgeText}>{dining.priceRange}</Text>
-              </View>
+              </View> */}
             </View>
             
             <View style={styles.diningCardContent}>

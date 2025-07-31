@@ -409,17 +409,16 @@ const HotelsScreen: React.FC = () => {
           </View>
         )}
 
-        {/* Show filtered hotels list when viewing a category - SINGLE COLUMN */}
+        {/* Show filtered hotels list when viewing a category - HORIZONTAL SCROLL */}
         {selectedFilter !== "all" && (
           <View style={styles.hotelsContainer}>
             <FlatList
               data={filteredHotels}
               renderItem={renderHotelCard}
               keyExtractor={(item) => item.id.toString()}
-              numColumns={1}
-              scrollEnabled={false}
-              showsVerticalScrollIndicator={false}
-              contentContainerStyle={styles.hotelsList}
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={styles.hotelsHorizontalList}
             />
             {filteredHotels.length === 0 && (
               <View style={styles.noResults}>
@@ -451,9 +450,9 @@ const HotelsScreen: React.FC = () => {
                 data={featuredHotelsMap.luxury}
                 renderItem={renderHotelCard}
                 keyExtractor={(item) => item.id.toString()}
-                numColumns={1}
-                scrollEnabled={false}
-                showsVerticalScrollIndicator={false}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.hotelsHorizontalList}
               />
             </View>
 
@@ -486,9 +485,9 @@ const HotelsScreen: React.FC = () => {
                   .slice(0, 6)}
                 renderItem={renderHotelCard}
                 keyExtractor={(item) => item.id.toString()}
-                numColumns={1}
-                scrollEnabled={false}
-                showsVerticalScrollIndicator={false}
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.hotelsHorizontalList}
               />
             </View>
 
@@ -749,8 +748,14 @@ const styles = StyleSheet.create({
   hotelsList: {
     paddingBottom: 20,
   },
+  hotelsHorizontalList: {
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+  },
   cardContainer: {
     marginBottom: 16,
+    marginRight: 16,
+    width: width * 0.8, // Make cards wider for horizontal scrolling
   },
   noResults: {
     paddingVertical: 48,

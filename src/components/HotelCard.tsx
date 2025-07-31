@@ -9,7 +9,7 @@ import {
   Linking,
   Share,
 } from 'react-native';
-import { MapPin, ExternalLink, Globe, Hotel as HotelIcon, Share2 } from 'lucide-react-native';
+import { MapPin, ExternalLink, Globe, Hotel as HotelIcon, Share2 , Info} from 'lucide-react-native';
 import { Hotel } from '../types/Hotel';
 
 const { width } = Dimensions.get('window');
@@ -177,7 +177,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
         {/* Amenities */}
         {hotel.amenities && hotel.amenities.length > 0 && (
           <View style={styles.amenitiesContainer}>
-            {hotel.amenities.slice(0, 3).map((amenity, index) => (
+            {hotel.amenities.map((amenity, index) => (
               <View key={index} style={styles.amenityTag}>
                 <Text style={styles.amenityText}>{amenity}</Text>
               </View>
@@ -192,7 +192,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
               style={styles.websiteButton}
               onPress={handleWebsitePress}
             >
-              <Globe size={14} color="#ffffff" />
+              <Globe size={14} color="#ff5500" />
               <Text style={styles.websiteButtonText}>Official Website</Text>
             </TouchableOpacity>
           ) : (
@@ -200,6 +200,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
           )}
           
           <TouchableOpacity style={styles.detailsButton} onPress={handlePress}>
+            <Info size={14} color="#000" />
             <Text style={styles.detailsButtonText}>Details</Text>
           </TouchableOpacity>
         </View>
@@ -347,11 +348,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 6,
-    backgroundColor: '#ff5500', // var(--orlando-orange) from web CSS
+   // backgroundColor: '#ff5500', // var(--orlando-orange) from web CSS
   },
   websiteButtonText: {
     fontSize: 12,
-    color: '#ffffff',
+    color: '#ff5500',
     marginLeft: 4,
     fontWeight: '500',
   },
@@ -362,13 +363,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderWidth: 1,
-    borderColor: '#009688', // var(--orlando-teal) from web CSS
+    borderColor: '#ddd', // var(--orlando-teal) from web CSS
     borderRadius: 6,
     backgroundColor: '#ffffff',
   },
   detailsButtonText: {
     fontSize: 12,
-    color: '#009688', // var(--orlando-teal) from web CSS
+    color: '#000', // var(--orlando-teal) from web CSS
     marginLeft: 4,
     fontWeight: '500',
   },

@@ -35,6 +35,201 @@ export interface Restaurant {
   };
 }
 
+
+const eddieVs2Image = require('../../assets/images/EddiePrimeSeafood2.jpeg');
+
+
+const capa2Image = require('../../assets/images/Capa2.jpeg');
+
+
+const californiaGrill2Image = require('../../assets/images/CaliforniaGrill2.jpeg');
+// Chayote images
+
+const chayote2Image = require('../../assets/images/chayote2.jpeg');
+// Norman's images
+
+const normans2Image = require('../../assets/images/Normans2.jpeg');
+// Le Cellier Steakhouse images
+
+const leCellier2Image = require('../../assets/images/LeCellier2.jpg');
+// Knife & Spoon images
+
+const knifeAndSpoon2Image = require('../../assets/images/Knife&Spoon2.jpeg');
+// Bull & Bear images
+
+const bullAndBear2Image = require('../../assets/images/Bull&Bear2.jpeg');
+// Victoria & Albert's images
+
+const victoriaAndAlberts2Image = require('../../assets/images/Victoria&Alberts2.jpeg');
+// Kadence images
+
+const kadence2Image = require('../../assets/images/Kadence2.jpeg');
+// Christner's images
+
+const christners2Image = require('../../assets/images/Chistners2.jpeg');
+// Ocean Prime images
+
+const oceanPrime2Image = require('../../assets/images/OceanPrime2.jpeg');
+// Primo images
+
+const primo2Image = require('../../assets/images/Primo1.jpeg');
+// Morimoto Asia images
+
+const morimotoAsia2Image = require('../../assets/images/MorimotoAsia2.jpeg');
+// The Boheme images
+
+const boheme2Image = require('../../assets/images/TheBoheme2.jpeg');
+// The Ravenous Pig images
+
+const ravenousPig2Image = require('../../assets/images/TheRavenousPig2.jpeg');
+// Prato images
+
+const prato2Image = require('../../assets/images/Prato2.jpeg');
+// Santiago's Bodega images
+
+const santiagosBodega2Image = require('../../assets/images/SantiagoBodega2.jpeg');
+// Briarpatch Restaurant images
+
+const briarpatch2Image = require('../../assets/images/Briarpatch2.jpeg');
+// Maxine's on Shine images
+
+const maxinesOnShine2Image = require('../../assets/images/MaxineonShine2.jpeg');
+// The Hangry Bison images
+
+const hangryBison2Image = require('../../assets/images/TheHangryBison2.jpeg');
+// Sixty Vines images
+
+const sixtyVines2Image = require('../../assets/images/SixtyVines2.jpeg');
+// Enzo's on the Lake images
+
+const enzosOnTheLake2Image = require('../../assets/images/EnzoontheLake2.jpeg');
+// 4 Rivers Smokehouse images
+
+const fourRivers2Image = require('../../assets/images/4RiversSmokehouse2.jpeg');
+// The Osprey Tavern images
+
+const ospreyTavern2Image = require('../../assets/images/TheOspreyTavern2.jpeg');
+// Flying Fish images
+
+const flyingFish2Image = require('../../assets/images/FlyingFish2.jpeg');
+// Ravello images
+
+const ravello2Image = require('../../assets/images/Ravello2.jpeg');
+// deep blu Seafood Grille images
+
+const deepBlu2Image = require('../../assets/images/deepblu2.jpeg');
+// Hillstone images
+
+const hillstone2Image = require('../../assets/images/hillstone2.jpeg');
+// Be Our Guest Restaurant images
+
+const beOurGuest2Image = require('../../assets/images/BeOurGuestRestaurant2.jpeg');
+// Cinderella's Royal Table images
+
+const cinderellasRoyalTable2Image = require('../../assets/images/CinderellaRoyalTable2.jpeg');
+// Mythos Restaurant images
+
+const mythosRestaurant2Image = require('../../assets/images/MythosRestaurant2.jpeg');
+// Sci-Fi Dine-In Theater Restaurant images
+
+const sciFiDineIn2Image = require('../../assets/images/SciFiDineInTheater2.jpeg');
+// Tiffins images
+
+const tiffins2Image = require('../../assets/images/Tiffins2.jpeg');
+// Space 220 images
+
+const space2202Image = require('../../assets/images/Space2202.jpeg');
+// Jungle Navigation Co. LTD Skipper Canteen images
+
+const skipperCanteen2Image = require('../../assets/images/JungleNavigationCoLtdSkipperCanteen2.jpeg');
+// Confisco Grille images
+
+const confiscoGrille2Image = require('../../assets/images/ConfiscoGrille2.jpeg');
+// Toothsome Chocolate Emporium images
+
+const toothsome2Image = require('../../assets/images/ToothsomeChocolateEmporium2.jpeg');
+// Three Broomsticks images
+
+const threeBroomsticks2Image = require('../../assets/images/ThreeBroomsticks2.jpeg');
+// San Angel Inn Restaurante images
+
+const sanAngelInn2Image = require('../../assets/images/SanAngelInnRestaurante2.jpeg');
+// Mama Melrose's Ristorante Italiano images
+
+const mamaMelrose2Image = require('../../assets/images/MamaMelroseRistoranteItaliano2.jpeg');
+// Biergarten Restaurant images
+
+const biergarten1Image = require('../../assets/images/BiergartenRestaurant1.jpeg');
+// The Cowfish Sushi Burger Bar images
+
+const cowfish2Image = require('../../assets/images/TheCowfishSushiBurgerBar2.jpeg');
+// Monsieur Paul images
+
+const monsieurPaul2Image = require('../../assets/images/MonsieurPaul2.jpeg');
+// Finnegan's Bar and Grill images
+
+const finnegans2Image = require('../../assets/images/FinneganBarandGrill2.jpeg');
+// T-Rex Cafe images
+
+const tRexCafe2Image = require('../../assets/images/TRexCafe2.jpeg');
+// Theme Park category image
+const themeParkCategoryImage = require('../../assets/images/ThemePark.jpeg');
+// Reyes Mezcaleria images
+
+const reyesMezcaleria2Image = require('../../assets/images/ReyesMezcaleria2.jpeg');
+
+// AVA MediterrAegean images
+
+const avaMediterraegean2Image = require('../../assets/images/AVAMediterrAegean2.jpeg');
+
+// The Moderne images
+
+const theModerne2Image = require('../../assets/images/TheModerne2.jpeg');
+
+// JALEO by José Andrés images - using renamed files to avoid special characters
+
+const jaleo2Image = require('../../assets/images/jaleo2.jpeg');
+
+// Domu images
+
+const domu2Image = require('../../assets/images/domu2.jpeg');
+
+// Café Tu Tu Tango images - using renamed files to avoid special characters
+
+const cafeTutu2Image = require('../../assets/images/cafe_tutu2.jpeg');
+
+// Kabooki Sushi images
+
+const kabooki2Image = require('../../assets/images/kabooki2.jpeg');
+
+// Bosphorous Turkish Cuisine images
+
+const bosphorous2Image = require('../../assets/images/bosphorous2.jpg');
+
+// Superica images
+
+const superica2Image = require('../../assets/images/superica2.jpeg');
+
+// The Drake Kitchen and Bar images
+
+const drakeKitchen2Image = require('../../assets/images/thedrakekitchenandbar2.jpeg');
+
+// Luke's Kitchen and Bar images
+
+const lukesKitchen2Image = require('../../assets/images/LukeKitchenandbar2.jpeg');
+
+// Lamp & Shade Craft Kitchen images
+
+const lampShade2Image = require('../../assets/images/LampandShadeCraftKitchen2.jpeg');
+
+// The Monroe images
+
+const monroe2Image = require('../../assets/images/TheMonroe2.jpeg');
+
+// Category images
+const internationalCuisineCategoryImage = require('../../assets/images/international_cuisine.jpeg');
+const localFavoritesCategoryImage = '/images/Local Favorites.jpeg';
+
 export type RestaurantCategory = 
   | 'fine-dining'
   | 'theme-park' 
@@ -49,6 +244,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Eddie V's Prime Seafood",
       "description": "Eddie V's Prime Seafood is an upscale dining destination known for its premium seafood, hand-carved steaks, and sophisticated atmosphere. Located on Restaurant Row, this elegant establishment offers an exceptional culinary experience with the freshest seafood flown in daily from pristine waters around the world. The restaurant features a stylish dining room, a vibrant V Lounge with live jazz music, and impeccable service that creates a memorable fine dining experience.",
       "image": require("../../assets/images/EddiePrimeSeafood.jpeg"),
+      "gallery": [
+        eddieVs2Image
+      ],
       "neighborhood": "Dr. Phillips",
       "address": "7488 W Sand Lake Rd, Orlando, FL 32819",
       "priceRange": "$$$$",
@@ -87,6 +285,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Capa",
       "description": "Rooftop Spanish steakhouse at the Four Seasons Resort offering panoramic views of Disney World's nightly fireworks. With a sophisticated atmosphere and elegant décor inspired by the matador's costume, Capa delivers an elevated dining experience with a menu that blends traditional Spanish flavors with contemporary steakhouse fare. The restaurant's outdoor terrace provides one of Orlando's most romantic dining settings.",
       "image": require("../../assets/images/Capa.jpeg"),
+      "gallery": [
+        capa2Image
+      ],
       "neighborhood": "Lake Buena Vista",
       "address": "10100 Dream Tree Blvd, Lake Buena Vista, FL 32836",
       "priceRange": "$$$$",
@@ -121,6 +322,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "California Grill",
       "description": "Signature fine dining restaurant perched atop Disney's Contemporary Resort with panoramic views of Magic Kingdom and Seven Seas Lagoon. Known for its seasonal menu featuring California fusion cuisine with a focus on fresh, local ingredients and sustainable seafood. The restaurant's timing of dinner service is deliberately aligned with Magic Kingdom fireworks viewing, creating a magical dining atmosphere.",
       "image": require("../../assets/images/CaliforniaGrill.jpeg"),
+      "gallery": [
+        californiaGrill2Image
+      ],
       "neighborhood": "Lake Buena Vista",
       "address": "4600 World Dr, Lake Buena Vista, FL 32830",
       "priceRange": "$$$$",
@@ -156,6 +360,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Le Cellier Steakhouse",
       "description": "A culinary journey to Canada in a setting reminiscent of a wine cellar in a grand château. Located in EPCOT's Canada pavilion, this intimate restaurant offers premium steaks, fresh seafood, and Canadian-inspired cuisine. The warm ambiance with stone arches, wood beams, and subtle lighting creates a sophisticated dining environment within the theme park setting.",
       "image": require("../../assets/images/LeCellier.jpeg"),
+      "gallery": [
+        leCellier2Image
+      ],
       "neighborhood": "EPCOT",
       "address": "EPCOT, 200 Epcot Center Dr, Lake Buena Vista, FL 32830",
       "priceRange": "$$$$",
@@ -189,6 +396,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Knife & Spoon",
       "description": "Sophisticated steak and seafood restaurant at The Ritz-Carlton Orlando, helmed by award-winning Chef John Tesar. This elegant venue combines the precision of a steakhouse with creative seafood preparations, focusing on premium dry-aged steaks and fresh Florida-sourced ingredients. The refined atmosphere with lakefront views complements the artful presentation of each dish.",
       "image": require("../../assets/images/KnifeAndSpoon.jpeg"),
+      "gallery": [
+        knifeAndSpoon2Image
+      ],
       "neighborhood": "Grande Lakes",
       "address": "4012 Central Florida Pkwy, Orlando, FL 32837",
       "priceRange": "$$$$",
@@ -223,6 +433,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Bull & Bear",
       "description": "Sophisticated steakhouse located in the Waldorf Astoria Orlando offering reimagined classics and legendary service. The elegant dining room with custom chandeliers, rich leather seating, and panoramic views of the resort's golf courses creates an atmosphere of refined luxury. The restaurant's tableside preparations and signature dishes combine classic steakhouse traditions with innovative culinary techniques.",
       "image": require("../../assets/images/BullAndBear.jpeg"),
+      "gallery": [
+        bullAndBear2Image
+      ],
       "neighborhood": "Bonnet Creek",
       "address": "Waldorf Astoria Orlando, 14200 Bonnet Creek Resort Ln, Orlando, FL 32821",
       "priceRange": "$$$$",
@@ -257,6 +470,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Norman's",
       "description": "Award-winning fine dining restaurant showcasing the signature New World cuisine of celebrated Chef Norman Van Aken. Featuring a sophisticated blend of Latin, Caribbean, and Asian flavors with traditional European techniques. Located in an elegant setting with impeccable service, Norman's delivers a culinary experience that has earned it multiple James Beard nominations and universal acclaim from food critics.",
       "image": require("../../assets/images/Normans.jpeg"),
+      "gallery": [
+        normans2Image
+      ],
       "neighborhood": "Restaurant Row",
       "address": "7924 Via Dellagio Way, Orlando, FL 32819",
       "priceRange": "$$$$",
@@ -291,6 +507,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Victoria & Albert's",
       "description": "Disney's premier fine dining experience and Central Florida's only AAA Five Diamond restaurant. Located in Disney's Grand Floridian Resort & Spa, the restaurant offers an intimate setting with personalized service and an ever-changing menu of contemporary American cuisine. The Victorian-inspired décor with harpist entertainment creates a formal, luxury dining atmosphere unmatched in Orlando.",
       "image": require("../../assets/images/VictoriaAndAlberts.jpeg"),
+      "gallery": [
+        victoriaAndAlberts2Image
+      ],
       "neighborhood": "Lake Buena Vista",
       "address": "Disney's Grand Floridian Resort & Spa, 4401 Floridian Way, Lake Buena Vista, FL 32830",
       "priceRange": "$$$$",
@@ -325,6 +544,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Kadence",
       "description": "Intimate omakase-style sushi restaurant with just nine seats surrounding a chef's counter. This minimalist space in Orlando's Audubon Park Garden District focuses entirely on the interaction between chefs and guests. The unmarked black building exterior gives way to a serene interior where the three chef-owners prepare multi-course tasting menus of pristine sushi and Japanese-inspired dishes using traditional techniques and global influences.",
       "image": require("../../assets/images/Kadence.jpeg"),
+      "gallery": [
+        kadence2Image
+      ],
       "neighborhood": "Audubon Park",
       "address": "1809 Winter Park Rd, Orlando, FL 32803",
       "priceRange": "$$$$",
@@ -359,6 +581,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Christner's Prime Steak & Lobster",
       "description": "Family-owned steakhouse celebrating over 30 years as an Orlando fine dining institution. The old-world atmosphere with dark wood paneling, stained glass windows, and private dining rooms creates a classic, high-end steakhouse experience. Known for exceptional USDA Prime steaks aged in-house, classic tableside preparations, and an award-winning wine collection housed in a spectacular glass-encased wine room.",
       "image": require("../../assets/images/Chistners.jpg"),
+      "gallery": [
+        christners2Image
+      ],
       "neighborhood": "Lee Vista",
       "address": "729 Lee Road, Orlando, FL 32810",
       "priceRange": "$$$$",
@@ -393,6 +618,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Ocean Prime",
       "description": "Modern American supper club combining a vibrant bar scene, stunning décor, and exceptional cuisine. Located on Orlando's Restaurant Row, the restaurant offers a sophisticated dining experience with dramatic lighting, plush seating, and attentive service. The menu features premium seafood, prime steaks, and handcrafted cocktails prepared with theatrical flair and attention to detail.",
       "image": require("../../assets/images/OceanPrime.jpeg"),
+      "gallery": [
+        oceanPrime2Image
+      ],
       "neighborhood": "Dr. Phillips",
       "address": "7339 W Sand Lake Rd, Orlando, FL 32819",
       "priceRange": "$$$$",
@@ -428,6 +656,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Primo",
       "description": "Farm-to-table Italian restaurant by renowned Chef Melissa Kelly, located at the JW Marriott Grande Lakes. The elegant, warm dining space with an open kitchen and garden views creates a sophisticated yet inviting atmosphere. The restaurant maintains its own organic garden on property, supplying fresh herbs and vegetables for the seasonal menu that showcases classic Italian techniques with modern interpretations.",
       "image": require("../../assets/images/Primo.jpeg"),
+      "gallery": [
+        primo2Image
+      ],
       "neighborhood": "Grande Lakes",
       "address": "JW Marriott Grande Lakes, 4040 Central Florida Pkwy, Orlando, FL 32837",
       "priceRange": "$$$",
@@ -462,6 +693,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Morimoto Asia",
       "description": "Upscale Pan-Asian restaurant by Iron Chef Masaharu Morimoto in Disney Springs. The stunning two-story interior with glass chandeliers, exposed beams, and a dramatic 270-foot-long bar creates a sophisticated, theatrical dining environment. The menu showcases cuisine from across Asia with a focus on Chinese, Japanese, and Korean dishes, all prepared with Chef Morimoto's signature attention to detail and presentation.",
       "image": require("../../assets/images/MorimotoAsia.jpeg"),
+      "gallery": [
+        morimotoAsia2Image
+      ],
       "neighborhood": "Lake Buena Vista",
       "address": "Disney Springs, 1600 E Buena Vista Dr, Orlando, FL 32830",
       "priceRange": "$$$",
@@ -496,6 +730,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "The Boheme",
       "description": "Sophisticated fine dining restaurant in the Grand Bohemian Hotel Orlando, featuring contemporary American cuisine in an artistic setting. The opulent dining room with red velvet seating, original artwork, and grand piano creates a theatrical, bohemian-inspired atmosphere. Located in Downtown Orlando, the restaurant offers an elegant dining experience complemented by the hotel's extensive art collection and vibrant design.",
       "image": require("../../assets/images/TheBoheme.jpeg"),
+      "gallery": [
+        boheme2Image
+      ],
       "neighborhood": "Downtown Orlando",
       "address": "Grand Bohemian Hotel, 325 S Orange Ave, Orlando, FL 32801",
       "priceRange": "$$$",
@@ -530,6 +767,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Flying Fish",
       "description": "Upscale seafood restaurant at Disney's BoardWalk with an open kitchen and sophisticated coastal atmosphere. The elegant dining room with ocean-inspired art, blown glass fixtures, and undulating ceiling creates a refined, nautical ambiance. The menu focuses on sustainable seafood and seasonal ingredients, prepared with contemporary techniques and artistic presentations that showcase the restaurant's commitment to culinary excellence.",
       "image": require("../../assets/images/FlyingFish.jpeg"),
+      "gallery": [
+        flyingFish2Image
+      ],
       "neighborhood": "Lake Buena Vista",
       "address": "Disney's BoardWalk, 2101 Epcot Resorts Blvd, Orlando, FL 32830",
       "priceRange": "$$$$",
@@ -565,6 +805,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Ravello",
       "description": "Italian restaurant at Four Seasons Resort Orlando offering authentic cuisine inspired by the Amalfi Coast. The bright, airy dining room with marble surfaces, rustic wood accents, and open kitchen creates a sophisticated yet relaxed Mediterranean atmosphere. The menu features handmade pastas, wood-fired pizzas, and regional Italian specialties prepared with imported ingredients and local produce from the resort's garden.",
       "image": require("../../assets/images/Ravello.jpeg"),
+      "gallery": [
+        ravello2Image
+      ],
       "neighborhood": "Lake Buena Vista",
       "address": "Four Seasons Resort Orlando, 10100 Dream Tree Blvd, Lake Buena Vista, FL 32836",
       "priceRange": "$$$$",
@@ -599,6 +842,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "deep blu Seafood Grille",
       "description": "Contemporary seafood restaurant in the Wyndham Grand Orlando Resort Bonnet Creek, featuring global influences and sustainable practices. The sophisticated, modern dining room with blue-toned lighting, artistic fixtures, and natural elements creates an upscale aquatic-inspired atmosphere. The menu showcases fresh seafood with international flavors, premium steaks, and innovative cocktails, all presented with artistic flair.",
       "image": require("../../assets/images/deepblu.jpeg"),
+      "gallery": [
+        deepBlu2Image
+      ],
       "neighborhood": "Lake Buena Vista",
       "address": "Wyndham Grand Orlando Resort Bonnet Creek, 14651 Chelonia Pkwy, Orlando, FL 32821",
       "priceRange": "$$$",
@@ -633,6 +879,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Hillstone",
       "description": "Upscale American restaurant in Winter Park offering classic favorites with sophisticated preparation and high-quality ingredients. The warm, elegant interior features rich wood paneling, intimate lighting, and a sophisticated bar area, while the lakeside patio provides a scenic waterfront dining option. Known for consistently excellent service and a menu that balances familiar comfort foods with refined execution.",
       "image": require("../../assets/images/hillstone.jpeg"),
+      "gallery": [
+        hillstone2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "215 S Orlando Ave, Winter Park, FL 32789",
       "priceRange": "$$$",
@@ -669,6 +918,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Be Our Guest Restaurant",
       "description": "Dine in the Beast's castle with French-inspired cuisine. Features three themed dining rooms from Beauty and the Beast - the Grand Ballroom, the mysterious West Wing, and the Castle Gallery. This unique dining experience brings the beloved Disney classic to life with ornate details, enchanted roses, and even a special appearance by the Beast himself during dinner service.",
       "image": require("../../assets/images/BeOurGuestRestaurant.jpeg"),
+      "gallery": [
+        beOurGuest2Image
+      ],
       "neighborhood": "Magic Kingdom",
       "address": "Magic Kingdom Park, Walt Disney World Resort, Orlando, FL",
       "priceRange": "$$$",
@@ -702,6 +954,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Mythos Restaurant",
       "description": "Award-winning theme park restaurant set inside a cavernous grotto at Universal's Islands of Adventure. The dramatic rock formations, cascading waterfalls, and ancient-themed décor create a unique Mediterranean dining atmosphere. Consistently recognized as one of the world's best theme park restaurants, Mythos blends upscale cuisine with a theatrical environment.",
       "image": require("../../assets/images/MythosRestaurant.jpeg"),
+      "gallery": [
+        mythosRestaurant2Image
+      ],
       "neighborhood": "Universal Islands of Adventure",
       "address": "Universal's Islands of Adventure, 6000 Universal Blvd, Orlando, FL 32819",
       "priceRange": "$$",
@@ -736,6 +991,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Cinderella's Royal Table",
       "description": "Dine like royalty inside Cinderella Castle, the iconic centerpiece of Magic Kingdom. This fairytale dining experience includes character interactions with Disney Princesses in a medieval castle setting. Guests enter through the grand castle corridor, complete with suits of armor, royal banners, and stained-glass windows that tell Cinderella's story.",
       "image": require("../../assets/images/CinderellaRoyal.jpeg"),
+      "gallery": [
+        cinderellasRoyalTable2Image
+      ],
       "neighborhood": "Magic Kingdom",
       "address": "Magic Kingdom Park, Walt Disney World Resort, Orlando, FL",
       "priceRange": "$$$$",
@@ -770,6 +1028,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Sci-Fi Dine-In Theater Restaurant",
       "description": "Unique dining experience recreating a 1950s drive-in movie theater, complete with car-shaped dining tables and a starry night sky. Located in Disney's Hollywood Studios, this immersive restaurant plays classic sci-fi movie clips and vintage commercials on a large screen while guests dine in convertible car booths under simulated nighttime lighting.",
       "image": require("../../assets/images/SciFiDineIn.jpeg"),
+      "gallery": [
+        sciFiDineIn2Image
+      ],
       "neighborhood": "Disney's Hollywood Studios",
       "address": "Disney's Hollywood Studios, 351 S Studio Dr, Lake Buena Vista, FL 32830",
       "priceRange": "$$",
@@ -804,6 +1065,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Tiffins",
       "description": "Upscale signature restaurant in Disney's Animal Kingdom celebrating the art of travel with a diverse menu inspired by African, Asian, and Latin cuisines. Themed around the adventures and research trips that inspired the creation of the park, Tiffins offers an elegant dining experience with gallery spaces showcasing sketches, photographs, and artifacts that illuminate the imagineers' journey.",
       "image": require("../../assets/images/Tiffins.jpeg"),
+      "gallery": [
+        tiffins2Image
+      ],
       "neighborhood": "Disney's Animal Kingdom",
       "address": "Disney's Animal Kingdom, 2901 Osceola Pkwy, Lake Buena Vista, FL 32830",
       "priceRange": "$$$",
@@ -838,6 +1102,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Space 220",
       "description": "Immersive dining experience that simulates a journey 220 miles above Earth to a space station. Located in EPCOT's Mission: SPACE pavilion, this restaurant features a simulated space elevator and panoramic screens displaying Earth from orbit. The futuristic atmosphere with ambient lighting and special effects complements a menu of contemporary American cuisine with creative, space-themed presentations.",
       "image": require("../../assets/images/Space220.jpeg"),
+      "gallery": [
+        space2202Image
+      ],
       "neighborhood": "EPCOT",
       "address": "EPCOT, Mission: SPACE Pavilion, 1375 E Buena Vista Dr, Lake Buena Vista, FL 32830",
       "priceRange": "$$$",
@@ -873,6 +1140,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Confisco Grille",
       "description": "Eclectic full-service restaurant in Universal's Islands of Adventure, reimagined as a crossroads establishment where travelers and explorers from different lands gather and trade exotic goods. The recently renovated interior features global artifacts, maps, and treasures from various themed islands of the park. The menu draws inspiration from multiple world cuisines, reflecting the restaurant's position at the crossroads of adventure.",
       "image": require("../../assets/images/ConfiscoGrille.jpeg"),
+      "gallery": [
+        confiscoGrille2Image
+      ],
       "neighborhood": "Universal Islands of Adventure",
       "address": "Universal's Islands of Adventure, Port of Entry, 6000 Universal Blvd, Orlando, FL 32819",
       "priceRange": "$$",
@@ -907,6 +1177,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Toothsome Chocolate Emporium & Savory Feast Kitchen",
       "description": "Steampunk-themed restaurant at Universal CityWalk featuring an elaborate backstory about Professor Doctor Penelope Toothsome and her chocolate inventions. The industrial-Victorian design with smokestacks, gears, and clockwork elements creates a fantastical dining environment. Known for over-the-top desserts and milkshakes alongside a full menu of savory dishes, the restaurant also features character interactions with Professor Toothsome and her robot companion Jacques.",
       "image": require("../../assets/images/ToothsomeChocolate.jpeg"),
+      "gallery": [
+        toothsome2Image
+      ],
       "neighborhood": "Universal CityWalk",
       "address": "Universal CityWalk, 6000 Universal Blvd, Orlando, FL 32819",
       "priceRange": "$$",
@@ -941,6 +1214,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Three Broomsticks",
       "description": "Detailed recreation of the famous wizarding pub from the Harry Potter series, located in The Wizarding World of Harry Potter - Hogsmeade at Universal's Islands of Adventure. The rustic tavern features high-vaulted ceilings, massive wooden beams, and antler chandeliers creating an authentic atmosphere straight from the films. The British pub-style menu offers hearty fare familiar to Harry Potter fans, and the adjacent Hog's Head pub serves signature beverages including Butterbeer.",
       "image": require("../../assets/images/ThreeBroomsticks.jpeg"),
+      "gallery": [
+        threeBroomsticks2Image
+      ],
       "neighborhood": "Universal Islands of Adventure",
       "address": "The Wizarding World of Harry Potter - Hogsmeade, Universal's Islands of Adventure, 6000 Universal Blvd, Orlando, FL 32819",
       "priceRange": "$$",
@@ -975,6 +1251,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "San Angel Inn Restaurante",
       "description": "Mexican restaurant set in a perpetual twilight atmosphere inside EPCOT's Mexico pavilion. Modeled after a 17th-century hacienda near Mexico City, the restaurant overlooks the pavilion's Mayan pyramid and the Gran Fiesta Tour boat ride, creating a romantic, torch-lit dining experience beside a flowing river. The elaborate setting with star-lit skies and colorful market stalls transports guests to an eternal evening in ancient Mexico.",
       "image": require("../../assets/images/SanAngelInnRestaurant.jpeg"),
+      "gallery": [
+        sanAngelInn2Image
+      ],
       "neighborhood": "EPCOT",
       "address": "EPCOT, Mexico Pavilion, 200 Epcot Center Dr, Lake Buena Vista, FL 32830",
       "priceRange": "$$$",
@@ -1009,6 +1288,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Mama Melrose's Ristorante Italiano",
       "description": "Italian restaurant in Disney's Hollywood Studios with a backstory about a California girl who came to Hollywood to become an actress but ended up opening a restaurant with her family recipes. The rustic interior with brick walls, hanging garlic and peppers, twinkling lights, and vintage movie posters creates a warm, family-style Italian eatery atmosphere. The menu features traditional Italian-American favorites in a casual yet themed environment.",
       "image": require("../../assets/images/MamaMelrose.jpeg"),
+      "gallery": [
+        mamaMelrose2Image
+      ],
       "neighborhood": "Disney's Hollywood Studios",
       "address": "Disney's Hollywood Studios, 351 S Studio Dr, Lake Buena Vista, FL 32830",
       "priceRange": "$$",
@@ -1043,6 +1325,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Biergarten Restaurant",
       "description": "Bavarian-style beer hall in EPCOT's Germany pavilion offering traditional German cuisine in a festive communal dining setting. The spacious interior is designed to resemble an outdoor German town square during Oktoberfest, complete with a central stage for live entertainment, string lights, and facades of traditional German buildings. The restaurant offers an immersive cultural experience with German music, food, and beer served in an authentic atmosphere.",
       "image": require("../../assets/images/Biergarten.jpeg"),
+      "gallery": [
+        biergarten1Image
+      ],
       "neighborhood": "EPCOT",
       "address": "EPCOT, Germany Pavilion, 200 Epcot Center Dr, Lake Buena Vista, FL 32830",
       "priceRange": "$$",
@@ -1077,6 +1362,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "The Cowfish Sushi Burger Bar",
       "description": "Unique restaurant at Universal CityWalk combining an innovative sushi bar with a gourmet burger joint. The playful, modern space with vibrant colors, whimsical artwork, and interactive digital displays creates an energetic, family-friendly atmosphere. The restaurant's signature 'Burgushi' cuisine combines elements of burgers and sushi in creative, unexpected ways, while also offering traditional options from both culinary traditions.",
       "image": require("../../assets/images/Cowfish.jpeg"),
+      "gallery": [
+        cowfish2Image
+      ],
       "neighborhood": "Universal CityWalk",
       "address": "Universal CityWalk, 6000 Universal Blvd, Orlando, FL 32819",
       "priceRange": "$$",
@@ -1111,6 +1399,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Monsieur Paul",
       "description": "Elegant French restaurant located upstairs in EPCOT's France pavilion, named after legendary chef Paul Bocuse. The refined dining room with soft lighting, white tablecloths, and large windows overlooking the World Showcase promenade creates a sophisticated, intimate atmosphere. The menu features classical French cuisine with modern techniques, offering an authentic taste of France's gastronomic tradition in a theme park setting.",
       "image": require("../../assets/images/MonsieurPaul.jpeg"),
+      "gallery": [
+        monsieurPaul2Image
+      ],
       "neighborhood": "EPCOT",
       "address": "EPCOT, France Pavilion, 200 Epcot Center Dr, Lake Buena Vista, FL 32830",
       "priceRange": "$$$$",
@@ -1145,6 +1436,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Finnegan's Bar and Grill",
       "description": "Irish pub and restaurant located in the New York area of Universal Studios Florida. The warm, traditional Irish pub interior with dark wood, Celtic décor, and vintage photographs creates an authentic Dublin atmosphere. The restaurant offers Irish and American comfort food along with beer and cocktails in a relaxed setting, providing a welcome respite from the theme park while maintaining the immersive theming of the New York street.",
       "image": require("../../assets/images/Finnegan.jpeg"),
+      "gallery": [
+        finnegans2Image
+      ],
       "neighborhood": "Universal Studios Florida",
       "address": "Universal Studios Florida, 6000 Universal Blvd, Orlando, FL 32819",
       "priceRange": "$$",
@@ -1179,6 +1473,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "T-Rex Cafe",
       "description": "Prehistoric-themed restaurant at Disney Springs featuring life-sized animatronic dinosaurs and immersive Ice Age, forest, and undersea environments. The dramatic dining atmosphere includes meteor showers every 20 minutes, an interactive fossil dig site, and a massive octopus bar suspended from the ceiling. The family-friendly restaurant combines educational elements with theatrical dining in an elaborately themed environment that appeals to dinosaur enthusiasts of all ages.",
       "image": require("../../assets/images/T-RexCafe.jpeg"),
+      "gallery": [
+        tRexCafe2Image
+      ],
       "neighborhood": "Disney Springs",
       "address": "Disney Springs, 1676 E Buena Vista Dr, Lake Buena Vista, FL 32830",
       "priceRange": "$$",
@@ -1215,6 +1512,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Reyes Mezcaleria",
       "description": "Modern Mexican restaurant in Downtown Orlando, focusing on regional Mexican cuisine and craft mezcal cocktails. The stylish space with terracotta accents, vibrant tiles, and custom woodwork creates a contemporary interpretation of Mexican design traditions. From restaurateur Jason Chin and Chef Wendy Lopez, this upscale venue offers refined dishes from various Mexican regions alongside one of Orlando's most extensive collections of agave spirits.",
       "image": require("../../assets/images/ReyesMezcaleria.jpeg"),
+      "gallery": [
+        reyesMezcaleria2Image
+      ],
       "neighborhood": "Downtown Orlando",
       "address": "821 N Orange Ave, Orlando, FL 32801",
       "priceRange": "$$$",
@@ -1249,6 +1549,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "AVA MediterrAegean",
       "description": "AVA MediterrAegean offers a sophisticated dining experience inspired by the coastal cuisines of the Mediterranean and Aegean seas. The restaurant combines authentic flavors with contemporary culinary techniques, creating a menu that celebrates the rich gastronomic traditions of Greece, Turkey, and surrounding regions. With its elegant atmosphere, attentive service, and commitment to using fresh, high-quality ingredients, AVA provides guests with an immersive journey through Mediterranean and Aegean cuisine.",
       "image": require("../../assets/images/AVAMediterrAegean.jpeg"),
+      "gallery": [
+        avaMediterraegean2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "290 S Park Ave, Winter Park, FL 32789",
       "priceRange": "$$$",
@@ -1288,6 +1591,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "The Moderne",
       "description": "The Moderne is a sophisticated restaurant offering international cuisine with a contemporary twist. With its elegant ambiance and innovative menu, The Moderne creates a unique dining experience that blends global flavors and culinary techniques. The restaurant features a diverse menu with dishes inspired by cuisines from around the world, expertly crafted by skilled chefs committed to using fresh, high-quality ingredients.",
       "image": require("../../assets/images/TheModerne.jpeg"),
+      "gallery": [
+        theModerne2Image
+      ],
       "neighborhood": "Downtown Orlando",
       "address": "151 E Washington St, Orlando, FL 32801",
       "priceRange": "$$$",
@@ -1322,6 +1628,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "JALEO by José Andrés",
       "description": "Vibrant Spanish restaurant from acclaimed chef José Andrés, showcasing authentic tapas, paellas, and regional specialties from Spain. The bold, artistic space features a central open kitchen with a wood-fired paella pit. Located at Disney Springs, Jaleo brings the lively spirit of Spanish dining culture to Orlando with shared plates, robust flavors, and festive atmosphere.",
       "image": require("../../assets/images/jaleo.jpeg"),
+      "gallery": [
+        jaleo2Image
+      ],
       "neighborhood": "Lake Buena Vista",
       "address": "1482 E Buena Vista Dr, Lake Buena Vista, FL 32830",
       "priceRange": "$$$",
@@ -1356,6 +1665,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Domu",
       "description": "Contemporary ramen restaurant with creative Asian fusion dishes located in East End Market. Known for handmade noodles and broths simmered for 18+ hours. The sleek, modern interior with communal tables creates a social dining environment, while the open kitchen allows guests to watch the chefs craft their culinary creations.",
       "image": require("../../assets/images/domu.jpeg"),
+      "gallery": [
+        domu2Image
+      ],
       "neighborhood": "Audubon Park",
       "address": "3201 Corrine Dr, Orlando, FL 32803",
       "priceRange": "$$",
@@ -1390,6 +1702,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Café Tu Tu Tango",
       "description": "Eclectic tapas restaurant inspired by an artist's loft, featuring small plates from around the world in a colorful, bohemian setting with local artists creating works as you dine. The vibrant atmosphere includes rotating art displays, spontaneous entertainment, and a communal dining approach that encourages sharing and conversation.",
       "image": require("../../assets/images/cafetutu.jpeg"),
+      "gallery": [
+        cafeTutu2Image
+      ],
       "neighborhood": "International Drive",
       "address": "8625 International Dr, Orlando, FL 32819",
       "priceRange": "$$",
@@ -1424,6 +1739,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Kabooki Sushi",
       "description": "Contemporary Japanese restaurant combining traditional sushi techniques with modern culinary innovations. The sleek, minimalist interior with ambient lighting and an open sushi bar creates an upscale dining experience. Founded by chef Henry Moso, a multiple-time James Beard Award semifinalist, Kabooki has gained national recognition for its artistic presentations and commitment to the highest quality ingredients.",
       "image": require("../../assets/images/kabooki.jpeg"),
+      "gallery": [
+        kabooki2Image
+      ],
       "neighborhood": "Colonial Drive",
       "address": "3122 E Colonial Dr, Orlando, FL 32803",
       "priceRange": "$$$",
@@ -1458,6 +1776,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Bosphorous Turkish Cuisine",
       "description": "Authentic Turkish restaurant showcasing traditional cuisine from Istanbul and beyond. The warm, elegant space with Turkish décor elements, including hand-painted ceramics and ornate light fixtures, creates a cultural dining environment. The open kitchen with wood-fired ovens allows guests to watch the preparation of freshly baked Turkish breads and grilled specialties.",
       "image": require("../../assets/images/bosphorous.jpg"),
+      "gallery": [
+        bosphorous2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "108 S Park Ave, Winter Park, FL 32789",
       "priceRange": "$$",
@@ -1492,6 +1813,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Superica",
       "description": "Authentic Tex-Mex restaurant by renowned chef Ford Fry, featuring traditional Mexican dishes with Texan influences in a vibrant, rustic setting. The stylish space with vintage-inspired decor, reclaimed wood elements, and southwestern accents creates a warm, energetic dining environment. Known for its high-quality ingredients, handmade tortillas, wood-grilled fajitas, and extensive tequila selection, the restaurant balances authentic recipes with contemporary preparations.",
       "image": require("../../assets/images/superica.jpeg"),
+      "gallery": [
+        superica2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "415 S. Orlando Ave, STE. 211, Winter Park, FL 32789",
       "priceRange": "$$",
@@ -1526,6 +1850,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Chayote",
       "description": "Upscale New Latin restaurant blending flavors and techniques from South America, Central America, and the Caribbean with contemporary culinary innovations in an elegant setting. The stylish interior combines tropical elements with sophisticated modern design, creating a refined yet welcoming atmosphere. Focusing on fresh ingredients, creative presentations, and innovative cocktails, Chayote delivers a distinctive dining experience that showcases the diversity and richness of Latin American culinary traditions.",
       "image": require("../../assets/images/Chayote.jpeg"),
+      "gallery": [
+        chayote2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "527 Park Ave S, Winter Park, FL 32789",
       "priceRange": "$$$",
@@ -1562,6 +1889,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "The Ravenous Pig",
       "description": "Pioneering gastropub that helped establish Orlando's farm-to-table movement, featuring seasonal American cuisine with Southern and global influences. Rustic-chic ambiance with exposed brick, wood accents, and an open kitchen creates a welcoming yet sophisticated atmosphere. In-house charcuterie program and rotating craft beer selection complement the menu of locally-sourced ingredients.",
       "image": require("../../assets/images/TheRavenousPig.jpeg"),
+      "gallery": [
+        ravenousPig2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "565 W Fairbanks Ave, Winter Park, FL 32789",
       "priceRange": "$$$",
@@ -1597,6 +1927,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Prato",
       "description": "Modern Italian restaurant with rustic farm-to-table cuisine in the heart of Winter Park's upscale shopping district. The industrial-chic space with an open kitchen, wood-fired oven, and indoor-outdoor seating creates a sophisticated yet casual ambiance. Renowned for housemade pastas, innovative cocktails, and a curated wine list emphasizing Italian varietals.",
       "image": require("../../assets/images/Prato.jpeg"),
+      "gallery": [
+        prato2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "124 N Park Ave, Winter Park, FL 32789",
       "priceRange": "$$$",
@@ -1631,6 +1964,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Santiago's Bodega",
       "description": "Popular tapas restaurant serving internationally-inspired small plates in a colorful, bohemian setting. Converted historic buildings with stained glass windows, eclectic artwork, and warm lighting create an intimate and inviting atmosphere. The flexible dining concept encourages exploration of diverse flavors through the extensive tapas menu and global wine selection.",
       "image": require("../../assets/images/SantiagoBodega.jpeg"),
+      "gallery": [
+        santiagosBodega2Image
+      ],
       "neighborhood": "Ivanhoe Village",
       "address": "802 Virginia Dr, Orlando, FL 32803",
       "priceRange": "$$",
@@ -1666,6 +2002,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Briarpatch Restaurant",
       "description": "Beloved Winter Park breakfast and lunch spot known for scratch-made comfort food with a gourmet twist. The bright, airy space with both indoor and outdoor seating has become a Park Avenue institution. Famous for its indulgent breakfast creations and freshly baked pastries, this restaurant often has lines out the door on weekends, attesting to its popularity with locals and tourists alike.",
       "image": require("../../assets/images/Briarpatch.jpeg"),
+      "gallery": [
+        briarpatch2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "252 N Park Ave, Winter Park, FL 32789",
       "priceRange": "$$",
@@ -1701,6 +2040,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Maxine's on Shine",
       "description": "Quirky neighborhood bistro owned by husband-and-wife team Kirt and Maxine Earhart in Orlando's Colonialtown neighborhood. The eclectic, bohemian space with local artwork, mismatched tables, and string lights creates a homey, personal dining atmosphere. Known for its emphasis on community, the restaurant hosts live music and encourages interaction between guests, creating an experience that feels like dining in someone's home.",
       "image": require("../../assets/images/MaxinesonShine.jpeg"),
+      "gallery": [
+        maxinesOnShine2Image
+      ],
       "neighborhood": "Colonialtown",
       "address": "337 N Shine Ave, Orlando, FL 32803",
       "priceRange": "$$",
@@ -1739,6 +2081,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "The Hangry Bison",
       "description": "Craft burger and bourbon bar in Winter Park Village offering creative, high-quality burgers and sandwiches. The modern, rustic space with industrial elements, wood accents, and comfortable seating creates a relaxed gastropub atmosphere. Known for its premium beef blends, unique topping combinations, and extensive bourbon selection, this restaurant elevates the burger experience with chef-driven recipes and quality ingredients.",
       "image": require("../../assets/images/TheHangryBison.jpeg"),
+      "gallery": [
+        hangryBison2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "480 N Orlando Ave, Winter Park, FL 32789",
       "priceRange": "$$",
@@ -1775,6 +2120,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Sixty Vines",
       "description": "Wine-focused restaurant offering California-inspired cuisine and 60 wines on tap. The spacious, airy interior with greenhouse elements, natural lighting, and wine barrel-themed decor creates a wine country dining atmosphere. The restaurant's sustainable approach includes the tap wine system that reduces packaging waste while keeping wines fresh, complemented by a seasonal menu emphasizing sustainable, locally-sourced ingredients.",
       "image": require("../../assets/images/SixtyVines.jpg"),
+      "gallery": [
+        sixtyVines2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "110 Orlando Ave, Winter Park, FL 32789",
       "priceRange": "$$",
@@ -1809,6 +2157,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Enzo's on the Lake",
       "description": "Enzo's on the Lake is a cherished local-favorite offering authentic Italian cuisine in a romantic lakeside setting. Housed in a converted lakefront residence with picturesque views of Lake Fairy, this elegant restaurant has been a culinary landmark in Orlando for over 40 years. Featuring handmade pasta, fresh seafood, and traditional Italian specialties prepared with imported ingredients, Enzo's combines Old World charm with Florida's natural beauty to create an unforgettable dining experience.",
       "image": require("../../assets/images/EnzosontheLake.jpeg"),
+      "gallery": [
+        enzosOnTheLake2Image
+      ],
       "neighborhood": "Longwood",
       "address": "1130 S US Hwy 17-92, Longwood, FL 32750",
       "priceRange": "$$$",
@@ -1843,6 +2194,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "4 Rivers Smokehouse",
       "description": "Legendary local barbecue chain with Texas-style smoked meats and Southern sides. The rustic, industrial-chic spaces with communal tables create a casual, community atmosphere. Founded by John Rivers, this Orlando institution has grown from a garage operation to multiple locations while maintaining rigorous standards for its slow-smoked, handcrafted barbecue. A Central Florida favorite that has become an essential part of the local food culture.",
       "image": require("../../assets/images/4Rivers.jpg"),
+      "gallery": [
+        fourRivers2Image
+      ],
       "neighborhood": "Winter Park",
       "address": "1600 W Fairbanks Ave, Winter Park, FL 32789",
       "priceRange": "$$",
@@ -1877,6 +2231,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "The Osprey Tavern",
       "description": "Sophisticated New American restaurant in Baldwin Park offering seasonal, chef-driven cuisine in an elegant yet approachable setting. The stylish interior features an open kitchen, custom brass and wood details, and a marble-topped bar creating a refined atmosphere with urban flair. Known for its exceptional culinary execution, artisanal cocktails, and upscale neighborhood vibe, The Osprey Tavern has established itself as a destination dining experience that bridges casual and fine dining.",
       "image": require("../../assets/images/TheOspreyTavern.jpeg"),
+      "gallery": [
+        ospreyTavern2Image
+      ],
       "neighborhood": "Baldwin Park",
       "address": "4899 New Broad St, Orlando, FL 32814",
       "priceRange": "$$$",
@@ -1911,6 +2268,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "The Drake Kitchen and Bar",
       "description": "Contemporary American restaurant in Downtown Orlando offering a refined yet approachable dining experience with a focus on seasonal ingredients and craft cocktails. The stylish space features modern industrial design with warm wood accents, an open kitchen concept, and a vibrant bar area. Known for its innovative menu that balances familiar comfort foods with creative culinary techniques.",
       "image": require("../../assets/images/thedrakekitchenandbar.jpeg"),
+      "gallery": [
+        drakeKitchen2Image
+      ],
       "neighborhood": "Downtown Orlando",
       "address": "361 N Rosalind Ave Suite 1, Orlando, FL 32801",
       "priceRange": "$$$",
@@ -1949,6 +2309,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Luke's Kitchen and Bar",
       "description": "Upscale yet approachable American restaurant in Maitland featuring seasonally-driven cuisine with Southern influences. The inviting space combines rustic and modern elements with an open kitchen that allows diners to observe the culinary team at work. Founded by celebrated local chef Brandon McGlamery (of Prato and Luma fame), Luke's focuses on wood-fired cooking and farm-to-table ingredients.",
       "image": require("../../assets/images/LukesKitchenandbar.jpeg"),
+      "gallery": [
+        lukesKitchen2Image
+      ],
       "neighborhood": "Maitland",
       "address": "640 S Orlando Ave, Maitland, FL 32751",
       "priceRange": "$$$",
@@ -1987,6 +2350,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "The Monroe",
       "description": "Contemporary American restaurant in Creative Village combining polished casual dining with community focus. Founded by award-winning chef Jason Shores (of sister restaurant Maxine's on Shine), The Monroe offers thoughtfully prepared comfort food with creative twists in a warm, welcoming space designed to be a neighborhood gathering place. Named after Dr. William 'Monroe' Wells, a prominent Black physician who built the historic Wells'Built Hotel, the restaurant honors Orlando's history while contributing to downtown's evolving culinary landscape.",
       "image": require("../../assets/images/TheMonroe.jpeg"),
+      "gallery": [
+        monroe2Image
+      ],
       "neighborhood": "Downtown Orlando",
       "address": "448 N Terry Ave, Orlando, FL 32801",
       "priceRange": "$$$",
@@ -2025,6 +2391,9 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "name": "Lamp & Shade Craft Kitchen and Cocktails",
       "description": "Asian-inspired tapas restaurant and cocktail bar housed in a beautifully restored historic building in the heart of Mills 50. This trendy establishment combines traditional Asian flavors with modern culinary techniques, offering an innovative small plates menu designed for sharing. The sophisticated cocktail program features creative drinks that complement the Asian-fusion tapas, with many cocktails incorporating Asian ingredients and flavor profiles. The historic architecture provides a unique backdrop with exposed brick walls, vintage details, and intimate lighting that creates a perfect atmosphere for date nights and social dining.",
       "image": require("../../assets/images/LampShade.jpeg"),
+      "gallery": [
+        lampShade2Image
+      ],
       "neighborhood": "Mills 50",
       "address": "1336 N Mills Ave, Orlando, FL 32803",
       "priceRange": "$$$",

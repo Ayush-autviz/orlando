@@ -379,7 +379,7 @@ const ThemeParksScreen: React.FC = () => {
               style={styles.mainCardImage}
               resizeMode="cover"
             />
-            <View style={[styles.mainCardOverlay, { backgroundColor: 'rgba(220, 38, 38, 0.6)' }]}>
+            <View style={styles.mainCardOverlay}>
               <View style={styles.mainCardContent}>
                 <Text style={styles.mainCardTitle}>Universal Orlando Resort</Text>
                 <Text style={styles.mainCardDescription}>
@@ -455,7 +455,7 @@ const ThemeParksScreen: React.FC = () => {
                 playWhenInactive={false}
               />
             </View>
-            <View style={[styles.mainCardOverlay, { backgroundColor: 'rgba(124, 58, 237, 0.4)' }]}>
+                            <View style={styles.mainCardOverlay}>
               <View style={styles.mainCardContent}>
                 <Text style={styles.mainCardDescription}>
                   Experience the magic of Universal's Epic Universe - Now Open!
@@ -785,7 +785,7 @@ const ThemeParksScreen: React.FC = () => {
               <Text style={styles.majorEventsTitle}>Major Annual Events</Text>
             </View>
 
-            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.tableScrollContainer}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={true} style={styles.tableScrollContainer}>
               <View style={styles.tableContainer}>
                 {/* Table Header */}
                 <View style={styles.tableHeader}>
@@ -1172,10 +1172,12 @@ const styles = StyleSheet.create({
   },
   mainCardOverlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-   // backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    justifyContent: 'flex-end',
     padding: 20,
   },
   mainCardContent: {
@@ -1250,12 +1252,14 @@ const styles = StyleSheet.create({
   },
   gridItemOverlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    padding: 12,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    justifyContent: 'center',
     alignItems: 'center',
+    padding: 12,
   },
   gridItemTitle: {
     fontSize: 16,
@@ -1312,10 +1316,12 @@ const styles = StyleSheet.create({
   },
   seaworldMainOverlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    justifyContent: 'flex-end',
     padding: 20,
   },
   seaworldMainTitle: {
@@ -1424,10 +1430,12 @@ const styles = StyleSheet.create({
   },
   waterParkOverlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    justifyContent: 'flex-end',
     padding: 16,
   },
   waterParkTitle: {
@@ -1828,9 +1836,13 @@ const styles = StyleSheet.create({
   },
   brandNewOverlay: {
     position: 'absolute',
-    bottom: 8,
-    left: 8,
-    right: 8,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    justifyContent: 'flex-end',
+    padding: 8,
   },
   brandNewCardTitle: {
     fontSize: 12,
@@ -1864,10 +1876,12 @@ const styles = StyleSheet.create({
   },
   volcanoBayOverlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    justifyContent: 'flex-end',
     padding: 16,
   },
   volcanoBayTitle: {
@@ -1982,9 +1996,13 @@ const styles = StyleSheet.create({
   },
   seaworldExperienceOverlay: {
     position: 'absolute',
-    bottom: 8,
-    left: 8,
-    right: 8,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+    justifyContent: 'flex-end',
+    padding: 8,
   },
   seaworldExperienceLabel: {
     fontSize: 12,
@@ -2013,11 +2031,13 @@ const styles = StyleSheet.create({
   },
   seaworldWaterParkOverlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
+    justifyContent: 'flex-end',
     padding: 16,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   seaworldWaterParkTitle: {
     fontSize: 20,
@@ -2091,10 +2111,12 @@ const styles = StyleSheet.create({
   },
   legolandMainOverlay: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     right: 0,
+    bottom: 0,
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    justifyContent: 'flex-end',
     padding: 20,
   },
   legolandMainTitle: {

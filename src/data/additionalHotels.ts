@@ -738,6 +738,62 @@ export const additionalHotels: ConsolidatedHotel[] = [{
     "rating": 4.3
   },
   {
+    "name": "Universal Helios Grand Hotel",
+    "neighborhood": "Universal Area",
+    "address": "Universal Boulevard, opens 2025",
+    "description": "Welcome to Universal Helios Grand Hotel, a Loews Hotel designed to transport guests to a world where the heavens and earth unite. This elegant, Mediterranean-inspired hotel is adorned with celestial patterns and constellations, providing an immersive experience for all who stay. With its dedicated and exclusive entrance into Universal Epic Universe, guests enjoy unparalleled views of the park and its attractions. The hotel features 500 luxurious rooms, including 35 suites, each inspired by a garden with many offering stunning views of Epic Universe. Guests can unwind in the resort-style pool, fitness center, or game room, and enjoy extraordinary dining options including a three-meal restaurant, rooftop bar, pool bar and grill, grab-and-go, and room service. The hotel also boasts unique How to Train Your Dragon themed kids' suites with dragon houses as headboards and dragons flying among you in the room. This hotel is truly a place in the sun, offering an exceptional stay with its exclusive theme park benefits and complimentary transportation throughout the destination.",
+    "price": "$$$$",
+    "amenities": [
+      "Rooftop Pool",
+      "Multiple Restaurants",
+      "Spa",
+      "Fitness Center",
+      "Early Park Admission",
+      "Universal Express Pass"
+    ],
+    "tags": [
+      "theme-park",
+      "Universal Area",
+      "Universal Studios",
+      "Epic Universe",
+      "Luxury"
+    ],
+    "id": 5019,
+    "category": "Hotels",
+    "subcategory": "theme-park",
+    "imageUrl": "/images/hotels/universal-grand-helios-optimized.jpg",
+    
+    "website": "https://www.loewshotels.com/helios-grand-hotel",
+    "rating": 4.9
+  },
+  {
+    "name": "Universal Terra Luna Resort",
+    "neighborhood": "Universal Area",
+    "address": "Universal Boulevard, opens 2025",
+    "description": "Universal Terra Luna Resort is a premier destination for those seeking an extraordinary experience in Orlando. Inspired by the thrill of exploration and discovery, this resort is designed to enhance your theme park adventures. With 750 guest rooms, each equipped with space station-styled windows, you'll enjoy a unique celestial ambiance that sets the tone for your stay. The resort features a range of amenities including a large swimming pool with a hot tub and fire pit, a modern fitness center, and a game room. Guests can indulge in various dining options such as the Omega Cafe and Market, Luna Bar, and Moonrise Grill and Bar. Exclusive theme park benefits include early park admission to Universal's theme parks, including the soon-to-open Universal Epic Universe. Complimentary shuttle service to the theme parks and Universal CityWalk ensures that you're always connected to the action. Whether you're looking to relax or recharge between adventures, Universal Terra Luna Resort is your perfect landing zone.",
+    "price": "$$$",
+    "amenities": [
+      "Multiple Pools",
+      "Themed Dining",
+      "Fitness Center",
+      "Early Park Admission",
+      "Universal Express Pass"
+    ],
+    "tags": [
+      "theme-park",
+      "Universal Area",
+      "Universal Studios",
+      "Epic Universe",
+      "Luxury"
+    ],
+    "id": 5018,
+    "category": "Hotels",
+    "subcategory": "theme-park",
+    "imageUrl": "/images/hotels/universal-terra-luna-hotel-2-optimized.webp",
+    "website": "https://www.universalorlando.com/web/en/us/places-to-stay/universal-terra-luna-resort",
+    "rating": 4.8
+  },
+  {
     "name": "The Point Hotel & Suites",
     "neighborhood": "International Drive",
     "address": "7389 Universal Blvd, Orlando, FL 32819",
