@@ -38,6 +38,8 @@ const SpaScreen: React.FC<SpaScreenProps> = ({ navigation }) => {
       url, 
       title: 'Spa Website' 
     });
+    setSelectedSpa(null);
+    
   };
 
   const handleMapPress = (address: string) => {

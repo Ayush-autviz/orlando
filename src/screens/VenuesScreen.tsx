@@ -12,14 +12,17 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
 import { ExternalLink, MapPin } from 'lucide-react-native';
+import { useNavigation } from '@react-navigation/native';
 import { TOP_VENUES } from '../data/topvenues';
 import Header from '../components/Header';
 
 const { width } = Dimensions.get('window');
 
 const VenuesScreen: React.FC = () => {
-  const handleWebsitePress = (url: string) => {
-    Linking.openURL(url);
+  const navigation = useNavigation();
+
+  const handleWebsitePress = (url: string, title: string) => {
+    navigation.navigate('WebView' as never, { url, title } as never);
   };
 
   const handleMapPress = (address: string) => {
@@ -83,7 +86,7 @@ const VenuesScreen: React.FC = () => {
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
             style={[styles.button, styles.websiteButton]}
-            onPress={() => handleWebsitePress(venue.link)}
+            onPress={() => handleWebsitePress(venue.link, `${venue.name} - Official Website`)}
           >
             <ExternalLink size={14} color="#ffffff" />
             <Text style={styles.buttonText}>Official Website</Text>
@@ -91,7 +94,7 @@ const VenuesScreen: React.FC = () => {
           
           <TouchableOpacity
             style={[styles.button, styles.calendarButton]}
-            onPress={() => handleWebsitePress(venue.calendarLink)}
+            onPress={() => handleWebsitePress(venue.calendarLink, `${venue.name} - Event Calendar`)}
           >
             <ExternalLink size={14} color="#ffffff" />
             <Text style={styles.buttonText}>Event Calendar</Text>
@@ -105,6 +108,10 @@ const VenuesScreen: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <Header showDrawerButton={true}/>
       {/* Header Section */}
+
+
+      {/* Venues Section */}
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
       <LinearGradient
         colors={['#581c87', '#3730a3']}
         start={{ x: 0, y: 0 }}
@@ -143,9 +150,6 @@ const VenuesScreen: React.FC = () => {
           </View> */}
         </View>
       </LinearGradient>
-
-      {/* Venues Section */}
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.venuesSection}>
           <Text style={styles.sectionTitle}>Top Entertainment Venues</Text>
           
