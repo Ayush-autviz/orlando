@@ -53,10 +53,10 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
 
   const handleWebsitePress = (url: string) => {
     setSelectedLocation(null)
-    navigation.navigate('WebViewScreen', { 
+    navigation.navigate('WebView' as never, { 
       url, 
       title: 'Nightlife Website' 
-    });
+    } as never);
   };
 
   const handleMapPress = (address: string) => {

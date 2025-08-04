@@ -63,6 +63,8 @@ const GolfScreen: React.FC = () => {
 
   const handleWebsitePress = (course: GolfCourse) => {
     if (course.website) {
+      setSelectedCourse(null);
+      setIsModalOpen(false);
       navigation.navigate('WebView' as never, {
         url: course.website,
         title: `${course.name} Website`

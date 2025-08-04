@@ -785,7 +785,7 @@ const ThemeParksScreen: React.FC = () => {
               <Text style={styles.majorEventsTitle}>Major Annual Events</Text>
             </View>
 
-            <ScrollView horizontal showsHorizontalScrollIndicator={true} style={styles.tableScrollContainer}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={true} indicatorStyle="black" style={styles.tableScrollContainer}>
               <View style={styles.tableContainer}>
                 {/* Table Header */}
                 <View style={styles.tableHeader}>

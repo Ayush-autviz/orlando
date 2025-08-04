@@ -83,7 +83,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
           style={styles.shareButton}
           onPress={() => handleShare(mall)}
         >
-          <Share2 size={16} color="#FFFFFF" />
+          <Share2 size={16} color="#000000" />
         </TouchableOpacity>
 
         {/* Mall name */}

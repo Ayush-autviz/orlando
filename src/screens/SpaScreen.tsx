@@ -34,11 +34,11 @@ const SpaScreen: React.FC<SpaScreenProps> = ({ navigation }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState<{[key: string]: number}>({});
 
   const handleWebsitePress = (url: string) => {
-    navigation.navigate('WebViewScreen', { 
+    setSelectedSpa(null);
+    navigation.navigate('WebView' as never, { 
       url, 
       title: 'Spa Website' 
-    });
-    setSelectedSpa(null);
+    } as never);
     
   };
 

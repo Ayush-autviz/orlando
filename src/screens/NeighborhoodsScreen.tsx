@@ -49,10 +49,10 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
   const [currentImageIndex, setCurrentImageIndex] = useState<{[key: string]: number}>({});
 
   const handleWebsitePress = (url: string) => {
-    navigation.navigate('WebViewScreen', { 
+    navigation.navigate('WebView' as never, { 
       url, 
       title: 'Neighborhood Website' 
-    });
+    } as never);
     setSelectedNeighborhood(null)
   };
 
