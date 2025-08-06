@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Menu } from 'lucide-react-native';
 import AnimatedGradientLogo from './AnimatedGradientLogo';
@@ -29,8 +29,10 @@ const Header: React.FC<HeaderProps> = ({ title, showDrawerButton = false }) => {
           </TouchableOpacity>
         )}
         
+
         <View style={styles.logoContainer}>
-          <AnimatedGradientLogo fontSize={20} width={91} />
+          {/* <AnimatedGradientLogo fontSize={20} width={91} /> */}
+          <Image source={require('../../assets/icon/logo.png')} style={{width: showDrawerButton ? '65%' : '50%', height: 25, resizeMode: 'contain'}} resizeMode="contain" />
         </View>
 
         {/* Invisible spacer to balance the drawer button */}
@@ -70,6 +72,11 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
   },
+  // logo: {
+  //   width: showDrawerButton ? '75%' : '50%',
+  //   height: 25,
+  //   resizeMode: 'contain',
+  // },
 });
 
 export default Header; 

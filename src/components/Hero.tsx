@@ -38,23 +38,23 @@ const getResponsiveDimensions = () => {
   // Fixed heights for different device sizes
   let containerHeight;
   if (screenWidth < 375) { // Small phones
-    containerHeight = 600;
+    containerHeight = screenHeight * 0.8;
   } else if (screenWidth < 768) { // Medium phones and small tablets
-    containerHeight = 500;
+    containerHeight = screenHeight * 0.8;
   } else { // Large tablets and desktops
-    containerHeight = 800;
+    containerHeight = screenHeight * 0.8;
   }
   
   return {
     containerHeight,
     row1ImageWidth: screenWidth * 0.85,
-    row1ImageHeight: containerHeight * 0.38,
+    row1ImageHeight: containerHeight * 0.39,
     row2ImageWidth: screenWidth * 0.65,
-    row2ImageHeight: containerHeight * 0.28,
+    row2ImageHeight: containerHeight * 0.29,
     row3ImageWidth: screenWidth * 0.45,
-    row3ImageHeight: containerHeight * 0.18,
+    row3ImageHeight: containerHeight * 0.19,
     titleFontSize: Math.max(28, screenWidth * 0.065),
-    subtitleFontSize: 14,
+    subtitleFontSize: 16,
     categoryFontSize: Math.max(13, screenWidth * 0.038),
     categoryPadding: 10,
     categoryGap: 10,
@@ -410,6 +410,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   titleContainer: {
+    marginTop: 40,
     alignItems: 'center',
   },
   title: {
@@ -433,6 +434,7 @@ const styles = StyleSheet.create({
   subtitleContainer: {
     position: 'relative',
     alignItems: 'center',
+    paddingBottom: 20
   },
   subtitle: {
     color: '#ffffff',

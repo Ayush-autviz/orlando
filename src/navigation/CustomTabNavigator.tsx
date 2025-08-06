@@ -5,7 +5,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   Animated,
-} from 'react-native';
+  Image,
+  } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -156,7 +157,8 @@ const CustomDrawerContent = (props: any) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.logoContainer}>
-          <AnimatedGradientLogo fontSize={24} width={109} />
+          {/* <AnimatedGradientLogo fontSize={24} width={109} /> */}
+          <Image source={require('../../assets/icon/logo.png')} style={styles.logo} resizeMode="contain" />
         </View>
       </View>
 
@@ -260,6 +262,7 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     flex: 1,
+    alignItems: 'center',
   },
   scrollView: {
     flex: 1,
@@ -312,6 +315,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#6b7280',
     textAlign: 'center',
+  },
+  logo: {
+    width: '75%',
+    height: 25,
+    resizeMode: 'contain',
   },
 });
 

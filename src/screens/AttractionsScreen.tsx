@@ -467,7 +467,7 @@ const styles = StyleSheet.create({
   heroTitle: {
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 6,
-    paddingHorizontal: 12,
+    paddingHorizontal: 8,
     paddingVertical: 6,
     transform: [{ rotate: '-2deg' }],
     borderWidth: 1,
@@ -475,7 +475,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heroTitleText: {
-    fontSize: Math.min(width * 0.06, 24), // Responsive font size
+    fontSize: Math.min(width * 0.05, 24), // Responsive font size
     fontWeight: '900',
     color: '#ffffff',
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
@@ -501,7 +501,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   heroDescription: {
-    fontSize: Math.min(width * 0.035, 14), // Responsive font size
+    fontSize: Math.min(width * 0.030, 14), // Responsive font size
     color: '#ffffff',
     marginBottom: 12,
     textAlign: 'center',

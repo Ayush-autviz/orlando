@@ -74,7 +74,7 @@ export const NEIGHBORHOODS= [
         require("../../assets/images/mills50/mills506.jpeg")
       ],
       mapLocation: "Mills 50, Orlando, FL",
-      website: "http://mills50.org/about/map-of-our-district/",
+      website: "https://mills50.org/about/map-of-our-district/",
       tags: ["Asian", "Arts", "Eclectic", "Foodie", "Nightlife", "Bars", "Indy Restaurants", "Full Foodie List"],
       knownFor: ["International Cuisine", "Street art", "Independent businesses", "Diverse culture"],
       attractions: [

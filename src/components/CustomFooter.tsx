@@ -121,8 +121,8 @@ const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
         </View>
 
         {/* Main Footer Content */}
-        <View style={styles.mainContent}>
-          {/* Awesome Orlando Section */}
+        {/* <View style={styles.mainContent}>
+          
           <View style={styles.brandSection}>
             <Text style={styles.brandTitle}>Awesome Orlando</Text>
             <Text style={styles.brandDescription}>
@@ -130,7 +130,7 @@ const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
             </Text>
           </View>
 
-          {/* Explore & Connect Section */}
+          
           <View style={styles.combinedSection}>
             <View style={styles.section}>
               <Text style={styles.sectionTitle}>Explore</Text>
@@ -153,14 +153,14 @@ const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
               <FooterLink title="Terms of Service" route="terms" icon={FileText} />
             </View>
           </View>
-        </View>
+        </View> */}
 
         {/* Copyright Section */}
-        <View style={styles.copyrightSection}>
+        {/* <View style={styles.copyrightSection}>
           <Text style={styles.copyrightText}>
             © {new Date().getFullYear()} Awesome Orlando. All rights reserved.
           </Text>
-        </View>
+        </View> */}
       </View>
     </SafeAreaView>
   );
