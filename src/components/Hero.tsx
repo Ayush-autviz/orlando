@@ -63,7 +63,7 @@ const getResponsiveDimensions = () => {
 };
 
 // Orlando-themed images from local montage folder - all available images
-const orlandoImages = [
+const allOrlandoImages = [
   require('../../assets/montage/AnimalKingdom.jpeg'),
   require('../../assets/montage/Aquatica.jpg'),
   require('../../assets/montage/ArcadeMonsters.jpeg'),
@@ -121,6 +121,25 @@ const orlandoImages = [
   require('../../assets/montage/WantilanLuau.jpeg'),
 ];
 
+// Fisher-Yates shuffle algorithm
+const shuffleArray = (array: any[]) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
+// Generate different shuffled arrays for each row
+const generateShuffledImages = () => {
+  return {
+    row1Images: shuffleArray(allOrlandoImages),
+    row2Images: shuffleArray(allOrlandoImages),
+    row3Images: shuffleArray(allOrlandoImages),
+  };
+};
+
 // Enhanced categories with Lucide icons matching the screenshot
 const categories = [
   { id: 'theme-parks', label: 'Theme Parks', icon: DoorOpen, color: '#0D9488' },
@@ -142,6 +161,9 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ navigation }) => {
   const responsiveDims = getResponsiveDimensions();
   
+  // Generate shuffled images for each row
+  const { row1Images, row2Images, row3Images } = generateShuffledImages();
+  
   // Animation values for smooth parallax scrolling - matching website speeds exactly
   const scrollX1 = useRef(new Animated.Value(0)).current;
   const scrollX2 = useRef(new Animated.Value(0)).current;
@@ -157,9 +179,9 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
 
   useEffect(() => {
     // Calculate total width for each row based on image count
-    const totalWidth1 = responsiveDims.row1ImageWidth * orlandoImages.length;
-    const totalWidth2 = responsiveDims.row2ImageWidth * orlandoImages.length;
-    const totalWidth3 = responsiveDims.row3ImageWidth * orlandoImages.length;
+    const totalWidth1 = responsiveDims.row1ImageWidth * row1Images.length;
+    const totalWidth2 = responsiveDims.row2ImageWidth * row2Images.length;
+    const totalWidth3 = responsiveDims.row3ImageWidth * row3Images.length;
     
     // Enhanced content entrance animation
     Animated.parallel([
@@ -320,17 +342,17 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
       <View style={styles.backgroundContainer}>
         {/* First Row - large flagship images */}
         <View style={[styles.backgroundRow, { height: responsiveDims.row1ImageHeight, marginBottom: responsiveDims.categoryGap * 2 }]}>
-          {renderImageRow(orlandoImages, scrollX1, false, responsiveDims.row1ImageWidth, responsiveDims.row1ImageHeight)}
+          {renderImageRow(row1Images, scrollX1, false, responsiveDims.row1ImageWidth, responsiveDims.row1ImageHeight)}
         </View>
         
         {/* Second Row - medium-sized images */}
         <View style={[styles.backgroundRow, { height: responsiveDims.row2ImageHeight, marginBottom: responsiveDims.categoryGap * 2 }]}>
-          {renderImageRow(orlandoImages, scrollX2, true, responsiveDims.row2ImageWidth, responsiveDims.row2ImageHeight)}
+          {renderImageRow(row2Images, scrollX2, true, responsiveDims.row2ImageWidth, responsiveDims.row2ImageHeight)}
         </View>
         
         {/* Third Row - smaller images */}
         <View style={[styles.backgroundRow, { height: responsiveDims.row3ImageHeight, marginBottom: responsiveDims.categoryGap * 2 }]}>
-          {renderImageRow(orlandoImages, scrollX3, false, responsiveDims.row3ImageWidth, responsiveDims.row3ImageHeight)}
+          {renderImageRow(row3Images, scrollX3, false, responsiveDims.row3ImageWidth, responsiveDims.row3ImageHeight)}
         </View>
       </View>
 
