@@ -345,8 +345,10 @@ const HotelsScreen: React.FC = () => {
                 </View>
                 <ScrollView
                   horizontal
-                  showsHorizontalScrollIndicator={false}
+                  indicatorStyle="black"
+                  showsHorizontalScrollIndicator={true}
                   style={styles.locationScrollView}
+                  contentContainerStyle={{ paddingBottom: 10 }}
                 >
                   {featuredLocations.map(location => {
                     // Customize colors based on location theme - match web exactly

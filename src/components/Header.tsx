@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { Menu } from 'lucide-react-native';
+import { Menu, ArrowRight } from 'lucide-react-native';
 import AnimatedGradientLogo from './AnimatedGradientLogo';
 
 interface HeaderProps {
@@ -14,6 +14,10 @@ const Header: React.FC<HeaderProps> = ({ title, showDrawerButton = false }) => {
 
   const handleDrawerPress = () => {
     navigation.openDrawer();
+  };
+
+  const handleLogoPress = () => {
+    navigation.navigate('TabNavigator', { screen: 'Home' });
   };
 
   return (
@@ -30,10 +34,12 @@ const Header: React.FC<HeaderProps> = ({ title, showDrawerButton = false }) => {
         )}
         
 
-        <View style={styles.logoContainer}>
+        <TouchableOpacity style={styles.logoContainer} onPress={handleLogoPress} activeOpacity={0.7}>
           {/* <AnimatedGradientLogo fontSize={20} width={91} /> */}
-          <Image source={require('../../assets/icon/logo.png')} style={{width: showDrawerButton ? '65%' : '50%', height: 25, resizeMode: 'contain'}} resizeMode="contain" />
-        </View>
+          {/* <TouchableOpacity style={{flex:1, alignItems: 'center', justifyContent: 'center'}} onPress={handleLogoPress} activeOpacity={0.7}> */}
+            <Image source={require('../../assets/icon/logo.png')} style={{width: showDrawerButton ? '65%' : '50%', height: 25, resizeMode: 'contain'}} resizeMode="contain" />
+          {/* </TouchableOpacity> */}
+        </TouchableOpacity>
 
         {/* Invisible spacer to balance the drawer button */}
         {showDrawerButton && (

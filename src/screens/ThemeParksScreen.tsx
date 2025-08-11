@@ -25,7 +25,8 @@ import {
   ExternalLink,
   Globe,
   Palmtree,
-  Droplet
+  Droplet,
+  ArrowRight
 } from 'lucide-react-native';
 import Header from '../components/Header';
 
@@ -191,9 +192,9 @@ const ThemeParksScreen: React.FC = () => {
                 />
                 <View style={styles.gridItemOverlay}>
                   <Text style={styles.gridItemTitle}>Magic Kingdom</Text>
-                  {/* <View style={styles.gridItemBadge}>
-                    <Text style={styles.gridItemBadgeText}>Official Site</Text>
-                  </View> */}
+                  <View style={styles.arrowIcon}>
+                    <ArrowRight size={16} color="#ffffff" />
+                  </View>
                 </View>
               </TouchableOpacity>
 
@@ -208,9 +209,9 @@ const ThemeParksScreen: React.FC = () => {
                 />
                 <View style={styles.gridItemOverlay}>
                   <Text style={styles.gridItemTitle}>EPCOT</Text>
-                  {/* <View style={styles.gridItemBadge}>
-                    <Text style={styles.gridItemBadgeText}>Official Site</Text>
-                  </View> */}
+                  <View style={styles.arrowIcon}>
+                    <ArrowRight size={16} color="#ffffff" />
+                  </View>
                 </View>
               </TouchableOpacity>
 
@@ -225,9 +226,9 @@ const ThemeParksScreen: React.FC = () => {
                 />
                 <View style={styles.gridItemOverlay}>
                   <Text style={styles.gridItemTitle}>Hollywood Studios</Text>
-                  {/* <View style={styles.gridItemBadge}>
-                    <Text style={styles.gridItemBadgeText}>Official Site</Text>
-                  </View> */}
+                  <View style={styles.arrowIcon}>
+                    <ArrowRight size={16} color="#ffffff" />
+                  </View>
                 </View>
               </TouchableOpacity>
             </View>
@@ -245,9 +246,9 @@ const ThemeParksScreen: React.FC = () => {
                 />
                 <View style={styles.gridItemOverlay}>
                   <Text style={styles.gridItemTitle}>Animal Kingdom</Text>
-                  {/* <View style={styles.gridItemBadge}>
-                    <Text style={styles.gridItemBadgeText}>Official Site</Text>
-                  </View> */}
+                  <View style={styles.arrowIcon}>
+                    <ArrowRight size={16} color="#ffffff" />
+                  </View>
                 </View>
               </TouchableOpacity>
 
@@ -262,9 +263,9 @@ const ThemeParksScreen: React.FC = () => {
                 />
                 <View style={styles.gridItemOverlay}>
                   <Text style={styles.gridItemTitle}>Disney Springs</Text>
-                  {/* <View style={styles.gridItemBadge}>
-                    <Text style={styles.gridItemBadgeText}>Official Site</Text>
-                  </View> */}
+                  <View style={styles.arrowIcon}>
+                    <ArrowRight size={16} color="#ffffff" />
+                  </View>
                 </View>
               </TouchableOpacity>
             </View>
@@ -282,9 +283,9 @@ const ThemeParksScreen: React.FC = () => {
                 />
                 <View style={styles.gridItemOverlay}>
                   <Text style={styles.gridItemTitle}>Pandora</Text>
-                  {/* <View style={styles.gridItemBadge}>
-                    <Text style={styles.gridItemBadgeText}>Official Site</Text>
-                  </View> */}
+                  <View style={styles.arrowIcon}>
+                    <ArrowRight size={16} color="#ffffff" />
+                  </View>
                 </View>
               </TouchableOpacity>
 
@@ -299,9 +300,9 @@ const ThemeParksScreen: React.FC = () => {
                 />
                 <View style={styles.gridItemOverlay}>
                   <Text style={styles.gridItemTitle}>Galaxy's Edge</Text>
-                  {/* <View style={styles.gridItemBadge}>
-                    <Text style={styles.gridItemBadgeText}>Official Site</Text>
-                  </View> */}
+                  <View style={styles.arrowIcon}>
+                    <ArrowRight size={16} color="#ffffff" />
+                  </View>
                 </View>
               </TouchableOpacity>
             </View>
@@ -482,7 +483,7 @@ const ThemeParksScreen: React.FC = () => {
               <View style={styles.brandNewRow}>
                 <TouchableOpacity
                   style={[styles.brandNewCard, { flex: 1 }]}
-                  onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe')}
+             //     onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe')}
                 >
                   <Image
                     source={require('../../assets/images/epic-ministry-of-magic.jpg')}
@@ -498,7 +499,7 @@ const ThemeParksScreen: React.FC = () => {
               <View style={styles.brandNewRow}>
               <TouchableOpacity
                   style={[styles.brandNewCard, { flex: 1 }]}
-                  onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe')}
+                //  onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe')}
                 >
                   <Image
                     source={require('../../assets/images/epic-nintendo-world.jpg')}
@@ -514,7 +515,7 @@ const ThemeParksScreen: React.FC = () => {
               <View style={styles.brandNewRow}>
               <TouchableOpacity
                   style={[styles.brandNewCard, { flex: 1 }]}
-                  onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe')}
+                 // onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe')}
                 >
                   <Image
                     source={require('../../assets/images/epic-isle-of-berk.jpg')}
@@ -530,7 +531,7 @@ const ThemeParksScreen: React.FC = () => {
               <View style={styles.brandNewRow}>
               <TouchableOpacity
                   style={[styles.brandNewCard, { flex: 1 }]}
-                  onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe')}
+              //    onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe')}
                 >
                   <Image
                     source={require('../../assets/images/epic-dark-universe.jpg')}
@@ -553,7 +554,7 @@ const ThemeParksScreen: React.FC = () => {
 
                 <TouchableOpacity
                   style={[styles.brandNewCard, { flex: 1 }]}
-                  onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe')}
+         //         onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/epic-universe')}
                 >
                   <Image
                     source={require('../../assets/images/epic-celestial-park.jpg')}
@@ -575,7 +576,7 @@ const ThemeParksScreen: React.FC = () => {
           {/* Volcano Bay */}
           <TouchableOpacity
             style={styles.volcanoBayCard}
-            onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/volcano-bay')}
+          //   onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/theme-parks/volcano-bay')}
           >
             <Image
               source={require('../../assets/images/VolcanoBay.webp')}
@@ -2142,6 +2143,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#ffffff',
     fontWeight: '600',
+  },
+  arrowIcon: {
+    position: 'absolute',
+    bottom: 8,
+    right: 8,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    borderRadius: 12,
+    padding: 4,
   },
 });
 
