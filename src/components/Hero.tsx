@@ -9,7 +9,8 @@ import {
   StatusBar, 
   Dimensions, 
   Animated,
-  Platform 
+  Platform, 
+  Easing
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LinearGradient  from 'react-native-linear-gradient';
@@ -158,6 +159,8 @@ interface HeroProps {
   navigation: any;
 }
 
+
+
 const Hero: React.FC<HeroProps> = ({ navigation }) => {
   const responsiveDims = getResponsiveDimensions();
   
@@ -226,15 +229,42 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
         Animated.timing(animValue, {
           toValue: reverse ? totalWidth1 : -totalWidth1,
           duration: duration * 1000, // Convert to milliseconds
+          easing: Easing.linear,
           useNativeDriver: true,
         })
       );
     };
 
-    // Slower speeds for more gentle scrolling
-    createSmoothAnimation(scrollX1, 400).start(); // Row 1: Left to right (400s)
-    createSmoothAnimation(scrollX2, 350, true).start(); // Row 2: Right to left (350s)
-    createSmoothAnimation(scrollX3, 450).start(); // Row 3: Left to right (450s)
+
+// const createSmoothAnimation = (
+//   animValue: Animated.Value,
+//   totalWidth: number,
+//   duration: number,
+//   reverse: boolean = false
+// ) => {
+//   const startValue = reverse ? -totalWidth : 0;
+//   const endValue = reverse ? 0 : -totalWidth;
+
+//   animValue.setValue(startValue);
+
+//   Animated.loop(
+//     Animated.timing(animValue, {
+//       toValue: endValue,
+//       duration: duration * 1000, // seconds → ms
+//       easing: Easing.linear, // ensures constant speed
+//       useNativeDriver: true,
+//     })
+//   ).start();
+// };
+
+    //Slower speeds for more gentle scrolling
+    createSmoothAnimation(scrollX1, 800).start(); // Row 1: Left to right (400s)
+    createSmoothAnimation(scrollX2, 750, true).start(); // Row 2: Right to left (350s)
+    createSmoothAnimation(scrollX3, 850).start(); // Row 3: Left to right (450s)
+//   createSmoothAnimation(scrollX1, responsiveDims.row1ImageWidth * row1Images.length, 700, false);
+// createSmoothAnimation(scrollX2, responsiveDims.row2ImageWidth * row2Images.length, 350, true);
+// createSmoothAnimation(scrollX3, responsiveDims.row3ImageWidth * row3Images.length, 750, false);
+
   }, [responsiveDims]);
 
   const renderImageRow = (images: any[], animatedValue: Animated.Value, isMiddleRow: boolean = false, imageWidth: number, imageHeight: number) => (
