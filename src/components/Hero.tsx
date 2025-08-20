@@ -39,11 +39,11 @@ const getResponsiveDimensions = () => {
   // Fixed heights for different device sizes
   let containerHeight;
   if (screenWidth < 375) { // Small phones
-    containerHeight = screenHeight * 0.8;
+    containerHeight = screenHeight * 0.7;
   } else if (screenWidth < 768) { // Medium phones and small tablets
-    containerHeight = screenHeight * 0.8;
+    containerHeight = screenHeight * 0.7;
   } else { // Large tablets and desktops
-    containerHeight = screenHeight * 0.8;
+    containerHeight = screenHeight * 0.7;
   }
   
   return {

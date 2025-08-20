@@ -413,9 +413,9 @@ const ThemeParksScreen: React.FC = () => {
                   />
                   <View style={styles.gridItemOverlay}>
                     <Text style={styles.gridItemTitle}>Universal Studios Florida</Text>
-                    {/* <View style={[styles.gridItemBadge, { backgroundColor: '#dc2626' }]}>
-                      <Text style={styles.gridItemBadgeText}>Official Site</Text>
-                    </View> */}
+                    <View style={styles.arrowIcon}>
+                      <ArrowRight size={16} color="#ffffff" />
+                    </View>
                   </View>
                 </TouchableOpacity>
 
@@ -430,9 +430,9 @@ const ThemeParksScreen: React.FC = () => {
                   />
                   <View style={styles.gridItemOverlay}>
                     <Text style={styles.gridItemTitle}>Islands of Adventure</Text>
-                    {/* <View style={[styles.gridItemBadge, { backgroundColor: '#dc2626' }]}>
-                      <Text style={styles.gridItemBadgeText}>Official Site</Text>
-                    </View> */}
+                    <View style={styles.arrowIcon}>
+                      <ArrowRight size={16} color="#ffffff" />
+                    </View>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -786,14 +786,14 @@ const ThemeParksScreen: React.FC = () => {
               <Text style={styles.majorEventsTitle}>Major Annual Events</Text>
             </View>
 
-            <ScrollView horizontal showsHorizontalScrollIndicator={true} indicatorStyle="black" style={styles.tableScrollContainer}>
+            {/* <ScrollView horizontal showsHorizontalScrollIndicator={true} indicatorStyle="black" persistentScrollbar={true}  style={styles.tableScrollContainer}> */}
               <View style={styles.tableContainer}>
                 {/* Table Header */}
                 <View style={styles.tableHeader}>
                   <Text style={[styles.tableHeaderCell, styles.eventColumn]}>Event</Text>
-                  <Text style={[styles.tableHeaderCell, styles.venueColumn]}>Venue</Text>
+                  {/* <Text style={[styles.tableHeaderCell, styles.venueColumn]}>Venue</Text> */}
                   <Text style={[styles.tableHeaderCell, styles.whenColumn]}>When</Text>
-                  <Text style={[styles.tableHeaderCell, styles.websiteColumn]}>Website</Text>
+                  {/* <Text style={[styles.tableHeaderCell, styles.websiteColumn]}>Website</Text> */}
                 </View>
 
                 {/* Table Rows */}
@@ -801,11 +801,16 @@ const ThemeParksScreen: React.FC = () => {
                   style={styles.tableRow}
                   onPress={() => openWebsite('https://www.universalorlando.com/web/en/us/things-to-do/events/halloween-horror-nights')}
                 >
+                  <View>
                   <Text style={[styles.tableCell, styles.tableCellBold, styles.eventColumn]}>Halloween Horror Nights</Text>
                   <Text style={[styles.tableCell, styles.venueColumn]}>Universal Studios Florida</Text>
+                  </View>
+                  <View>
                   <Text style={[styles.tableCell, styles.whenColumn]}>Sept-Oct</Text>
+                  
                   <View style={[styles.tableLinkCell, styles.websiteColumn]}>
                     <Text style={styles.tableLink}>Visit</Text>
+                  </View>
                   </View>
                 </TouchableOpacity>
 
@@ -813,11 +818,16 @@ const ThemeParksScreen: React.FC = () => {
                   style={styles.tableRow}
                   onPress={() => openWebsite('https://disneyworld.disney.go.com/events-tours/epcot/epcot-international-food-and-wine-festival/')}
                 >
+                  <View>
                   <Text style={[styles.tableCell, styles.tableCellBold, styles.eventColumn]}>EPCOT Food & Wine Festival</Text>
                   <Text style={[styles.tableCell, styles.venueColumn]}>EPCOT</Text>
+                  </View>
+                  <View>
                   <Text style={[styles.tableCell, styles.whenColumn]}>Aug-Nov</Text>
+                  
                   <View style={[styles.tableLinkCell, styles.websiteColumn]}>
                     <Text style={styles.tableLink}>Visit</Text>
+                  </View>
                   </View>
                 </TouchableOpacity>
 
@@ -825,23 +835,33 @@ const ThemeParksScreen: React.FC = () => {
                   style={styles.tableRow}
                   onPress={() => openWebsite('https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-not-so-scary-halloween-party/')}
                 >
+                  <View>
                   <Text style={[styles.tableCell, styles.tableCellBold, styles.eventColumn]}>Mickey's Not-So-Scary Halloween Party</Text>
                   <Text style={[styles.tableCell, styles.venueColumn]}>Magic Kingdom</Text>
+                  </View>
+                  <View>
                   <Text style={[styles.tableCell, styles.whenColumn]}>Aug-Oct</Text>
+                  
+                  
                   <View style={[styles.tableLinkCell, styles.websiteColumn]}>
                     <Text style={styles.tableLink}>Visit</Text>
                   </View>
+                    </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                   style={styles.tableRow}
                   onPress={() => openWebsite('https://disneyworld.disney.go.com/events-tours/magic-kingdom/mickeys-very-merry-christmas-party/')}
                 >
+                  <View>
                   <Text style={[styles.tableCell, styles.tableCellBold, styles.eventColumn]}>Mickey's Very Merry Christmas Party</Text>
                   <Text style={[styles.tableCell, styles.venueColumn]}>Magic Kingdom</Text>
+                  </View>
+                  <View>
                   <Text style={[styles.tableCell, styles.whenColumn]}>Nov-Dec</Text>
                   <View style={[styles.tableLinkCell, styles.websiteColumn]}>
                     <Text style={styles.tableLink}>Visit</Text>
+                  </View>
                   </View>
                 </TouchableOpacity>
 
@@ -849,11 +869,16 @@ const ThemeParksScreen: React.FC = () => {
                   style={styles.tableRow}
                   onPress={() => openWebsite('https://disneyworld.disney.go.com/events-tours/epcot/epcot-international-flower-and-garden-festival/')}
                 >
+                  <View>
                   <Text style={[styles.tableCell, styles.tableCellBold, styles.eventColumn]}>EPCOT Flower & Garden Festival</Text>
                   <Text style={[styles.tableCell, styles.venueColumn]}>EPCOT</Text>
+                  </View>
+                  <View>
                   <Text style={[styles.tableCell, styles.whenColumn]}>Mar-Jul</Text>
+                  
                   <View style={[styles.tableLinkCell, styles.websiteColumn]}>
                     <Text style={styles.tableLink}>Visit</Text>
+                  </View>
                   </View>
                 </TouchableOpacity>
 
@@ -861,15 +886,19 @@ const ThemeParksScreen: React.FC = () => {
                   style={styles.tableRow}
                   onPress={() => openWebsite('https://disneyworld.disney.go.com/events-tours/epcot/epcot-international-festival-of-the-holidays/')}
                 >
+                  <View>
                   <Text style={[styles.tableCell, styles.tableCellBold, styles.eventColumn]}>EPCOT Festival of the Holidays</Text>
                   <Text style={[styles.tableCell, styles.venueColumn]}>EPCOT</Text>
+                  </View>
+                  <View>
                   <Text style={[styles.tableCell, styles.whenColumn]}>Nov-Dec</Text>
                   <View style={[styles.tableLinkCell, styles.websiteColumn]}>
                     <Text style={styles.tableLink}>Visit</Text>
                   </View>
+                  </View>
                 </TouchableOpacity>
               </View>
-            </ScrollView>
+            {/* </ScrollView> */}
             
             {/* Seasonal Cards Grid */}
             <View style={styles.seasonalCardsGrid}>
@@ -1503,7 +1532,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 4,
-    minWidth: 530, // Minimum width to accommodate all columns
+    // minWidth: 530, // Minimum width to accommodate all columns
   },
   tableHeader: {
     flexDirection: 'row',
@@ -1551,6 +1580,7 @@ const styles = StyleSheet.create({
   eventColumn: {
     width: 200,
     minWidth: 200,
+    marginRight: 10,
   },
   venueColumn: {
     width: 150,
