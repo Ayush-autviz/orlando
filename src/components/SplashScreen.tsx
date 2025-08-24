@@ -378,7 +378,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete }) => {
         </View>
 
         {/* App tagline */}
-        <Animated.View
+        {/* <Animated.View
           style={[
             styles.taglineContainer,
             {
@@ -387,7 +387,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete }) => {
           ]}
         >
           <Text style={styles.tagline}>Discover the Magic</Text>
-        </Animated.View>
+        </Animated.View> */}
       </Animated.View>
     </SafeAreaView>
   );
