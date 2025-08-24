@@ -5,10 +5,10 @@
  * @format
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StatusBar, useColorScheme } from 'react-native';
+import { StatusBar, useColorScheme, View } from 'react-native';
 import CustomTabNavigator from './src/navigation/CustomTabNavigator';
 import AttractionDetailScreen from './src/screens/AttractionDetailScreen';
 import WebViewScreen from './src/screens/WebViewScreen';
@@ -18,17 +18,37 @@ import GolfScreen from './src/screens/GolfScreen';
 import GolfDetailScreen from './src/screens/GolfDetailScreen';
 import ShoppingDetailScreen from './src/screens/ShoppingDetailScreen';
 import EpicUniverseGuideScreen from './src/screens/EpicUniverseGuideScreen';
+import SplashScreen from './src/components/SplashScreen';
 
 const Stack = createStackNavigator();
 
 function App() {
+  const [isReady, setIsReady] = useState(false);
+  const [initialRoute, setInitialRoute] = useState('Splash');
   const isDarkMode = useColorScheme() === 'dark';
+
+  useEffect(() => {
+    // Simulate app initialization
+    const timer = setTimeout(() => {
+      setIsReady(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!isReady) {
+    return null; // Show nothing while initializing
+  }
 
   return (
     <NavigationContainer>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Main" component={CustomTabNavigator} />
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}
+        initialRouteName={initialRoute}
+      >
+        <Stack.Screen name="Splash"   component={SplashScreen} />
+        <Stack.Screen name="Main"  options={{ animation: 'fade' }} component={CustomTabNavigator}  />
         <Stack.Screen name="AttractionDetail" component={AttractionDetailScreen} />
         <Stack.Screen name="WebView" component={WebViewScreen} />
         <Stack.Screen name="DiningCategory" component={DiningCategoryScreen} />

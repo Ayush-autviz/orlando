@@ -1473,7 +1473,7 @@ const styles = StyleSheet.create({
     // textShadowRadius: 2,
     fontSize: 16,
     fontWeight: '600',
-    color: '#1f2937',
+    color: '#fff',
     marginBottom: 4,
   },
   addressRow: {
