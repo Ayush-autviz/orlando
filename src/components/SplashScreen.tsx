@@ -10,19 +10,21 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BallIndicator } from 'react-native-indicators';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native'; // Not needed for overlay approach
 
 const { width, height } = Dimensions.get('window');
 
 interface SplashScreenProps {
   onAnimationComplete?: () => void;
+  fadeOut?: boolean;
 }
 
-const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete }) => {
-  const navigation = useNavigation();
+const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete, fadeOut = false }) => {
+  // const navigation = useNavigation(); // Not needed for overlay approach
 
   // Animation values
   const fadeAnim = useRef(new Animated.Value(0)).current;
+  const overlayOpacity = useRef(new Animated.Value(1)).current;
   const scaleAnim = useRef(new Animated.Value(0.3)).current;
   const rotateAnim = useRef(new Animated.Value(0)).current;
   const logoOpacity = useRef(new Animated.Value(0)).current;
@@ -44,6 +46,20 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete }) => {
     // Start animations when component mounts
     startAnimation();
   }, []);
+
+  // Handle fade-out animation
+  useEffect(() => {
+    if (fadeOut) {
+      console.log('Starting splash screen fade-out animation');
+      Animated.timing(overlayOpacity, {
+        toValue: 0,
+        duration: 800,
+        useNativeDriver: true,
+      }).start(() => {
+        console.log('Splash screen fade-out completed');
+      });
+    }
+  }, [fadeOut]);
 
   const startAnimation = () => {
     // Reset animations to initial state
@@ -113,23 +129,13 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete }) => {
     // Start background emoji animations
     startBackgroundAnimations();
 
-    // Complete animation after 4 seconds - keep everything visible
+    // Complete animation after 4 seconds - trigger completion callback
     setTimeout(() => {
-      // Just hide the loading text, keep everything else visible
-      Animated.timing(indicatorOpacity, {
-        toValue: 0,
-        duration: 400,
-        useNativeDriver: true,
-      }).start(() => {
-        // Navigate to Main screen after a short delay to let user see the final state
-        setTimeout(() => {
-          navigation.navigate('Main' as never);
-          // Call the callback if provided (for backward compatibility)
-          if (onAnimationComplete) {
-            onAnimationComplete();
-          }
-        }, 2000); // 2 more seconds to admire the final animated state
-      });
+      console.log('Splash screen animation sequence completed');
+      // Call the callback to trigger fade-out from parent
+      if (onAnimationComplete) {
+        onAnimationComplete();
+      }
     }, 4000);
   };
 
@@ -293,7 +299,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete }) => {
   });
 
   return (
-    <SafeAreaView style={styles.container}>
+    <Animated.View style={[styles.overlayContainer, { opacity: overlayOpacity }]}>
       <StatusBar barStyle="light-content" backgroundColor="#1a1a2e" />
 
       {/* Elegant gradient background */}
@@ -371,6 +377,8 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete }) => {
               source={require('../../assets/icon/logo.png')}
               style={styles.logo}
               resizeMode="contain"
+              onLoad={() => console.log('✅ Logo image loaded')}
+              onError={(error) => console.log('❌ Logo image failed to load:', error)}
             />
           </Animated.View>
 
@@ -389,11 +397,21 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete }) => {
           <Text style={styles.tagline}>Discover the Magic</Text>
         </Animated.View> */}
       </Animated.View>
-    </SafeAreaView>
+    </Animated.View>
   );
 };
 
 const styles = StyleSheet.create({
+  overlayContainer: {
+    flex:1,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 9999, // Ensure it's on top of everything
+    backgroundColor: '#1a1a2e',
+  },
   container: {
     flex: 1,
     backgroundColor: '#1a1a2e',
@@ -435,6 +453,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 100,
+
   },
   simpleLoader: {
     alignItems: 'center',

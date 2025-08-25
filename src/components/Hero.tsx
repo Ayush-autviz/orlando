@@ -163,9 +163,17 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ navigation }) => {
   const responsiveDims = getResponsiveDimensions();
-  
+
   // Generate shuffled images for each row
   const { row1Images, row2Images, row3Images } = generateShuffledImages();
+
+  console.log('Hero component mounted - home screen is loading in background');
+
+  // Log when images are ready to display
+  useEffect(() => {
+    console.log('Hero component images ready to display');
+    console.log(`Row 1: ${row1Images.length} images, Row 2: ${row2Images.length} images, Row 3: ${row3Images.length} images`);
+  }, []);
   
   // Animation values for smooth parallax scrolling - matching website speeds exactly
   const scrollX1 = useRef(new Animated.Value(0)).current;

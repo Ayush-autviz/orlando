@@ -7,7 +7,9 @@ import CustomFooter from '../components/CustomFooter';
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation();
-  
+
+  console.log('HomeScreen component mounted - starting to load Hero component');
+
   return (
     <ScrollView style={styles.container}>
       <Header />
