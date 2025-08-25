@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar, useColorScheme, View } from 'react-native';
+import FastImage from 'react-native-fast-image';
 import CustomTabNavigator from './src/navigation/CustomTabNavigator';
 import AttractionDetailScreen from './src/screens/AttractionDetailScreen';
 import WebViewScreen from './src/screens/WebViewScreen';
@@ -88,13 +89,10 @@ function App() {
 
 import { useRef } from 'react';
 import {
- // View,
-  Image,
   Text,
   StyleSheet,
   Animated,
   Dimensions,
- // StatusBar,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BallIndicator } from 'react-native-indicators';
@@ -461,14 +459,14 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete, fadeOu
               },
             ]}
           >
-            <Image
+            <FastImage
               source={require('./assets/icon/logo.png')}
               style={styles.logo}
-              resizeMode="contain"
-              onLoad={() => console.log('✅ Logo image loaded')}
-              onError={(error) => console.log('❌ Logo image failed to load:', error)}
-              onLoadStart={() => console.log('✅ Logo image loading started')}
-              onLoadEnd={() => console.log('✅ Logo image loading ended')}
+              resizeMode={FastImage.resizeMode.contain}
+              onLoadStart={() => console.log('🚀 FastImage: Logo loading started')}
+              onLoad={() => console.log('✅ FastImage: Logo loaded successfully')}
+              onError={() => console.log('❌ FastImage: Logo failed to load')}
+              onLoadEnd={() => console.log('🏁 FastImage: Logo loading completed')}
             />
           </Animated.View>
 
@@ -543,7 +541,6 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     borderRadius: 100,
-
   },
   simpleLoader: {
     alignItems: 'center',
