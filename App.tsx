@@ -27,25 +27,25 @@ function App() {
   const [initialRoute, setInitialRoute] = useState('Splash');
   const isDarkMode = useColorScheme() === 'dark';
 
-  useEffect(() => {
-    // Simulate app initialization
-    const timer = setTimeout(() => {
-      setIsReady(true);
-    }, 100);
+  // useEffect(() => {
+  //   // Simulate app initialization
+  //   const timer = setTimeout(() => {
+  //     setIsReady(true);
+  //   }, 100);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
-  if (!isReady) {
-    return null; // Show nothing while initializing
-  }
+  // if (!isReady) {
+  //   return null; // Show nothing while initializing
+  // }
 
   return (
     <NavigationContainer>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName={initialRoute}
+        initialRouteName="Splash"
       >
         <Stack.Screen name="Splash"   component={SplashScreen} />
         <Stack.Screen name="Main"  options={{ animation: 'fade' }} component={CustomTabNavigator}  />
