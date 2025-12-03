@@ -25,6 +25,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { Attraction } from '../data/attractions';
 import { getAttractionDetailsByName, AttractionDetailsType } from '../data/attraction-detail-data';
 import { getImageSource } from '../data/imageMap';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width } = Dimensions.get('window');
 
@@ -57,9 +58,9 @@ const AttractionDetailScreen: React.FC = () => {
 
   const handleShare = async () => {
     const shareUrl = `https://www.awesomeorlando.com/attraction/${encodeURIComponent(attraction.name)}`;
-    const shareTitle = `${attraction.name} | Awesome Orlando ${attraction.category}`;
+    const shareTitle = `${attraction.name} | ${WhiteLabelConfig.appName} ${attraction.category}`;
     const shareMessage = `Check out ${attraction.name} in ${attraction.neighborhood || 'Orlando'} - ${attraction.description.substring(0, 100)}... ${shareUrl}`;
-    
+
     try {
       await Share.share({
         message: shareMessage,
@@ -135,11 +136,11 @@ const AttractionDetailScreen: React.FC = () => {
               <Share2 size={20} color="#374151" />
             </TouchableOpacity>
           </View>
-          
+
           {/* Content */}
           <View style={styles.contentSection}>
             <Text style={styles.attractionTitle}>{attraction.name}</Text>
-            
+
             {/* Description paragraphs */}
             <View style={styles.descriptionContainer}>
               {getDescriptionParagraphs().map((paragraph, index) => (
@@ -148,7 +149,7 @@ const AttractionDetailScreen: React.FC = () => {
                 </Text>
               ))}
             </View>
-            
+
             {/* Insider tips */}
             {detailedData?.tips && detailedData.tips.length > 0 && (
               <View style={styles.tipsSection}>
@@ -170,13 +171,13 @@ const AttractionDetailScreen: React.FC = () => {
         <View style={styles.sidebarSection}>
           <View style={styles.visitorInfoCard}>
             <Text style={styles.visitorInfoTitle}>Visitor Information</Text>
-            
+
             {/* Visit website button */}
             <TouchableOpacity style={styles.websiteButton} onPress={openWebsite}>
               <Text style={styles.websiteButtonText}>Visit Official Website</Text>
               <ExternalLink size={16} color="#ffffff" />
             </TouchableOpacity>
-            
+
             <View style={styles.infoContainer}>
               {/* Address */}
               {(detailedData?.address || attraction.address) && (
@@ -186,7 +187,7 @@ const AttractionDetailScreen: React.FC = () => {
                     <Text style={styles.infoLabel}>Address</Text>
                     <View style={styles.addressContainer}>
                       <Text style={styles.infoValue}>{detailedData?.address || attraction.address}</Text>
-                      <TouchableOpacity 
+                      <TouchableOpacity
                         style={styles.mapItButton}
                         onPress={() => {
                           const address = detailedData?.address || attraction.address;

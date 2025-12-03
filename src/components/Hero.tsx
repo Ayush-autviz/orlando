@@ -1,33 +1,34 @@
 import React, { useEffect, useRef } from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  ScrollView, 
-  TouchableOpacity, 
-  Image, 
-  StatusBar, 
-  Dimensions, 
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Image,
+  StatusBar,
+  Dimensions,
   Animated,
-  Platform, 
+  Platform,
   Easing
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import LinearGradient  from 'react-native-linear-gradient';
-import { 
-  Building2, 
-  Mountain, 
-  Hotel, 
-  Utensils, 
-  ShoppingCart, 
-  Calendar, 
-  Beer, 
-  Flag, 
-  Leaf, 
+import LinearGradient from 'react-native-linear-gradient';
+import {
+  Building2,
+  Mountain,
+  Hotel,
+  Utensils,
+  ShoppingCart,
+  Calendar,
+  Beer,
+  Flag,
+  Leaf,
   MapPin,
   DoorOpen,
   Ticket
 } from 'lucide-react-native';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width, height } = Dimensions.get('window');
 
@@ -35,7 +36,7 @@ const { width, height } = Dimensions.get('window');
 const getResponsiveDimensions = () => {
   const screenWidth = width;
   const screenHeight = height;
-  
+
   // Fixed heights for different device sizes
   let containerHeight;
   if (screenWidth < 375) { // Small phones
@@ -45,7 +46,7 @@ const getResponsiveDimensions = () => {
   } else { // Large tablets and desktops
     containerHeight = screenHeight * 0.7;
   }
-  
+
   return {
     containerHeight,
     row1ImageWidth: screenWidth * 0.85,
@@ -143,16 +144,16 @@ const generateShuffledImages = () => {
 
 // Enhanced categories with Lucide icons matching the screenshot
 const categories = [
-  { id: 'theme-parks', label: 'Theme Parks', icon: DoorOpen, color: '#0D9488' },
-  { id: 'attractions', label: 'Attractions', icon: Ticket, color: '#0D9488' },
-  { id: 'hotels', label: 'Hotels', icon: Hotel, color: '#0D9488' },
-  { id: 'dining', label: 'Dining', icon: Utensils, color: '#0D9488' },
-  { id: 'shopping', label: 'Shopping', icon: ShoppingCart, color: '#0D9488' },
-  { id: 'entertainment', label: 'Live Entertainment', icon: Calendar, color: '#0D9488' },
-  { id: 'bar-hop', label: 'Locals Bar Hop', icon: Beer, color: '#0D9488' },
-  { id: 'golf', label: 'Golf', icon: Flag, color: '#0D9488' },
-  { id: 'spas', label: 'Spas', icon: Leaf, color: '#0D9488' },
-  { id: 'neighborhoods', label: 'Neighborhoods', icon: MapPin, color: '#0D9488' },
+  { id: 'theme-parks', label: 'Theme Parks', icon: DoorOpen, color: WhiteLabelConfig.hero.categoryColor },
+  { id: 'attractions', label: 'Attractions', icon: Ticket, color: WhiteLabelConfig.hero.categoryColor },
+  { id: 'hotels', label: 'Hotels', icon: Hotel, color: WhiteLabelConfig.hero.categoryColor },
+  { id: 'dining', label: 'Dining', icon: Utensils, color: WhiteLabelConfig.hero.categoryColor },
+  { id: 'shopping', label: 'Shopping', icon: ShoppingCart, color: WhiteLabelConfig.hero.categoryColor },
+  { id: 'entertainment', label: 'Live Entertainment', icon: Calendar, color: WhiteLabelConfig.hero.categoryColor },
+  { id: 'bar-hop', label: 'Locals Bar Hop', icon: Beer, color: WhiteLabelConfig.hero.categoryColor },
+  { id: 'golf', label: 'Golf', icon: Flag, color: WhiteLabelConfig.hero.categoryColor },
+  { id: 'spas', label: 'Spas', icon: Leaf, color: WhiteLabelConfig.hero.categoryColor },
+  { id: 'neighborhoods', label: 'Neighborhoods', icon: MapPin, color: WhiteLabelConfig.hero.categoryColor },
 ];
 
 interface HeroProps {
@@ -174,17 +175,17 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
     console.log('Hero component images ready to display');
     console.log(`Row 1: ${row1Images.length} images, Row 2: ${row2Images.length} images, Row 3: ${row3Images.length} images`);
   }, []);
-  
+
   // Animation values for smooth parallax scrolling - matching website speeds exactly
   const scrollX1 = useRef(new Animated.Value(0)).current;
   const scrollX2 = useRef(new Animated.Value(0)).current;
   const scrollX3 = useRef(new Animated.Value(0)).current;
-  
+
   // Enhanced content animations
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(60)).current;
   const scaleAnim = useRef(new Animated.Value(0.8)).current;
-  
+
   // Floating animation for categories
   const floatAnim = useRef(new Animated.Value(0)).current;
 
@@ -193,7 +194,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
     const totalWidth1 = responsiveDims.row1ImageWidth * row1Images.length;
     const totalWidth2 = responsiveDims.row2ImageWidth * row2Images.length;
     const totalWidth3 = responsiveDims.row3ImageWidth * row3Images.length;
-    
+
     // Enhanced content entrance animation
     Animated.parallel([
       Animated.timing(fadeAnim, {
@@ -214,7 +215,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
         useNativeDriver: true,
       })
     ]).start();
-    
+
     // Floating animation for categories
     Animated.loop(
       Animated.sequence([
@@ -230,7 +231,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
         })
       ])
     ).start();
-    
+
     // Exact animation speeds matching website
     const createSmoothAnimation = (animValue: Animated.Value, duration: number, reverse: boolean = false) => {
       return Animated.loop(
@@ -244,34 +245,34 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
     };
 
 
-// const createSmoothAnimation = (
-//   animValue: Animated.Value,
-//   totalWidth: number,
-//   duration: number,
-//   reverse: boolean = false
-// ) => {
-//   const startValue = reverse ? -totalWidth : 0;
-//   const endValue = reverse ? 0 : -totalWidth;
+    // const createSmoothAnimation = (
+    //   animValue: Animated.Value,
+    //   totalWidth: number,
+    //   duration: number,
+    //   reverse: boolean = false
+    // ) => {
+    //   const startValue = reverse ? -totalWidth : 0;
+    //   const endValue = reverse ? 0 : -totalWidth;
 
-//   animValue.setValue(startValue);
+    //   animValue.setValue(startValue);
 
-//   Animated.loop(
-//     Animated.timing(animValue, {
-//       toValue: endValue,
-//       duration: duration * 1000, // seconds → ms
-//       easing: Easing.linear, // ensures constant speed
-//       useNativeDriver: true,
-//     })
-//   ).start();
-// };
+    //   Animated.loop(
+    //     Animated.timing(animValue, {
+    //       toValue: endValue,
+    //       duration: duration * 1000, // seconds → ms
+    //       easing: Easing.linear, // ensures constant speed
+    //       useNativeDriver: true,
+    //     })
+    //   ).start();
+    // };
 
     //Slower speeds for more gentle scrolling
     createSmoothAnimation(scrollX1, 800).start(); // Row 1: Left to right (400s)
     createSmoothAnimation(scrollX2, 750, true).start(); // Row 2: Right to left (350s)
     createSmoothAnimation(scrollX3, 850).start(); // Row 3: Left to right (450s)
-//   createSmoothAnimation(scrollX1, responsiveDims.row1ImageWidth * row1Images.length, 700, false);
-// createSmoothAnimation(scrollX2, responsiveDims.row2ImageWidth * row2Images.length, 350, true);
-// createSmoothAnimation(scrollX3, responsiveDims.row3ImageWidth * row3Images.length, 750, false);
+    //   createSmoothAnimation(scrollX1, responsiveDims.row1ImageWidth * row1Images.length, 700, false);
+    // createSmoothAnimation(scrollX2, responsiveDims.row2ImageWidth * row2Images.length, 350, true);
+    // createSmoothAnimation(scrollX3, responsiveDims.row3ImageWidth * row3Images.length, 750, false);
 
   }, [responsiveDims]);
 
@@ -298,7 +299,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
 
   const CategoryButton = ({ category }: { category: typeof categories[0] }) => {
     const IconComponent = category.icon;
-    
+
     const handleCategoryPress = () => {
       switch (category.id) {
         case 'theme-parks':
@@ -335,7 +336,7 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
           console.log('Category selected:', category.id);
       }
     };
-    
+
     return (
       <TouchableOpacity
         style={[
@@ -344,9 +345,9 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
         onPress={handleCategoryPress}
         activeOpacity={0.7}>
         <View style={[styles.categoryContent, { paddingHorizontal: responsiveDims.categoryPadding, paddingVertical: responsiveDims.categoryPadding }]}>
-          <IconComponent 
-            size={Math.max(16, width * 0.04)} 
-            color="#ffffff" 
+          <IconComponent
+            size={Math.max(16, width * 0.04)}
+            color="#ffffff"
             style={styles.categoryIcon}
           />
           <Text
@@ -367,27 +368,27 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
   return (
     <View style={[styles.container, { height: responsiveDims.containerHeight }]}>
       <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-      
+
       {/* Exact gradient background matching website */}
       <LinearGradient
-        colors={['#f97316', '#14b8a6']} // from-orange-400 to-teal-400
+        colors={WhiteLabelConfig.hero.gradientColors} // from-orange-400 to-teal-400
         style={styles.gradientBackground}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
       />
-      
+
       {/* Three-row scrolling background with exact website structure */}
       <View style={styles.backgroundContainer}>
         {/* First Row - large flagship images */}
         <View style={[styles.backgroundRow, { height: responsiveDims.row1ImageHeight, marginBottom: responsiveDims.categoryGap * 2 }]}>
           {renderImageRow(row1Images, scrollX1, false, responsiveDims.row1ImageWidth, responsiveDims.row1ImageHeight)}
         </View>
-        
+
         {/* Second Row - medium-sized images */}
         <View style={[styles.backgroundRow, { height: responsiveDims.row2ImageHeight, marginBottom: responsiveDims.categoryGap * 2 }]}>
           {renderImageRow(row2Images, scrollX2, true, responsiveDims.row2ImageWidth, responsiveDims.row2ImageHeight)}
         </View>
-        
+
         {/* Third Row - smaller images */}
         <View style={[styles.backgroundRow, { height: responsiveDims.row3ImageHeight, marginBottom: responsiveDims.categoryGap * 2 }]}>
           {renderImageRow(row3Images, scrollX3, false, responsiveDims.row3ImageWidth, responsiveDims.row3ImageHeight)}
@@ -399,9 +400,9 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
         colors={['rgba(0,0,0,0.4)', 'rgba(0,0,0,0.3)', 'rgba(0,0,0,0.4)']}
         style={styles.overlay}
       />
-      
+
       <SafeAreaView style={[styles.content, { paddingHorizontal: responsiveDims.contentPadding }]}>
-        <Animated.View 
+        <Animated.View
           style={[
             styles.header,
             {
@@ -413,14 +414,14 @@ const Hero: React.FC<HeroProps> = ({ navigation }) => {
             }
           ]}>
           <View style={styles.titleContainer}>
-            <Text style={[styles.title, { fontSize: responsiveDims.titleFontSize }]}>Awesome Orlando Guide</Text>
+            <Text style={[styles.title, { fontSize: responsiveDims.titleFontSize }]}>{WhiteLabelConfig.appName + WhiteLabelConfig.hero.titleSuffix}</Text>
             <View style={styles.subtitleContainer}>
-              <Text style={[styles.subtitle, { fontSize: responsiveDims.subtitleFontSize }]}>Your complete resource for exploring Orlando</Text>
+              <Text style={[styles.subtitle, { fontSize: responsiveDims.subtitleFontSize }]}>{WhiteLabelConfig.tagline}</Text>
             </View>
           </View>
         </Animated.View>
 
-        <Animated.View 
+        <Animated.View
           style={[
             styles.categoriesWrapper,
             {
@@ -443,7 +444,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: 'relative',
-    backgroundColor: '#10B981',
+    backgroundColor: WhiteLabelConfig.hero.backgroundColor,
   },
   gradientBackground: {
     position: 'absolute',
@@ -570,7 +571,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     position: 'relative',
-    backgroundColor: '#0D9488',
+    backgroundColor: WhiteLabelConfig.hero.categoryColor,
     borderRadius: 999,
     borderWidth: 1,
     borderColor: '#ffffff',

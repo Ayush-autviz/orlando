@@ -12,12 +12,12 @@ import {
   Linking,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { 
-  ChevronLeft, 
+import {
+  ChevronLeft,
   ChevronRight,
-  MapPin, 
-  DollarSign, 
-  Clock, 
+  MapPin,
+  DollarSign,
+  Clock,
   ExternalLink,
   Phone,
   Globe,
@@ -29,13 +29,14 @@ import {
   Share2,
   Info,
 } from 'lucide-react-native';
-import { 
-  getRestaurantsByCategory, 
-  Restaurant, 
+import {
+  getRestaurantsByCategory,
+  Restaurant,
   RestaurantCategory,
   cuisineCategories
 } from '../data/restaurant';
 import Header from '../components/Header';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 interface RouteParams {
   categoryId: RestaurantCategory;
@@ -80,9 +81,9 @@ const DiningCategoryScreen: React.FC = () => {
 
   const handleShare = async (restaurant: Restaurant) => {
     const shareUrl = `https://www.awesomeorlando.com/dining/restaurant/${restaurant.id}`;
-    const shareTitle = `${restaurant.name} | Awesome Orlando ${restaurant.cuisine}`;
+    const shareTitle = `${restaurant.name} | ${WhiteLabelConfig.appName} ${restaurant.cuisine}`;
     const shareMessage = `Check out ${restaurant.name} in ${restaurant.neighborhood || 'Orlando'} - ${restaurant.shortDescription || restaurant.description.substring(0, 100)}... ${shareUrl}`;
-    
+
     try {
       await Share.share({
         message: shareMessage,
@@ -103,12 +104,12 @@ const DiningCategoryScreen: React.FC = () => {
     // For single image, just show the image
     if (images.length === 1) {
       return (
-        <Image 
-          source={images[0]} 
+        <Image
+          source={images[0]}
           style={[
             { width: '100%', height },
             { borderTopLeftRadius: 12, borderTopRightRadius: 12 }
-          ]} 
+          ]}
           resizeMode="cover"
         />
       );
@@ -151,16 +152,16 @@ const DiningCategoryScreen: React.FC = () => {
             }}
           >
             {images.map((image, index) => (
-              <View 
-                key={index} 
+              <View
+                key={index}
                 style={[
-                  styles.carouselImageContainer, 
+                  styles.carouselImageContainer,
                   { height }
                 ]}
               >
-                <Image 
-                  source={image} 
-                  style={styles.carouselImage} 
+                <Image
+                  source={image}
+                  style={styles.carouselImage}
                   resizeMode="cover"
                 />
               </View>
@@ -226,42 +227,42 @@ const DiningCategoryScreen: React.FC = () => {
         <View style={styles.imageSection}>
           {/* Image Carousel */}
           {renderImageCarousel(carouselImages, 192, restaurant.id)}
-          
+
           <View style={styles.cuisineBadge}>
             <Text style={styles.cuisineBadgeText}>{restaurant.cuisine}</Text>
           </View>
           {/* Share button in top-right */}
-          <TouchableOpacity 
-            style={styles.shareButton} 
+          <TouchableOpacity
+            style={styles.shareButton}
             onPress={() => handleShare(restaurant)}
           >
             <Share2 size={16} color="#374151" />
           </TouchableOpacity>
         </View>
-        
+
         {/* Content Section */}
         <View style={styles.contentSection}>
           <Text style={styles.restaurantName}>{restaurant.name}</Text>
-          
+
           <View style={styles.locationContainer}>
             <MapPin size={16} color="#6B7280" />
             <Text style={styles.neighborhoodText}>{restaurant.neighborhood}</Text>
           </View>
-          
+
           <Text style={styles.addressText}>{restaurant.address}</Text>
-          
-          <TouchableOpacity 
+
+          <TouchableOpacity
             style={styles.mapItButton}
             onPress={() => handleMapPress(restaurant.address)}
           >
             <MapPin size={12} color="#EA580C" />
             <Text style={styles.mapItText}>Map It</Text>
           </TouchableOpacity>
-          
+
           <Text style={styles.descriptionText}>
             {restaurant.shortDescription || restaurant.description.substring(0, 150) + '...'}
           </Text>
-          
+
           {/* Button Container */}
           <View style={styles.buttonContainer}>
             {/* Website Button */}
@@ -275,7 +276,7 @@ const DiningCategoryScreen: React.FC = () => {
                 {restaurant.website ? "Website" : "No Website"}
               </Text>
             </TouchableOpacity>
-            
+
             {/* Details Button */}
             <TouchableOpacity
               style={styles.detailsButton}

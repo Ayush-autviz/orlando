@@ -3,6 +3,7 @@ import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-n
 import { useNavigation } from '@react-navigation/native';
 import { Menu, ArrowRight } from 'lucide-react-native';
 import AnimatedGradientLogo from './AnimatedGradientLogo';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 interface HeaderProps {
   title?: string;
@@ -29,15 +30,15 @@ const Header: React.FC<HeaderProps> = ({ title, showDrawerButton = false }) => {
             onPress={handleDrawerPress}
             activeOpacity={0.7}
           >
-            <Menu size={24} color="#374151" />
+            <Menu size={24} color={WhiteLabelConfig.colors.text} />
           </TouchableOpacity>
         )}
-        
+
 
         <TouchableOpacity style={styles.logoContainer} onPress={handleLogoPress} activeOpacity={0.7}>
           {/* <AnimatedGradientLogo fontSize={20} width={91} /> */}
           {/* <TouchableOpacity style={{flex:1, alignItems: 'center', justifyContent: 'center'}} onPress={handleLogoPress} activeOpacity={0.7}> */}
-            <Image source={require('../../assets/icon/logo.png')} style={{width: showDrawerButton ? '65%' : '50%', height: 25, resizeMode: 'contain'}} resizeMode="contain" />
+          <Image source={WhiteLabelConfig.appLogo} style={{ width: showDrawerButton ? '65%' : '50%', height: 25, resizeMode: 'contain' }} resizeMode="contain" />
           {/* </TouchableOpacity> */}
         </TouchableOpacity>
 
@@ -52,9 +53,9 @@ const Header: React.FC<HeaderProps> = ({ title, showDrawerButton = false }) => {
 
 const styles = StyleSheet.create({
   safeArea: {
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.headerBackground,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: WhiteLabelConfig.colors.headerBorder,
   },
   header: {
     flexDirection: 'row',
@@ -62,12 +63,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 0,
     paddingBottom: 12,
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.headerBackground,
   },
   drawerButton: {
     padding: 8,
     borderRadius: 8,
-    backgroundColor: '#f3f4f6',
+    backgroundColor: WhiteLabelConfig.colors.drawerButtonBackground,
     marginRight: 12,
   },
   logoContainer: {

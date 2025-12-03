@@ -1,37 +1,38 @@
 import React from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TouchableOpacity, 
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
   ScrollView,
-  Linking 
+  Linking
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
-import { 
-  MapPin, 
-  Star, 
-  Utensils, 
-  Bed, 
-  ShoppingCart, 
-  Calendar, 
-  Beer, 
-  Flag, 
-  Leaf, 
+import {
+  MapPin,
+  Star,
+  Utensils,
+  Bed,
+  ShoppingCart,
+  Calendar,
+  Beer,
+  Flag,
+  Leaf,
   DoorOpen,
   Ticket,
   Info,
   Shield,
   FileText
 } from 'lucide-react-native';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 interface CustomFooterProps {
   navigation: any;
 }
 
 const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
-  
+
   const handleLinkPress = (route: string) => {
     switch (route) {
       case 'theme-parks':
@@ -75,7 +76,7 @@ const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
 
   const FooterLink = ({ title, route, icon }: { title: string; route: string; icon?: any }) => {
     const IconComponent = icon;
-    
+
     return (
       <TouchableOpacity
         style={styles.footerLink}
@@ -99,7 +100,7 @@ const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
             activeOpacity={0.8}
           >
             <LinearGradient
-              colors={['#2563eb', '#7c3aed']}
+              colors={WhiteLabelConfig.footer.gradientColors}
               style={styles.epicUniverseGradient}
               start={{ x: 0, y: 0 }}
               end={{ x: 1, y: 0 }}
@@ -112,9 +113,9 @@ const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
                 justifyContent: 'center',
                 gap: 1,
               }}>
-              <Text style={styles.epicUniverseIcon}>✨</Text>
-              <Text style={styles.epicUniverseText}>Epic Universe Rides Guide</Text>
-              <Text style={styles.epicUniverseIcon}>✨</Text>
+                <Text style={styles.epicUniverseIcon}>✨</Text>
+                <Text style={styles.epicUniverseText}>Epic Universe Rides Guide</Text>
+                <Text style={styles.epicUniverseIcon}>✨</Text>
               </View>
             </LinearGradient>
           </TouchableOpacity>
@@ -124,7 +125,7 @@ const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
         {/* <View style={styles.mainContent}>
           
           <View style={styles.brandSection}>
-            <Text style={styles.brandTitle}>Awesome Orlando</Text>
+            <Text style={styles.brandTitle}>{WhiteLabelConfig.appName}</Text>
             <Text style={styles.brandDescription}>
               Your comprehensive guide to Orlando.
             </Text>
@@ -158,7 +159,7 @@ const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
         {/* Copyright Section */}
         {/* <View style={styles.copyrightSection}>
           <Text style={styles.copyrightText}>
-            © {new Date().getFullYear()} Awesome Orlando. All rights reserved.
+            © {new Date().getFullYear()} {WhiteLabelConfig.appName}. All rights reserved.
           </Text>
         </View> */}
       </View>
@@ -168,7 +169,7 @@ const CustomFooter: React.FC<CustomFooterProps> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f8fafc', // bg-muted equivalent
+    backgroundColor: WhiteLabelConfig.footer.backgroundColor, // bg-muted equivalent
   },
   footer: {
     borderTopWidth: 1,

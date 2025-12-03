@@ -11,6 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { BallIndicator } from 'react-native-indicators';
 // import { useNavigation } from '@react-navigation/native'; // Not needed for overlay approach
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width, height } = Dimensions.get('window');
 
@@ -300,7 +301,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete, fadeOu
 
   return (
     <Animated.View style={[styles.overlayContainer, { opacity: overlayOpacity }]}>
-      <StatusBar barStyle="light-content" backgroundColor="#1a1a2e" />
+      <StatusBar barStyle="light-content" backgroundColor={WhiteLabelConfig.colors.primary} />
 
       {/* Elegant gradient background */}
       <View style={styles.gradientBackground} />
@@ -374,7 +375,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete, fadeOu
             ]}
           >
             <Image
-              source={require('../../assets/icon/logo.png')}
+              source={WhiteLabelConfig.appLogo}
               style={styles.logo}
               resizeMode="contain"
               onLoad={() => console.log('✅ Logo image loaded')}
@@ -403,18 +404,18 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete, fadeOu
 
 const styles = StyleSheet.create({
   overlayContainer: {
-    flex:1,
+    flex: 1,
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
     zIndex: 9999, // Ensure it's on top of everything
-    backgroundColor: '#1a1a2e',
+    backgroundColor: WhiteLabelConfig.colors.primary,
   },
   container: {
     flex: 1,
-    backgroundColor: '#1a1a2e',
+    backgroundColor: WhiteLabelConfig.colors.primary,
   },
   gradientBackground: {
     position: 'absolute',
@@ -422,7 +423,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
+    backgroundColor: WhiteLabelConfig.colors.primary,
     opacity: 0.9,
   },
   content: {
@@ -440,7 +441,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: 30,
-    shadowColor: '#00d4ff',
+    shadowColor: WhiteLabelConfig.colors.accent,
     shadowOffset: {
       width: 0,
       height: 0,
@@ -504,7 +505,7 @@ const styles = StyleSheet.create({
     top: '60%',
     right: '25%',
     fontSize: 32,
-    color: 'rgba(0, 212, 255, 0.12)',
+    color: WhiteLabelConfig.colors.accent,
   },
   starEmoji3: {
     position: 'absolute',
@@ -518,7 +519,7 @@ const styles = StyleSheet.create({
     top: '40%',
     left: '10%',
     fontSize: 38,
-    color: 'rgba(0, 212, 255, 0.08)',
+    color: WhiteLabelConfig.colors.accent,
   },
   castleEmoji2: {
     position: 'absolute',

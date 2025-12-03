@@ -9,8 +9,9 @@ import {
   Linking,
   Share,
 } from 'react-native';
-import { MapPin, ExternalLink, Globe, Hotel as HotelIcon, Share2 , Info} from 'lucide-react-native';
+import { MapPin, ExternalLink, Globe, Hotel as HotelIcon, Share2, Info } from 'lucide-react-native';
 import { Hotel } from '../types/Hotel';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width } = Dimensions.get('window');
 const cardWidth = (width - 48) / 2; // 2 columns with padding
@@ -22,11 +23,11 @@ interface HotelCardProps {
   fullWidth?: boolean;
 }
 
-const HotelCard: React.FC<HotelCardProps> = ({ 
-  hotel, 
-  onPress, 
+const HotelCard: React.FC<HotelCardProps> = ({
+  hotel,
+  onPress,
   onWebsitePress,
-  fullWidth = false 
+  fullWidth = false
 }) => {
   const getSubcategoryLabel = (subcategory: string): string => {
     switch (subcategory) {
@@ -84,16 +85,15 @@ const HotelCard: React.FC<HotelCardProps> = ({
 
   const handleShare = async (e: any) => {
     e.stopPropagation();
-    
+
     const shareUrl = `https://www.awesomeorlando.com/hotel/${hotel.id}`;
-    const shareTitle = `${hotel.name} | Awesome Orlando ${
-      hotel.subcategory === 'luxury' ? 'Luxury Hotel' : 
-      hotel.subcategory === 'theme-park' ? 'Theme Park Hotel' : 
-      hotel.subcategory === 'budget-friendly' ? 'Budget-Friendly Hotel' : 
-      'Orlando Hotel'
-    }`;
+    const shareTitle = `${hotel.name} | ${WhiteLabelConfig.appName} ${hotel.subcategory === 'luxury' ? 'Luxury Hotel' :
+        hotel.subcategory === 'theme-park' ? 'Theme Park Hotel' :
+          hotel.subcategory === 'budget-friendly' ? 'Budget-Friendly Hotel' :
+            'Orlando Hotel'
+      }`;
     const shareMessage = `Check out this amazing ${hotel.subcategory?.replace('-', ' ') || ''} hotel in ${hotel.neighborhood || 'Orlando'} - ${hotel.description?.substring(0, 100)}... ${shareUrl}`;
-    
+
     try {
       await Share.share({
         message: shareMessage,
@@ -107,7 +107,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
 
   // Default image for hotels without images
   const defaultImage = require('../../assets/images/DisneySprings.jpg');
-  
+
   return (
     <TouchableOpacity
       style={[
@@ -134,7 +134,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
             <HotelIcon size={64} color="#9ca3af" />
           </View>
         )}
-        
+
         {/* Category Badge in top-left */}
         <View style={[styles.categoryBadge, { backgroundColor: getSubcategoryColor(hotel.subcategory) }]}>
           <Text style={styles.categoryText}>
@@ -169,7 +169,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
           <MapPin size={12} color="#3b82f6" />
           <Text style={styles.mapLinkText}>Map It</Text>
         </TouchableOpacity>
-        
+
         <Text style={styles.description} numberOfLines={3}>
           {hotel.description || "Experience the ultimate Orlando vacation at this exceptional accommodation."}
         </Text>
@@ -198,7 +198,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
           ) : (
             <View />
           )}
-          
+
           <TouchableOpacity style={styles.detailsButton} onPress={handlePress}>
             <Info size={14} color="#000" />
             <Text style={styles.detailsButtonText}>Details</Text>
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 6,
-   // backgroundColor: '#ff5500', // var(--orlando-orange) from web CSS
+    // backgroundColor: '#ff5500', // var(--orlando-orange) from web CSS
   },
   websiteButtonText: {
     fontSize: 12,

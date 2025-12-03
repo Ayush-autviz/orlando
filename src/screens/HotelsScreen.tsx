@@ -16,6 +16,7 @@ import { getAllHotels, getHotelsBySubcategory, getFeaturedHotels } from '../data
 import HotelCard from '../components/HotelCard';
 import HotelDetailModal from '../components/HotelDetailModal';
 import Header from '../components/Header';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width } = Dimensions.get('window');
 
@@ -57,11 +58,11 @@ const locationMap: { [key: string]: string[] } = {
 // Helper functions to match web version logic exactly
 const isUniversalHotel = (hotel: Hotel): boolean => {
   return hotel.name.includes("Universal") ||
-         hotel.name.includes("Loews") ||
-         hotel.name.includes("Hard Rock") ||
-         !!(hotel.website && hotel.website.includes("universal")) ||
-         !!(hotel.tags && hotel.tags.some(tag =>
-           tag.includes("Universal") || tag.includes("Epic Universe")));
+    hotel.name.includes("Loews") ||
+    hotel.name.includes("Hard Rock") ||
+    !!(hotel.website && hotel.website.includes("universal")) ||
+    !!(hotel.tags && hotel.tags.some(tag =>
+      tag.includes("Universal") || tag.includes("Epic Universe")));
 };
 
 const HotelsScreen: React.FC = () => {
@@ -78,27 +79,27 @@ const HotelsScreen: React.FC = () => {
     const allHotels = getAllHotels();
     setHotels(allHotels);
     console.log("Total hotels loaded:", allHotels.length);
-    
+
     // Debug: Check for data mismatches
     console.log("=== HOTEL DATA DEBUG ===");
     const featuredHotels = getFeaturedHotels();
     console.log("Featured luxury hotels:", featuredHotels.luxury?.length || 0);
     console.log("Featured luxury hotel names:", featuredHotels.luxury?.map(h => h.name) || []);
-    
+
     // Check for specific hotels that might be missing
     const jwMarriott = allHotels.find(h => h.name.includes("JW Marriott"));
     const fourSeasons = allHotels.find(h => h.name.includes("Four Seasons"));
     const grandFloridian = allHotels.find(h => h.name.includes("Grand Floridian"));
-    
+
     console.log("JW Marriott found:", !!jwMarriott, jwMarriott?.name);
     console.log("Four Seasons found:", !!fourSeasons, fourSeasons?.name);
     console.log("Grand Floridian found:", !!grandFloridian, grandFloridian?.name);
-    
+
     // Check categories
     const luxury = getHotelsBySubcategory('luxury');
     const themePark = getHotelsBySubcategory('theme-park');
     const budget = getHotelsBySubcategory('budget-friendly');
-    
+
     console.log("Luxury hotels count:", luxury.length);
     console.log("Theme park hotels count:", themePark.length);
     console.log("Budget hotels count:", budget.length);
@@ -112,17 +113,17 @@ const HotelsScreen: React.FC = () => {
     if (selectedFilter === 'all') {
       filtered = hotels;
       console.log("Showing all hotels:", filtered.length);
-    } 
+    }
     else if (selectedFilter === 'by-location') {
       // Filter hotels to those matching any of our mapped neighborhoods
       filtered = hotels.filter(hotel => {
         if (!hotel.neighborhood) return false;
-        
+
         // Check if hotel's neighborhood is in any of our mapped locations
-        const matchesLocation = Object.values(locationMap).some(neighborhoods => 
+        const matchesLocation = Object.values(locationMap).some(neighborhoods =>
           neighborhoods.some(n => hotel.neighborhood && hotel.neighborhood.toLowerCase().includes(n.toLowerCase()))
         );
-        
+
         return matchesLocation;
       });
       console.log("Filtered by location:", filtered.length, "hotels");
@@ -138,71 +139,71 @@ const HotelsScreen: React.FC = () => {
       console.log("Applying location filter:", selectedLocation);
       filtered = filtered.filter(hotel => {
         if (!hotel.neighborhood) return false;
-        
+
         // If this is a Universal hotel and we're NOT filtering by Universal Area, exclude it
         if (isUniversalHotel(hotel) && selectedLocation !== "Universal Area") {
           console.log("Excluding Universal hotel from non-Universal area:", hotel.name);
           return false;
         }
-        
+
         // Special case for Universal properties - handle all Universal-related hotels
         if (selectedLocation === "Universal Area" && isUniversalHotel(hotel)) {
           console.log("Match found for", hotel.name, "in", selectedLocation);
           return true;
         }
-        
+
         // Get the neighborhoods for the selected location
         const neighborhoods = locationMap[selectedLocation as keyof typeof locationMap] || [];
-        
+
         // Check if hotel's neighborhood matches any in the list
-        const matchesByNeighborhood = neighborhoods.some(n => 
+        const matchesByNeighborhood = neighborhoods.some(n =>
           hotel.neighborhood.toLowerCase().includes(n.toLowerCase())
         );
-        
+
         // Special case for Disney Area (which now includes Kissimmee) - check name, website and tags
-        if (selectedLocation === "Disney Area" && 
-            (hotel.name.includes("Disney") || 
-             (hotel.website && hotel.website.includes("disney")) ||
-             (hotel.neighborhood && (
-               hotel.neighborhood.includes("Lake Buena Vista") || 
-               hotel.neighborhood.includes("Kissimmee") ||
-               hotel.neighborhood.includes("Celebration")
-             ))
-            )) {
+        if (selectedLocation === "Disney Area" &&
+          (hotel.name.includes("Disney") ||
+            (hotel.website && hotel.website.includes("disney")) ||
+            (hotel.neighborhood && (
+              hotel.neighborhood.includes("Lake Buena Vista") ||
+              hotel.neighborhood.includes("Kissimmee") ||
+              hotel.neighborhood.includes("Celebration")
+            ))
+          )) {
           console.log("Match found for", hotel.name, "in", selectedLocation);
           return true;
         }
-        
+
         // Also check tags for matches
         const matchesByTag = hotel.tags && hotel.tags.some(tag => {
-          if (selectedLocation === "Disney Area" && 
-              (tag.includes("Disney") || 
-               tag.includes("Walt Disney World") || 
-               tag.includes("Kissimmee") || 
-               tag.includes("Celebration"))) {
+          if (selectedLocation === "Disney Area" &&
+            (tag.includes("Disney") ||
+              tag.includes("Walt Disney World") ||
+              tag.includes("Kissimmee") ||
+              tag.includes("Celebration"))) {
             return true;
           }
-          if (selectedLocation === "Universal Area" && 
-              (tag.includes("Universal") || tag.includes("Universal Orlando"))) {
+          if (selectedLocation === "Universal Area" &&
+            (tag.includes("Universal") || tag.includes("Universal Orlando"))) {
             return true;
           }
-          if (selectedLocation === "SeaWorld Area" && 
-              (tag.includes("SeaWorld") || tag.includes("Sea World"))) {
+          if (selectedLocation === "SeaWorld Area" &&
+            (tag.includes("SeaWorld") || tag.includes("Sea World"))) {
             return true;
           }
           return false;
         });
-        
+
         const matches = matchesByNeighborhood || matchesByTag;
-        
+
         if (matches) {
           console.log("Match found for", hotel.name, "in", selectedLocation);
         }
-        
+
         return matches;
       });
     }
-    
+
     setFilteredHotels(filtered);
   }, [selectedFilter, hotels, selectedLocation]);
 
@@ -216,7 +217,7 @@ const HotelsScreen: React.FC = () => {
     if (selectedFilter !== "by-location") {
       setSelectedFilter("by-location");
     }
-    
+
     // Set the active filter directly (without toggling)
     setSelectedLocation(location);
   };
@@ -242,7 +243,7 @@ const HotelsScreen: React.FC = () => {
 
   // Get featured hotels for display on the main page
   const featuredHotelsMap = getFeaturedHotels();
-  
+
   // Get featured locations (display names)
   const featuredLocations = Object.keys(locationMap);
 
@@ -271,7 +272,7 @@ const HotelsScreen: React.FC = () => {
         >
           <Text style={styles.heroTitle}>AWESOME ACCOMMODATIONS</Text>
           <Text style={styles.heroSubtitle}>Find Your Perfect Orlando Vacation Stay</Text>
-          
+
           {/* Quick Jump Categories - Enhanced Buttons */}
           <View style={styles.quickJumpContainer}>
             {hotelFilters.slice(1).map((filter) => (
@@ -328,14 +329,14 @@ const HotelsScreen: React.FC = () => {
             <Text style={styles.categoryTitle}>
               {selectedFilter.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())} Hotels & Accommodations
             </Text>
-            
+
             {/* Location filters for Hotels by Location page */}
             {selectedFilter === 'by-location' && (
               <View style={styles.locationFilterContainer}>
                 <View style={styles.locationFilterHeader}>
                   <Text style={styles.locationFilterTitle}>Filter by Location</Text>
                   {selectedLocation && (
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.clearButton}
                       onPress={() => setSelectedLocation(null)}
                     >
@@ -354,34 +355,34 @@ const HotelsScreen: React.FC = () => {
                     // Customize colors based on location theme - match web exactly
                     let chipStyle = styles.locationChip;
                     let textStyle = styles.locationChipText;
-                    
+
                     if (selectedLocation === location) {
                       if (location === "Disney Area") {
-                        chipStyle = {...styles.locationChip, ...styles.locationChipActiveOrange};
-                        textStyle = {...styles.locationChipText, ...styles.locationChipTextActiveOrange};
+                        chipStyle = { ...styles.locationChip, ...styles.locationChipActiveOrange };
+                        textStyle = { ...styles.locationChipText, ...styles.locationChipTextActiveOrange };
                       } else if (location === "Universal Area") {
-                        chipStyle = {...styles.locationChip, ...styles.locationChipActiveBlue};
-                        textStyle = {...styles.locationChipText, ...styles.locationChipTextActiveBlue};
+                        chipStyle = { ...styles.locationChip, ...styles.locationChipActiveBlue };
+                        textStyle = { ...styles.locationChipText, ...styles.locationChipTextActiveBlue };
                       } else if (location === "SeaWorld Area") {
-                        chipStyle = {...styles.locationChip, ...styles.locationChipActiveTeal};
-                        textStyle = {...styles.locationChipText, ...styles.locationChipTextActiveTeal};
+                        chipStyle = { ...styles.locationChip, ...styles.locationChipActiveTeal };
+                        textStyle = { ...styles.locationChipText, ...styles.locationChipTextActiveTeal };
                       } else {
-                        chipStyle = {...styles.locationChip, ...styles.locationChipActivePrimary};
-                        textStyle = {...styles.locationChipText, ...styles.locationChipTextActivePrimary};
+                        chipStyle = { ...styles.locationChip, ...styles.locationChipActivePrimary };
+                        textStyle = { ...styles.locationChipText, ...styles.locationChipTextActivePrimary };
                       }
                     } else {
                       if (location === "Disney Area") {
-                        chipStyle = {...styles.locationChip, ...styles.locationChipOrange};
-                        textStyle = {...styles.locationChipText, ...styles.locationChipTextOrange};
+                        chipStyle = { ...styles.locationChip, ...styles.locationChipOrange };
+                        textStyle = { ...styles.locationChipText, ...styles.locationChipTextOrange };
                       } else if (location === "Universal Area") {
-                        chipStyle = {...styles.locationChip, ...styles.locationChipBlue};
-                        textStyle = {...styles.locationChipText, ...styles.locationChipTextBlue};
+                        chipStyle = { ...styles.locationChip, ...styles.locationChipBlue };
+                        textStyle = { ...styles.locationChipText, ...styles.locationChipTextBlue };
                       } else if (location === "SeaWorld Area") {
-                        chipStyle = {...styles.locationChip, ...styles.locationChipTeal};
-                        textStyle = {...styles.locationChipText, ...styles.locationChipTextTeal};
+                        chipStyle = { ...styles.locationChip, ...styles.locationChipTeal };
+                        textStyle = { ...styles.locationChipText, ...styles.locationChipTextTeal };
                       }
                     }
-                    
+
                     return (
                       <TouchableOpacity
                         key={location}
@@ -399,11 +400,11 @@ const HotelsScreen: React.FC = () => {
                     );
                   })}
                 </ScrollView>
-                
+
                 <Text style={styles.locationFilterSubtext}>Filter hotels by area</Text>
               </View>
             )}
-            
+
             {/* Results Count */}
             <Text style={styles.resultsText}>
               Showing {filteredHotels.length} {filteredHotels.length === 1 ? 'accommodation' : 'accommodations'}
@@ -440,7 +441,7 @@ const HotelsScreen: React.FC = () => {
                   <Text style={styles.sectionTitle}>Premier Resorts</Text>
                   <Text style={styles.sectionSubtitle}>Amazing accommodations with exceptional amenities and service</Text>
                 </View>
-                <TouchableOpacity 
+                <TouchableOpacity
                   style={styles.viewAllButton}
                   onPress={() => handleFilterPress('luxury')}
                 >
@@ -465,7 +466,7 @@ const HotelsScreen: React.FC = () => {
                   <Text style={styles.sectionTitle}>Perfect Locations</Text>
                   <Text style={styles.sectionSubtitle}>Find the ideal spot for your Orlando vacation adventures</Text>
                 </View>
-                <TouchableOpacity 
+                <TouchableOpacity
                   style={styles.viewAllButton}
                   onPress={() => handleFilterPress('by-location')}
                 >
@@ -475,14 +476,14 @@ const HotelsScreen: React.FC = () => {
 
               <FlatList
                 data={hotels
-                  .filter(hotel => 
-                    hotel.neighborhood && 
+                  .filter(hotel =>
+                    hotel.neighborhood &&
                     // Map our featured locations to actual neighborhoods in the data
-                    (hotel.neighborhood.includes("Disney") || 
-                     hotel.neighborhood.includes("Universal") ||
-                     hotel.neighborhood === "International Drive" ||
-                     hotel.neighborhood === "Kissimmee" ||
-                     hotel.neighborhood === "Downtown Orlando")
+                    (hotel.neighborhood.includes("Disney") ||
+                      hotel.neighborhood.includes("Universal") ||
+                      hotel.neighborhood === "International Drive" ||
+                      hotel.neighborhood === "Kissimmee" ||
+                      hotel.neighborhood === "Downtown Orlando")
                   )
                   .slice(0, 6)}
                 renderItem={renderHotelCard}
@@ -495,15 +496,15 @@ const HotelsScreen: React.FC = () => {
 
             {/* SEO-FOCUSED CONTENT */}
             <View style={styles.seoContent}>
-              <Text style={styles.seoTitle}>Awesome Orlando Hotel Tips</Text>
+              <Text style={styles.seoTitle}>{WhiteLabelConfig.appName} Hotel Tips</Text>
               <Text style={styles.seoText}>
-                Finding the right place to stay can make your Orlando vacation even more amazing! With so many 
-                awesome options from theme park resorts to comfy budget stays, Orlando has perfect accommodations 
+                Finding the right place to stay can make your Orlando vacation even more amazing! With so many
+                awesome options from theme park resorts to comfy budget stays, Orlando has perfect accommodations
                 for every type of vacation.
               </Text>
               <Text style={styles.seoText}>
-                The main things to think about are location, fun amenities, and special perks. Hotels at theme parks 
-                often give you earlier access and free transportation, while staying on International Drive puts you 
+                The main things to think about are location, fun amenities, and special perks. Hotels at theme parks
+                often give you earlier access and free transportation, while staying on International Drive puts you
                 close to restaurants, shopping, and lots of attractions.
               </Text>
             </View>
@@ -530,7 +531,7 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
   },
-  
+
   // Hero Banner Styles - Match web exactly
   heroBanner: {
     // paddingVertical: 20,
@@ -578,7 +579,7 @@ const styles = StyleSheet.create({
   quickJumpButtonTextActive: {
     color: '#3b82f6', // Blue-600
   },
-  
+
   // Filter Tabs - Match web blue theme
   filterScrollView: {
     marginBottom: 16,
@@ -606,7 +607,7 @@ const styles = StyleSheet.create({
   filterTabTextActive: {
     color: '#ffffff',
   },
-  
+
   // Category Header
   categoryHeader: {
     backgroundColor: '#f9fafb',
@@ -625,7 +626,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     textTransform: 'capitalize',
   },
-  
+
   // Location Filter Styles - Match web colors exactly
   locationFilterContainer: {
     marginBottom: 16,
@@ -666,7 +667,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: '#6b7280',
   },
-  
+
   // Disney Area Colors
   locationChipOrange: {
     backgroundColor: 'rgba(255, 237, 213, 0.4)',
@@ -683,7 +684,7 @@ const styles = StyleSheet.create({
   locationChipTextActiveOrange: {
     color: '#c2410c',
   },
-  
+
   // Universal Area Colors
   locationChipBlue: {
     backgroundColor: 'rgba(219, 234, 254, 0.4)',
@@ -700,7 +701,7 @@ const styles = StyleSheet.create({
   locationChipTextActiveBlue: {
     color: '#1d4ed8',
   },
-  
+
   // SeaWorld Area Colors
   locationChipTeal: {
     backgroundColor: 'rgba(204, 251, 241, 0.4)',
@@ -717,7 +718,7 @@ const styles = StyleSheet.create({
   locationChipTextActiveTeal: {
     color: '#0f766e',
   },
-  
+
   // Default Primary Colors
   locationChipActivePrimary: {
     backgroundColor: '#dbeafe',
@@ -727,21 +728,21 @@ const styles = StyleSheet.create({
   locationChipTextActivePrimary: {
     color: '#1d4ed8',
   },
-  
+
   locationFilterSubtext: {
     fontSize: 12,
     color: '#6b7280',
     fontStyle: 'italic',
     marginTop: 8,
   },
-  
+
   resultsText: {
     fontSize: 14,
     color: '#6b7280',
     fontWeight: '500',
     marginTop: 8,
   },
-  
+
   // Hotels Container - SINGLE COLUMN
   hotelsContainer: {
     paddingHorizontal: 20,
@@ -767,7 +768,7 @@ const styles = StyleSheet.create({
     color: '#6b7280',
     fontSize: 16,
   },
-  
+
   // Main Content (All Hotels page)
   mainContent: {
     paddingHorizontal: 16,
@@ -805,7 +806,7 @@ const styles = StyleSheet.create({
     color: '#374151',
     fontWeight: '500',
   },
-  
+
   // SEO Content
   seoContent: {
     backgroundColor: '#eff6ff', // Blue-50

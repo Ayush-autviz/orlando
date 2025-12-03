@@ -27,6 +27,7 @@ import {
   Share2,
 } from 'lucide-react-native';
 import { Hotel } from '../types/Hotel';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width, height } = Dimensions.get('window');
 
@@ -116,14 +117,13 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
 
   const handleShare = async () => {
     const shareUrl = `https://www.awesomeorlando.com/hotel/${hotel.id}`;
-    const shareTitle = `${hotel.name} | Awesome Orlando ${
-      hotel.subcategory === 'luxury' ? 'Luxury Hotel' : 
-      hotel.subcategory === 'theme-park' ? 'Theme Park Hotel' : 
-      hotel.subcategory === 'budget-friendly' ? 'Budget-Friendly Hotel' : 
-      'Orlando Hotel'
-    }`;
+    const shareTitle = `${hotel.name} | ${WhiteLabelConfig.appName} ${hotel.subcategory === 'luxury' ? 'Luxury Hotel' :
+        hotel.subcategory === 'theme-park' ? 'Theme Park Hotel' :
+          hotel.subcategory === 'budget-friendly' ? 'Budget-Friendly Hotel' :
+            'Orlando Hotel'
+      }`;
     const shareMessage = `Check out this amazing ${hotel.subcategory?.replace('-', ' ') || ''} hotel in ${hotel.neighborhood || 'Orlando'} - ${hotel.description?.substring(0, 100)}... ${shareUrl}`;
-    
+
     try {
       await Share.share({
         message: shareMessage,
@@ -177,7 +177,7 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
                 <HotelIcon size={80} color="#9ca3af" />
               </View>
             )}
-            
+
             {/* Category Badge */}
             <View style={[styles.categoryBadge, { backgroundColor: getSubcategoryColor(hotel.subcategory) }]}>
               <Text style={styles.categoryText}>
@@ -199,7 +199,7 @@ const HotelDetailModal: React.FC<HotelDetailModalProps> = ({
             {/* Hotel Name and Location */}
             <View style={styles.titleSection}>
               <Text style={styles.hotelName}>{hotel.name}</Text>
-              
+
               {/* Map It link */}
               <TouchableOpacity style={styles.mapLink} onPress={handleMapPress}>
                 <MapPin size={16} color="#3b82f6" />

@@ -24,6 +24,7 @@ import {
 } from 'lucide-react-native';
 import Header from '../components/Header';
 import { getImageSource } from '../data/imageMap';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 export interface Attraction {
   id: number;
@@ -86,7 +87,7 @@ export const getAttractionById = (id: number): Attraction | undefined => {
 };
 
 export const getAttractionByName = (name: string): Attraction | undefined => {
-  return attractionsData.find(attraction => 
+  return attractionsData.find(attraction =>
     attraction.name.toLowerCase() === name.toLowerCase()
   );
 };
@@ -108,11 +109,11 @@ const AttractionsScreen: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('Unique Attractions');
 
   const [filteredAttractions, setFilteredAttractions] = useState<Attraction[]>([]);
-  
+
   // Animation for blinking dot
   const pingAnimation = useRef(new Animated.Value(1)).current;
 
-  console.log(filteredAttractions,'filetered attrctions')
+  console.log(filteredAttractions, 'filetered attrctions')
 
   useEffect(() => {
     setFilteredAttractions(getAttractionsByCategory(selectedCategory));
@@ -148,9 +149,9 @@ const AttractionsScreen: React.FC = () => {
 
   const handleShare = async (attraction: Attraction) => {
     const shareUrl = `https://www.awesomeorlando.com/attraction/${encodeURIComponent(attraction.name)}`;
-    const shareTitle = `${attraction.name} | Awesome Orlando ${attraction.category}`;
+    const shareTitle = `${attraction.name} | ${WhiteLabelConfig.appName} ${attraction.category}`;
     const shareMessage = `Check out ${attraction.name} in ${attraction.neighborhood || 'Orlando'} - ${attraction.description.substring(0, 100)}... ${shareUrl}`;
-    
+
     try {
       await Share.share({
         message: shareMessage,
@@ -205,15 +206,15 @@ const AttractionsScreen: React.FC = () => {
           style={styles.cardImage}
           resizeMode="cover"
         />
-        
+
         {/* Share button in top-right */}
-        <TouchableOpacity 
-          style={styles.shareButton} 
+        <TouchableOpacity
+          style={styles.shareButton}
           onPress={() => handleShare(attraction)}
         >
           <Share2 size={16} color="#374151" />
         </TouchableOpacity>
-        
+
         {/* Gradient overlay */}
         <View style={styles.cardImageOverlay}>
           <View style={styles.cardImageContent}>
@@ -234,7 +235,7 @@ const AttractionsScreen: React.FC = () => {
             <Text style={styles.locationText}>{attraction.neighborhood || "Orlando"}</Text>
           </View>
         </View>
-        
+
         {/* Map It link - color varies based on category for better visibility */}
         <View style={styles.mapItContainer}>
           <TouchableOpacity
@@ -249,13 +250,13 @@ const AttractionsScreen: React.FC = () => {
             <Text style={[styles.mapItText, { color: getMapItColor(attraction.category) }]}>Map It</Text>
           </TouchableOpacity>
         </View>
-        
+
         {/* Description */}
         <Text style={styles.cardDescription} numberOfLines={4}>
           {attraction.description}
         </Text>
       </View>
-      
+
       {/* Website and Details Buttons */}
       <View style={styles.cardFooter}>
         {attraction.link ? (
@@ -334,7 +335,7 @@ const AttractionsScreen: React.FC = () => {
         <View style={styles.heroSection}>
           {/* Decorative background pattern */}
           <View style={styles.heroBackgroundPattern} />
-          
+
           <View style={styles.heroContent}>
             {/* Title with decorative element */}
             <View style={styles.heroTitleContainer}>
@@ -344,7 +345,7 @@ const AttractionsScreen: React.FC = () => {
                 </Text>
               </View>
               {/* Animated blinking dot */}
-              <Animated.View 
+              <Animated.View
                 style={[
                   styles.heroTitleDecoration,
                   {
@@ -354,16 +355,16 @@ const AttractionsScreen: React.FC = () => {
                       outputRange: [0.8, 0],
                     }),
                   }
-                ]} 
+                ]}
               />
             </View>
-            
+
             {/* Content area */}
             <View style={styles.heroContentArea}>
               <Text style={styles.heroDescription}>
                 Discover Orlando's unique attractions beyond the major theme parks.
               </Text>
-              
+
               <View style={styles.heroTags}>
                 <View style={styles.heroTag}>
                   <MapPin size={12} color="#ffffff" />
@@ -390,7 +391,7 @@ const AttractionsScreen: React.FC = () => {
               Browse <Text style={styles.categoryCounterBold}>{totalAttractionsCount}</Text> Orlando attractions
             </Text>
           </View>
-          
+
           {/* Category filter buttons */}
           <View style={styles.categoryFiltersWrapper}>
             <View style={styles.categoryFiltersContent}>
@@ -513,7 +514,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
     gap: 6,
-   // paddingHorizontal: 8,
+    // paddingHorizontal: 8,
   },
   heroTag: {
     backgroundColor: 'rgba(255, 255, 255, 0.2)',
@@ -550,7 +551,7 @@ const styles = StyleSheet.create({
   },
   categoryFiltersWrapper: {
     alignItems: 'center',
-    marginHorizontal:5
+    marginHorizontal: 5
   },
   categoryFiltersContent: {
     flexDirection: 'row',

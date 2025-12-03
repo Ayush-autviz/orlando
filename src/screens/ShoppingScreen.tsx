@@ -12,12 +12,13 @@ import {
   Alert,
   Linking,
   ImageBackground,
-} from 'react-native';  
+} from 'react-native';
 import { MapPin, ExternalLink, ChevronRight, ShoppingBag, Store, Coffee, Share2 } from 'lucide-react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Svg, { Path } from 'react-native-svg';
 import Header from '../components/Header';
 import { shoppingMalls, ShoppingMall } from '../data/shoppingmalldata';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width } = Dimensions.get('window');
 
@@ -33,9 +34,9 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
   };
 
   const handleWebsitePress = (url: string) => {
-    navigation.navigate('WebView', { 
-      url: url, 
-      title: 'Official Website' 
+    navigation.navigate('WebView', {
+      url: url,
+      title: 'Official Website'
     });
   };
 
@@ -48,7 +49,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
   const handleShare = async (mall: ShoppingMall) => {
     try {
       const shareUrl = `https://www.awesomeorlando.com/shopping/${mall.id}`;
-      const shareTitle = `${mall.name} | Awesome Orlando Shopping`;
+      const shareTitle = `${mall.name} | ${WhiteLabelConfig.appName} Shopping`;
       const shareMessage = `Check out ${mall.name} in ${mall.location.neighborhood} - ${mall.shortDescription} ${shareUrl}`;
 
       await Share.share({
@@ -67,7 +68,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
       <View style={styles.imageSection}>
         <Image source={mall.heroImage} style={styles.mallImage} />
         <View style={styles.imageOverlay} />
-        
+
         {/* Badges */}
         <View style={styles.badgeContainer}>
           <View style={styles.storeBadge}>
@@ -95,7 +96,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
         <Text style={styles.mallDescription}>
           {mall.shortDescription}
         </Text>
-        
+
         {/* Store Mix and Dining Grid */}
         <View style={styles.infoGrid}>
           <View style={styles.infoItem}>
@@ -107,7 +108,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
               </Text>
             </View>
           </View>
-          
+
           <View style={styles.infoItem}>
             <Coffee size={20} color="#9CA3AF" />
             <View style={styles.infoContent}>
@@ -118,13 +119,13 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
             </View>
           </View>
         </View>
-        
+
         {/* Location with Map It */}
         <View style={styles.locationContainer}>
           <MapPin size={16} color="#9CA3AF" />
           <View style={styles.locationContent}>
             <Text style={styles.locationText} numberOfLines={1}>{mall.location.address}</Text>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.mapItButton}
               onPress={() => handleMapPress(mall.location.address)}
             >
@@ -143,7 +144,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
           <Text style={styles.exploreButtonText}>Explore Details</Text>
           <ChevronRight size={16} color="#FFFFFF" />
         </TouchableOpacity>
-        
+
         <TouchableOpacity
           style={styles.websiteLink}
           onPress={() => handleWebsitePress(mall.contactInfo.website)}
@@ -173,17 +174,17 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
             style={styles.heroImageBackground}
             resizeMode="cover"
           >
-          <View style={styles.heroContent}>
-            <View style={styles.heroTitleContainer}>
-              <View style={styles.heroTitleGlow} />
-              <Text style={styles.heroTitle}>
-                <Text style={styles.heroTitleWhite}>WORLD</Text>
-                <Text style={styles.heroTitleTeal}> CLASS </Text>
-                <Text style={styles.heroTitleWhite}>SHOPPING</Text>
-              </Text>
-              <View style={styles.heroUnderline} />
+            <View style={styles.heroContent}>
+              <View style={styles.heroTitleContainer}>
+                <View style={styles.heroTitleGlow} />
+                <Text style={styles.heroTitle}>
+                  <Text style={styles.heroTitleWhite}>WORLD</Text>
+                  <Text style={styles.heroTitleTeal}> CLASS </Text>
+                  <Text style={styles.heroTitleWhite}>SHOPPING</Text>
+                </Text>
+                <View style={styles.heroUnderline} />
+              </View>
             </View>
-          </View>
           </ImageBackground>
         </View>
 
@@ -205,13 +206,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   heroSection: {
- //   marginTop: 16,
-//    marginHorizontal: 12,
-//    borderRadius: 12,
+    //   marginTop: 16,
+    //    marginHorizontal: 12,
+    //    borderRadius: 12,
     overflow: 'hidden',
     position: 'relative',
     paddingVertical: 35,
-//    paddingHorizontal: 16,
+    //    paddingHorizontal: 16,
     // Responsive padding
     // ...(width >= 640 && { paddingVertical: 32 }),
     // ...(width >= 768 && { paddingVertical: 40 }),
@@ -263,7 +264,7 @@ const styles = StyleSheet.create({
     left: -4,
     right: -4,
     bottom: -4,
-   // backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    // backgroundColor: 'rgba(255, 255, 255, 0.3)',
     borderRadius: 8,
     // Note: React Native doesn't support CSS blur, this is a fallback
   },

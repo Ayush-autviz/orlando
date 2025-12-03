@@ -12,11 +12,11 @@ import {
   Share,
 } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { 
-  ChevronLeft, 
-  MapPin, 
-  DollarSign, 
-  Clock, 
+import {
+  ChevronLeft,
+  MapPin,
+  DollarSign,
+  Clock,
   ExternalLink,
   Phone,
   Globe,
@@ -29,6 +29,7 @@ import {
 } from 'lucide-react-native';
 import { getRestaurantById, Restaurant } from '../data/restaurant';
 import Header from '../components/Header';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width } = Dimensions.get('window');
 
@@ -73,11 +74,11 @@ const RestaurantDetailScreen: React.FC = () => {
 
   const handleShare = async () => {
     if (!restaurant) return;
-    
+
     const shareUrl = `https://www.awesomeorlando.com/dining/restaurant/${restaurant.id}`;
-    const shareTitle = `${restaurant.name} | Awesome Orlando ${restaurant.cuisine}`;
+    const shareTitle = `${restaurant.name} | ${WhiteLabelConfig.appName} ${restaurant.cuisine}`;
     const shareMessage = `Check out ${restaurant.name} in ${restaurant.neighborhood || 'Orlando'} - ${restaurant.shortDescription || restaurant.description.substring(0, 100)}... ${shareUrl}`;
-    
+
     try {
       await Share.share({
         message: shareMessage,
@@ -229,7 +230,7 @@ const RestaurantDetailScreen: React.FC = () => {
         <View style={styles.sidebarSection}>
           <View style={styles.infoCard}>
             <Text style={styles.infoCardTitle}>Information</Text>
-            
+
             <View style={styles.infoContainer}>
               {/* Hours */}
               {restaurant.hours && (
@@ -273,14 +274,14 @@ const RestaurantDetailScreen: React.FC = () => {
                   <Text style={styles.infoLabel}>Address</Text>
                   <View style={styles.addressContainer}>
                     <Text style={styles.infoValue}>{restaurant.address}</Text>
-                                         <TouchableOpacity 
-                       style={styles.mapItButton}
-                       onPress={() => handleMapPress(restaurant.address)}
-                       activeOpacity={0.7}
-                     >
-                       <MapPin size={12} color="#EA580C" />
-                       <Text style={styles.mapItText}>Map It</Text>
-                     </TouchableOpacity>
+                    <TouchableOpacity
+                      style={styles.mapItButton}
+                      onPress={() => handleMapPress(restaurant.address)}
+                      activeOpacity={0.7}
+                    >
+                      <MapPin size={12} color="#EA580C" />
+                      <Text style={styles.mapItText}>Map It</Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
               </View>

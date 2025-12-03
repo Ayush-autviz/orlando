@@ -11,13 +11,14 @@ import {
   StatusBar,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { 
+import {
   ChevronLeft,
   ArrowUpRight,
   ExternalLink
 } from 'lucide-react-native';
 import { Dropdown } from 'react-native-element-dropdown';
 import Header from '../components/Header';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width, height } = Dimensions.get('window');
 
@@ -25,13 +26,13 @@ const EpicUniverseGuideScreen: React.FC = () => {
   const navigation = useNavigation();
   const scrollViewRef = useRef<ScrollView>(null);
   const [selectedSection, setSelectedSection] = useState('');
-  
+
   // Use refs to store section views for direct measurement
   const sectionRefs = useRef<Record<string, View | null>>({});
 
   const scrollToSection = (item: any) => {
     const sectionId = item.value;
-    
+
     // Small delay to ensure dropdown closes first
     setTimeout(() => {
       const sectionRef = sectionRefs.current[sectionId];
@@ -41,7 +42,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
           (x, y) => {
             const offset = 120; // Fixed offset for mobile header and navigation
             const targetY = Math.max(0, y - offset);
-            
+
             scrollViewRef.current?.scrollTo({
               y: targetY,
               animated: true,
@@ -53,7 +54,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
         );
       }
     }, 150);
-    
+
     setSelectedSection(sectionId);
   };
 
@@ -87,17 +88,17 @@ const EpicUniverseGuideScreen: React.FC = () => {
     </View>
   );
 
-  const RideCard = ({ 
-    title, 
-    thrillRating, 
-    type, 
-    height, 
-    images, 
-    description, 
-    whyLoveIt, 
-    goodToKnow, 
+  const RideCard = ({
+    title,
+    thrillRating,
+    type,
+    height,
+    images,
+    description,
+    whyLoveIt,
+    goodToKnow,
     threeWords,
-    backgroundColor 
+    backgroundColor
   }: {
     title: string;
     thrillRating: number;
@@ -149,12 +150,12 @@ const EpicUniverseGuideScreen: React.FC = () => {
       <ScrollView ref={scrollViewRef} style={styles.scrollContainer} showsVerticalScrollIndicator={false}>
         {/* Navigation Link */}
         <View style={styles.navigationLink}>
-          <TouchableOpacity 
+          <TouchableOpacity
             onPress={() => navigation.goBack()}
             style={styles.backButton}
           >
             <ChevronLeft width={16} height={16} color="#2563EB" />
-            <Text style={styles.backButtonText}>Back to Awesome Orlando</Text>
+            <Text style={styles.backButtonText}>Back to {WhiteLabelConfig.appName}</Text>
           </TouchableOpacity>
         </View>
 
@@ -173,10 +174,10 @@ const EpicUniverseGuideScreen: React.FC = () => {
                   Preview of all 11 groundbreaking attractions opening in 2025.
                 </Text>
               </View>
-              
+
               <View style={styles.heroRight}>
                 <View style={styles.heroImageContainer}>
-                  <Image 
+                  <Image
                     source={require('../../assets/images/epic-universe/epic-universe-map.jpg')}
                     style={styles.heroImage}
                     resizeMode="cover"
@@ -194,7 +195,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
         {/* Mobile Navigation Dropdown */}
         <View style={styles.mobileNavigation}>
           <View style={styles.mobileNavRow}>
-            <TouchableOpacity 
+            <TouchableOpacity
               onPress={() => navigation.goBack()}
               style={styles.mobileBackButton}
             >
@@ -221,19 +222,19 @@ const EpicUniverseGuideScreen: React.FC = () => {
         {/* Main Content */}
         <View style={styles.mainContent}>
           {/* Introduction */}
-          <View 
+          <View
             style={styles.section}
             ref={(ref) => { sectionRefs.current['intro'] = ref; }}
           >
             <Text style={styles.mainTitle}>Epic Universe Rides Guide for 2025</Text>
-            <Text style={styles.subtitle}>Your Ultimate Adventure with Awesome Orlando</Text>
+            <Text style={styles.subtitle}>Your Ultimate Adventure with {WhiteLabelConfig.appName}</Text>
             <Text style={styles.introText}>
-              Hey thrill-seekers and family adventurers, welcome to <Text style={styles.italic}>Awesome Orlando</Text>, your top spot for uncovering the magic of Orlando's theme parks! Epic Universe, Universal Orlando's game-changing park, opened on May 22, 2025, and it's packed with 11 incredible rides across five immersive worlds: Super Nintendo World, Celestial Park, How to Train Your Dragon – Isle of Berk, Dark Universe, and The Wizarding World of Harry Potter – Ministry of Magic.
+              Hey thrill-seekers and family adventurers, welcome to <Text style={styles.italic}>{WhiteLabelConfig.appName}</Text>, your top spot for uncovering the magic of Orlando's theme parks! Epic Universe, Universal Orlando's game-changing park, opened on May 22, 2025, and it's packed with 11 incredible rides across five immersive worlds: Super Nintendo World, Celestial Park, How to Train Your Dragon – Isle of Berk, Dark Universe, and The Wizarding World of Harry Potter – Ministry of Magic.
             </Text>
           </View>
 
           {/* Super Nintendo World */}
-          <View 
+          <View
             style={styles.section}
             ref={(ref) => { sectionRefs.current['nintendo'] = ref; }}
           >
@@ -304,7 +305,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
           </View>
 
           {/* How to Train Your Dragon */}
-          <View 
+          <View
             style={styles.section}
             ref={(ref) => { sectionRefs.current['dragons'] = ref; }}
           >
@@ -375,7 +376,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
           </View>
 
           {/* Dark Universe */}
-          <View 
+          <View
             style={styles.section}
             ref={(ref) => { sectionRefs.current['dark'] = ref; }}
           >
@@ -426,7 +427,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
           </View>
 
           {/* Wizarding World */}
-          <View 
+          <View
             style={styles.section}
             ref={(ref) => { sectionRefs.current['wizarding'] = ref; }}
           >
@@ -457,7 +458,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
           </View>
 
           {/* Celestial Park */}
-          <View 
+          <View
             style={styles.section}
             ref={(ref) => { sectionRefs.current['celestial'] = ref; }}
           >
@@ -508,7 +509,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
           </View>
 
           {/* Ride Distribution Chart */}
-          <View 
+          <View
             style={styles.section}
             ref={(ref) => { sectionRefs.current['chart'] = ref; }}
           >
@@ -519,7 +520,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
 
             <View style={styles.chartContainer}>
               <Text style={styles.chartTitle}>Ride Distribution by Land</Text>
-              
+
               <View style={styles.chartItem}>
                 <View style={styles.chartRow}>
                   <Text style={styles.chartLabel}>Super Nintendo World</Text>
@@ -573,7 +574,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
           </View>
 
           {/* Planning Section */}
-          <View 
+          <View
             style={styles.section}
             ref={(ref) => { sectionRefs.current['planning'] = ref; }}
           >
@@ -584,7 +585,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
 
             <View style={styles.planningContainer}>
               <Text style={styles.planningTitle}>Visit Planning by Thrill Level</Text>
-              
+
               <View style={styles.planningSection}>
                 <Text style={styles.planningSubtitle}>Kid-Friendly Picks (Thrill Meter 0.5-1.0)</Text>
                 <Text style={styles.planningList}>• Yoshi's Adventure</Text>
@@ -618,12 +619,12 @@ const EpicUniverseGuideScreen: React.FC = () => {
           </View>
 
           {/* FAQ Section */}
-          <View 
+          <View
             style={styles.section}
             ref={(ref) => { sectionRefs.current['faq'] = ref; }}
           >
             <Text style={styles.sectionTitle}>Frequently Asked Questions</Text>
-            
+
             <View style={styles.faqContainer}>
               <View style={styles.faqItem}>
                 <Text style={styles.faqQuestion}>
@@ -668,7 +669,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
             <Text style={styles.footerText}>Last updated: May 2025</Text>
             <Text style={styles.footerSubtext}>
               <Text style={styles.italic}>
-                Awesome Orlando is your guide to making your 2025 theme park adventures epic. 
+                {WhiteLabelConfig.appName} is your guide to making your 2025 theme park adventures epic.
                 Stay tuned for more Orlando guides and insider tricks!
               </Text>
             </Text>
@@ -769,7 +770,7 @@ const styles = StyleSheet.create({
   },
   heroImage: {
     width: '100%',
-   height:300
+    height: 300
   },
   heroImageOverlay: {
     position: 'absolute',
@@ -959,7 +960,7 @@ const styles = StyleSheet.create({
   rideImage: {
     width: '100%',
     height: 200,
-   // aspectRatio: 16/9, // More web-like ratio, less tall
+    // aspectRatio: 16/9, // More web-like ratio, less tall
     borderRadius: 4,
   },
   rideContent: {

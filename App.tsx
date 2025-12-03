@@ -10,6 +10,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar, useColorScheme, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import { WhiteLabelConfig } from './src/WhiteLabelConfig';
 import CustomTabNavigator from './src/navigation/CustomTabNavigator';
 import AttractionDetailScreen from './src/screens/AttractionDetailScreen';
 import WebViewScreen from './src/screens/WebViewScreen';
@@ -386,7 +387,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete, fadeOu
 
   return (
     <Animated.View style={[styles.overlayContainer, { opacity: overlayOpacity }]}>
-      <StatusBar barStyle="light-content" backgroundColor="#1a1a2e" />
+      <StatusBar barStyle="light-content" backgroundColor={WhiteLabelConfig.colors.primary} />
 
       {/* Elegant gradient background */}
       <View style={styles.gradientBackground} />
@@ -460,7 +461,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete, fadeOu
             ]}
           >
             <FastImage
-              source={require('./assets/icon/logo.png')}
+              source={WhiteLabelConfig.appLogo}
               style={styles.logo}
               resizeMode={FastImage.resizeMode.contain}
               onLoadStart={() => console.log('🚀 FastImage: Logo loading started')}
@@ -491,18 +492,18 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete, fadeOu
 
 const styles = StyleSheet.create({
   overlayContainer: {
-    flex:1,
+    flex: 1,
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
     bottom: 0,
     zIndex: 9999, // Ensure it's on top of everything
-    backgroundColor: '#1a1a2e',
+    backgroundColor: WhiteLabelConfig.colors.primary,
   },
   container: {
     flex: 1,
-    backgroundColor: '#1a1a2e',
+    backgroundColor: WhiteLabelConfig.colors.primary,
   },
   gradientBackground: {
     position: 'absolute',
