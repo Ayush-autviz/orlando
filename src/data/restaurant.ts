@@ -230,9 +230,9 @@ const monroe2Image = require('../../assets/images/TheMonroe2.jpeg');
 const internationalCuisineCategoryImage = require('../../assets/images/international_cuisine.jpeg');
 const localFavoritesCategoryImage = '/images/Local Favorites.jpeg';
 
-export type RestaurantCategory = 
+export type RestaurantCategory =
   | 'fine-dining'
-  | 'theme-park' 
+  | 'theme-park'
   | 'international'
   | 'local-favorites'
 
@@ -395,7 +395,7 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "id": "knife-spoon",
       "name": "Knife & Spoon",
       "description": "Sophisticated steak and seafood restaurant at The Ritz-Carlton Orlando, helmed by award-winning Chef John Tesar. This elegant venue combines the precision of a steakhouse with creative seafood preparations, focusing on premium dry-aged steaks and fresh Florida-sourced ingredients. The refined atmosphere with lakefront views complements the artful presentation of each dish.",
-      "image": require("../../assets/images/KnifeAndSpoon.jpeg"),
+      "image": require("../../assets/images/KnifeandSpoon.jpeg"),
       "gallery": [
         knifeAndSpoon2Image
       ],
@@ -506,7 +506,7 @@ export const restaurantsData: Record<RestaurantCategory, Restaurant[]> = {
       "id": "victoria-and-alberts",
       "name": "Victoria & Albert's",
       "description": "Disney's premier fine dining experience and Central Florida's only AAA Five Diamond restaurant. Located in Disney's Grand Floridian Resort & Spa, the restaurant offers an intimate setting with personalized service and an ever-changing menu of contemporary American cuisine. The Victorian-inspired décor with harpist entertainment creates a formal, luxury dining atmosphere unmatched in Orlando.",
-      "image": require("../../assets/images/VictoriaAndAlberts.jpeg"),
+      "image": require("../../assets/images/VictoriaandAlberts.jpeg"),
       "gallery": [
         victoriaAndAlberts2Image
       ],
@@ -2439,12 +2439,12 @@ export const cuisineCategories: Record<string, { title: string, description: str
   "fine-dining": {
     title: "Fine Dining",
     description: "Experience Orlando's finest upscale restaurants offering exceptional service, ambiance, and culinary artistry.",
-    image: require("../../assets/images/FINEdining.jpeg")
+    image: require("../../assets/images/FINEDining.jpeg")
   },
   "theme-park": {
     title: "Theme Park Dining",
     description: "Discover remarkable restaurants within Orlando's world-famous theme parks and entertainment complexes.",
-    image: require("../../assets/images/themePark.jpeg")
+    image: require("../../assets/images/ThemePark.jpeg")
   },
   "international": {
     title: "International Cuisine",
@@ -2454,7 +2454,7 @@ export const cuisineCategories: Record<string, { title: string, description: str
   "local-favorites": {
     title: "Local Favorites",
     description: "Experience beloved Orlando establishments that highlight Florida flavors and regional specialties.",
-    image: require("../../assets/images/localFavorites.jpeg")
+    image: require("../../assets/images/LocalFavorites.jpeg")
   }
 };
 
