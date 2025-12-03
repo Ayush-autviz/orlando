@@ -77,7 +77,7 @@ const RestaurantDetailScreen: React.FC = () => {
 
     const shareUrl = `https://www.awesomeorlando.com/dining/restaurant/${restaurant.id}`;
     const shareTitle = `${restaurant.name} | ${WhiteLabelConfig.appName} ${restaurant.cuisine}`;
-    const shareMessage = `Check out ${restaurant.name} in ${restaurant.neighborhood || 'Orlando'} - ${restaurant.shortDescription || restaurant.description.substring(0, 100)}... ${shareUrl}`;
+    const shareMessage = `Check out ${restaurant.name} in ${restaurant.neighborhood || 'Autviz'} - ${restaurant.shortDescription || restaurant.description.substring(0, 100)}... ${shareUrl}`;
 
     try {
       await Share.share({

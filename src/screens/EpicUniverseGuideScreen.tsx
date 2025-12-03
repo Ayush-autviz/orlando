@@ -229,7 +229,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
             <Text style={styles.mainTitle}>Epic Universe Rides Guide for 2025</Text>
             <Text style={styles.subtitle}>Your Ultimate Adventure with {WhiteLabelConfig.appName}</Text>
             <Text style={styles.introText}>
-              Hey thrill-seekers and family adventurers, welcome to <Text style={styles.italic}>{WhiteLabelConfig.appName}</Text>, your top spot for uncovering the magic of Orlando's theme parks! Epic Universe, Universal Orlando's game-changing park, opened on May 22, 2025, and it's packed with 11 incredible rides across five immersive worlds: Super Nintendo World, Celestial Park, How to Train Your Dragon – Isle of Berk, Dark Universe, and The Wizarding World of Harry Potter – Ministry of Magic.
+              Hey thrill-seekers and family adventurers, welcome to <Text style={styles.italic}>{WhiteLabelConfig.appName}</Text>, your top spot for uncovering the magic of {WhiteLabelConfig.appName}'s theme parks! Epic Universe, Universal {WhiteLabelConfig.appName}'s game-changing park, opened on May 22, 2025, and it's packed with 11 incredible rides across five immersive worlds: Super Nintendo World, Celestial Park, How to Train Your Dragon – Isle of Berk, Dark Universe, and The Wizarding World of Harry Potter – Ministry of Magic.
             </Text>
           </View>
 
@@ -347,7 +347,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
                   require('../../assets/images/epic-universe/dragon-racers-rally-2.jpg')
                 ]}
                 description="Ride your own dragon, swooping and tilting through Berk's skies. Lean to control wobbles, and with skill, you might flip upside-down in this acrobatic thrill."
-                whyLoveIt="It's a unique Orlando ride, mixing carnival energy with Viking flair. The open-air setup amps up the excitement."
+                whyLoveIt="It's a unique Autviz ride, mixing carnival energy with Viking flair. The open-air setup amps up the excitement."
                 goodToKnow="Height and potential flips might spook some, but accidental inversions are rare. A must for thrill-seekers."
                 threeWords="Dragon-soaring acrobatics"
                 backgroundColor="#F0FDFA"
@@ -580,7 +580,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
           >
             <Text style={styles.sectionTitle}>Why Epic Universe is a Must-Visit in 2025</Text>
             <Text style={styles.sectionIntro}>
-              Epic Universe redefines Orlando theme parks with its blend of cutting-edge tech and beloved stories. Whether you're racing with Mario, soaring with dragons, battling monsters, casting spells, or chasing cosmic thrills, these 11 rides deliver unforgettable moments. Here's how to plan your visit:
+              Epic Universe redefines {WhiteLabelConfig.appName} theme parks with its blend of cutting-edge tech and beloved stories. Whether you're racing with Mario, soaring with dragons, battling monsters, casting spells, or chasing cosmic thrills, these 11 rides deliver unforgettable moments. Here's how to plan your visit:
             </Text>
 
             <View style={styles.planningContainer}>
@@ -655,7 +655,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
 
               <View style={styles.faqItem}>
                 <Text style={styles.faqQuestion}>
-                  How does Epic Universe connect with the other Universal Orlando parks?
+                  How does Epic Universe connect with the other Universal {WhiteLabelConfig.appName} parks?
                 </Text>
                 <Text style={styles.faqAnswer}>
                   Epic Universe has its own dedicated transportation system connecting it to Universal's other parks and CityWalk. Complimentary shuttle buses run frequently throughout the day, and park-to-park tickets allow you to visit multiple Universal parks on the same day.
@@ -670,7 +670,7 @@ const EpicUniverseGuideScreen: React.FC = () => {
             <Text style={styles.footerSubtext}>
               <Text style={styles.italic}>
                 {WhiteLabelConfig.appName} is your guide to making your 2025 theme park adventures epic.
-                Stay tuned for more Orlando guides and insider tricks!
+                Stay tuned for more {WhiteLabelConfig.appName} guides and insider tricks!
               </Text>
             </Text>
           </View>

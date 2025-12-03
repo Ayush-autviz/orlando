@@ -54,7 +54,7 @@ const AnimatedGradientLogo: React.FC<AnimatedGradientLogoProps> = ({
           colors={['#0d9488', '#f97316', '#0d9488']}
           textWidth={width}
         >
-          Orlando
+          Autivz
         </GradientText>
       </View>
     </View>

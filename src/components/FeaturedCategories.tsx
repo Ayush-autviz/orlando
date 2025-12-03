@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import CategoryCard from './CategoryCard';
 import { CategoryType } from '../types';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const categories: CategoryType[] = [
   {
@@ -38,10 +39,10 @@ const FeaturedCategories: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Experience Orlando's Finest</Text>
+        <Text style={styles.title}>Experience {WhiteLabelConfig.appName}'s Finest</Text>
         <Text style={styles.subtitle}>
           From world-class theme parks to culinary adventures and luxury accommodations, 
-          find the perfect experiences for your Orlando getaway.
+          find the perfect experiences for your {WhiteLabelConfig.appName} getaway.
         </Text>
       </View>
       

@@ -14,6 +14,7 @@ import { useNavigation } from '@react-navigation/native';
 import { cuisineCategories, RestaurantCategory } from '../data/restaurant';
 import { ArrowRight } from 'lucide-react-native';
 import Header from '../components/Header';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width } = Dimensions.get('window');
 
@@ -36,7 +37,7 @@ const DiningScreen: React.FC = () => {
             resizeMode="contain"
           >
             <Text style={styles.headerText}>
-              TASTE<Text style={styles.headerAccent}>ORLANDO</Text>
+              TASTE<Text style={styles.headerAccent}>{WhiteLabelConfig.appName}</Text>
             </Text>
             <View style={styles.headerUnderline} />
           </ImageBackground>

@@ -20,6 +20,7 @@ import Header from '../components/Header';
 
 // Import spa data
 import spas from '../data/spa';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width } = Dimensions.get('window');
 
@@ -54,7 +55,7 @@ const SpaScreen: React.FC<SpaScreenProps> = ({ navigation }) => {
 
   const handleShare = async (spa: any) => {
     const shareUrl = `https://awesomeorlando.com/spas/${spa.id}`;
-    const shareTitle = `${spa.name} | RELAXORLANDO`;
+    const shareTitle = `${spa.name} | RELAXAUTVIZ`;
     const shareMessage = `Check out this amazing spa in ${spa.location.area}! ${spa.description.substring(0, 100)}... ${shareUrl}`;
     
     try {
@@ -388,7 +389,7 @@ const SpaScreen: React.FC<SpaScreenProps> = ({ navigation }) => {
             >
               <Text style={styles.logoText}>
                 <Text style={styles.logoRelax}>RELAX</Text>
-                <Text style={styles.logoOrlando}>ORLANDO</Text>
+                <Text style={styles.logoOrlando}>{WhiteLabelConfig.appName}</Text>
               </Text>
             </LinearGradient>
           </View>

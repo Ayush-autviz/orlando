@@ -14,13 +14,13 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
-import { 
-  MapPin, 
-  Phone, 
-  Globe, 
-  X, 
-  ExternalLink, 
-  Star, 
+import {
+  MapPin,
+  Phone,
+  Globe,
+  X,
+  ExternalLink,
+  Star,
   Share2,
   Clock,
   Beer,
@@ -34,6 +34,7 @@ import {
   Music
 } from 'lucide-react-native';
 import Header from '../components/Header';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 
 
@@ -53,9 +54,9 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
 
   const handleWebsitePress = (url: string) => {
     setSelectedLocation(null)
-    navigation.navigate('WebView' as never, { 
-      url, 
-      title: 'Nightlife Website' 
+    navigation.navigate('WebView' as never, {
+      url,
+      title: 'Nightlife Website'
     } as never);
   };
 
@@ -71,9 +72,9 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
 
   const handleShare = async (location: any) => {
     const shareUrl = `https://awesomeorlando.com/bar-hop/${location.id}`;
-    const shareTitle = `${location.name} | Orlando Nightlife Spot`;
+    const shareTitle = `${location.name} | ${WhiteLabelConfig.appName} Nightlife Spot`;
     const shareMessage = `Check out this amazing ${getCategoryName(location.category).toLowerCase()} spot in ${location.neighborhood}! ${location.description.substring(0, 100)}... ${shareUrl}`;
-    
+
     try {
       await Share.share({
         message: shareMessage,
@@ -134,8 +135,8 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
   };
 
   const renderLocationCard = (location: any) => (
-    <TouchableOpacity 
-      key={location.id} 
+    <TouchableOpacity
+      key={location.id}
       style={styles.card}
       onPress={() => handleLocationClick(location)}
       activeOpacity={0.8}
@@ -149,14 +150,14 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
           colors={['transparent', 'rgba(0,0,0,0.8)']}
           style={styles.imageGradient}
         />
-        
+
         {/* Category Badge */}
         <View style={[styles.categoryBadge, getCategoryBadgeColor(location.category)]}>
           <Text style={[styles.categoryBadgeText, { color: getCategoryBadgeColor(location.category).color }]}>
             {getCategoryName(location.category)}
           </Text>
         </View>
-        
+
         {/* Share Button */}
         <TouchableOpacity
           style={styles.shareButton}
@@ -167,7 +168,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
         >
           <Share2 size={16} color="#374151" />
         </TouchableOpacity>
-        
+
         {/* Bottom Content */}
         <View style={styles.cardBottomContent}>
           <Text style={styles.locationName}>{location.name}</Text>
@@ -181,7 +182,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
           </View>
         </View>
       </ImageBackground>
-      
+
       <View style={styles.cardContent}>
         <View style={styles.cardTopRow}>
           <View style={styles.hoursContainer}>
@@ -189,7 +190,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
             <Text style={styles.hoursText}>{location.hours.split(',')[0]}</Text>
           </View>
           <View style={styles.cardActions}>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.mapItButton}
               onPress={(e) => {
                 e.stopPropagation();
@@ -200,7 +201,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
               <Text style={styles.mapItText}>Map It</Text>
             </TouchableOpacity>
             {location.website && (
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.visitButton}
                 onPress={(e) => {
                   e.stopPropagation();
@@ -213,11 +214,11 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
             )}
           </View>
         </View>
-        
+
         <Text style={styles.locationDescription}>
           {location.description}
         </Text>
-        
+
         <View style={styles.featuresContainer}>
           {location.features.map((feature: string, index: number) => (
             <View key={index} style={styles.featureBadge}>
@@ -225,7 +226,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
             </View>
           ))}
         </View>
-        
+
         <TouchableOpacity
           style={styles.checkItOutButton}
           onPress={() => handleLocationClick(location)}
@@ -252,7 +253,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
               {selectedLocation.longDescription || selectedLocation.description}
             </Text>
           </View>
-          
+
           {/* Must Try Section */}
           {selectedLocation.mustTry && selectedLocation.mustTry.length > 0 && (
             <View style={styles.mustTrySection}>
@@ -272,7 +273,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
               </View>
             </View>
           )}
-          
+
           {/* Insider Tips Section */}
           {selectedLocation.insiderTips && selectedLocation.insiderTips.length > 0 && (
             <View style={styles.tipsSection}>
@@ -291,7 +292,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
             </View>
           )}
         </View>
-        
+
         {/* Right Column - Sidebar */}
         <View style={styles.rightColumn}>
           {/* What To Expect Section */}
@@ -304,7 +305,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                 </View>
               ))}
             </View>
-            
+
             <View style={styles.hoursContainer}>
               <Clock size={16} color="#ea580c" />
               <View style={styles.hoursInfo}>
@@ -317,7 +318,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
               </View>
             </View>
           </View>
-          
+
           {/* Special Events Section */}
           {selectedLocation.specialEvents && selectedLocation.specialEvents.length > 0 && (
             <View style={styles.eventsSection}>
@@ -329,7 +330,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                 {selectedLocation.specialEvents.map((event: string, index: number) => (
                   <View key={index} style={styles.eventItem}>
                     <View style={styles.eventIcon}>
-                      <Music size={12}  color="#7c3aed" />
+                      <Music size={12} color="#7c3aed" />
                     </View>
                     <Text style={styles.eventText}>{event}</Text>
                   </View>
@@ -337,7 +338,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
               </View>
             </View>
           )}
-          
+
           {/* Nearby Attractions Section */}
           {selectedLocation.nearbyAttractions && selectedLocation.nearbyAttractions.length > 0 && (
             <View style={styles.nearbySection}>
@@ -364,57 +365,57 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header showDrawerButton={true} title="Orlando Bar Hop" />
-      
+      <Header showDrawerButton={true} title={`${WhiteLabelConfig.appName} Bar Hop`} />
+
       {/* Hero Section - ORLANDO BAR HOP */}
 
 
       {/* <Image style={{width:width,height:140 }} resizeMode='contain' source={require("../../assets/images/barheader.png")}/> */}
 
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-      <LinearGradient
-        colors={['#0f172a', '#1e293b']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={styles.hero}
-      >
-        <View style={styles.heroContent}>
-          <View style={styles.tagsRow}>
-            <View style={styles.tagContainer}>
-              <Beer size={12} color="#fbbf24" />
-              <Text style={styles.tagText}>BREWERIES</Text>
+        <LinearGradient
+          colors={['#0f172a', '#1e293b']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.hero}
+        >
+          <View style={styles.heroContent}>
+            <View style={styles.tagsRow}>
+              <View style={styles.tagContainer}>
+                <Beer size={12} color="#fbbf24" />
+                <Text style={styles.tagText}>BREWERIES</Text>
+              </View>
+              <Text style={styles.tagSeparator}>•</Text>
+              <View style={styles.tagContainer}>
+                <GlassWater size={12} color="#fbbf24" />
+                <Text style={styles.tagText}>SPEAKEASIES</Text>
+              </View>
+              <Text style={styles.tagSeparator}>•</Text>
+              <View style={styles.tagContainer}>
+                <Wine size={12} color="#fbbf24" />
+                <Text style={styles.tagText}>WINERIES</Text>
+              </View>
             </View>
-            <Text style={styles.tagSeparator}>•</Text>
-            <View style={styles.tagContainer}>
-              <GlassWater size={12} color="#fbbf24" />
-              <Text style={styles.tagText}>SPEAKEASIES</Text>
-            </View>
-            <Text style={styles.tagSeparator}>•</Text>
-            <View style={styles.tagContainer}>
-              <Wine size={12} color="#fbbf24" />
-              <Text style={styles.tagText}>WINERIES</Text>
-            </View>
-          </View>
-          
-          <View style={styles.logoContainer}>
-            <Text style={styles.logoText}>ORLANDO BAR HOP</Text>
-            
-          </View>
-          
-          <Text style={styles.heroSubtitle}>
-            Discover Orlando's coolest local hangouts!
-          </Text>
 
-          <View style={styles.logoAccent} />
-        </View>
-        
-        {/* <View style={styles.heroPattern}>
+            <View style={styles.logoContainer}>
+              <Text style={styles.logoText}>ORLANDO BAR HOP</Text>
+
+            </View>
+
+            <Text style={styles.heroSubtitle}>
+              Discover {WhiteLabelConfig.appName}'s coolest local hangouts!
+            </Text>
+
+            <View style={styles.logoAccent} />
+          </View>
+
+          {/* <View style={styles.heroPattern}>
           <LinearGradient
             colors={['#d97706', '#ea580c']}
             style={styles.patternBar}
           />
         </View> */}
-      </LinearGradient>
+        </LinearGradient>
         {/* Introduction */}
         <View style={styles.introSection}>
           <Text style={styles.introTitle}>Discover Your Next Favorite Spot</Text>
@@ -430,15 +431,15 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
 
         {/* Comprehensive Directory Section */}
         <View style={styles.directorySection}>
-          <Text style={styles.directoryTitle}>Complete Orlando Nightlife Directory</Text>
-          
+          <Text style={styles.directoryTitle}>Complete {WhiteLabelConfig.appName} Nightlife Directory</Text>
+
           {/* Speakeasies List */}
           <View style={styles.categorySection}>
             <View style={styles.categoryHeader}>
               <GlassWater size={20} color="#6b21a8" />
               <Text style={[styles.categoryTitle, { color: '#6b21a8' }]}>Speakeasies in Orlando</Text>
             </View>
-            
+
             <View style={styles.locationList}>
               <View style={styles.neighborhoodGroup}>
                 <Text style={styles.neighborhoodTitle}>Downtown Orlando</Text>
@@ -447,13 +448,13 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   <Text style={styles.directoryLocationAddress}>30 S Magnolia Ave, Downtown Orlando</Text>
                   <Text style={styles.locationDetails}>Boutique spirits, dress code, 5 PM–2 AM</Text>
                   <View style={styles.locationActions}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.websiteButton}
                       onPress={() => handleWebsitePress('https://mathersorlando.com')}
                     >
                       <Text style={styles.websiteButtonText}>Visit Website</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.mapButton}
                       onPress={() => handleMapPress('30 S Magnolia Ave Orlando FL')}
                     >
@@ -461,19 +462,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                     </TouchableOpacity>
                   </View>
                 </View>
-                
+
                 <View style={styles.locationItem}>
                   <Text style={styles.directoryLocationName}>The Courtesy Bar</Text>
                   <Text style={styles.directoryLocationAddress}>114 N Orange Ave, Winter Park</Text>
                   <Text style={styles.locationDetails}>Craft cocktails, 5 PM–2 AM</Text>
                   <View style={styles.locationActions}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.websiteButton}
                       onPress={() => handleWebsitePress('https://www.thecourtesybar.com')}
                     >
                       <Text style={styles.websiteButtonText}>Visit Website</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.mapButton}
                       onPress={() => handleMapPress('114 N Orange Ave Winter Park FL')}
                     >
@@ -481,19 +482,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                     </TouchableOpacity>
                   </View>
                 </View>
-                
+
                 <View style={styles.locationItem}>
                   <Text style={styles.directoryLocationName}>Hanson's Shoe Repair</Text>
                   <Text style={styles.directoryLocationAddress}>27 E Pine St, Downtown Orlando</Text>
                   <Text style={styles.locationDetails}>Password-protected, 8 PM–2 AM</Text>
                   <View style={styles.locationActions}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.websiteButton}
                       onPress={() => handleWebsitePress('https://www.facebook.com/hansonsshoerepair')}
                     >
                       <Text style={styles.websiteButtonText}>Visit Website</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.mapButton}
                       onPress={() => handleMapPress('27 E Pine St Orlando FL')}
                     >
@@ -501,13 +502,13 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                     </TouchableOpacity>
                   </View>
                 </View>
-                
+
                 <View style={styles.locationItem}>
                   <Text style={styles.directoryLocationName}>The Treehouse</Text>
                   <Text style={styles.directoryLocationAddress}>68 E Pine St, Downtown Orlando</Text>
                   <Text style={styles.locationDetails}>Secret club vibe, 8 PM–2 AM</Text>
                   <View style={styles.locationActions}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.mapButton}
                       onPress={() => handleMapPress('68 E Pine St Orlando FL')}
                     >
@@ -516,7 +517,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </View>
                 </View>
               </View>
-              
+
               <View style={styles.neighborhoodGroup}>
                 <Text style={styles.neighborhoodTitle}>Greater Orlando Area</Text>
                 <View style={styles.locationItem}>
@@ -524,13 +525,13 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   <Text style={styles.directoryLocationAddress}>1800 N Orange Ave, Ivanhoe Village</Text>
                   <Text style={styles.locationDetails}>Furniture store by day, 5 PM–12 AM</Text>
                   <View style={styles.locationActions}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.websiteButton}
                       onPress={() => handleWebsitePress('https://imperialfurniture.com')}
                     >
                       <Text style={styles.websiteButtonText}>Visit Website</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.mapButton}
                       onPress={() => handleMapPress('1800 N Orange Ave Orlando FL')}
                     >
@@ -538,19 +539,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                     </TouchableOpacity>
                   </View>
                 </View>
-                
+
                 <View style={styles.locationItem}>
                   <Text style={styles.directoryLocationName}>Permanent Vacation</Text>
                   <Text style={styles.directoryLocationAddress}>1111 N Orlando Ave, Maitland</Text>
                   <Text style={styles.locationDetails}>Tiki-themed, hidden in Copper Rocket Pub, 5 PM–2 AM</Text>
                   <View style={styles.locationActions}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.websiteButton}
                       onPress={() => handleWebsitePress('https://copperrocketpub.com/permanent-vacation')}
                     >
                       <Text style={styles.websiteButtonText}>Visit Website</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.mapButton}
                       onPress={() => handleMapPress('1111 N Orlando Ave Maitland FL')}
                     >
@@ -558,13 +559,13 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                     </TouchableOpacity>
                   </View>
                 </View>
-                
+
                 <View style={styles.locationItem}>
                   <Text style={styles.directoryLocationName}>Lorelai Wine Bar</Text>
                   <Text style={styles.directoryLocationAddress}>113 S Orange Ave, Downtown Orlando</Text>
                   <Text style={styles.locationDetails}>Opening Feb 2025, European wines, 4 PM–12 AM</Text>
                   <View style={styles.locationActions}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.mapButton}
                       onPress={() => handleMapPress('113 S Orange Ave Orlando FL')}
                     >
@@ -573,7 +574,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </View>
                 </View>
               </View>
-              
+
               <View style={styles.neighborhoodGroup}>
                 <Text style={styles.neighborhoodTitle}>Tourist District</Text>
                 <View style={styles.locationItem}>
@@ -581,13 +582,13 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   <Text style={styles.directoryLocationAddress}>1560 E Buena Vista Dr, Disney Springs</Text>
                   <Text style={styles.locationDetails}>Prohibition-era cocktails, 11:30 AM–11 PM</Text>
                   <View style={styles.locationActions}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.websiteButton}
                       onPress={() => handleWebsitePress('https://enzoshideawayfla.com')}
                     >
                       <Text style={styles.websiteButtonText}>Visit Website</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.mapButton}
                       onPress={() => handleMapPress('1560 E Buena Vista Dr Lake Buena Vista FL')}
                     >
@@ -595,19 +596,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                     </TouchableOpacity>
                   </View>
                 </View>
-                
+
                 <View style={styles.locationItem}>
                   <Text style={styles.directoryLocationName}>Roka Hula</Text>
                   <Text style={styles.directoryLocationAddress}>7624 W Sand Lake Rd, Restaurant Row</Text>
                   <Text style={styles.locationDetails}>Asian tiki bar, hidden in Voodoo Bayou, 5 PM–12 AM</Text>
                   <View style={styles.locationActions}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.websiteButton}
                       onPress={() => handleWebsitePress('https://voodoo-bayou.com')}
                     >
                       <Text style={styles.websiteButtonText}>Visit Website</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.mapButton}
                       onPress={() => handleMapPress('7624 W Sand Lake Rd Orlando FL')}
                     >
@@ -615,19 +616,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                     </TouchableOpacity>
                   </View>
                 </View>
-                
+
                 <View style={styles.locationItem}>
                   <Text style={styles.directoryLocationName}>Epilogue</Text>
                   <Text style={styles.directoryLocationAddress}>10100 Dream Tree Blvd, Four Seasons Resort</Text>
                   <Text style={styles.locationDetails}>Library-themed, adults-only, opened Oct 2024, 5 PM–12 AM</Text>
                   <View style={styles.locationActions}>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.websiteButton}
                       onPress={() => handleWebsitePress('https://www.fourseasons.com/orlando/dining/lounges/epilogue/')}
                     >
                       <Text style={styles.websiteButtonText}>Visit Website</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity 
+                    <TouchableOpacity
                       style={styles.mapButton}
                       onPress={() => handleMapPress('10100 Dream Tree Blvd Orlando FL')}
                     >
@@ -638,27 +639,27 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
               </View>
             </View>
           </View>
-          
+
           {/* Breweries List */}
           <View style={styles.categorySection}>
             <View style={styles.categoryHeader}>
               <Beer size={20} color="#92400e" />
               <Text style={[styles.categoryTitle, { color: '#92400e' }]}>Craft Breweries in Orlando</Text>
             </View>
-            
+
             <View style={styles.breweryGrid}>
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Ivanhoe Park Brewing Co.</Text>
                 <Text style={styles.locationAddress}>1300 Alden Rd, Ivanhoe Village</Text>
                 <Text style={styles.locationDetails}>Joyland-inspired, 12 PM–10 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.ivanhoeparkbrewing.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('1300 Alden Rd Orlando FL')}
                   >
@@ -666,19 +667,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Park Pizza & Brewing Company</Text>
                 <Text style={styles.locationAddress}>6941 Lake Nona Blvd, Lake Nona</Text>
                 <Text style={styles.locationDetails}>Wood-fired pizza, 11 AM–10 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.parkpizzalakenona.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('6941 Lake Nona Blvd Orlando FL')}
                   >
@@ -686,19 +687,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Twelve Talons Beerworks</Text>
                 <Text style={styles.locationAddress}>2805 E Kaley St, The Milk District</Text>
                 <Text style={styles.locationDetails}>Unique flavors, 4 PM–10 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://twelvetalons.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('2805 E Kaley St Orlando FL')}
                   >
@@ -706,19 +707,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Brewlando Brewing</Text>
                 <Text style={styles.locationAddress}>6820 Hoffner Ave, Southeast Orlando</Text>
                 <Text style={styles.locationDetails}>Orlando-centric names, 12 PM–10 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.brewlandobrewing.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('6820 Hoffner Ave Orlando FL')}
                   >
@@ -726,19 +727,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Cask & Larder</Text>
                 <Text style={styles.locationAddress}>Orlando International Airport</Text>
                 <Text style={styles.locationDetails}>James Beard-recognized, hours vary</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.caskandlarder.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('Cask and Larder Orlando International Airport')}
                   >
@@ -746,19 +747,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Hourglass Brewing</Text>
                 <Text style={styles.locationAddress}>2500 Curry Ford Rd, Hourglass District</Text>
                 <Text style={styles.locationDetails}>Nostalgic decor, 4 PM–12 AM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.hourglassbrewing.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('2500 Curry Ford Rd Orlando FL')}
                   >
@@ -766,19 +767,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Motorworks Brewing</Text>
                 <Text style={styles.locationAddress}>1014 E Pine St, City District</Text>
                 <Text style={styles.locationDetails}>24 drafts, open-air deck, 11 AM–12 AM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://motorworksbrewing.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('1014 E Pine St Orlando FL')}
                   >
@@ -786,19 +787,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Redlight Redlight</Text>
                 <Text style={styles.locationAddress}>2810 Corrine Dr, Audubon Park</Text>
                 <Text style={styles.locationDetails}>20+ page beer list, 4 PM–2 AM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.redlightredlightbeerparlour.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('2810 Corrine Dr Orlando FL')}
                   >
@@ -806,19 +807,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>RockPit Brewing</Text>
                 <Text style={styles.locationAddress}>10 W Illiana St, SODO</Text>
                 <Text style={styles.locationDetails}>20 drafts, barbecue, 4 PM–11 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.rockpitbrewing.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('10 W Illiana St Orlando FL')}
                   >
@@ -826,19 +827,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Sideward Brewing</Text>
                 <Text style={styles.locationAddress}>210 N Bumby Ave, The Milk District</Text>
                 <Text style={styles.locationDetails}>Pub fare, 12 PM–11 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.sidewardbrewing.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('210 N Bumby Ave Orlando FL')}
                   >
@@ -846,19 +847,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Tactical Brewing Co.</Text>
                 <Text style={styles.locationAddress}>4882 New Broad St, Baldwin Park</Text>
                 <Text style={styles.locationDetails}>Veteran-founded, 3 PM–12 AM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.tacticalbrewingco.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('4882 New Broad St Orlando FL')}
                   >
@@ -866,19 +867,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Ten10 Brewing Company</Text>
                 <Text style={styles.locationAddress}>1010 Virginia Dr, Mills 50</Text>
                 <Text style={styles.locationDetails}>Pure ingredients, 3 PM–12 AM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.ten10brewing.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('1010 Virginia Dr Orlando FL')}
                   >
@@ -886,19 +887,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>New York Beer Project</Text>
                 <Text style={styles.locationAddress}>923 N Plant St, Winter Garden</Text>
                 <Text style={styles.locationDetails}>NYC-themed, 11 AM–11 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.newyorkbeerproject.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('923 N Plant St Winter Garden FL')}
                   >
@@ -906,19 +907,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Bowigens Beer Company</Text>
                 <Text style={styles.locationAddress}>13060 Avalon Lake Dr, Avalon Park</Text>
                 <Text style={styles.locationDetails}>Innovative brews, 3 PM–11 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.bowigens.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('13060 Avalon Lake Dr Orlando FL')}
                   >
@@ -926,19 +927,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Crooked Can Brewing Company</Text>
                 <Text style={styles.locationAddress}>426 W Plant St, Winter Garden</Text>
                 <Text style={styles.locationDetails}>Plant Street Market, 11 AM–11 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.crookedcan.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('426 W Plant St Winter Garden FL')}
                   >
@@ -946,19 +947,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.breweryItem}>
                 <Text style={styles.locationName}>Gatlin Hall Brewing</Text>
                 <Text style={styles.locationAddress}>4720 S Orange Ave, South Orlando</Text>
                 <Text style={styles.locationDetails}>Family-friendly patio, 11 AM–10 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.gatlinhall.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('4720 S Orange Ave Orlando FL')}
                   >
@@ -968,27 +969,27 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
               </View>
             </View>
           </View>
-          
+
           {/* Wineries List */}
           <View style={styles.categorySection}>
             <View style={styles.categoryHeader}>
               <Wine size={20} color="#991b1b" />
               <Text style={[styles.categoryTitle, { color: '#991b1b' }]}>Wineries & Wine Bars in Orlando</Text>
             </View>
-            
+
             <View style={styles.wineryGrid}>
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>Lakeridge Winery & Vineyards</Text>
                 <Text style={styles.locationAddress}>19239 US-27, Clermont (35-min drive)</Text>
                 <Text style={styles.locationDetails}>80-acre vineyard, tastings, 10 AM–5 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.lakeridgewinery.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('19239 US-27 Clermont FL')}
                   >
@@ -996,19 +997,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>Cooper's Hawk Winery & Restaurant</Text>
                 <Text style={styles.locationAddress}>8005 International Dr, I-Drive</Text>
                 <Text style={styles.locationDetails}>Hand-crafted wines, 11 AM–10 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.coopershawkwinery.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('8005 International Dr Orlando FL')}
                   >
@@ -1016,19 +1017,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>Quantum Leap Winery</Text>
                 <Text style={styles.locationAddress}>1312 Wilfred Dr, Orlando</Text>
                 <Text style={styles.locationDetails}>Sustainable wines, available at local venues</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.quantumleapwinery.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('1312 Wilfred Dr Orlando FL')}
                   >
@@ -1036,19 +1037,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>Wine Bar George</Text>
                 <Text style={styles.locationAddress}>1610 E Buena Vista Dr, Disney Springs</Text>
                 <Text style={styles.locationDetails}>Master-sommelier-led, 11 AM–11 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://winebargeorge.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('1610 E Buena Vista Dr Lake Buena Vista FL')}
                   >
@@ -1056,19 +1057,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>VINIA Wine & Kitchen</Text>
                 <Text style={styles.locationAddress}>110 S Orlando Ave, Winter Park</Text>
                 <Text style={styles.locationDetails}>Italian-Brazilian menu, 5 PM–10 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://viniawine.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('110 S Orlando Ave Winter Park FL')}
                   >
@@ -1076,19 +1077,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>Swirlery Wine Bar</Text>
                 <Text style={styles.locationAddress}>1508 E Michigan St, SODO</Text>
                 <Text style={styles.locationDetails}>Tasting room, retail, 4 PM–10 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.swirlery.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('1508 E Michigan St Orlando FL')}
                   >
@@ -1096,19 +1097,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>RusTeak Restaurant & Wine Bar</Text>
                 <Text style={styles.locationAddress}>101 S Eola Dr, Thornton Park</Text>
                 <Text style={styles.locationDetails}>New American, 11 AM–10 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.rusteakwinebar.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('101 S Eola Dr Orlando FL')}
                   >
@@ -1116,19 +1117,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>Vines Grille & Wine Bar</Text>
                 <Text style={styles.locationAddress}>7533 W Sand Lake Rd, Restaurant Row</Text>
                 <Text style={styles.locationDetails}>Boutique wines, 4 PM–11 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.vinesgrille.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('7533 W Sand Lake Rd Orlando FL')}
                   >
@@ -1136,19 +1137,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>The Wine Room on Park Avenue</Text>
                 <Text style={styles.locationAddress}>270 S Park Ave, Winter Park</Text>
                 <Text style={styles.locationDetails}>Self-serve dispensers, 12 PM–11 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://thewineroomonline.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('270 S Park Ave Winter Park FL')}
                   >
@@ -1156,19 +1157,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>Eola Wine Company</Text>
                 <Text style={styles.locationAddress}>430 E Central Blvd, Thornton Park</Text>
                 <Text style={styles.locationDetails}>Boutique wines, 4 PM–11 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.eolawinecompany.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('430 E Central Blvd Orlando FL')}
                   >
@@ -1176,19 +1177,19 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-              
+
               <View style={styles.wineryItem}>
                 <Text style={styles.locationName}>Digress Wine</Text>
                 <Text style={styles.locationAddress}>2603 Edgewater Dr, College Park</Text>
                 <Text style={styles.locationDetails}>Unique pairings, 4 PM–10 PM</Text>
                 <View style={styles.locationActions}>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.websiteButton}
                     onPress={() => handleWebsitePress('https://www.digresswine.com')}
                   >
                     <Text style={styles.websiteButtonText}>Visit Website</Text>
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.mapButton}
                     onPress={() => handleMapPress('2603 Edgewater Dr Orlando FL')}
                   >
@@ -1221,7 +1222,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                   colors={['rgba(15, 23, 42, 0.5)', 'rgba(15, 23, 42, 0.9)']}
                   style={styles.modalHeaderGradient}
                 />
-                
+
                 {/* Top Controls */}
                 <View style={styles.modalTopControls}>
                   <TouchableOpacity
@@ -1237,7 +1238,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
                     <X size={18} color="#ffffff" />
                   </TouchableOpacity>
                 </View>
-                
+
                 {/* Bottom Content */}
                 <View style={styles.modalHeaderContent}>
                   <View style={[styles.modalCategoryBadge, getCategoryBadgeColor(selectedLocation.category)]}>
@@ -1255,42 +1256,42 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
 
             {/* Action Buttons */}
             <ScrollView style={styles.modalContent} showsVerticalScrollIndicator={false}>
-            <View style={styles.modalActions}>
-              {selectedLocation.website && (
+              <View style={styles.modalActions}>
+                {selectedLocation.website && (
+                  <TouchableOpacity
+                    style={styles.modalActionButton}
+                    onPress={() => handleWebsitePress(selectedLocation.website)}
+                  >
+                    <Text style={styles.modalActionButtonText}>Visit Website</Text>
+                    <ExternalLink size={16} color="#ffffff" />
+                  </TouchableOpacity>
+                )}
+
                 <TouchableOpacity
                   style={styles.modalActionButton}
-                  onPress={() => handleWebsitePress(selectedLocation.website)}
+                  onPress={() => handleMapPress(selectedLocation.address)}
                 >
-                  <Text style={styles.modalActionButtonText}>Visit Website</Text>
-                  <ExternalLink size={16} color="#ffffff" />
+                  <MapPin size={16} color="#ffffff" />
+                  <Text style={styles.modalActionButtonText}>Map It</Text>
                 </TouchableOpacity>
-              )}
-              
-              <TouchableOpacity
-                style={styles.modalActionButton}
-                onPress={() => handleMapPress(selectedLocation.address)}
-              >
-                <MapPin size={16} color="#ffffff" />
-                <Text style={styles.modalActionButtonText}>Map It</Text>
-              </TouchableOpacity>
-              
-              {selectedLocation.phone && (
-                <TouchableOpacity
-                  style={styles.modalPhoneButton}
-                  onPress={() => Linking.openURL(`tel:${selectedLocation.phone}`)}
-                >
-                  <Phone size={16} color="#374151" />
-                  <Text style={styles.modalPhoneButtonText}>{selectedLocation.phone}</Text>
-                </TouchableOpacity>
-              )}
-              
-              <View style={styles.modalHoursButton}>
-                <Clock size={16} color="#374151" />
-                <Text style={styles.modalHoursButtonText}>{selectedLocation.hours.split(',')[0]}</Text>
-              </View>
-            </View>
 
-            {/* Modal Content */}
+                {selectedLocation.phone && (
+                  <TouchableOpacity
+                    style={styles.modalPhoneButton}
+                    onPress={() => Linking.openURL(`tel:${selectedLocation.phone}`)}
+                  >
+                    <Phone size={16} color="#374151" />
+                    <Text style={styles.modalPhoneButtonText}>{selectedLocation.phone}</Text>
+                  </TouchableOpacity>
+                )}
+
+                <View style={styles.modalHoursButton}>
+                  <Clock size={16} color="#374151" />
+                  <Text style={styles.modalHoursButtonText}>{selectedLocation.hours.split(',')[0]}</Text>
+                </View>
+              </View>
+
+              {/* Modal Content */}
 
               {renderTabContent()}
             </ScrollView>
@@ -1307,23 +1308,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   hero: {
-   // paddingVertical: 24,
-  //  paddingHorizontal: 16,
- //   position: 'relative',
+    // paddingVertical: 24,
+    //  paddingHorizontal: 16,
+    //   position: 'relative',
     overflow: 'hidden',
     borderBottomWidth: 1,
     borderBottomColor: '#374151',
   },
   heroContent: {
     zIndex: 1,
-    paddingHorizontal:15,
-    paddingVertical:25
+    paddingHorizontal: 15,
+    paddingVertical: 25
   },
   tagsRow: {
     flexDirection: 'row',
     alignItems: 'center',
     flexWrap: 'wrap',
-   // justifyContent: 'center',
+    // justifyContent: 'center',
     marginBottom: 12,
     gap: 8,
   },
@@ -1342,7 +1343,7 @@ const styles = StyleSheet.create({
     color: '#fbbf24',
   },
   logoContainer: {
-   // alignItems: 'center',
+    // alignItems: 'center',
     marginBottom: 8,
   },
   logoText: {
@@ -1350,7 +1351,7 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     color: '#ffffff',
     letterSpacing: 1,
-   //textAlign: 'left',
+    //textAlign: 'left',
   },
   logoAccent: {
     height: 19,
@@ -1362,7 +1363,7 @@ const styles = StyleSheet.create({
   heroSubtitle: {
     fontSize: 14,
     color: '#94a3b8',
-   // textAlign: 'center',
+    // textAlign: 'center',
   },
   heroPattern: {
     position: 'absolute',
@@ -1501,9 +1502,9 @@ const styles = StyleSheet.create({
   },
   cardTopRow: {
     flexDirection: 'row',
-   // justifyContent: 'space-between',
-    gap:2,
-    flexWrap:'wrap',
+    // justifyContent: 'space-between',
+    gap: 2,
+    flexWrap: 'wrap',
     alignItems: 'center',
     marginBottom: 12,
   },
@@ -1800,25 +1801,6 @@ const styles = StyleSheet.create({
     color: '#1f2937',
     marginBottom: 12,
   },
-  featuresContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 6,
-    marginBottom: 16,
-  },
-  featureBadge: {
-    backgroundColor: '#fff7ed',
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 6,
-    borderWidth: 1,
-    borderColor: '#ea580c',
-  },
-  featureBadgeText: {
-    fontSize: 12,
-    color: '#c2410c',
-    fontWeight: '600',
-  },
   // Modal feature badges (neutral styling like web)
   modalFeatureBadge: {
     backgroundColor: '#ffffff',
@@ -1833,11 +1815,6 @@ const styles = StyleSheet.create({
     color: '#475569',
     fontWeight: '600',
   },
-  hoursContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 12,
-  },
   hoursInfo: {
     marginLeft: 12,
   },
@@ -1849,11 +1826,6 @@ const styles = StyleSheet.create({
   hoursList: {
     flexDirection: 'column',
     gap: 2,
-  },
-  hoursText: {
-    fontSize: 14,
-    color: '#ea580c',
-    fontWeight: '600',
   },
   eventsSection: {
     backgroundColor: '#f3e8ff',
@@ -1878,7 +1850,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginRight: 12,
     flexShrink: 0,
-   
+
   },
   eventText: {
     fontSize: 14,
@@ -2023,6 +1995,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     borderColor: '#e5e7eb',
+  },
+  // locationName: {
+  //   fontSize: 16,
+  //   fontWeight: '600',
+  //   color: '#1f2937',
+  //   marginBottom: 4,
+  // },
+  locationAddress: {
+    fontSize: 14,
+    color: '#6b7280',
+    marginBottom: 4,
   },
   wineryGrid: {
     gap: 12,

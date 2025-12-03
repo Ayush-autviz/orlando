@@ -15,6 +15,7 @@ import {
   X
 } from 'lucide-react-native';
 import AnimatedGradientLogo from '../components/AnimatedGradientLogo';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 interface DrawerContentProps {
   navigation: any;
@@ -73,8 +74,8 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ navigation, onClose }) =>
       </ScrollView>
 
       <View style={styles.footer}>
-        <Text style={styles.footerText}>Your Ultimate Orlando Guide</Text>
-        <Text style={styles.footerSubtext}>Discover the magic of Orlando</Text>
+        <Text style={styles.footerText}>Your Ultimate {WhiteLabelConfig.appName} Guide</Text>
+        <Text style={styles.footerSubtext}>Discover the magic of {WhiteLabelConfig.appName}</Text>
       </View>
     </SafeAreaView>
   );

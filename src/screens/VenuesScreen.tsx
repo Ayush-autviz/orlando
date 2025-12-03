@@ -15,6 +15,7 @@ import { ExternalLink, MapPin } from 'lucide-react-native';
 import { useNavigation } from '@react-navigation/native';
 import { TOP_VENUES } from '../data/topvenues';
 import Header from '../components/Header';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width } = Dimensions.get('window');
 
@@ -57,23 +58,23 @@ const VenuesScreen: React.FC = () => {
           </View>
         </LinearGradient>
       </ImageBackground>
-      
+
       <View style={styles.cardContent}>
         <Text style={styles.venueDescription}>{venue.description}</Text>
-        
+
         <View style={styles.badgesContainer}>
-          {venue.eventTypes.map((type: string, index: number) => 
+          {venue.eventTypes.map((type: string, index: number) =>
             renderEventTypeBadge(type, index)
           )}
         </View>
-        
+
         {venue.address && (
           <View style={styles.addressContainer}>
             <View style={styles.addressRow}>
               <MapPin size={16} color="#64748b" style={styles.addressIcon} />
               <Text style={styles.addressText}>{venue.address}</Text>
             </View>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={styles.mapItButton}
               onPress={() => handleMapPress(venue.address)}
             >
@@ -82,7 +83,7 @@ const VenuesScreen: React.FC = () => {
             </TouchableOpacity>
           </View>
         )}
-        
+
         <View style={styles.buttonsContainer}>
           <TouchableOpacity
             style={[styles.button, styles.websiteButton]}
@@ -91,7 +92,7 @@ const VenuesScreen: React.FC = () => {
             <ExternalLink size={14} color="#ffffff" />
             <Text style={styles.buttonText}>Official Website</Text>
           </TouchableOpacity>
-          
+
           <TouchableOpacity
             style={[styles.button, styles.calendarButton]}
             onPress={() => handleWebsitePress(venue.calendarLink, `${venue.name} - Event Calendar`)}
@@ -106,35 +107,35 @@ const VenuesScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header showDrawerButton={true}/>
+      <Header showDrawerButton={true} />
       {/* Header Section */}
 
 
       {/* Venues Section */}
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-      <LinearGradient
-        colors={['#581c87', '#3730a3']}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        style={styles.header}
-      >
-        {/* Background Pattern */}
-        <View style={styles.patternOverlay}>
-          <View style={styles.gridPattern} />
-        </View>
-        
-        <View style={styles.headerContent}>
-          <View style={styles.titleSection}>
-            <View style={styles.titleRow}>
-              <View style={styles.titleAccent} />
-              <Text style={styles.title}>Orlando Venues & Events</Text>
-            </View>
-            <Text style={styles.subtitle}>
-              Major entertainment venues to plan your visit around
-            </Text>
+        <LinearGradient
+          colors={['#581c87', '#3730a3']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          style={styles.header}
+        >
+          {/* Background Pattern */}
+          <View style={styles.patternOverlay}>
+            <View style={styles.gridPattern} />
           </View>
-          
-          {/* <View style={styles.badgeRow}>
+
+          <View style={styles.headerContent}>
+            <View style={styles.titleSection}>
+              <View style={styles.titleRow}>
+                <View style={styles.titleAccent} />
+                <Text style={styles.title}>{WhiteLabelConfig.appName} Venues & Events</Text>
+              </View>
+              <Text style={styles.subtitle}>
+                Major entertainment venues to plan your visit around
+              </Text>
+            </View>
+
+            {/* <View style={styles.badgeRow}>
             <View style={styles.headerBadge}>
               <View style={styles.badgeDot} />
               <Text style={styles.headerBadgeText}>Concerts</Text>
@@ -148,11 +149,11 @@ const VenuesScreen: React.FC = () => {
               <Text style={styles.headerBadgeText}>Shows</Text>
             </View>
           </View> */}
-        </View>
-      </LinearGradient>
+          </View>
+        </LinearGradient>
         <View style={styles.venuesSection}>
           <Text style={styles.sectionTitle}>Top Entertainment Venues</Text>
-          
+
           <View style={styles.venuesGrid}>
             {TOP_VENUES.map((venue) => renderVenueCard(venue))}
           </View>
@@ -168,9 +169,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   header: {
-   // paddingTop: 20,
+    // paddingTop: 20,
     // paddingBottom: 12,
-   // paddingHorizontal: 16,
+    // paddingHorizontal: 16,
     // position: 'relative',
     // overflow: 'hidden',
     // borderBottomWidth: 1,

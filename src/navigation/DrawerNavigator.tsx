@@ -27,6 +27,7 @@ import NeighborhoodsScreen from '../screens/NeighborhoodsScreen';
 import ShoppingScreen from '../screens/ShoppingScreen';
 import GolfScreen from '../screens/GolfScreen';
 import VenuesScreen from '../screens/VenuesScreen';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const Drawer = createDrawerNavigator();
 
@@ -59,7 +60,7 @@ const CustomDrawerContent = (props: any) => {
       <View style={styles.header}>
         <View style={styles.logoContainer}>
           <Text style={styles.logoText}>
-            <Text style={styles.logoOrange}>Orlando</Text>
+            <Text style={styles.logoOrange}>{WhiteLabelConfig.appName}</Text>
             <Text style={styles.logoTeal}>Guide</Text>
           </Text>
         </View>
@@ -91,8 +92,8 @@ const CustomDrawerContent = (props: any) => {
       
 
       <View style={styles.footer}>
-        <Text style={styles.footerText}>Your Ultimate Orlando Guide</Text>
-        <Text style={styles.footerSubtext}>Discover the magic of Orlando</Text>
+        <Text style={styles.footerText}>Your Ultimate {WhiteLabelConfig.appName} Guide</Text>
+        <Text style={styles.footerSubtext}>Discover the magic of {WhiteLabelConfig.appName}</Text>
       </View>
     </SafeAreaView>
   );

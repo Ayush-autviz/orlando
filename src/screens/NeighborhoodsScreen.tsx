@@ -36,6 +36,7 @@ import Header from '../components/Header';
 
 // Import neighborhood data
 import { NEIGHBORHOODS } from '../data/neighbourhood';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width } = Dimensions.get('window');
 
@@ -69,8 +70,8 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
 
   const handleShare = async (neighborhood: any) => {
     const shareUrl = `https://awesomeorlando.com/neighborhoods/${neighborhood.id}`;
-    const shareTitle = `Explore ${neighborhood.name} in Orlando`;
-    const shareMessage = `Discover ${neighborhood.name} in Orlando - ${neighborhood.tagline}. ${shareUrl}`;
+    const shareTitle = `Explore ${neighborhood.name} in ${WhiteLabelConfig.appName}`;
+    const shareMessage = `Discover ${neighborhood.name} in ${WhiteLabelConfig.appName} - ${neighborhood.tagline}. ${shareUrl}`;
     
     try {
       await Share.share({
@@ -279,7 +280,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
             style={styles.mapItButton}
             onPress={(e) => {
               e.stopPropagation();
-              handleMapPress(neighborhood.name + ' Orlando FL');
+              handleMapPress(neighborhood.name + `${WhiteLabelConfig.appName} FL`);
             }}
           >
             <MapPin size={12} color="#3b82f6" />
@@ -394,7 +395,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
                       )}
                       <TouchableOpacity
                         style={styles.attractionMapButton}
-                        onPress={() => handleMapPress(attraction.name + ' ' + selectedNeighborhood.name + ' Orlando FL')}
+                        onPress={() => handleMapPress(attraction.name + ' ' + selectedNeighborhood.name + `${WhiteLabelConfig.appName} FL`)}
                       >
                         <MapPin size={12} color="#ffffff" />
                         <Text style={styles.attractionMapText}>Map It</Text>
@@ -626,7 +627,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
       case 'nightlifeDirectory':
         return (
           <View style={styles.tabContent}>
-            <Text style={styles.directoryTitle}>Downtown Orlando Nightlife Directory</Text>
+            <Text style={styles.directoryTitle}>Downtown {WhiteLabelConfig.appName} Nightlife Directory</Text>
             {selectedNeighborhood.attractions
               .filter((attraction: any) => attraction.type === "nightlifeDirectory")
               .map((nightlifeDirectory: any, idx: number) => (
@@ -773,7 +774,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header showDrawerButton={true} title="Orlando Neighborhoods" />
+      <Header showDrawerButton={true} title="Autviz Neighborhoods" />
       
       {/* Hero Section */}
 
@@ -788,11 +789,11 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
           </View>
           
           <Text style={styles.heroTitle}>
-            Discover Orlando's Neighborhoods
+            Discover {WhiteLabelConfig.appName}'s Neighborhoods
           </Text>
           
           <Text style={styles.heroDescription}>
-            Explore authentic Orlando where locals live, dine, and play
+            Explore authentic {WhiteLabelConfig.appName} where locals live, dine, and play
           </Text>
         </View>
         
@@ -815,7 +816,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
         <View style={styles.introSection}>
           <Text style={styles.introTitle}>Explore Like a Local</Text>
           <Text style={styles.introSubtitle}>
-            Orlando is more than just theme parks. The city boasts diverse neighborhoods each with unique character, 
+            {WhiteLabelConfig.appName} is more than just theme parks. The city boasts diverse neighborhoods each with unique character, 
             from historic Winter Park's brick streets to Mills 50's vibrant cultural scene. Discover these authentic 
             communities where locals actually live, dine, shop, and enjoy the real Florida.
           </Text>
@@ -834,7 +835,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
               <Coffee size={20} color="#ea580c" />
               <Text style={styles.reasonTitle}>Authentic Experiences</Text>
               <Text style={styles.reasonDescription}>
-                Discover where locals actually eat, shop and gather. Experience the real Orlando culture and lifestyle beyond the tourist attractions.
+                Discover where locals actually eat, shop and gather. Experience the real {WhiteLabelConfig.appName} culture and lifestyle beyond the tourist attractions.
               </Text>
             </View>
             <View style={styles.reasonCard}>
@@ -848,7 +849,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
               <Music size={20} color="#ea580c" />
               <Text style={styles.reasonTitle}>Arts & Culture</Text>
               <Text style={styles.reasonDescription}>
-                Explore museums, galleries, music venues, and theaters that highlight Orlando's growing cultural scene and creative communities.
+                Explore museums, galleries, music venues, and theaters that highlight {WhiteLabelConfig.appName}'s growing cultural scene and creative communities.
               </Text>
             </View>
             <View style={styles.reasonCard}>

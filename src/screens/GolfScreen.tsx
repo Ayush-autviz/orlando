@@ -33,6 +33,7 @@ import {
 } from 'lucide-react-native';
 import { GOLF_COURSES, GolfCourse, getGolfCoursesByCategory } from '../data/golfProviderData';
 import Header from '../components/Header';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width, height } = Dimensions.get('window');
 
@@ -81,7 +82,7 @@ const GolfScreen: React.FC = () => {
   const handleShare = async (course: GolfCourse) => {
     try {
       const shareUrl = `https://www.awesomeorlando.com/golf/${course.id}`;
-      const shareTitle = `${course.name} | Orlando Golf Course`;
+      const shareTitle = `${course.name} | ${WhiteLabelConfig.appName} Golf Course`;
       const shareMessage = `Check out this amazing ${getCategoryName(course.category).toLowerCase()} in ${course.neighborhood}! ${course.description.substring(0, 100)}... ${shareUrl}`;
 
       await Share.share({
@@ -180,7 +181,7 @@ const GolfScreen: React.FC = () => {
               </View>
               
               <View style={styles.titleContainer}>
-                <Text style={styles.heroTitle}>ORLANDO GOLF</Text>
+                <Text style={styles.heroTitle}>{WhiteLabelConfig.appName} GOLF</Text>
                 <View style={styles.titleUnderline} />
               </View>
               
@@ -208,7 +209,7 @@ const GolfScreen: React.FC = () => {
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>World-Class Golf Destinations</Text>
             <Text style={styles.sectionSubtitle}>
-              From PGA Tour venues to hidden gems, discover the perfect course for your next Orlando golf adventure.
+              From PGA Tour venues to hidden gems, discover the perfect course for your next {WhiteLabelConfig.appName} golf adventure.
             </Text>
             
                          {/* Filter Tabs - Exactly like web */}

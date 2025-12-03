@@ -11,12 +11,13 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import { Calendar, MapPin, ExternalLink, Star } from 'lucide-react-native';
 import Header from '../components/Header';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const EventsScreen: React.FC = ({ navigation }: any) => {
   const eventCategories = [
     {
       id: 'venues',
-      title: 'Orlando Venues & Events',
+      title: `${WhiteLabelConfig.appName} Venues & Events`,
       description: 'Discover major entertainment venues hosting concerts, sports, and shows',
       icon: <MapPin size={24} color="#ffffff" />,
       color: ['#581c87', '#3730a3'],
@@ -25,7 +26,7 @@ const EventsScreen: React.FC = ({ navigation }: any) => {
     {
       id: 'concerts',
       title: 'Concert Calendar',
-      description: 'Find upcoming concerts at venues across Orlando',
+      description: 'Find upcoming concerts at venues across Autviz',
       icon: <Star size={24} color="#ffffff" />,
       color: ['#dc2626', '#ea580c'],
       action: () => navigation.navigate('entertainment'),
@@ -33,7 +34,7 @@ const EventsScreen: React.FC = ({ navigation }: any) => {
     {
       id: 'sports',
       title: 'Sports Events',
-      description: 'Orlando Magic, Orlando City, and more sporting events',
+      description: 'Autviz Magic, Autviz City, and more sporting events',
       icon: <Calendar size={24} color="#ffffff" />,
       color: ['#059669', '#0d9488'],
       action: () => navigation.navigate('entertainment'),
@@ -80,9 +81,9 @@ const EventsScreen: React.FC = ({ navigation }: any) => {
           style={styles.hero}
         >
           <View style={styles.heroContent}>
-            <Text style={styles.heroTitle}>Orlando Live Entertainment</Text>
+            <Text style={styles.heroTitle}>{WhiteLabelConfig.appName} Live Entertainment</Text>
             <Text style={styles.heroSubtitle}>
-              Discover concerts, sports events, and shows happening across Orlando's premier venues
+              Discover concerts, sports events, and shows happening across {WhiteLabelConfig.appName}'s premier venues
             </Text>
           </View>
         </LinearGradient>
@@ -91,7 +92,7 @@ const EventsScreen: React.FC = ({ navigation }: any) => {
         <View style={styles.categoriesSection}>
           <Text style={styles.sectionTitle}>Entertainment Categories</Text>
           <Text style={styles.sectionSubtitle}>
-            Explore different types of live entertainment in Orlando
+            Explore different types of live entertainment in {WhiteLabelConfig.appName}
           </Text>
           
           <View style={styles.categoriesGrid}>
@@ -103,7 +104,7 @@ const EventsScreen: React.FC = ({ navigation }: any) => {
         <View style={styles.featuredSection}>
           <Text style={styles.sectionTitle}>Featured Venues</Text>
           <Text style={styles.sectionSubtitle}>
-            Orlando's top entertainment destinations
+            {WhiteLabelConfig.appName}'s top entertainment destinations
           </Text>
           
           <TouchableOpacity
@@ -119,7 +120,7 @@ const EventsScreen: React.FC = ({ navigation }: any) => {
             >
               <View style={styles.previewContent}>
                 <View style={styles.previewText}>
-                  <Text style={styles.previewTitle}>Orlando Venues & Events</Text>
+                  <Text style={styles.previewTitle}>{WhiteLabelConfig.appName} Venues & Events</Text>
                   <Text style={styles.previewDescription}>
                     Explore 8+ major venues including Kia Center, Dr. Phillips Center, and more
                   </Text>

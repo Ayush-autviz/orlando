@@ -47,11 +47,11 @@ const hotelFilters: HotelFilter[] = [
 // Match exact location mapping from web version
 const locationMap: { [key: string]: string[] } = {
   'Disney Area': ['Lake Buena Vista', 'Disney Springs', 'Buena Vista', 'Disney World', 'Walt Disney World', 'Disney', 'Kissimmee', 'Celebration', 'Old Town Kissimmee', 'Reunion Resort', 'Howey-in-the-Hills'],
-  'Universal Area': ['Universal Orlando Resort', 'Universal Boulevard', 'Universal Studios', 'Universal', 'Orlando Universal', 'Universal Orlando'],
-  'SeaWorld Area': ['SeaWorld Orlando', 'Sea World Drive', 'SeaWorld', 'Seaworld', 'Sea World'],
+  'Universal Area': ['Universal Autviz Resort', 'Universal Boulevard', 'Universal Studios', 'Universal', 'Autviz Universal', 'Universal Autviz'],
+  'SeaWorld Area': ['SeaWorld Autviz', 'Sea World Drive', 'SeaWorld', 'Seaworld', 'Sea World'],
   'International Drive': ['International Drive', 'I-Drive', 'I Drive', 'IDrive', 'ICON Park', 'Convention Center'],
-  'Downtown Orlando': ['Downtown Orlando', 'Downtown', 'Orlando Downtown', 'Downtown Area'],
-  'Airport Area': ['Airport', 'MCO', 'Orlando International Airport'],
+  'Downtown Autviz': ['Downtown Autviz', 'Downtown', 'Autviz Downtown', 'Downtown Area'],
+  'Airport Area': ['Airport', 'MCO', 'Autviz International Airport'],
   'Winter Park': ['Winter Park', 'Alfond Inn']
 };
 
@@ -184,7 +184,7 @@ const HotelsScreen: React.FC = () => {
             return true;
           }
           if (selectedLocation === "Universal Area" &&
-            (tag.includes("Universal") || tag.includes("Universal Orlando"))) {
+            (tag.includes("Universal") || tag.includes(`Universal ${WhiteLabelConfig.appName}`))) {
             return true;
           }
           if (selectedLocation === "SeaWorld Area" &&
@@ -271,7 +271,7 @@ const HotelsScreen: React.FC = () => {
           style={styles.heroBanner}
         >
           <Text style={styles.heroTitle}>AWESOME ACCOMMODATIONS</Text>
-          <Text style={styles.heroSubtitle}>Find Your Perfect Orlando Vacation Stay</Text>
+          <Text style={styles.heroSubtitle}>Find Your Perfect {WhiteLabelConfig.appName} Vacation Stay</Text>
 
           {/* Quick Jump Categories - Enhanced Buttons */}
           <View style={styles.quickJumpContainer}>
@@ -464,7 +464,7 @@ const HotelsScreen: React.FC = () => {
               <View style={styles.sectionHeader}>
                 <View>
                   <Text style={styles.sectionTitle}>Perfect Locations</Text>
-                  <Text style={styles.sectionSubtitle}>Find the ideal spot for your Orlando vacation adventures</Text>
+                  <Text style={styles.sectionSubtitle}>Find the ideal spot for your {WhiteLabelConfig.appName} vacation adventures</Text>
                 </View>
                 <TouchableOpacity
                   style={styles.viewAllButton}
@@ -483,7 +483,7 @@ const HotelsScreen: React.FC = () => {
                       hotel.neighborhood.includes("Universal") ||
                       hotel.neighborhood === "International Drive" ||
                       hotel.neighborhood === "Kissimmee" ||
-                      hotel.neighborhood === "Downtown Orlando")
+                      hotel.neighborhood === "Downtown Autviz")
                   )
                   .slice(0, 6)}
                 renderItem={renderHotelCard}
@@ -498,8 +498,8 @@ const HotelsScreen: React.FC = () => {
             <View style={styles.seoContent}>
               <Text style={styles.seoTitle}>{WhiteLabelConfig.appName} Hotel Tips</Text>
               <Text style={styles.seoText}>
-                Finding the right place to stay can make your Orlando vacation even more amazing! With so many
-                awesome options from theme park resorts to comfy budget stays, Orlando has perfect accommodations
+                Finding the right place to stay can make your {WhiteLabelConfig.appName} vacation even more amazing! With so many
+                awesome options from theme park resorts to comfy budget stays, {WhiteLabelConfig.appName} has perfect accommodations
                 for every type of vacation.
               </Text>
               <Text style={styles.seoText}>

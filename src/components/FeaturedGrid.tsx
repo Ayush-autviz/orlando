@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import { Image } from 'react-native';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width } = Dimensions.get('window');
 
@@ -36,7 +37,7 @@ const FeaturedGrid: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Featured Attractions</Text>
-        <Text style={styles.subtitle}>Discover Orlando's most popular destinations</Text>
+        <Text style={styles.subtitle}>Discover {WhiteLabelConfig.appName}'s most popular destinations</Text>
       </View>
       
       <ScrollView 

@@ -78,7 +78,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
 
   const handleMapPress = (e: any) => {
     e.stopPropagation();
-    const query = encodeURIComponent(hotel.address || `${hotel.name} ${hotel.neighborhood || ''} Orlando FL`);
+    const query = encodeURIComponent(hotel.address || `${hotel.name} ${hotel.neighborhood || ''} ${WhiteLabelConfig.hotelName} FL`);
     const url = `https://www.google.com/maps/search/?api=1&query=${query}`;
     Linking.openURL(url);
   };
@@ -90,9 +90,9 @@ const HotelCard: React.FC<HotelCardProps> = ({
     const shareTitle = `${hotel.name} | ${WhiteLabelConfig.appName} ${hotel.subcategory === 'luxury' ? 'Luxury Hotel' :
         hotel.subcategory === 'theme-park' ? 'Theme Park Hotel' :
           hotel.subcategory === 'budget-friendly' ? 'Budget-Friendly Hotel' :
-            'Orlando Hotel'
+            `${WhiteLabelConfig.hotelName}`
       }`;
-    const shareMessage = `Check out this amazing ${hotel.subcategory?.replace('-', ' ') || ''} hotel in ${hotel.neighborhood || 'Orlando'} - ${hotel.description?.substring(0, 100)}... ${shareUrl}`;
+    const shareMessage = `Check out this amazing ${hotel.subcategory?.replace('-', ' ') || ''} hotel in ${hotel.neighborhood || `${WhiteLabelConfig.hotelName}`} - ${hotel.description?.substring(0, 100)}... ${shareUrl}`;
 
     try {
       await Share.share({
@@ -171,7 +171,7 @@ const HotelCard: React.FC<HotelCardProps> = ({
         </TouchableOpacity>
 
         <Text style={styles.description} numberOfLines={3}>
-          {hotel.description || "Experience the ultimate Orlando vacation at this exceptional accommodation."}
+          {hotel.description || `Experience the ultimate ${WhiteLabelConfig.hotelName} vacation at this exceptional accommodation.`}
         </Text>
 
         {/* Amenities */}

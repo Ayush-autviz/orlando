@@ -150,7 +150,7 @@ const AttractionsScreen: React.FC = () => {
   const handleShare = async (attraction: Attraction) => {
     const shareUrl = `https://www.awesomeorlando.com/attraction/${encodeURIComponent(attraction.name)}`;
     const shareTitle = `${attraction.name} | ${WhiteLabelConfig.appName} ${attraction.category}`;
-    const shareMessage = `Check out ${attraction.name} in ${attraction.neighborhood || 'Orlando'} - ${attraction.description.substring(0, 100)}... ${shareUrl}`;
+    const shareMessage = `Check out ${attraction.name} in ${attraction.neighborhood || `${WhiteLabelConfig.appName}`} - ${attraction.description.substring(0, 100)}... ${shareUrl}`;
 
     try {
       await Share.share({
@@ -232,7 +232,7 @@ const AttractionsScreen: React.FC = () => {
           </View>
           <View style={styles.locationInfo}>
             <MapPin size={14} color="#6b7280" />
-            <Text style={styles.locationText}>{attraction.neighborhood || "Orlando"}</Text>
+            <Text style={styles.locationText}>{attraction.neighborhood || `${WhiteLabelConfig.appName}`}</Text>
           </View>
         </View>
 
@@ -241,7 +241,7 @@ const AttractionsScreen: React.FC = () => {
           <TouchableOpacity
             style={styles.mapItButton}
             onPress={() => {
-              const address = attraction.address || `${attraction.name} ${attraction.neighborhood || ''} Orlando FL`;
+              const address = attraction.address || `${attraction.name} ${attraction.neighborhood || ''} ${WhiteLabelConfig.appName} FL`;
               const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
               Linking.openURL(url);
             }}
@@ -341,7 +341,7 @@ const AttractionsScreen: React.FC = () => {
             <View style={styles.heroTitleContainer}>
               <View style={styles.heroTitle}>
                 <Text style={styles.heroTitleText}>
-                  ORLANDO<Text style={styles.heroTitleAccent}>ATTRACTIONS</Text>
+                  {WhiteLabelConfig.appName}<Text style={styles.heroTitleAccent}>ATTRACTIONS</Text>
                 </Text>
               </View>
               {/* Animated blinking dot */}
@@ -362,7 +362,7 @@ const AttractionsScreen: React.FC = () => {
             {/* Content area */}
             <View style={styles.heroContentArea}>
               <Text style={styles.heroDescription}>
-                Discover Orlando's unique attractions beyond the major theme parks.
+                Discover {WhiteLabelConfig.appName}'s unique attractions beyond the major theme parks.
               </Text>
 
               <View style={styles.heroTags}>
@@ -388,7 +388,7 @@ const AttractionsScreen: React.FC = () => {
           {/* Category counter */}
           <View style={styles.categoryCounter}>
             <Text style={styles.categoryCounterText}>
-              Browse <Text style={styles.categoryCounterBold}>{totalAttractionsCount}</Text> Orlando attractions
+              Browse <Text style={styles.categoryCounterBold}>{totalAttractionsCount}</Text> {WhiteLabelConfig.appName} attractions
             </Text>
           </View>
 

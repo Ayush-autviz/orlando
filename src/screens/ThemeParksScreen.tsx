@@ -29,6 +29,7 @@ import {
   ArrowRight
 } from 'lucide-react-native';
 import Header from '../components/Header';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const ThemeParksScreen: React.FC = () => {
   const navigation = useNavigation();
@@ -61,9 +62,9 @@ const ThemeParksScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      {/* <Header /> */}
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        {/* Hero Section */}
+        Hero Section
         <View style={styles.heroSection}>
           <LinearGradient
             colors={['#2563eb', '#8b5cf6', '#ec4899']}
@@ -92,7 +93,7 @@ const ThemeParksScreen: React.FC = () => {
               <View style={styles.heroTitleContainer}>
                 <View style={styles.heroTitle}>
                   <Text style={styles.heroTitleText}>
-                    ORLANDO<Text style={styles.heroTitleAccent}>THEME PARKS</Text>
+                    {WhiteLabelConfig.appName}<Text style={styles.heroTitleAccent}>THEME PARKS</Text>
                   </Text>
                 </View>
                 <Animated.View 
@@ -110,7 +111,7 @@ const ThemeParksScreen: React.FC = () => {
               </View>
               <View style={styles.heroContentArea}>
                 <Text style={styles.heroDescription}>
-                  Discover the magic of world-class theme parks that make Orlando the Theme Park Capital of the World.
+                  Discover the magic of world-class theme parks that make {WhiteLabelConfig.appName} the Theme Park Capital of the World.
                 </Text>
                 <View style={styles.heroTags}>
                   <View style={styles.heroTag}>
@@ -367,13 +368,13 @@ const ThemeParksScreen: React.FC = () => {
             <View style={[styles.sectionIcon, { backgroundColor: '#dc2626' }]}>
               <Rocket size={20} color="#ffffff" />
             </View>
-            <Text style={[styles.sectionTitle, { color: '#dc2626' }]}>Universal Orlando Resort</Text>
+            <Text style={[styles.sectionTitle, { color: '#dc2626' }]}>Universal {WhiteLabelConfig.appName} Resort</Text>
           </View>
 
           {/* Universal Main Card */}
           <TouchableOpacity
             style={styles.mainCard}
-            onPress={() => openWebsite('https://www.universalorlando.com/', 'Universal Orlando')}
+            onPress={() => openWebsite('https://www.universalorlando.com/', `Universal ${WhiteLabelConfig.appName}`)}
           >
             <Image
               source={require('../../assets/images/UniversalEntrance.webp')}
@@ -382,7 +383,7 @@ const ThemeParksScreen: React.FC = () => {
             />
             <View style={styles.mainCardOverlay}>
               <View style={styles.mainCardContent}>
-                <Text style={styles.mainCardTitle}>Universal Orlando Resort</Text>
+                <Text style={styles.mainCardTitle}>Universal {WhiteLabelConfig.appName} Resort</Text>
                 <Text style={styles.mainCardDescription}>
                   Immerse yourself in thrilling adventures across Universal Studios, Islands of Adventure, and the upcoming Epic Universe.
                 </Text>
@@ -463,7 +464,7 @@ const ThemeParksScreen: React.FC = () => {
                 </Text>
                 <TouchableOpacity 
                   style={[styles.mainCardButton, { backgroundColor: '#7c3aed' }]}
-                  onPress={() => openWebsite('https://www.universalorlando.com/', 'Universal Orlando')}
+                  onPress={() => openWebsite('https://www.universalorlando.com/', `Universal ${WhiteLabelConfig.appName}`)}
                 >
                   <View style={styles.buttonContent}>
                     <ExternalLink size={16} color="#ffffff" />
@@ -569,7 +570,7 @@ const ThemeParksScreen: React.FC = () => {
             </View>
 
             <Text style={styles.epicUniverseSubtext}>
-              Universal's Epic Universe - Orlando's newest theme park - Now Open!
+              Universal's Epic Universe - {WhiteLabelConfig.appName}'s newest theme park - Now Open!
             </Text>
           </View>
 
@@ -626,9 +627,9 @@ const ThemeParksScreen: React.FC = () => {
                 resizeMode="cover"
               />
               <View style={styles.seaworldMainOverlay}>
-                <Text style={styles.seaworldMainTitle}>SeaWorld Orlando</Text>
+                <Text style={styles.seaworldMainTitle}>SeaWorld {WhiteLabelConfig.appName}</Text>
                 <Text style={styles.seaworldMainDescription}>
-                  Experience marine life up close, thrilling coasters, and educational exhibits at Orlando's premier marine theme park.
+                  Experience marine life up close, thrilling coasters, and educational exhibits at {WhiteLabelConfig.appName}'s premier marine theme park.
                 </Text>
                 <View style={styles.seaworldMainButton}>
                   <View style={styles.buttonContent}>
@@ -694,7 +695,7 @@ const ThemeParksScreen: React.FC = () => {
                   resizeMode="cover"
                 />
                 <View style={styles.seaworldWaterParkOverlay}>
-                  <Text style={styles.seaworldWaterParkTitle}>Aquatica Orlando</Text>
+                  <Text style={styles.seaworldWaterParkTitle}>Aquatica {WhiteLabelConfig.appName}</Text>
                   <Text style={styles.seaworldWaterParkDescription}>
                     SeaWorld's water park with thrilling slides and animal encounters in a South Seas-inspired setting.
                   </Text>

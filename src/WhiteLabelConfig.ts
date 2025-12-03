@@ -1,5 +1,6 @@
 export const WhiteLabelConfig = {
-    appName: "Awesome Orlando",
+    appName: "Autviz",
+    hotelName: " Orlando Hotel",
     appLogo: require('../assets/icon/logo.png'),
     tagline: "Your complete resource for exploring Orlando",
     hero: {

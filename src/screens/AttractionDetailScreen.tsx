@@ -59,7 +59,7 @@ const AttractionDetailScreen: React.FC = () => {
   const handleShare = async () => {
     const shareUrl = `https://www.awesomeorlando.com/attraction/${encodeURIComponent(attraction.name)}`;
     const shareTitle = `${attraction.name} | ${WhiteLabelConfig.appName} ${attraction.category}`;
-    const shareMessage = `Check out ${attraction.name} in ${attraction.neighborhood || 'Orlando'} - ${attraction.description.substring(0, 100)}... ${shareUrl}`;
+    const shareMessage = `Check out ${attraction.name} in ${attraction.neighborhood || `${WhiteLabelConfig.appName}`} - ${attraction.description.substring(0, 100)}... ${shareUrl}`;
 
     try {
       await Share.share({
