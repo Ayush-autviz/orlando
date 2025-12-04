@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -16,14 +16,9 @@ import Video from 'react-native-video';
 import {
   Sparkles,
   Rocket,
-  Film,
   Waves,
-  Calendar,
-  Star,
   Gamepad2,
-  Mountain,
   ExternalLink,
-  Globe,
   Palmtree,
   Droplet,
   ArrowRight
@@ -33,7 +28,7 @@ import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const ThemeParksScreen: React.FC = () => {
   const navigation = useNavigation();
-  const pingAnimation = new Animated.Value(1);
+  const pingAnimation = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     const startPingAnimation = () => {
@@ -52,7 +47,7 @@ const ThemeParksScreen: React.FC = () => {
     };
 
     startPingAnimation();
-  }, []);
+  }, [pingAnimation]);
 
   const openWebsite = (url: string, title?: string) => {
     navigation.navigate('WebView' as never, { url, title } as never);
@@ -64,7 +59,6 @@ const ThemeParksScreen: React.FC = () => {
     <SafeAreaView style={styles.container}>
       <Header />
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
-        Hero Section
         <View style={styles.heroSection}>
           <LinearGradient
             colors={['#2563eb', '#8b5cf6', '#ec4899']}
