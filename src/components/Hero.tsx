@@ -506,14 +506,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 20,
     letterSpacing: 2,
     marginBottom: Math.max(15, height * 0.02),
-    ...Platform.select({
-      ios: {
-        fontFamily: 'System',
-      },
-      android: {
-        fontFamily: 'sans-serif-medium',
-      },
-    }),
+    fontFamily: WhiteLabelConfig.fonts.bold,
   },
   subtitleContainer: {
     position: 'relative',
@@ -529,14 +522,7 @@ const styles = StyleSheet.create({
     textShadowOffset: { width: 0, height: 3 },
     textShadowRadius: 12,
     lineHeight: 28,
-    ...Platform.select({
-      ios: {
-        fontFamily: 'System',
-      },
-      android: {
-        fontFamily: 'sans-serif-light',
-      },
-    }),
+    fontFamily: WhiteLabelConfig.fonts.medium,
   },
   categoriesWrapper: {
     flex: 1,
@@ -586,14 +572,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     letterSpacing: 0.5,
     color: '#ffffff',
-    ...Platform.select({
-      ios: {
-        fontFamily: 'System',
-      },
-      android: {
-        fontFamily: 'sans-serif-medium',
-      },
-    }),
+    fontFamily: WhiteLabelConfig.fonts.medium,
   },
   selectedIndicator: {
     position: 'absolute',

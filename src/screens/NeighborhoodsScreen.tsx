@@ -953,14 +953,14 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.background,
   },
   hero: {
-    backgroundColor: '#1f2937',
+    backgroundColor: WhiteLabelConfig.colors.primary,
     paddingVertical: 24,
     paddingHorizontal: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#374151',
+    borderBottomColor: WhiteLabelConfig.colors.headerBorder,
   },
   heroContent: {
     marginBottom: 16,
@@ -973,14 +973,14 @@ const styles = StyleSheet.create({
   blueAccent: {
     width: 12,
     height: 12,
-    backgroundColor: '#3b82f6',
+    backgroundColor: WhiteLabelConfig.colors.secondary,
     borderRadius: 2,
     marginRight: 8,
   },
   heroSubtitle: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#9ca3af',
+    color: WhiteLabelConfig.colors.mutedText,
     letterSpacing: 1,
   },
   heroTitle: {
@@ -1027,13 +1027,13 @@ const styles = StyleSheet.create({
   introTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#1f2937',
+    color: WhiteLabelConfig.colors.text,
     textAlign: 'center',
     marginBottom: 12,
   },
   introSubtitle: {
     fontSize: 16,
-    color: '#64748b',
+    color: WhiteLabelConfig.colors.mutedText,
     textAlign: 'center',
     lineHeight: 24,
     maxWidth: 400,
@@ -1068,7 +1068,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 8,
     right: 8,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: WhiteLabelConfig.colors.headerBackground,
     borderRadius: 20,
     width: 36,
     height: 36,
@@ -1103,20 +1103,20 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   tagBadge: {
-    backgroundColor: '#f1f5f9',
+    backgroundColor: WhiteLabelConfig.colors.drawerButtonBackground,
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 4,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
+    borderColor: WhiteLabelConfig.colors.headerBorder,
   },
   tagBadgeText: {
     fontSize: 12,
-    color: '#475569',
+    color: WhiteLabelConfig.colors.mutedText,
   },
   neighborhoodDescription: {
     fontSize: 14,
-    color: '#475569',
+    color: WhiteLabelConfig.colors.mutedText,
     lineHeight: 20,
     marginBottom: 16,
   },
@@ -1126,7 +1126,7 @@ const styles = StyleSheet.create({
   knownForLabel: {
     fontSize: 12,
     fontWeight: '600',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 8,
   },
   knownForItem: {
@@ -1136,13 +1136,13 @@ const styles = StyleSheet.create({
   },
   bulletPoint: {
     fontSize: 14,
-    color: '#ea580c',
+    color: WhiteLabelConfig.colors.button,
     marginRight: 8,
     marginTop: 1,
   },
   knownForText: {
     fontSize: 12,
-    color: '#64748b',
+    color: WhiteLabelConfig.colors.mutedText,
     flex: 1,
   },
   cardActions: {
@@ -1157,7 +1157,7 @@ const styles = StyleSheet.create({
   },
   mapItText: {
     fontSize: 14,
-    color: '#3b82f6',
+    color: WhiteLabelConfig.colors.secondary,
     fontWeight: '600',
   },
   websiteButton: {
@@ -1165,38 +1165,38 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    backgroundColor: '#0891b2',
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 6,
+    backgroundColor: WhiteLabelConfig.colors.accent,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    borderRadius: WhiteLabelConfig.components.button.radius,
   },
   websiteButtonText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#ffffff',
+    color: WhiteLabelConfig.colors.buttonText,
   },
   exploreButton: {
-    backgroundColor: '#ea580c',
-    paddingVertical: 10,
-    paddingHorizontal: 16,
-    borderRadius: 6,
+    backgroundColor: WhiteLabelConfig.colors.button,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     alignItems: 'center',
   },
   exploreButtonText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#ffffff',
+    color: WhiteLabelConfig.colors.buttonText,
   },
   whyExploreSection: {
     paddingVertical: 32,
     paddingHorizontal: 16,
-    backgroundColor: '#f8fafc',
+    backgroundColor: WhiteLabelConfig.colors.drawerButtonBackground,
     marginTop: 32,
   },
   whyExploreTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#1f2937',
+    color: WhiteLabelConfig.colors.text,
     textAlign: 'center',
     marginBottom: 24,
   },
@@ -1216,13 +1216,13 @@ const styles = StyleSheet.create({
   reasonTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#1f2937',
+    color: WhiteLabelConfig.colors.text,
     marginTop: 8,
     marginBottom: 8,
   },
   reasonDescription: {
     fontSize: 14,
-    color: '#64748b',
+    color: WhiteLabelConfig.colors.mutedText,
     lineHeight: 20,
   },
   // Carousel Styles

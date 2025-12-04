@@ -62,7 +62,7 @@ const ThemeParksScreen: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Header /> */}
+      <Header />
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         Hero Section
         <View style={styles.heroSection}>
@@ -163,12 +163,12 @@ const ThemeParksScreen: React.FC = () => {
                 <Text style={styles.mainCardDescription}>
                   Experience the magic of four iconic theme parks, two water parks, and Disney Springs in the most magical place on earth.
                 </Text>
-                <View style={styles.mainCardButton}>
-                  <View style={styles.buttonContent}>
-                    <Sparkles size={16} color="#ffffff" />
-                    <Text style={styles.mainCardButtonText}>Official Site</Text>
-                  </View>
-                </View>
+            <View style={[styles.mainCardButton, { backgroundColor: WhiteLabelConfig.colors.button, borderRadius: WhiteLabelConfig.components.button.radius, paddingHorizontal: WhiteLabelConfig.components.button.paddingH, paddingVertical: WhiteLabelConfig.components.button.paddingV }]}>
+              <View style={styles.buttonContent}>
+                <Sparkles size={16} color={WhiteLabelConfig.colors.buttonText} />
+                <Text style={[styles.mainCardButtonText, { color: WhiteLabelConfig.colors.buttonText }]}>Official Site</Text>
+              </View>
+            </View>
               </View>
             </View>
           </TouchableOpacity>
@@ -1025,7 +1025,7 @@ const ThemeParksScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.background,
   },
   scrollView: {
     flex: 1,
@@ -1034,15 +1034,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     padding: 16,
-    backgroundColor: '#f3f4f6',
+    backgroundColor: WhiteLabelConfig.colors.drawerButtonBackground,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: WhiteLabelConfig.colors.headerBorder,
   },
   closeButton: {
-    backgroundColor: '#ef4444',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
+    backgroundColor: WhiteLabelConfig.colors.button,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    borderRadius: WhiteLabelConfig.components.button.radius,
   },
   closeButtonText: {
     color: '#ffffff',
@@ -1227,15 +1227,16 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
   mainCardButton: {
-    backgroundColor: '#2563eb',
-    paddingHorizontal: 20,
-    paddingVertical: 12,
-    borderRadius: 8,
+    backgroundColor: WhiteLabelConfig.colors.button,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    borderRadius: WhiteLabelConfig.components.button.radius,
   },
   mainCardButtonText: {
-    color: '#ffffff',
+    color: WhiteLabelConfig.colors.buttonText,
     fontSize: 16,
     fontWeight: '600',
+    fontFamily: WhiteLabelConfig.fonts.medium,
   },
   buttonContent: {
     flexDirection: 'row',
@@ -1256,7 +1257,7 @@ const styles = StyleSheet.create({
   gridTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
   },
   gridRow: {
     flexDirection: 'row',
@@ -1438,7 +1439,7 @@ const styles = StyleSheet.create({
   waterParksTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 16,
   },
   waterParksGrid: {
@@ -1482,16 +1483,17 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   waterParkButton: {
-    backgroundColor: '#2563eb',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 6,
+    backgroundColor: WhiteLabelConfig.colors.button,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     alignSelf: 'flex-start',
   },
   waterParkButtonText: {
     fontSize: 12,
-    color: '#ffffff',
+    color: WhiteLabelConfig.colors.buttonText,
     fontWeight: '600',
+    fontFamily: WhiteLabelConfig.fonts.medium,
   },
   seasonalEventsSection: {
     marginTop: 0,
@@ -1518,14 +1520,14 @@ const styles = StyleSheet.create({
     color: '#ec4899',
   },
   seasonalEventsContainer: {
-    backgroundColor: '#f8fafc',
+    backgroundColor: WhiteLabelConfig.footer.backgroundColor,
     borderRadius: 12,
     padding: 16,
     borderWidth: 1,
     borderColor: '#e2e8f0',
   },
   tableContainer: {
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.headerBackground,
     borderRadius: 12,
     overflow: 'hidden',
     shadowColor: '#000',
@@ -1553,12 +1555,12 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#e2e8f0',
+    borderBottomColor: WhiteLabelConfig.colors.headerBorder,
   },
   tableCell: {
     flex: 1,
     fontSize: 12,
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
   },
   tableCellBold: {
     fontWeight: '600',
@@ -1818,16 +1820,17 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   epicUniverseButton: {
-    backgroundColor: '#dc2626',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
+    backgroundColor: WhiteLabelConfig.colors.button,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     alignSelf: 'flex-start',
   },
   epicUniverseButtonText: {
     fontSize: 14,
-    color: '#ffffff',
+    color: WhiteLabelConfig.colors.buttonText,
     fontWeight: '600',
+    fontFamily: WhiteLabelConfig.fonts.medium,
   },
   // Brand New Attractions Styles
   brandNewSection: {
@@ -1886,7 +1889,7 @@ const styles = StyleSheet.create({
   },
   epicUniverseSubtext: {
     fontSize: 12,
-    color: '#6b7280',
+    color: WhiteLabelConfig.colors.mutedText,
     fontStyle: 'italic',
     textAlign: 'center',
     marginTop: 8,
@@ -2164,16 +2167,17 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   legolandMainButton: {
-    backgroundColor: '#eab308',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 8,
+    backgroundColor: WhiteLabelConfig.colors.button,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     alignSelf: 'flex-start',
   },
   legolandMainButtonText: {
     fontSize: 14,
-    color: '#ffffff',
+    color: WhiteLabelConfig.colors.buttonText,
     fontWeight: '600',
+    fontFamily: WhiteLabelConfig.fonts.medium,
   },
   arrowIcon: {
     position: 'absolute',

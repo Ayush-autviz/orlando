@@ -34,13 +34,13 @@ const Drawer = createDrawerNavigator();
 // Custom drawer content component
 const CustomDrawerContent = (props: any) => {
   const categories = [
-    { id: 'home', label: 'Home', icon: <Home size={24} color="#374151" />, color: '#f97316' },
-    { id: 'theme-parks', label: 'Theme Parks', icon: <MapPin size={24} color="#374151" />, color: '#3b82f6' },
-    { id: 'attractions', label: 'All Attractions', icon: <Star size={24} color="#374151" />, color: '#10b981' },
-    { id: 'hotels', label: 'Hotels', icon: <Building size={24} color="#374151" />, color: '#f59e0b' },
-    { id: 'dining', label: 'Dining', icon: <Utensils size={24} color="#374151" />, color: '#ef4444' },
-    { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color="#374151" />, color: '#8b5cf6' },
-    { id: 'entertainment', label: 'Live Entertainment', icon: <Calendar size={24} color="#374151" />, color: '#06b6d4' },
+    { id: 'home', label: 'Home', icon: <Home size={24} color={WhiteLabelConfig.colors.text} />, color: WhiteLabelConfig.colors.accent },
+    { id: 'theme-parks', label: 'Theme Parks', icon: <MapPin size={24} color={WhiteLabelConfig.colors.text} />, color: '#3b82f6' },
+    { id: 'attractions', label: 'All Attractions', icon: <Star size={24} color={WhiteLabelConfig.colors.text} />, color: WhiteLabelConfig.colors.secondary },
+    { id: 'hotels', label: 'Hotels', icon: <Building size={24} color={WhiteLabelConfig.colors.text} />, color: '#f59e0b' },
+    { id: 'dining', label: 'Dining', icon: <Utensils size={24} color={WhiteLabelConfig.colors.text} />, color: '#ef4444' },
+    { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color={WhiteLabelConfig.colors.text} />, color: '#8b5cf6' },
+    { id: 'entertainment', label: 'Live Entertainment', icon: <Calendar size={24} color={WhiteLabelConfig.colors.text} />, color: '#06b6d4' },
     // { id: 'things-to-do', label: 'Things to Do', icon: <Star size={24} color="#374151" />, color: '#84cc16' },
     // { id: 'golf', label: 'Golf', icon: <Flag size={24} color="#374151" />, color: '#f97316' },
     // { id: 'sports', label: 'Sports', icon: <Star size={24} color="#374151" />, color: '#ec4899' },
@@ -68,7 +68,7 @@ const CustomDrawerContent = (props: any) => {
           style={styles.closeButton}
           onPress={() => props.navigation.closeDrawer()}
         >
-          <X size={24} color="#374151" />
+          <X size={24} color={WhiteLabelConfig.colors.text} />
         </TouchableOpacity>
       </View>
 
@@ -106,7 +106,7 @@ const DrawerNavigator = () => {
       screenOptions={{
         headerShown: false,
         drawerStyle: {
-          backgroundColor: '#ffffff',
+          backgroundColor: WhiteLabelConfig.colors.background,
           width: 280,
         },
         drawerType: 'front',
@@ -133,7 +133,7 @@ const DrawerNavigator = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.background,
   },
   header: {
     flexDirection: 'row',
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: WhiteLabelConfig.colors.headerBorder,
   },
   logoContainer: {
     flexDirection: 'row',
@@ -153,16 +153,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   logoOrange: {
-    color: '#f97316',
+    color: WhiteLabelConfig.colors.accent,
   },
   logoTeal: {
-    color: '#0d9488',
+    color: WhiteLabelConfig.colors.secondary,
     fontWeight: '300',
   },
   closeButton: {
     padding: 8,
     borderRadius: 20,
-    backgroundColor: '#f3f4f6',
+    backgroundColor: WhiteLabelConfig.colors.drawerButtonBackground,
   },
   scrollView: {
     flex: 1,
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#f3f4f6',
+    borderBottomColor: WhiteLabelConfig.colors.drawerButtonBackground,
     position: 'relative',
   },
   categoryIcon: {
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
   categoryLabel: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     flex: 1,
   },
   categoryAccent: {
@@ -201,19 +201,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderTopWidth: 1,
-    borderTopColor: '#e5e7eb',
-    backgroundColor: '#f9fafb',
+    borderTopColor: WhiteLabelConfig.colors.headerBorder,
+    backgroundColor: WhiteLabelConfig.footer.backgroundColor,
   },
   footerText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     textAlign: 'center',
     marginBottom: 4,
   },
   footerSubtext: {
     fontSize: 12,
-    color: '#6b7280',
+    color: WhiteLabelConfig.colors.mutedText,
     textAlign: 'center',
   },
 });

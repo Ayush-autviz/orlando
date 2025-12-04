@@ -96,7 +96,7 @@ const DiningScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WhiteLabelConfig.colors.background,
   },
   scrollContainer: {
     flex: 1,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: '800',
     letterSpacing: 2,
-    color: '#EA580C',
+    color: WhiteLabelConfig.colors.button,
     textAlign: 'center',
     paddingVertical: 8,
     paddingHorizontal: 8,
@@ -131,13 +131,13 @@ const styles = StyleSheet.create({
     textShadowRadius: 2,
   },
   headerAccent: {
-    color: '#B45309',
+    color: WhiteLabelConfig.colors.secondary,
   },
   headerUnderline: {
     height: 2,
     width: 96,
     marginTop: 4,
-    backgroundColor: '#EA580C',
+    backgroundColor: WhiteLabelConfig.colors.button,
     borderRadius: 1,
   },
   categoriesContainer: {
@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
   },
   categoryDescription: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     lineHeight: 20,
   },
   buttonContainer: {
@@ -200,16 +200,16 @@ const styles = StyleSheet.create({
     paddingTop: 0,
   },
   exploreButton: {
-    backgroundColor: '#EA580C',
+    backgroundColor: WhiteLabelConfig.colors.button,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 8,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    borderRadius: WhiteLabelConfig.components.button.radius,
   },
   buttonText: {
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
     fontSize: 14,
     fontWeight: '600',
   },

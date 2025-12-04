@@ -327,7 +327,7 @@ const DiningCategoryScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WhiteLabelConfig.colors.background,
   },
   scrollContainer: {
     flex: 1,
@@ -345,13 +345,13 @@ const styles = StyleSheet.create({
   },
   backText: {
     fontSize: 16,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     marginLeft: 4,
   },
   categoryTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#EA580C',
+    color: WhiteLabelConfig.colors.button,
     flex: 1,
   },
   descriptionContainer: {
@@ -360,7 +360,7 @@ const styles = StyleSheet.create({
   },
   categoryDescription: {
     fontSize: 16,
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     lineHeight: 24,
   },
   restaurantsContainer: {
@@ -393,13 +393,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 8,
     left: 8,
-    backgroundColor: '#EA580C',
+    backgroundColor: WhiteLabelConfig.colors.button,
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 16,
   },
   cuisineBadgeText: {
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
     fontSize: 10,
     fontWeight: 'bold',
     textTransform: 'uppercase',
@@ -418,7 +418,7 @@ const styles = StyleSheet.create({
   restaurantName: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#111827',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 8,
   },
   locationContainer: {
@@ -428,12 +428,12 @@ const styles = StyleSheet.create({
   },
   neighborhoodText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     marginLeft: 4,
   },
   addressText: {
     fontSize: 12,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     marginBottom: 4,
   },
   mapItButton: {
@@ -445,12 +445,12 @@ const styles = StyleSheet.create({
   },
   mapItText: {
     fontSize: 12,
-    color: '#EA580C',
+    color: WhiteLabelConfig.colors.button,
     fontWeight: '500',
   },
   descriptionText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     lineHeight: 20,
     marginBottom: 16,
   },
@@ -463,9 +463,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 6,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     flex: 1,
     gap: 4,
   },
@@ -474,20 +474,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 6,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     flex: 1,
     gap: 4,
   },
   detailsButton: {
-    backgroundColor: '#009688',
+    backgroundColor: WhiteLabelConfig.colors.accent,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 8,
-    paddingHorizontal: 12,
-    borderRadius: 6,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     flex: 1,
     gap: 4,
   },
@@ -496,13 +496,13 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   websiteButtonText: {
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
   },
   noWebsiteButtonText: {
-    color: '#777777',
+    color: WhiteLabelConfig.colors.mutedText,
   },
   detailsButtonText: {
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
   },
   errorContainer: {
     flex: 1,
@@ -512,17 +512,17 @@ const styles = StyleSheet.create({
   },
   errorText: {
     fontSize: 18,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     marginBottom: 16,
   },
   backButton: {
-    backgroundColor: '#EA580C',
+    backgroundColor: WhiteLabelConfig.colors.button,
     paddingHorizontal: 16,
     paddingVertical: 8,
-    borderRadius: 8,
+    borderRadius: WhiteLabelConfig.components.button.radius,
   },
   backButtonText: {
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
     fontSize: 16,
     fontWeight: '600',
   },
@@ -532,7 +532,7 @@ const styles = StyleSheet.create({
   },
   emptyText: {
     fontSize: 18,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
   },
   carouselImageContainer: {
     width: width - 32,

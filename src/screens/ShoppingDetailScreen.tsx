@@ -21,12 +21,8 @@ import {
   ShoppingBag,
   Store,
   Coffee,
-  CalendarDays,
   Car,
   ExternalLink,
-  Instagram,
-  Facebook,
-  Twitter,
   Info,
   Star,
   Share2
@@ -157,9 +153,9 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
 
               <View style={styles.storeCardFooter}>
                 {store.location && (
-                  <View style={styles.storeLocation}>
+                    <View style={styles.storeLocation}>
                     <View style={styles.locationIcon}>
-                      <MapPin size={12} color="#6B7280" />
+                      <MapPin size={12} color={WhiteLabelConfig.colors.mutedText} />
                     </View>
                     <Text style={styles.storeLocationText}>{store.location}</Text>
                   </View>
@@ -173,7 +169,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                     })}
                   >
                     <Text style={styles.storeWebsiteText}>Visit Store</Text>
-                    <ExternalLink size={12} color="#EA580C" />
+                    <ExternalLink size={12} color={WhiteLabelConfig.colors.button} />
                   </TouchableOpacity>
                 )}
               </View>
@@ -192,7 +188,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
           <View key={index} style={styles.diningCard}>
             <View style={styles.diningCardHeader}>
               <View style={styles.diningIconContainer}>
-                <Coffee size={32} color="#EA580C" />
+                <Coffee size={32} color={WhiteLabelConfig.colors.button} />
               </View>
               {/* <View style={[
                 styles.priceBadge,
@@ -219,7 +215,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                 {dining.location && (
                   <View style={styles.diningLocation}>
                     <View style={styles.locationIcon}>
-                      <MapPin size={12} color="#6B7280" />
+                      <MapPin size={12} color={WhiteLabelConfig.colors.mutedText} />
                     </View>
                     <Text style={styles.diningLocationText}>{dining.location}</Text>
                   </View>
@@ -233,7 +229,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                     })}
                   >
                     <Text style={styles.diningWebsiteText}>View Menu</Text>
-                    <ExternalLink size={12} color="#EA580C" />
+                    <ExternalLink size={12} color={WhiteLabelConfig.colors.button} />
                   </TouchableOpacity>
                 )}
               </View>
@@ -290,7 +286,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
       <View style={styles.header}>
         <View style={styles.headerContent}>
           <TouchableOpacity style={styles.backButton} onPress={handleBackPress}>
-            <ChevronLeft size={16} color="#6B7280" />
+            <ChevronLeft size={16} color={WhiteLabelConfig.colors.mutedText} />
             <Text style={styles.backButtonText}>Back to Shopping</Text>
           </TouchableOpacity>
           {/* <View style={styles.breadcrumb}>
@@ -312,7 +308,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
 
           {/* Share button */}
           <TouchableOpacity style={styles.shareButton} onPress={handleShare}>
-            <Share2 size={20} color="#374151" />
+            <Share2 size={20} color={WhiteLabelConfig.colors.text} />
           </TouchableOpacity>
 
           {/* Hero content */}
@@ -350,14 +346,14 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                 onPress={() => handleWebsitePress(mall.contactInfo.website)}
               >
                 <Text style={styles.heroWebsiteButtonText}>Official Website</Text>
-                <ExternalLink size={16} color="#FFFFFF" />
+                <ExternalLink size={16} color={WhiteLabelConfig.colors.buttonText} />
               </TouchableOpacity>
 
               <TouchableOpacity
                 style={styles.heroPhoneButton}
                 onPress={() => handlePhonePress(mall.contactInfo.phone)}
               >
-                <Phone size={16} color="#FFFFFF" />
+                <Phone size={16} color={WhiteLabelConfig.colors.buttonText} />
                 <Text style={styles.heroPhoneButtonText}>{mall.contactInfo.phone}</Text>
               </TouchableOpacity>
             </View>
@@ -408,7 +404,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                     style={[styles.tabTrigger, selectedTab === 'stores' && styles.tabTriggerActive]}
                     onPress={() => setSelectedTab('stores')}
                   >
-                    <ShoppingBag size={16} color={selectedTab === 'stores' ? '#FFFFFF' : '#6B7280'} />
+                    <ShoppingBag size={16} color={selectedTab === 'stores' ? WhiteLabelConfig.colors.buttonText : WhiteLabelConfig.colors.mutedText} />
                     <Text style={[styles.tabTriggerText, selectedTab === 'stores' && styles.tabTriggerTextActive]}>
                       Stores
                     </Text>
@@ -418,7 +414,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                     style={[styles.tabTrigger, selectedTab === 'dining' && styles.tabTriggerActive]}
                     onPress={() => setSelectedTab('dining')}
                   >
-                    <Coffee size={16} color={selectedTab === 'dining' ? '#FFFFFF' : '#6B7280'} />
+                    <Coffee size={16} color={selectedTab === 'dining' ? WhiteLabelConfig.colors.buttonText : WhiteLabelConfig.colors.mutedText} />
                     <Text style={[styles.tabTriggerText, selectedTab === 'dining' && styles.tabTriggerTextActive]}>
                       Dining
                     </Text>
@@ -428,7 +424,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                     style={[styles.tabTrigger, selectedTab === 'features' && styles.tabTriggerActive]}
                     onPress={() => setSelectedTab('features')}
                   >
-                    <Info size={16} color={selectedTab === 'features' ? '#FFFFFF' : '#6B7280'} />
+                    <Info size={16} color={selectedTab === 'features' ? WhiteLabelConfig.colors.buttonText : WhiteLabelConfig.colors.mutedText} />
                     <Text style={[styles.tabTriggerText, selectedTab === 'features' && styles.tabTriggerTextActive]}>
                       Features
                     </Text>
@@ -450,7 +446,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
 
                   <View style={styles.mallInfoContent}>
                     <View style={styles.mallInfoItem}>
-                      <MapPin size={20} color="#6B7280" />
+                      <MapPin size={20} color={WhiteLabelConfig.colors.mutedText} />
                       <View style={styles.mallInfoItemContent}>
                         <Text style={styles.mallInfoLabel}>Location</Text>
                         <View style={styles.mallInfoAddress}>
@@ -460,7 +456,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                             style={styles.mallInfoMapButton}
                             onPress={() => handleMapPress(mall.location.address)}
                           >
-                            <MapPin size={12} color="#EA580C" />
+                            <MapPin size={12} color={WhiteLabelConfig.colors.button} />
                             <Text style={styles.mallInfoMapText}>Map It</Text>
                           </TouchableOpacity>
                         </View>
@@ -498,7 +494,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
                           <Text style={styles.mallInfoLink}>
                             {mall.contactInfo.website.replace(/^https?:\/\//, '').replace(/\/.*$/, '')}
                           </Text>
-                          <ExternalLink size={12} color="#EA580C" />
+                          <ExternalLink size={12} color={WhiteLabelConfig.colors.button} />
                         </TouchableOpacity>
                       </View>
                     </View>
@@ -541,7 +537,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
             onPress={() => handleWebsitePress(mall.contactInfo.website)}
           >
             <Text style={styles.ctaButtonText}>Official Website</Text>
-            <ExternalLink size={16} color="#EA580C" />
+            <ExternalLink size={16} color={WhiteLabelConfig.colors.button} />
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -552,7 +548,7 @@ const ShoppingDetailScreen: React.FC<ShoppingDetailScreenProps> = ({ route, navi
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WhiteLabelConfig.colors.background,
   },
   loadingContainer: {
     flex: 1,
@@ -561,7 +557,7 @@ const styles = StyleSheet.create({
   },
   loadingText: {
     fontSize: 18,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
   },
   errorContainer: {
     flex: 1,
@@ -572,14 +568,14 @@ const styles = StyleSheet.create({
   errorTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 20,
     textAlign: 'center',
   },
   header: {
-    backgroundColor: '#F9FAFB',
+    backgroundColor: WhiteLabelConfig.colors.headerBackground,
     borderBottomWidth: 1,
-    borderBottomColor: '#E5E7EB',
+    borderBottomColor: WhiteLabelConfig.colors.headerBorder,
   },
   headerContent: {
     flexDirection: 'row',
@@ -594,7 +590,7 @@ const styles = StyleSheet.create({
   },
   backButtonText: {
     fontSize: 16,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     marginLeft: 8,
   },
   breadcrumb: {
@@ -603,16 +599,16 @@ const styles = StyleSheet.create({
   },
   breadcrumbText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
   },
   breadcrumbSeparator: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     marginHorizontal: 8,
   },
   breadcrumbActive: {
     fontSize: 14,
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     fontWeight: '500',
   },
   scrollView: {
@@ -676,12 +672,12 @@ const styles = StyleSheet.create({
   accentLine: {
     height: 2,
     width: Math.min(64, width * 0.15),
-    backgroundColor: '#FB923C',
+    backgroundColor: WhiteLabelConfig.colors.accent,
   },
   accentLineShort: {
     height: 2,
     width: Math.min(32, width * 0.08),
-    backgroundColor: '#2DD4BF',
+    backgroundColor: WhiteLabelConfig.colors.secondary,
     marginHorizontal: Math.min(12, width * 0.03),
   },
   heroTitle: {
@@ -712,7 +708,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   heroBadge: {
-    backgroundColor: '#EA580C',
+    backgroundColor: WhiteLabelConfig.colors.button,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
@@ -723,7 +719,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   heroBadgeTeal: {
-    backgroundColor: '#0D9488',
+    backgroundColor: WhiteLabelConfig.colors.secondary,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
@@ -745,12 +741,12 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   heroBadgeText: {
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
     fontSize: Math.min(14, width * 0.035),
     fontWeight: '600',
   },
   heroBadgeTextDark: {
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     fontSize: Math.min(14, width * 0.035),
     fontWeight: '600',
   },
@@ -761,13 +757,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   heroWebsiteButton: {
-    backgroundColor: '#EA580C',
+    backgroundColor: WhiteLabelConfig.colors.button,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    borderRadius: 25,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
@@ -775,7 +771,7 @@ const styles = StyleSheet.create({
     elevation: 8,
   },
   heroWebsiteButtonText: {
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
     fontSize: Math.min(18, width * 0.045),
     fontWeight: '600',
     marginRight: 8,
@@ -783,13 +779,13 @@ const styles = StyleSheet.create({
   heroPhoneButton: {
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
     borderWidth: 2,
-    borderColor: '#FFFFFF',
+    borderColor: WhiteLabelConfig.colors.buttonText,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 20,
-    paddingVertical: 16,
-    borderRadius: 25,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
@@ -878,7 +874,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   galleryThumbnailSelected: {
-    borderColor: '#EA580C',
+    borderColor: WhiteLabelConfig.colors.button,
   },
   thumbnailImage: {
     width: '100%',
@@ -891,7 +887,7 @@ const styles = StyleSheet.create({
   tabsList: {
     flexDirection: 'row',
     marginBottom: 32,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: WhiteLabelConfig.colors.drawerButtonBackground,
     borderRadius: 8,
     padding: 4,
   },
@@ -906,15 +902,15 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   tabTriggerActive: {
-    backgroundColor: '#EA580C',
+    backgroundColor: WhiteLabelConfig.colors.button,
   },
   tabTriggerText: {
     fontSize: 16,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     fontWeight: '500',
   },
   tabTriggerTextActive: {
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
   },
   tabContent: {
     marginTop: 16,
@@ -922,7 +918,7 @@ const styles = StyleSheet.create({
   tabTitle: {
     fontSize: 24,
     fontWeight: '600',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 16,
   },
   storesGrid: {
@@ -930,10 +926,10 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   storeCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WhiteLabelConfig.components.card.background,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: WhiteLabelConfig.colors.headerBorder,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -956,7 +952,7 @@ const styles = StyleSheet.create({
   storeCardName: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#111827',
+    color: WhiteLabelConfig.colors.text,
     flex: 1,
   },
   flagshipBadge: {
@@ -976,7 +972,7 @@ const styles = StyleSheet.create({
   categoryBadge: {
     backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: WhiteLabelConfig.colors.headerBorder,
     paddingHorizontal: 12,
     paddingVertical: 4,
     borderRadius: 12,
@@ -984,19 +980,19 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   categoryBadgeText: {
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     fontSize: 12,
     fontWeight: '500',
   },
   storeCardDescription: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     lineHeight: 20,
     marginBottom: 16,
   },
   storeCardSeparator: {
     height: 1,
-    backgroundColor: '#E5E7EB',
+    backgroundColor: WhiteLabelConfig.colors.headerBorder,
     marginVertical: 16,
   },
   storeCardFooter: {
@@ -1012,14 +1008,14 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: '#F3F4F6',
+    backgroundColor: WhiteLabelConfig.colors.drawerButtonBackground,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 8,
   },
   storeLocationText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
   },
   storeWebsiteLink: {
     flexDirection: 'row',
@@ -1027,7 +1023,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   storeWebsiteText: {
-    color: '#EA580C',
+    color: WhiteLabelConfig.colors.button,
     fontSize: 14,
     fontWeight: '500',
   },
@@ -1036,10 +1032,10 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   diningCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WhiteLabelConfig.components.card.background,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: WhiteLabelConfig.colors.headerBorder,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -1058,7 +1054,7 @@ const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WhiteLabelConfig.components.card.background,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: '#000',
@@ -1098,13 +1094,13 @@ const styles = StyleSheet.create({
   diningCardName: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#111827',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 8,
   },
   cuisineBadge: {
     backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: '#E5E7EB',
+    borderColor: WhiteLabelConfig.colors.headerBorder,
     paddingHorizontal: 12,
     paddingVertical: 4,
     borderRadius: 12,
@@ -1112,19 +1108,19 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   cuisineBadgeText: {
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     fontSize: 12,
     fontWeight: '500',
   },
   diningCardDescription: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     lineHeight: 20,
     marginBottom: 16,
   },
   diningCardSeparator: {
     height: 1,
-    backgroundColor: '#E5E7EB',
+    backgroundColor: WhiteLabelConfig.colors.headerBorder,
     marginVertical: 16,
   },
   diningCardFooter: {
@@ -1138,7 +1134,7 @@ const styles = StyleSheet.create({
   },
   diningLocationText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
   },
   diningWebsiteLink: {
     flexDirection: 'row',
@@ -1146,7 +1142,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   diningWebsiteText: {
-    color: '#EA580C',
+    color: WhiteLabelConfig.colors.button,
     fontSize: 14,
     fontWeight: '500',
   },
@@ -1170,7 +1166,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WhiteLabelConfig.components.card.background,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 12,
@@ -1183,11 +1179,11 @@ const styles = StyleSheet.create({
   featureText: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     flex: 1,
   },
   mallInfoCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: WhiteLabelConfig.components.card.background,
     borderRadius: 12,
     padding: 24,
     shadowColor: '#000',
@@ -1199,7 +1195,7 @@ const styles = StyleSheet.create({
   mallInfoTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#111827',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 16,
   },
   mallInfoContent: {
@@ -1216,12 +1212,12 @@ const styles = StyleSheet.create({
   mallInfoLabel: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#111827',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 4,
   },
   mallInfoText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     lineHeight: 20,
   },
   mallInfoAddress: {
@@ -1232,7 +1228,7 @@ const styles = StyleSheet.create({
   mallInfoMapButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FED7AA',
+    backgroundColor: WhiteLabelConfig.colors.accent,
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 6,
@@ -1241,26 +1237,26 @@ const styles = StyleSheet.create({
   },
   mallInfoMapText: {
     fontSize: 12,
-    color: '#EA580C',
+    color: WhiteLabelConfig.colors.buttonText,
     fontWeight: '500',
   },
   mallInfoHoliday: {
     fontSize: 14,
-    color: '#EA580C',
+    color: WhiteLabelConfig.colors.button,
     marginTop: 4,
   },
   mallInfoSeparator: {
     height: 1,
-    backgroundColor: '#E5E7EB',
+    backgroundColor: WhiteLabelConfig.colors.headerBorder,
     marginVertical: 8,
   },
   mallInfoLink: {
     fontSize: 14,
-    color: '#EA580C',
+    color: WhiteLabelConfig.colors.button,
     textDecorationLine: 'underline',
   },
   ctaSection: {
-    backgroundColor: '#EA580C',
+    backgroundColor: WhiteLabelConfig.colors.button,
     paddingVertical: 24,
     paddingHorizontal: 16,
     alignItems: 'center',
@@ -1268,7 +1264,7 @@ const styles = StyleSheet.create({
   ctaTitle: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
     marginBottom: 16,
     textAlign: 'center',
   },

@@ -24,16 +24,16 @@ interface DrawerContentProps {
 
 const DrawerContent: React.FC<DrawerContentProps> = ({ navigation, onClose }) => {
   const categories = [
-    { id: 'theme-parks', label: 'Theme Parks', icon: <Building size={24} color="#A855F7" />, color: '#A855F7' },
-    { id: 'attractions', label: 'Attractions', icon: <Star size={24} color="#EF4444" />, color: '#EF4444' },
-    { id: 'hotels', label: 'Hotels', icon: <Building size={24} color="#3B82F6" />, color: '#3B82F6' },
-    { id: 'dining', label: 'Dining', icon: <Utensils size={24} color="#F59E0B" />, color: '#F59E0B' },
-    { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color="#10B981" />, color: '#10B981' },
-    { id: 'entertainment', label: 'Live Entertainment', icon: <Calendar size={24} color="#8B5CF6" />, color: '#8B5CF6' },
-    { id: 'golf', label: 'Golf', icon: <Flag size={24} color="#059669" />, color: '#059669' },
-    { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color="#DC2626" />, color: '#DC2626' },
-    { id: 'nightlife', label: 'Nightlife', icon: <Beer size={24} color="#7C3AED" />, color: '#7C3AED' },
-    { id: 'spas', label: 'Spas', icon: <Leaf size={24} color="#16A34A" />, color: '#16A34A' },
+    { id: 'theme-parks', label: 'Theme Parks', icon: <Building size={24} color={WhiteLabelConfig.colors.text} />, color: '#A855F7' },
+    { id: 'attractions', label: 'Attractions', icon: <Star size={24} color={WhiteLabelConfig.colors.text} />, color: '#EF4444' },
+    { id: 'hotels', label: 'Hotels', icon: <Building size={24} color={WhiteLabelConfig.colors.text} />, color: '#3B82F6' },
+    { id: 'dining', label: 'Dining', icon: <Utensils size={24} color={WhiteLabelConfig.colors.text} />, color: '#F59E0B' },
+    { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color={WhiteLabelConfig.colors.text} />, color: '#10B981' },
+    { id: 'entertainment', label: 'Live Entertainment', icon: <Calendar size={24} color={WhiteLabelConfig.colors.text} />, color: '#8B5CF6' },
+    { id: 'golf', label: 'Golf', icon: <Flag size={24} color={WhiteLabelConfig.colors.text} />, color: '#059669' },
+    { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color={WhiteLabelConfig.colors.text} />, color: '#DC2626' },
+    { id: 'nightlife', label: 'Nightlife', icon: <Beer size={24} color={WhiteLabelConfig.colors.text} />, color: '#7C3AED' },
+    { id: 'spas', label: 'Spas', icon: <Leaf size={24} color={WhiteLabelConfig.colors.text} />, color: '#16A34A' },
   ];
 
   const handleCategoryPress = (categoryId: string) => {
@@ -51,7 +51,7 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ navigation, onClose }) =>
           style={styles.closeButton}
           onPress={onClose}
         >
-          <X size={24} color="#374151" />
+          <X size={24} color={WhiteLabelConfig.colors.text} />
         </TouchableOpacity>
       </View>
 
@@ -84,7 +84,7 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ navigation, onClose }) =>
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.background,
   },
   header: {
     flexDirection: 'row',
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderBottomWidth: 1,
-    borderBottomColor: '#e5e7eb',
+    borderBottomColor: WhiteLabelConfig.colors.headerBorder,
   },
   logoContainer: {
     flex: 1,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
   closeButton: {
     padding: 8,
     borderRadius: 8,
-    backgroundColor: '#f3f4f6',
+    backgroundColor: WhiteLabelConfig.colors.drawerButtonBackground,
   },
   scrollView: {
     flex: 1,
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#f3f4f6',
+    borderBottomColor: WhiteLabelConfig.colors.drawerButtonBackground,
     position: 'relative',
   },
   categoryIcon: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   categoryLabel: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     flex: 1,
   },
   categoryAccent: {
@@ -140,19 +140,19 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     borderTopWidth: 1,
-    borderTopColor: '#e5e7eb',
-    backgroundColor: '#f9fafb',
+    borderTopColor: WhiteLabelConfig.colors.headerBorder,
+    backgroundColor: WhiteLabelConfig.footer.backgroundColor,
   },
   footerText: {
     fontSize: 14,
     fontWeight: '600',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     textAlign: 'center',
     marginBottom: 4,
   },
   footerSubtext: {
     fontSize: 12,
-    color: '#6b7280',
+    color: WhiteLabelConfig.colors.mutedText,
     textAlign: 'center',
   },
 });

@@ -166,7 +166,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
             handleShare(location);
           }}
         >
-          <Share2 size={16} color="#374151" />
+          <Share2 size={16} color={WhiteLabelConfig.colors.text} />
         </TouchableOpacity>
 
         {/* Bottom Content */}
@@ -1899,16 +1899,16 @@ const styles = StyleSheet.create({
   },
   // Directory Section Styles
   directorySection: {
-    backgroundColor: '#f9fafb',
+    backgroundColor: WhiteLabelConfig.colors.drawerButtonBackground,
     paddingVertical: 32,
     paddingHorizontal: 16,
     borderTopWidth: 1,
-    borderTopColor: '#e5e7eb',
+    borderTopColor: WhiteLabelConfig.colors.headerBorder,
   },
   directoryTitle: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#1f2937',
+    color: WhiteLabelConfig.colors.text,
     textAlign: 'center',
     marginBottom: 32,
   },
@@ -1923,7 +1923,7 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 22,
     fontWeight: 'bold',
-    color: '#1f2937',
+    color: WhiteLabelConfig.colors.text,
     marginLeft: 8,
   },
   locationList: {
@@ -1935,7 +1935,7 @@ const styles = StyleSheet.create({
   neighborhoodTitle: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 12,
   },
   locationItem: {
@@ -1944,22 +1944,22 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 12,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: WhiteLabelConfig.colors.headerBorder,
   },
   directoryLocationName: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#1f2937',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 4,
   },
   directoryLocationAddress: {
     fontSize: 14,
-    color: '#6b7280',
+    color: WhiteLabelConfig.colors.mutedText,
     marginBottom: 4,
   },
   locationDetails: {
     fontSize: 14,
-    color: '#6b7280',
+    color: WhiteLabelConfig.colors.mutedText,
     marginBottom: 12,
   },
   locationActions: {
@@ -1972,7 +1972,7 @@ const styles = StyleSheet.create({
   },
   websiteButtonText: {
     fontSize: 12,
-    color: '#3b82f6',
+    color: WhiteLabelConfig.colors.accent,
     fontWeight: '500',
   },
   mapButton: {
@@ -1983,7 +1983,7 @@ const styles = StyleSheet.create({
   },
   mapButtonText: {
     fontSize: 12,
-    color: '#ffffff',
+    color: WhiteLabelConfig.colors.buttonText,
     fontWeight: '500',
   },
   breweryGrid: {
@@ -1994,7 +1994,7 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: WhiteLabelConfig.colors.headerBorder,
   },
   // locationName: {
   //   fontSize: 16,
@@ -2015,7 +2015,7 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#e5e7eb',
+    borderColor: WhiteLabelConfig.colors.headerBorder,
   },
 });
 

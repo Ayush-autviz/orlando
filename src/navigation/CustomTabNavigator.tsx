@@ -12,6 +12,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Home, MapPin, Star, Utensils, Bed, Menu, DoorOpen, Ticket, ShoppingCart, Calendar, Beer, Flag, Leaf, Music } from 'lucide-react-native';
 import AnimatedGradientLogo from '../components/AnimatedGradientLogo';
+import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 // Import screens
 import HomeScreen from '../screens/HomeScreen';
@@ -67,7 +68,7 @@ const CustomTabBar: React.FC<any> = ({ state, navigation }) => {
 
   const renderTabIcon = (iconComponent: React.ComponentType<any>, isActive: boolean) => {
     const IconComponent = iconComponent;
-    const color = isActive ? '#A47551' : '#6b7280';
+    const color = isActive ? WhiteLabelConfig.colors.secondary : WhiteLabelConfig.colors.mutedText;
     return <IconComponent size={24} color={color} />;
   };
 
@@ -88,7 +89,7 @@ const CustomTabBar: React.FC<any> = ({ state, navigation }) => {
               </View>
               <Text style={[
                 styles.tabLabel,
-                { color: isActive ? '#A47551' : '#6b7280' }
+                { color: isActive ? WhiteLabelConfig.colors.secondary : WhiteLabelConfig.colors.mutedText }
               ]}>
                 {tab.label}
               </Text>
@@ -196,7 +197,7 @@ const CustomTabNavigator: React.FC = () => {
       screenOptions={{
         headerShown: false,
         drawerStyle: {
-          backgroundColor: '#ffffff',
+          backgroundColor: WhiteLabelConfig.colors.headerBackground,
           width: 280,
         },
         drawerType: 'front',

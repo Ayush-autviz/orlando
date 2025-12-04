@@ -200,7 +200,7 @@ const ShoppingScreen: React.FC = ({ navigation }: any) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.background,
   },
   scrollView: {
     flex: 1,
@@ -310,7 +310,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#111827',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 24,
     textAlign: 'center',
   },
@@ -354,13 +354,13 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   storeBadge: {
-    backgroundColor: '#EA580C',
+    backgroundColor: WhiteLabelConfig.colors.button,
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 12,
   },
   storeBadgeText: {
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
     fontSize: 12,
     fontWeight: '600',
   },
@@ -371,7 +371,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   neighborhoodBadgeText: {
-    color: '#374151',
+    color: WhiteLabelConfig.colors.text,
     fontSize: 12,
     fontWeight: '600',
   },
@@ -390,7 +390,7 @@ const styles = StyleSheet.create({
   },
   mallDescription: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     lineHeight: 20,
     marginBottom: 16,
   },
@@ -411,12 +411,12 @@ const styles = StyleSheet.create({
   infoLabel: {
     fontSize: 14,
     fontWeight: '500',
-    color: '#111827',
+    color: WhiteLabelConfig.colors.text,
     marginBottom: 2,
   },
   infoValue: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
   },
   locationContainer: {
     flexDirection: 'row',
@@ -433,18 +433,18 @@ const styles = StyleSheet.create({
   },
   locationText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: WhiteLabelConfig.colors.mutedText,
     flex: 1,
   },
   mapItButton: {
-    backgroundColor: '#0D9488',
+    backgroundColor: WhiteLabelConfig.colors.accent,
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 4,
   },
   mapItText: {
     fontSize: 12,
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
     fontWeight: '500',
   },
   footerSection: {
@@ -455,18 +455,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   exploreButton: {
-    backgroundColor: '#EA580C',
+    backgroundColor: WhiteLabelConfig.colors.button,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    borderRadius: 6,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     gap: 4,
   },
   exploreButtonText: {
-    color: '#FFFFFF',
+    color: WhiteLabelConfig.colors.buttonText,
     fontSize: 14,
     fontWeight: '500',
+    fontFamily: WhiteLabelConfig.fonts.medium,
   },
   websiteLink: {
     flexDirection: 'row',
@@ -474,7 +475,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   websiteLinkText: {
-    color: '#EA580C',
+    color: WhiteLabelConfig.colors.button,
     fontSize: 14,
     fontWeight: '500',
   },
@@ -482,7 +483,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 12,
     right: 12,
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.headerBackground,
     borderRadius: 20,
     width: 36,
     height: 36,

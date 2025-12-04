@@ -212,7 +212,7 @@ const AttractionsScreen: React.FC = () => {
           style={styles.shareButton}
           onPress={() => handleShare(attraction)}
         >
-          <Share2 size={16} color="#374151" />
+          <Share2 size={16} color={WhiteLabelConfig.colors.text} />
         </TouchableOpacity>
 
         {/* Gradient overlay */}
@@ -231,7 +231,7 @@ const AttractionsScreen: React.FC = () => {
             <Text style={styles.categoryBadgeText}>{attraction.category}</Text>
           </View>
           <View style={styles.locationInfo}>
-            <MapPin size={14} color="#6b7280" />
+            <MapPin size={14} color={WhiteLabelConfig.colors.mutedText} />
             <Text style={styles.locationText}>{attraction.neighborhood || `${WhiteLabelConfig.appName}`}</Text>
           </View>
         </View>
@@ -264,12 +264,12 @@ const AttractionsScreen: React.FC = () => {
             style={styles.websiteButton}
             onPress={() => openWebsite(attraction.link!, attraction.name)}
           >
-            <ExternalLink size={14} color="#ffffff" />
+            <ExternalLink size={14} color={WhiteLabelConfig.colors.buttonText} />
             <Text style={styles.websiteButtonText}>Website</Text>
           </TouchableOpacity>
         ) : (
           <View style={styles.noWebsiteButton}>
-            <ExternalLink size={14} color="#777777" />
+            <ExternalLink size={14} color={WhiteLabelConfig.colors.mutedText} />
             <Text style={styles.noWebsiteButtonText}>No Website</Text>
           </View>
         )}
@@ -278,7 +278,7 @@ const AttractionsScreen: React.FC = () => {
           style={styles.detailsButton}
           onPress={() => openAttractionDetail(attraction)}
         >
-          <Info size={14} color="#009688" />
+          <Info size={14} color={WhiteLabelConfig.colors.accent} />
           <Text style={styles.detailsButtonText}>Details</Text>
         </TouchableOpacity>
       </View>
@@ -428,13 +428,13 @@ const AttractionsScreen: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.background,
   },
   scrollView: {
     flex: 1,
   },
   heroSection: {
-    backgroundColor: '#10b981', // emerald-500
+    backgroundColor: WhiteLabelConfig.colors.primary,
     paddingHorizontal: 12,
     paddingVertical: 12,
     marginHorizontal: 12,
@@ -451,7 +451,7 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     opacity: 0.1,
-    backgroundColor: '#ffffff',
+    backgroundColor: WhiteLabelConfig.colors.headerBackground,
     // This creates a subtle pattern effect similar to the web version
   },
   heroContent: {
@@ -472,7 +472,7 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
     transform: [{ rotate: '-2deg' }],
     borderWidth: 1,
-    borderColor: '#5eead4', // teal-200
+    borderColor: WhiteLabelConfig.colors.accent,
     alignItems: 'center',
   },
   heroTitleText: {
@@ -485,7 +485,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   heroTitleAccent: {
-    color: '#fde047', // yellow-300
+    color: WhiteLabelConfig.colors.secondary,
   },
   heroTitleDecoration: {
     position: 'absolute',
@@ -494,7 +494,7 @@ const styles = StyleSheet.create({
     width: 16,
     height: 16,
     borderRadius: 8,
-    backgroundColor: '#fde047', // yellow-300 to match ThemeParksScreen
+    backgroundColor: WhiteLabelConfig.colors.secondary,
     opacity: 0.8,
   },
   heroContentArea: {
@@ -543,7 +543,7 @@ const styles = StyleSheet.create({
   },
   categoryCounterText: {
     fontSize: Math.min(width * 0.03, 13), // Responsive font size
-    color: '#6b7280',
+    color: WhiteLabelConfig.colors.mutedText,
     textAlign: 'center',
   },
   categoryCounterBold: {
@@ -585,7 +585,7 @@ const styles = StyleSheet.create({
   categoryFilterText: {
     fontSize: Math.min(width * 0.03, 13), // Responsive font size
     fontWeight: '500',
-    color: '#6b7280',
+    color: WhiteLabelConfig.colors.mutedText,
     textAlign: 'center',
   },
   categoryFilterTextActive: {
@@ -617,7 +617,7 @@ const styles = StyleSheet.create({
   },
   resultsText: {
     fontSize: 14,
-    color: '#6b7280',
+    color: WhiteLabelConfig.colors.mutedText,
     textAlign: 'center',
     fontWeight: '500',
   },
@@ -637,7 +637,7 @@ const styles = StyleSheet.create({
     elevation: 8,
     overflow: 'hidden',
     borderWidth: 0.5,
-    borderColor: '#d3d3d3',
+    borderColor: WhiteLabelConfig.colors.headerBorder,
   },
   cardImageContainer: {
     height: 160,
@@ -708,7 +708,7 @@ const styles = StyleSheet.create({
   },
   locationText: {
     fontSize: 12,
-    color: '#6b7280',
+    color: WhiteLabelConfig.colors.mutedText,
   },
   mapItContainer: {
     marginBottom: 8,
@@ -724,7 +724,7 @@ const styles = StyleSheet.create({
   },
   cardDescription: {
     fontSize: 12,
-    color: '#6b7280',
+    color: WhiteLabelConfig.colors.mutedText,
     lineHeight: 18,
     marginBottom: 16,
     flex: 1,
@@ -740,23 +740,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#ff6b35', // var(--orlando-orange)
-    paddingVertical: 6,
-    paddingHorizontal: 8,
-    borderRadius: 4,
+    backgroundColor: WhiteLabelConfig.colors.button,
+    paddingVertical: WhiteLabelConfig.components.button.paddingV,
+    paddingHorizontal: WhiteLabelConfig.components.button.paddingH,
+    borderRadius: WhiteLabelConfig.components.button.radius,
     gap: 4,
   },
   websiteButtonText: {
     fontSize: 12,
-    color: '#ffffff',
+    color: WhiteLabelConfig.colors.buttonText,
     fontWeight: '500',
+    fontFamily: WhiteLabelConfig.fonts.medium,
   },
   noWebsiteButton: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#e0e0e0',
+    backgroundColor: WhiteLabelConfig.colors.drawerButtonBackground,
     paddingVertical: 6,
     paddingHorizontal: 8,
     borderRadius: 4,
@@ -764,7 +765,7 @@ const styles = StyleSheet.create({
   },
   noWebsiteButtonText: {
     fontSize: 12,
-    color: '#777777',
+    color: WhiteLabelConfig.colors.mutedText,
     fontWeight: '500',
   },
   detailsButton: {
@@ -774,7 +775,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'transparent',
     borderWidth: 1,
-    borderColor: '#009688', // var(--orlando-teal)
+    borderColor: WhiteLabelConfig.colors.accent,
     paddingVertical: 6,
     paddingHorizontal: 8,
     borderRadius: 4,
@@ -782,8 +783,9 @@ const styles = StyleSheet.create({
   },
   detailsButtonText: {
     fontSize: 12,
-    color: '#009688', // var(--orlando-teal)
+    color: WhiteLabelConfig.colors.accent,
     fontWeight: '500',
+    fontFamily: WhiteLabelConfig.fonts.medium,
   },
 });
 
