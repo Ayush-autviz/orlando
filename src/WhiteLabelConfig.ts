@@ -1,5 +1,5 @@
 export const WhiteLabelConfig = {
-  appName: "Sentosa",
+  appName: "OrlandoTrip",
   hotelName: "Orlando Hotel",
   appLogo: require("../assets/icon/logo.png"),
   tagline: "Your complete resource for exploring Orlando",
