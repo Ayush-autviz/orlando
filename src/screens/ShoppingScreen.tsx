@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-  Dimensions,
-  Share,
-  Alert,
-  Linking,
-  ImageBackground,
-} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, TouchableOpacity, Image, Dimensions, Share, Alert, Linking,
+  ImageBackground, } from 'react-native';
 import { MapPin, ExternalLink, ChevronRight, ShoppingBag, Store, Coffee, Share2 } from 'lucide-react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Svg, { Path } from 'react-native-svg';
@@ -206,17 +194,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   heroSection: {
-    //   marginTop: 16,
-    //    marginHorizontal: 12,
-    //    borderRadius: 12,
     overflow: 'hidden',
     position: 'relative',
     paddingVertical: 35,
-    //    paddingHorizontal: 16,
-    // Responsive padding
-    // ...(width >= 640 && { paddingVertical: 32 }),
-    // ...(width >= 768 && { paddingVertical: 40 }),
-    // ...(width >= 1024 && { paddingVertical: 64 }),
   },
   heroGradient: {
     position: 'absolute',
@@ -264,9 +244,7 @@ const styles = StyleSheet.create({
     left: -4,
     right: -4,
     bottom: -4,
-    // backgroundColor: 'rgba(255, 255, 255, 0.3)',
     borderRadius: 8,
-    // Note: React Native doesn't support CSS blur, this is a fallback
   },
   heroTitle: {
     fontSize: 24,
@@ -299,8 +277,6 @@ const styles = StyleSheet.create({
     ...(width >= 640 && { width: 144 }),
     ...(width >= 768 && { width: 192 }),
     ...(width >= 1024 && { width: 192 }),
-    // Note: Web version uses gradient from-white/40 to-teal-300/70
-    // This is a fallback color that matches the gradient
   },
   mallsContainer: {
     paddingHorizontal: 16,

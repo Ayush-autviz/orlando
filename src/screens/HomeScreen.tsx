@@ -101,7 +101,7 @@ const HomeScreen: React.FC = () => {
         />
       </View>
 
-      <CustomFooter navigation={navigation} />
+      {/* <CustomFooter navigation={navigation} /> */}
     </ScrollView>
   );
 };

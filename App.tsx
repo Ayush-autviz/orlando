@@ -41,9 +41,7 @@ function App() {
 
       {/* Splash overlay */}
       {showSplash && (
-        <SplashScreen
-          fadeOut={fadeOutSplash}
-          onAnimationComplete={() => {
+        <SplashScreen fadeOut={fadeOutSplash} onAnimationComplete={() => {
             setTimeout(() => {
               setFadeOutSplash(true);
               setTimeout(() => setShowSplash(false), 800);
