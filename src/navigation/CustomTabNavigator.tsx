@@ -102,19 +102,20 @@ const TabNavigator: React.FC = () => {
 
 // Custom drawer content component
 const CustomDrawerContent = (props: any) => {
-  const categories = [
-    { id: 'Home', label: 'Home', icon: <Compass size={24} color="#374151" />, color: '#f97316' },
-    { id: 'ThemeParks', label: 'Theme Parks', icon: <Mountain size={24} color="#374151" />, color: '#3b82f6' },
-    { id: 'Attractions', label: 'All Attractions', icon: <Flame size={24} color="#374151" />, color: '#10b981' },
-    { id: 'Hotels', label: 'Hotels', icon: <Building2 size={24} color="#374151" />, color: '#f59e0b' },
-    { id: 'Dining', label: 'Dining', icon: <Flame size={24} color="#374151" />, color: '#ef4444' },
-    { id: 'shopping', label: 'Shopping', icon: <ShoppingBag size={24} color="#374151" />, color: '#8b5cf6' },
-    { id: 'entertainment', label: 'Live Entertainment', icon: <Music4 size={24} color="#374151" />, color: '#06b6d4' },
-    { id: 'nightlife', label: 'Local Bar Hop', icon: <Beer size={24} color="#374151" />, color: '#f59e0b' },
-    { id: 'golf', label: 'Golf', icon: <FlagTriangleRight size={24} color="#374151" />, color: '#f97316' },
-    { id: 'spas', label: 'Spas & Wellness', icon: <Leaf size={24} color="#374151" />, color: '#10b981' },
-    { id: 'neighborhoods', label: 'Neighborhoods', icon: <Map size={24} color="#374151" />, color: '#06b6d4' },
-  ];
+const categories = [
+  { id: 'Home', label: 'Discover', icon: <Compass size={24} color="#374151" />, color: '#f97316' },
+  { id: 'ThemeParks', label: 'Theme Parks', icon: <Mountain size={24} color="#374151" />, color: '#3b82f6' },
+  { id: 'Attractions', label: 'Top Attractions', icon: <Flame size={24} color="#374151" />, color: '#10b981' },
+  { id: 'Hotels', label: 'Where to Stay', icon: <Building2 size={24} color="#374151" />, color: '#f59e0b' },
+  { id: 'Dining', label: 'Food & Dining', icon: <Flame size={24} color="#374151" />, color: '#ef4444' },
+  { id: 'shopping', label: 'Shopping', icon: <ShoppingBag size={24} color="#374151" />, color: '#8b5cf6' },
+  { id: 'entertainment', label: 'Entertainment', icon: <Music4 size={24} color="#374151" />, color: '#06b6d4' },
+  { id: 'nightlife', label: 'Nightlife', icon: <Beer size={24} color="#374151" />, color: '#f59e0b' },
+  { id: 'golf', label: 'Golf Courses', icon: <FlagTriangleRight size={24} color="#374151" />, color: '#f97316' },
+  { id: 'spas', label: 'Spas & Wellness', icon: <Leaf size={24} color="#374151" />, color: '#10b981' },
+  { id: 'neighborhoods', label: 'Neighborhoods', icon: <Map size={24} color="#374151" />, color: '#06b6d4' },
+];
+
 
   const handleCategoryPress = (categoryId: string) => {
     console.log('categoryId', categoryId);
