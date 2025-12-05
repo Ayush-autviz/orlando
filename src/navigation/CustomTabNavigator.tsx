@@ -1,17 +1,9 @@
 import React, { useState, useRef } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Animated,
-  Image,
-  } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Animated, Image, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Home, MapPin, Star, Utensils, Bed, Menu, DoorOpen, Ticket, ShoppingCart, Calendar, Beer, Flag, Leaf, Music } from 'lucide-react-native';
-import AnimatedGradientLogo from '../components/AnimatedGradientLogo';
+import { Compass, Mountain, Building2, Flame, ShoppingBag, Music4, Beer, FlagTriangleRight, Leaf, Map, Menu } from "lucide-react-native";
 import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 // Import screens
@@ -20,10 +12,7 @@ import ThemeParksScreen from '../screens/ThemeParksScreen';
 import AttractionsScreen from '../screens/AttractionsScreen';
 import DiningScreen from '../screens/DiningScreen';
 import HotelsScreen from '../screens/HotelsScreen';
-import DrawerContent from './DrawerContent';
-import ShoppingDetailScreen from '../screens/ShoppingDetailScreen';
 import ShoppingScreen from '../screens/ShoppingScreen';
-import EventsScreen from '../screens/EventsScreen';
 import NeighborhoodsScreen from '../screens/NeighborhoodsScreen';
 import GolfScreen from '../screens/GolfScreen';
 import VenuesScreen from '../screens/VenuesScreen';
@@ -41,11 +30,11 @@ const MoreScreen: React.FC = () => <View style={{ flex: 1, backgroundColor: '#ff
 // Custom Tab Bar Component
 const CustomTabBar: React.FC<any> = ({ state, navigation }) => {
   const tabConfig = [
-    { name: 'Home', label: 'Home', icon: Home },
-    { name: 'ThemeParks', label: 'Parks', icon: DoorOpen },
-    { name: 'Attractions', label: 'Attractions', icon: Ticket },
-    { name: 'Dining', label: 'Dining', icon: Utensils },
-    { name: 'Hotels', label: 'Hotels', icon: Bed },
+    { name: 'Home', label: 'Home', icon: Compass },
+    { name: 'ThemeParks', label: 'Parks', icon: Mountain },
+    { name: 'Attractions', label: 'Attractions', icon: Flame },
+    { name: 'Dining', label: 'Dining', icon: Flame },
+    { name: 'Hotels', label: 'Hotels', icon: Building2 },
     { name: 'More', label: 'More', icon: Menu },
   ];
 
@@ -78,20 +67,11 @@ const CustomTabBar: React.FC<any> = ({ state, navigation }) => {
         {tabConfig.map((tab, index) => {
           const isActive = state.index === index;
           return (
-            <TouchableOpacity
-              key={tab.name}
-              style={styles.tabItem}
-              onPress={() => handleTabPress(tab.name, index)}
-              activeOpacity={0.7}
-            >
+            <TouchableOpacity key={tab.name} style={styles.tabItem} onPress={() => handleTabPress(tab.name, index)} activeOpacity={0.7}>
               <View style={styles.tabIconContainer}>
                 {renderTabIcon(tab.icon, isActive)}
               </View>
-              <Text style={[
-                styles.tabLabel,
-                { color: isActive ? WhiteLabelConfig.colors.secondary : WhiteLabelConfig.colors.mutedText }
-              ]}>
-                {tab.label}
+              <Text style={[ styles.tabLabel, { color: isActive ? WhiteLabelConfig.colors.secondary : WhiteLabelConfig.colors.mutedText }]}> {tab.label}
               </Text>
             </TouchableOpacity>
           );
@@ -123,24 +103,22 @@ const TabNavigator: React.FC = () => {
 // Custom drawer content component
 const CustomDrawerContent = (props: any) => {
   const categories = [
-    { id: 'Home', label: 'Home', icon: <Home size={24} color="#374151" />, color: '#f97316' },
-    { id: 'ThemeParks', label: 'Theme Parks', icon: <DoorOpen size={24} color="#374151" />, color: '#3b82f6' },
-    { id: 'Attractions', label: 'All Attractions', icon: <Ticket size={24} color="#374151" />, color: '#10b981' },
-    { id: 'Hotels', label: 'Hotels', icon: <Bed size={24} color="#374151" />, color: '#f59e0b' },
-    { id: 'Dining', label: 'Dining', icon: <Utensils size={24} color="#374151" />, color: '#ef4444' },
-    { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color="#374151" />, color: '#8b5cf6' },
-    { id: 'entertainment', label: 'Live Entertainment', icon: <Music size={24} color="#374151" />, color: '#06b6d4' },
+    { id: 'Home', label: 'Home', icon: <Compass size={24} color="#374151" />, color: '#f97316' },
+    { id: 'ThemeParks', label: 'Theme Parks', icon: <Mountain size={24} color="#374151" />, color: '#3b82f6' },
+    { id: 'Attractions', label: 'All Attractions', icon: <Flame size={24} color="#374151" />, color: '#10b981' },
+    { id: 'Hotels', label: 'Hotels', icon: <Building2 size={24} color="#374151" />, color: '#f59e0b' },
+    { id: 'Dining', label: 'Dining', icon: <Flame size={24} color="#374151" />, color: '#ef4444' },
+    { id: 'shopping', label: 'Shopping', icon: <ShoppingBag size={24} color="#374151" />, color: '#8b5cf6' },
+    { id: 'entertainment', label: 'Live Entertainment', icon: <Music4 size={24} color="#374151" />, color: '#06b6d4' },
     { id: 'nightlife', label: 'Local Bar Hop', icon: <Beer size={24} color="#374151" />, color: '#f59e0b' },
-    { id: 'golf', label: 'Golf', icon: <Flag size={24} color="#374151" />, color: '#f97316' },
+    { id: 'golf', label: 'Golf', icon: <FlagTriangleRight size={24} color="#374151" />, color: '#f97316' },
     { id: 'spas', label: 'Spas & Wellness', icon: <Leaf size={24} color="#374151" />, color: '#10b981' },
-    { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color="#374151" />, color: '#06b6d4' },
-    // { id: 'things-to-do', label: 'Things to Do', icon: <Star size={24} color="#374151" />, color: '#84cc16' },
-    // { id: 'sports', label: 'Sports', icon: <Star size={24} color="#374151" />, color: '#ec4899' },
+    { id: 'neighborhoods', label: 'Neighborhoods', icon: <Map size={24} color="#374151" />, color: '#06b6d4' },
   ];
 
   const handleCategoryPress = (categoryId: string) => {
     console.log('categoryId', categoryId);
-    
+
     // Navigate to tab screens by going to TabNavigator first, then the specific tab
     if (['Home', 'ThemeParks', 'Attractions', 'Dining', 'Hotels'].includes(categoryId)) {
       // For tab screens, use nested navigation
@@ -150,7 +128,7 @@ const CustomDrawerContent = (props: any) => {
     } else {
       props.navigation.navigate(categoryId);
     }
-    
+
     props.navigation.closeDrawer();
   };
 
@@ -166,11 +144,7 @@ const CustomDrawerContent = (props: any) => {
       <View style={styles.scrollView}>
         <View style={styles.categoriesContainer}>
           {categories.map((category) => (
-            <TouchableOpacity
-              key={category.id}
-              style={styles.categoryItem}
-              onPress={() => handleCategoryPress(category.id)}
-            >
+            <TouchableOpacity key={category.id} style={styles.categoryItem} onPress={() => handleCategoryPress(category.id)}>
               <View style={styles.categoryIcon}>
                 {category.icon}
               </View>
@@ -180,11 +154,6 @@ const CustomDrawerContent = (props: any) => {
           ))}
         </View>
       </View>
-
-      {/* <View style={styles.footer}>
-        <Text style={styles.footerText}>Your Ultimate Orlando Guide</Text>
-        <Text style={styles.footerSubtext}>Discover the magic of Orlando</Text>
-      </View> */}
     </SafeAreaView>
   );
 };
@@ -214,9 +183,6 @@ const CustomTabNavigator: React.FC = () => {
       <Drawer.Screen name="golf" component={GolfScreen} />
       <Drawer.Screen name="sports" component={AttractionsScreen} />
       <Drawer.Screen name="EpicUniverseGuide" component={EpicUniverseGuideScreen} />
-      {/* <Drawer.Screen name="neighborhoods" component={NeighborhoodsScreen} /> */}
-    
-      {/* <Drawer.Screen name="nightlife" component={AttractionsScreen} /> */}
     </Drawer.Navigator>
   );
 };

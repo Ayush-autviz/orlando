@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, StatusBar, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import LinearGradient from 'react-native-linear-gradient';
-import { Hotel, Utensils, ShoppingCart, Calendar, Beer, Flag, Leaf, MapPin, DoorOpen, Ticket } from 'lucide-react-native';
+import { FerrisWheel, Landmark, Building, Soup, Shirt, PartyPopper, GlassWater, Flag, Sparkles, Map } from "lucide-react-native";
 import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 const { width, height } = Dimensions.get('window');
@@ -19,18 +19,17 @@ const getResponsiveDimensions = () => {
 
 // Single static background image
 const backgroundImage = require('../../assets/montage/UniversalEntrance.jpeg');
-
 const categories = [
-  { id: 'theme-parks', label: 'Theme Parks', icon: DoorOpen },
-  { id: 'attractions', label: 'Attractions', icon: Ticket },
-  { id: 'hotels', label: 'Hotels', icon: Hotel },
-  { id: 'dining', label: 'Dining', icon: Utensils },
-  { id: 'shopping', label: 'Shopping', icon: ShoppingCart },
-  { id: 'entertainment', label: 'Live Entertainment', icon: Calendar },
-  { id: 'bar-hop', label: 'Locals Bar Hop', icon: Beer },
+  { id: 'theme-parks', label: 'Theme Parks', icon: FerrisWheel },
+  { id: 'attractions', label: 'Attractions', icon: Landmark },
+  { id: 'hotels', label: 'Hotels', icon: Building },
+  { id: 'dining', label: 'Dining', icon: Soup },
+  { id: 'shopping', label: 'Shopping', icon: Shirt },
+  { id: 'entertainment', label: 'Live Entertainment', icon: PartyPopper },
+  { id: 'bar-hop', label: 'Locals Bar Hop', icon: GlassWater },
   { id: 'golf', label: 'Golf', icon: Flag },
-  { id: 'spas', label: 'Spas', icon: Leaf },
-  { id: 'neighborhoods', label: 'Neighborhoods', icon: MapPin },
+  { id: 'spas', label: 'Spas', icon: Sparkles },
+  { id: 'neighborhoods', label: 'Neighborhoods', icon: Map },
 ];
 
 export default function Hero({ navigation }: any) {
