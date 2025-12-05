@@ -13,7 +13,7 @@ import {
   Linking,
   Animated,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import {
   MapPin,
   ExternalLink,
@@ -106,7 +106,9 @@ const { width } = Dimensions.get('window');
 
 const AttractionsScreen: React.FC = () => {
   const navigation = useNavigation();
-  const [selectedCategory, setSelectedCategory] = useState('Unique Attractions');
+  const route = useRoute<any>();
+  const initialCategory = route?.params?.category || 'Unique Attractions';
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
 
   const [filteredAttractions, setFilteredAttractions] = useState<Attraction[]>([]);
 
