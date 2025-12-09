@@ -2,7 +2,7 @@ export const WhiteLabelConfig = {
   appName: "Tripzy",
   hotelName: "Orlando Hotel",
   appLogo: require("../assets/icon/tripzyLogo.png"),
-  tagline: "Your complete resource for exploring Orlando",
+  tagline: "Your complete resource for exploring Tripzy",
 
   hero: {
     titleSuffix: " Guide",

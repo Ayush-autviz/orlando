@@ -784,7 +784,6 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
       <View style={styles.hero}>
         <View style={styles.heroContent}>
           <View style={styles.heroHeader}>
-            <View style={styles.blueAccent} />
             <Text style={styles.heroSubtitle}>BEYOND THE PARKS</Text>
           </View>
           
@@ -812,6 +811,7 @@ const NeighborhoodsScreen: React.FC<NeighborhoodsScreenProps> = ({ navigation })
           </View>
         </View>
       </View>
+      
         {/* Introduction */}
         <View style={styles.introSection}>
           <Text style={styles.introTitle}>Explore Like a Local</Text>
@@ -960,7 +960,7 @@ const styles = StyleSheet.create({
     paddingVertical: 24,
     paddingHorizontal: 16,
     borderBottomWidth: 1,
-    borderBottomColor: WhiteLabelConfig.colors.headerBorder,
+    borderBottomColor: WhiteLabelConfig.colors.primary,
   },
   heroContent: {
     marginBottom: 16,
@@ -980,7 +980,7 @@ const styles = StyleSheet.create({
   heroSubtitle: {
     fontSize: 12,
     fontWeight: '600',
-    color: WhiteLabelConfig.colors.mutedText,
+    color: WhiteLabelConfig.colors.background,
     letterSpacing: 1,
   },
   heroTitle: {
@@ -992,7 +992,7 @@ const styles = StyleSheet.create({
   },
   heroDescription: {
     fontSize: 14,
-    color: '#d1d5db',
+    color: '#ffffff',
     paddingRight: 16,
   },
   heroTags: {
@@ -1013,7 +1013,7 @@ const styles = StyleSheet.create({
   },
   tagText: {
     fontSize: 12,
-    color: '#9ca3af',
+    color: '#ffffff',
     fontWeight: '500',
   },
   scrollView: {

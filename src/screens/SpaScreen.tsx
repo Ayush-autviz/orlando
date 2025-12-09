@@ -384,7 +384,7 @@ const SpaScreen: React.FC<SpaScreenProps> = ({ navigation }) => {
           <View style={styles.logoContainer}>
             <View style={styles.logoGlow} />
             <LinearGradient
-              colors={['#ffffff', '#f0f9ff']}
+              colors={['#ffffff', '#ffffff']}
               style={styles.logoGradient}
             >
               <Text style={styles.logoText}>

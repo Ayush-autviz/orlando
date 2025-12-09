@@ -90,7 +90,7 @@ const VenuesScreen: React.FC = () => {
             onPress={() => handleWebsitePress(venue.link, `${venue.name} - Official Website`)}
           >
             <ExternalLink size={14} color="#ffffff" />
-            <Text style={styles.buttonText}>Official Website</Text>
+            <Text style={styles.buttonWebsiteText}>Official Website</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -98,7 +98,7 @@ const VenuesScreen: React.FC = () => {
             onPress={() => handleWebsitePress(venue.calendarLink, `${venue.name} - Event Calendar`)}
           >
             <ExternalLink size={14} color="#ffffff" />
-            <Text style={styles.buttonText}>Event Calendar</Text>
+            <Text style={styles.buttonEventText}>Event Calendar</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -378,7 +378,13 @@ const styles = StyleSheet.create({
   calendarButton: {
     backgroundColor: '#0d9488',
   },
-  buttonText: {
+  buttonWebsiteText: {
+    color: '#ffffff',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+
+  buttonEventText: {
     color: '#ffffff',
     fontSize: 14,
     fontWeight: '600',
