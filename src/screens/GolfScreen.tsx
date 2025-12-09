@@ -192,7 +192,7 @@ const GolfScreen: React.FC = () => {
             
             <View style={styles.heroRight}>
               <LinearGradient
-                colors={['#059669', '#22C55E']} // emerald-600 to green-500
+                colors={['#6EE7B7', '#6EE7B7']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
                 style={styles.decorativeBar}
@@ -622,7 +622,7 @@ const styles = StyleSheet.create({
   badgeText: {
     fontSize: 11, // text-xs
     fontWeight: '500', // font-medium
-    color: '#6EE7B7', // text-emerald-400
+    color: '#ffffff', // text-emerald-400
   },
   separator: {
     color: '#6EE7B7',
@@ -649,7 +649,7 @@ const styles = StyleSheet.create({
   },
   heroSubtitle: {
     fontSize: 14, // text-sm
-    color: '#D1D5DB', // text-gray-300
+    color: '#ffffff', // text-gray-300
     marginTop: 4, // mt-1
   },
   heroRight: {

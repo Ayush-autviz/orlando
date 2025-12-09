@@ -1,13 +1,13 @@
 export const WhiteLabelConfig = {
-  appName: "OrlandoTrip",
+  appName: "Tripzy",
   hotelName: "Orlando Hotel",
-  appLogo: require("../assets/icon/logo.png"),
+  appLogo: require("../assets/icon/tripzyLogo.png"),
   tagline: "Your complete resource for exploring Orlando",
 
   hero: {
     titleSuffix: " Guide",
-    gradientColors: ["#0EA5E9", "#1E40AF"],
-    categoryColor: "#38BDF8",               
+    gradientColors: ["#1FC6E1", "#158DA1"],
+    categoryColor: "#116C7B",               
     backgroundColor: "#1E3A8A",            
   },
 
@@ -17,15 +17,15 @@ export const WhiteLabelConfig = {
   },
 
   colors: {
-    primary: "#1E3A8A",            
-    secondary: "#0EA5E9",          
-    accent: "#38BDF8",             
+    primary: "#116C7B",            
+    secondary: "#116C7B",          
+    accent: "#116C7B",             
     background: "#FFFFFF",
     headerBackground: "#FFFFFF",
     headerBorder: "#DBEAFE",
-    text: "#1E293B",
+    text: "#116C7B",
     mutedText: "#6B7280",
-    button: "#0EA5E9",             
+    button: "#116C7B",             
     buttonText: "#FFFFFF",
     drawerButtonBackground: "#E0F2FE", 
   },

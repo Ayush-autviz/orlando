@@ -487,7 +487,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   heroTitleAccent: {
-    color: WhiteLabelConfig.colors.secondary,
+    color: '#ffffff',
   },
   heroTitleDecoration: {
     position: 'absolute',

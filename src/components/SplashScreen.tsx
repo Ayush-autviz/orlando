@@ -95,7 +95,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onAnimationComplete, fadeOu
 
   return (
     <Animated.View style={[styles.overlayContainer, { opacity: overlayOpacity }]}>
-      <StatusBar barStyle="light-content" backgroundColor={WhiteLabelConfig.colors.primary} />
+      <StatusBar barStyle="light-content" backgroundColor={WhiteLabelConfig.colors.drawerButtonBackground} />
 
       {/* Background */}
       <View style={styles.background} />
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
 
   background: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: WhiteLabelConfig.colors.primary,
+    backgroundColor: WhiteLabelConfig.colors.background,
   },
 
   content: {

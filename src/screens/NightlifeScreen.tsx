@@ -374,7 +374,7 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
 
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <LinearGradient
-          colors={['#0f172a', '#1e293b']}
+          colors={['#4FA0B5', '#8ED6ED']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 0 }}
           style={styles.hero}
@@ -382,23 +382,23 @@ const NightlifeScreen: React.FC<NightlifeScreenProps> = ({ navigation }) => {
           <View style={styles.heroContent}>
             <View style={styles.tagsRow}>
               <View style={styles.tagContainer}>
-                <Beer size={12} color="#fbbf24" />
+                <Beer size={12} color="#ffffff" />
                 <Text style={styles.tagText}>BREWERIES</Text>
               </View>
               <Text style={styles.tagSeparator}>•</Text>
               <View style={styles.tagContainer}>
-                <GlassWater size={12} color="#fbbf24" />
+                <GlassWater size={12} color="#ffffff" />
                 <Text style={styles.tagText}>SPEAKEASIES</Text>
               </View>
               <Text style={styles.tagSeparator}>•</Text>
               <View style={styles.tagContainer}>
-                <Wine size={12} color="#fbbf24" />
+                <Wine size={12} color="#ffffff" />
                 <Text style={styles.tagText}>WINERIES</Text>
               </View>
             </View>
 
             <View style={styles.logoContainer}>
-              <Text style={styles.logoText}>ORLANDO BAR HOP</Text>
+              <Text style={styles.logoText}>{WhiteLabelConfig.appName} BAR HOP</Text>
 
             </View>
 
@@ -1313,8 +1313,8 @@ const styles = StyleSheet.create({
     //   position: 'relative',
     overflow: 'hidden',
     borderBottomWidth: 1,
-    borderBottomColor: '#374151',
-  },
+    borderBottomColor: '#ffffff',
+  },  
   heroContent: {
     zIndex: 1,
     paddingHorizontal: 15,
@@ -1335,7 +1335,7 @@ const styles = StyleSheet.create({
   },
   tagText: {
     fontSize: 12,
-    color: '#fbbf24',
+    color: '#ffffff',
     fontWeight: '600',
   },
   tagSeparator: {
@@ -1356,13 +1356,13 @@ const styles = StyleSheet.create({
   logoAccent: {
     height: 19,
     width: "100%",
-    backgroundColor: '#fbbf24',
+    backgroundColor: '#116C7B',
     borderRadius: 4,
     marginTop: 15,
   },
   heroSubtitle: {
     fontSize: 14,
-    color: '#94a3b8',
+    color: 'ffffff',
     // textAlign: 'center',
   },
   heroPattern: {

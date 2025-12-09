@@ -61,7 +61,8 @@ const ThemeParksScreen: React.FC = () => {
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.heroSection}>
           <LinearGradient
-            colors={['#2563eb', '#8b5cf6', '#ec4899']}
+            // colors={['#2563eb', '#8b5cf6', '#ec4899']}
+            colors={['#3b82f6', '#22d3ee']}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
             style={styles.heroGradientBackground}
@@ -381,7 +382,7 @@ const ThemeParksScreen: React.FC = () => {
                 <Text style={styles.mainCardDescription}>
                   Immerse yourself in thrilling adventures across Universal Studios, Islands of Adventure, and the upcoming Epic Universe.
                 </Text>
-                <View style={[styles.mainCardButton, { backgroundColor: '#dc2626' }]}>
+                <View style={[styles.mainCardButton, { backgroundColor: WhiteLabelConfig.colors.button }]}>
                   <View style={styles.buttonContent}>
                     <Rocket size={16} color="#ffffff" />
                     <Text style={styles.mainCardButtonText}>Official Site</Text>
@@ -457,7 +458,7 @@ const ThemeParksScreen: React.FC = () => {
                   Experience the magic of Universal's Epic Universe - Now Open!
                 </Text>
                 <TouchableOpacity 
-                  style={[styles.mainCardButton, { backgroundColor: '#7c3aed' }]}
+                  style={[styles.mainCardButton, { backgroundColor: WhiteLabelConfig.colors.button }]}
                   onPress={() => openWebsite('https://www.universalorlando.com/', `Universal ${WhiteLabelConfig.appName}`)}
                 >
                   <View style={styles.buttonContent}>
@@ -585,7 +586,7 @@ const ThemeParksScreen: React.FC = () => {
               </Text>
               <View style={styles.volcanoBayButton}>
                 <View style={styles.buttonContent}>
-                  <ExternalLink size={16} color="#ffffff" />
+                  <ExternalLink size={16} />
                   <Text style={styles.volcanoBayButtonText}>Official Site</Text>
                 </View>
               </View>
@@ -1169,7 +1170,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#2563eb',
+    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,
@@ -1926,7 +1927,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   volcanoBayButton: {
-    backgroundColor: '#ea580c',
+    backgroundColor: WhiteLabelConfig.colors.button,
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 8,
@@ -2086,7 +2087,7 @@ const styles = StyleSheet.create({
     textShadowRadius: 2,
   },
   seaworldWaterParkButton: {
-    backgroundColor: '#2563eb',
+    backgroundColor: WhiteLabelConfig.colors.button,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 6,

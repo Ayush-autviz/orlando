@@ -24,16 +24,16 @@ interface DrawerContentProps {
 
 const DrawerContent: React.FC<DrawerContentProps> = ({ navigation, onClose }) => {
   const categories = [
-    { id: 'theme-parks', label: 'Theme Parks', icon: <Building size={24} color={WhiteLabelConfig.colors.text} />, color: '#A855F7' },
-    { id: 'attractions', label: 'Attractions', icon: <Star size={24} color={WhiteLabelConfig.colors.text} />, color: '#EF4444' },
-    { id: 'hotels', label: 'Hotels', icon: <Building size={24} color={WhiteLabelConfig.colors.text} />, color: '#3B82F6' },
-    { id: 'dining', label: 'Dining', icon: <Utensils size={24} color={WhiteLabelConfig.colors.text} />, color: '#F59E0B' },
-    { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color={WhiteLabelConfig.colors.text} />, color: '#10B981' },
-    { id: 'entertainment', label: 'Live Entertainment', icon: <Calendar size={24} color={WhiteLabelConfig.colors.text} />, color: '#8B5CF6' },
-    { id: 'golf', label: 'Golf', icon: <Flag size={24} color={WhiteLabelConfig.colors.text} />, color: '#059669' },
-    { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color={WhiteLabelConfig.colors.text} />, color: '#DC2626' },
-    { id: 'nightlife', label: 'Nightlife', icon: <Beer size={24} color={WhiteLabelConfig.colors.text} />, color: '#7C3AED' },
-    { id: 'spas', label: 'Spas', icon: <Leaf size={24} color={WhiteLabelConfig.colors.text} />, color: '#16A34A' },
+    { id: 'theme-parks', label: 'Theme Parks', icon: <Building size={24} color={WhiteLabelConfig.colors.text} /> },
+    { id: 'attractions', label: 'Attractions', icon: <Star size={24} color={WhiteLabelConfig.colors.text} /> },
+    { id: 'hotels', label: 'Hotels', icon: <Building size={24} color={WhiteLabelConfig.colors.text} /> },
+    { id: 'dining', label: 'Dining', icon: <Utensils size={24} color={WhiteLabelConfig.colors.text} />},
+    { id: 'shopping', label: 'Shopping', icon: <ShoppingCart size={24} color={WhiteLabelConfig.colors.text} /> },
+    { id: 'entertainment', label: 'Live Entertainment', icon: <Calendar size={24} color={WhiteLabelConfig.colors.text} />},
+    { id: 'golf', label: 'Golf', icon: <Flag size={24} color={WhiteLabelConfig.colors.text} />},
+    { id: 'neighborhoods', label: 'Neighborhoods', icon: <MapPin size={24} color={WhiteLabelConfig.colors.text} /> },
+    { id: 'nightlife', label: 'Nightlife', icon: <Beer size={24} color={WhiteLabelConfig.colors.text} />},
+    { id: 'spas', label: 'Spas', icon: <Leaf size={24} color={WhiteLabelConfig.colors.text} />},
   ];
 
   const handleCategoryPress = (categoryId: string) => {
@@ -67,7 +67,7 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ navigation, onClose }) =>
                 {category.icon}
               </View>
               <Text style={styles.categoryLabel}>{category.label}</Text>
-              <View style={[styles.categoryAccent, { backgroundColor: category.color }]} />
+              <View style={[styles.categoryAccent]} />
             </TouchableOpacity>
           ))}
         </View>

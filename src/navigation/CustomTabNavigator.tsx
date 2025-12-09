@@ -138,7 +138,7 @@ const categories = [
       <View style={styles.header}>
         <View style={styles.logoContainer}>
           {/* <AnimatedGradientLogo fontSize={24} width={109} /> */}
-          <Image source={require('../../assets/icon/logo.png')} style={styles.logo} resizeMode="contain" />
+          <Image source={require('../../assets/icon/tripzyLogo.png')} style={styles.logo} resizeMode="contain" />
         </View>
       </View>
 
