@@ -501,7 +501,7 @@ export interface ShoppingMall {
       shortDescription: "Florida's largest outlet shopping destination featuring 180 designer and name-brand stores offering 25% to 65% savings daily in an upscale outdoor shopping environment.",
       heroImage: require("../../assets/images/orlando-premium-outlets.jpg"),
       galleryImages: [
-        require("../../assets/images/orlando-premium-outlets.jpeg")
+        require("../../assets/images/orlando-premium-outlets.jpg")
       ],
       location: {
         address: "5220 International Drive, Orlando, FL 32819",
