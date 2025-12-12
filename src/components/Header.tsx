@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet,  TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Menu, ArrowRight } from 'lucide-react-native';
 import AnimatedGradientLogo from './AnimatedGradientLogo';
 import { WhiteLabelConfig } from '../WhiteLabelConfig';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface HeaderProps {
   title?: string;
