@@ -3,7 +3,6 @@ import { View, StyleSheet, ScrollView, Text, Image, TouchableOpacity, FlatList }
 import { useNavigation } from '@react-navigation/native';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import CustomFooter from '../components/CustomFooter';
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation();
@@ -100,8 +99,6 @@ const HomeScreen: React.FC = () => {
           getItemLayout={(_, index) => ({ length: CARD_WIDTH + CARD_GAP, offset: (CARD_WIDTH + CARD_GAP) * index, index })}
         />
       </View>
-
-      {/* <CustomFooter navigation={navigation} /> */}
     </ScrollView>
   );
 };

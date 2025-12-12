@@ -57,13 +57,15 @@ const styles = StyleSheet.create({
     backgroundColor: WhiteLabelConfig.colors.headerBackground,
     borderBottomWidth: 1,
     borderBottomColor: WhiteLabelConfig.colors.headerBorder,
+    height: 56,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    height: 26,
+    paddingTop: 12,
     paddingHorizontal: 16,
-    paddingTop: 0,
-    paddingBottom: 12,
+    //paddingBottom: 12,
     backgroundColor: WhiteLabelConfig.colors.headerBackground,
   },
   drawerButton: {

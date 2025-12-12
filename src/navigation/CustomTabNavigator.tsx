@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Animated, Image, } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Compass, Mountain, Building2, Flame, ShoppingBag, Music4, Beer, FlagTriangleRight, Leaf, Map, Menu } from "lucide-react-native";
+import { Compass, Mountain, Building2, Flame, ShoppingBag, Music4, Beer, FlagTriangleRight, Leaf, Map, Menu, Utensils } from "lucide-react-native";
 import { WhiteLabelConfig } from '../WhiteLabelConfig';
 
 // Import screens
@@ -29,11 +29,12 @@ const MoreScreen: React.FC = () => <View style={{ flex: 1, backgroundColor: '#ff
 
 // Custom Tab Bar Component
 const CustomTabBar: React.FC<any> = ({ state, navigation }) => {
+  const insets = useSafeAreaInsets();
   const tabConfig = [
     { name: 'Home', label: 'Home', icon: Compass },
     { name: 'ThemeParks', label: 'Parks', icon: Mountain },
     { name: 'Attractions', label: 'Attractions', icon: Flame },
-    { name: 'Dining', label: 'Dining', icon: Flame },
+    { name: 'Dining', label: 'Dining', icon: Utensils },
     { name: 'Hotels', label: 'Hotels', icon: Building2 },
     { name: 'More', label: 'More', icon: Menu },
   ];
@@ -63,7 +64,7 @@ const CustomTabBar: React.FC<any> = ({ state, navigation }) => {
 
   return (
     <SafeAreaView edges={['bottom']} style={styles.tabBarContainer}>
-      <View style={styles.tabBar}>
+      <View style={[styles.tabBar, {  height: 10 + insets.bottom }]}>
         {tabConfig.map((tab, index) => {
           const isActive = state.index === index;
           return (
@@ -107,7 +108,7 @@ const categories = [
   { id: 'ThemeParks', label: 'Theme Parks', icon: <Mountain size={24} color="#374151" />, color: '#3b82f6' },
   { id: 'Attractions', label: 'Top Attractions', icon: <Flame size={24} color="#374151" />, color: '#10b981' },
   { id: 'Hotels', label: 'Where to Stay', icon: <Building2 size={24} color="#374151" />, color: '#f59e0b' },
-  { id: 'Dining', label: 'Food & Dining', icon: <Flame size={24} color="#374151" />, color: '#ef4444' },
+  { id: 'Dining', label: 'Food & Dining', icon: <Utensils size={24} color="#374151" />, color: '#ef4444' },
   { id: 'shopping', label: 'Shopping', icon: <ShoppingBag size={24} color="#374151" />, color: '#8b5cf6' },
   { id: 'entertainment', label: 'Entertainment', icon: <Music4 size={24} color="#374151" />, color: '#06b6d4' },
   { id: 'nightlife', label: 'Nightlife', icon: <Beer size={24} color="#374151" />, color: '#f59e0b' },
@@ -137,7 +138,6 @@ const categories = [
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.logoContainer}>
-          {/* <AnimatedGradientLogo fontSize={24} width={109} /> */}
           <Image source={require('../../assets/icon/tripzyLogo.png')} style={styles.logo} resizeMode="contain" />
         </View>
       </View>
@@ -196,9 +196,9 @@ const styles = StyleSheet.create({
   },
   tabBar: {
     flexDirection: 'row',
-    paddingTop: 15,
-    paddingBottom: 0,
-    height: 47,
+    paddingTop: 8,
+    paddingBottom: 4,
+    //height: 40,
     backgroundColor: '#ffffff',
   },
   tabItem: {
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   tabLabel: {
-    fontSize: 12,
+    fontSize: 11,
     fontWeight: '500',
     textAlign: 'center',
   },
